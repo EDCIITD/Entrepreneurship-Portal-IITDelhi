@@ -5,29 +5,86 @@
   <title>Full Page Parallax Scroll Effect</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="./style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- IMPORT FONTS -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Lato&display=swap" rel="stylesheet">
+
+	<!-- ICONS !-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+
+	<!-- JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+	<!-- Menu -->
+	<script type="text/javascript">
+		function ToggleNav(){
+			$('ul.nav').slideToggle("slow");
+		}
+	</script>
+
+	<title>S.Inc</title>
+
+		<script type="text/javascript">
+			$().ready(function(){
+
+				$( "a.scroll" ).click(function( event ) {
+					event.preventDefault();
+				 	$("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top-$('header').height() }, 500);
+				});
+
+
+	        	if (window.location.hash) {
+		                $('html, body').scrollTop(0).show();
+		                $('html, body').animate({
+		                    scrollTop: $(window.location.hash).offset().top -$('header').height()
+		                    }, 1000)
+	       		}
+	        
+
+			})
+
+
+		</script>
+
 </head>
 <body>
+<header>
+	<div id="toggle"><a onclick="$('ul.nav').slideToggle('slow');"><i class="material-icons" style="font-size:1.5em;color:#fff">menu</i></a></div>
+	<div class="profile">
+		<img src="logo.png" class="header-logo">
+		<div class="header-title">S.Inc, IIT Delhi</div>
+	</div>
+	<ul class="nav">
+		<li><a href="#">Home</a></li>
+		<li><a href="#values" class="scroll">Values</a></li>
+		<li><a href="#mission" class="scroll">Mission</a></li>
+		<li><a href="#team" class="scroll">Team</a></li>
+	</ul>
+</header>
 <!-- partial:index.partial.html -->
 <div class="container">
-  <section class="background">
+  <section class="background" id="home">
     <div class="content-wrapper">
       <p class="content-title">SInC IIT DELHI</p>
       <p class="content-subtitle">Scroll down and up to see the effect!</p>
     </div>
   </section>
-  <section class="background">
-    <div class="content-wrapper">
+  <section class="background" >
+    <div class="content-wrapper" id="values">
       <p class="content-title">OUR VALUES</p>
       <p class="content-subtitle">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ut massa mattis nibh semper pretium.</p>
     </div>
   </section>
-  <section class="background">
+  <section class="background" id="mission">
     <div class="content-wrapper">
       <p class="content-title">OUR MISSION</p>
       <p class="content-subtitle">Nullam tristique urna sed tellus ornare congue. Etiam vitae erat at nibh aliquam dapibus.</p>
     </div>
   </section>
-  <section class="background">
+  <section class="background" id="team">
     <div class="content-wrapper">
       <p class="content-title">OUR TEAM</p>
       <p class="content-subtitle">Values</p>
