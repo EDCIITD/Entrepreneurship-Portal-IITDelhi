@@ -31,7 +31,9 @@
 			$().ready(function(){
 
 				if (window.location.hash) {
-		                goTo($("section.background").index($(window.location.hash)));            
+					var i=$("section.background").index($(window.location.hash));
+					if (i>=0)
+		                goTo(i);            
 	       		}
 
 
@@ -57,7 +59,7 @@
 		<div class="header-title">S.Inc, IIT Delhi</div>
 	</div>
 	<ul class="nav">
-		<li><a href="#">Home</a></li>
+		<li><a href="#home">Home</a></li>
 		<li><a href="#values">Values</a></li>
 		<li><a href="#mission">Mission</a></li>
 		<li><a href="#team">Team</a></li>
