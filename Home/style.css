@@ -121,8 +121,7 @@ html, body {
 
 header{
   font-family: "Open Sans Condensed";
-  position: sticky;
-  position: -webkit-sticky;
+  position: fixed;
   top: 0;
   background-color: #000;
   z-index: 10;

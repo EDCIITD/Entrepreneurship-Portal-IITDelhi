@@ -21,6 +21,7 @@ function goTo(slide){
         previousItem();
     }
   }
+  
 }
 
 // ------------- DETERMINE DELTA/SCROLL DIRECTION ------------- //
@@ -113,14 +114,15 @@ else {
 function nextItem() {
   var $previousSlide = $(".background").eq(currentSlideNumber - 1);
   $previousSlide.removeClass("up-scroll").addClass("down-scroll");
-  console.log('next called')
-
+  //console.log('next called')
+  $('title').text($('section.background .content-wrapper .content-title:eq('+currentSlideNumber+')').text());
 
 }
 
 function previousItem() {
   var $currentSlide = $(".background").eq(currentSlideNumber);
   $currentSlide.removeClass("down-scroll").addClass("up-scroll");
-  console.log('previous called')
+  //console.log('previous called')
+  $('title').text($('section.background .content-wrapper .content-title:eq('+currentSlideNumber+')').text());
 
 }
