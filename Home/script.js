@@ -7,6 +7,22 @@ var slideDurationSetting = 300; //Amount of time for which slide is "locked"
 var currentSlideNumber = 0;
 var totalSlideNumber = $(".background").length;
 
+function goTo(slide){
+  var iter=slide-currentSlideNumber;
+  if (iter>0){
+    for (var i = 0; i < iter; i++) {
+        currentSlideNumber++;
+        nextItem();
+    }
+  }
+  else if(iter <0){
+    for (var i = 0; i < -iter; i++) {
+        currentSlideNumber--;
+        previousItem();
+    }
+  }
+}
+
 // ------------- DETERMINE DELTA/SCROLL DIRECTION ------------- //
 function parallaxScroll(evt) {
   if (isFirefox) {

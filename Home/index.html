@@ -30,10 +30,10 @@
 		<script type="text/javascript">
 			$().ready(function(){
 
-				$( "a.scroll" ).click(function( event ) {
-					event.preventDefault();
-				 	$("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top-$('header').height() }, 500);
-				});
+
+				$("ul.nav li a").click(function(){
+					goTo($("ul.nav li a").index(this));
+				})
 
 
 	        	if (window.location.hash) {
@@ -59,9 +59,9 @@
 	</div>
 	<ul class="nav">
 		<li><a href="#">Home</a></li>
-		<li><a href="#values" class="scroll">Values</a></li>
-		<li><a href="#mission" class="scroll">Mission</a></li>
-		<li><a href="#team" class="scroll">Team</a></li>
+		<li><a href="#values">Values</a></li>
+		<li><a href="#mission">Mission</a></li>
+		<li><a href="#team">Team</a></li>
 	</ul>
 </header>
 <!-- partial:index.partial.html -->
@@ -72,9 +72,9 @@
       <p class="content-subtitle">Scroll down and up to see the effect!</p>
     </div>
   </section>
-  <section class="background" >
-    <div class="content-wrapper" id="values">
-      <p class="content-title">OUR VALUES</p>
+  <section class="background" id="values">
+    <div class="content-wrapper" >
+      <p class="content-title" id="values">OUR VALUES</p>
       <p class="content-subtitle">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ut massa mattis nibh semper pretium.</p>
     </div>
   </section>
