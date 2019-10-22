@@ -122,6 +122,8 @@ html, body {
 header{
   font-family: "Open Sans Condensed";
   position: fixed;
+  display: block;
+  width: 100vw;
   top: 0;
   background-color: #000;
   z-index: 10;
