@@ -238,6 +238,8 @@ ul.nav li a:hover .nav-item{
     position: relative;
     display: none;
     left: 0;
+    height: 100vh;
+    vertical-align: middle;
   }
 
   ul.nav li {
