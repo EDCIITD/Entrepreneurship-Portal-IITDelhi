@@ -98,6 +98,7 @@ function nextItem() {
   var $previousSlide = $(".background").eq(currentSlideNumber - 1);
   $previousSlide.removeClass("up-scroll").addClass("down-scroll");
   console.log('next called')
+  aa();
 
 
 }
@@ -106,5 +107,14 @@ function previousItem() {
   var $currentSlide = $(".background").eq(currentSlideNumber);
   $currentSlide.removeClass("down-scroll").addClass("up-scroll");
   console.log('previous called')
+  aa();
 
 }
+//======================for menu bar===============================================
+function aa(){
+        if(currentSlideNumber>0){
+          $('nav').addClass('black');
+        }else {
+          $('nav').removeClass('black');
+        }
+      }

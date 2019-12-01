@@ -31,7 +31,7 @@ html, body {
   background-color: rgba(0, 0, 0, 0.3);
 }
 .background:first-child {
-  background-image: url(./img/bgd1.jpg);
+  background-image: url(./img/bg1.jpeg);
   -webkit-transform: translateY(-15vh);
           transform: translateY(-15vh);
 }
@@ -48,19 +48,33 @@ html, body {
 .background:nth-child(4) {
   background-image:url(./img/img1.jpg);
 }
+.background:nth-child(5) {
+  background-image:url(./img/img2.jpg);
+}
+.background:nth-child(6) {
+  background-image:url(./img/cts.jpg);
+}
 /* Set stacking context of slides */
 .background:nth-child(1) {
-  z-index: 3;
+  z-index: 6;
 }
 
 .background:nth-child(2) {
-  z-index: 2;
+  z-index: 5;
 }
 
 .background:nth-child(3) {
+  z-index: 4;
+}
+.background:nth-child(4) {
+  z-index: 3;
+}
+.background:nth-child(5) {
+  z-index: 2;
+}
+.background:nth-child(6) {
   z-index: 1;
 }
-
 .content-wrapper {
   height: 100vh;
   display: flex;
@@ -374,11 +388,90 @@ footer .copy{
   }
 }
 
+/*-----------------navigation bar --------------------*/
+nav{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  transition: .5s;
+  z-index: 10;
+  opacity: 1;
+}
+nav.black{
+  background: rgba(0,0,0,.8);
+  height: 80px;
+  padding: 10px 35px;
+}
+nav .logo{
+  float: left;
+}
+nav .logo img{
+  height: 80px;
+  transition: .5s;
+}
+nav.black .logo img{
+  height: 60px;
+}
+nav ul{
+  float: right;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+nav ul li{
+  list-style: none;
+  margin-top: 25px;
+  line-height: none;
+  font-size: 18px;
+  color: white;
+  padding: 5px 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 1s;
+  text-shadow: 0 0 10px #000;
+}
 
-
-
-
-
+nav.black ul li{
+  color: #fff;
+  line-height: 20px;
+}
+/* nav ul li a.active,
+nav ul li a:hover{
+  color: orange;
+} */
+nav ul li.active,
+nav ul li:hover{
+  color: orange;
+}
+@media (max-width: 900px){
+  nav ul li{
+    font-size: 12px;
+  }
+  .heading{
+    font-size: 250%;
+  }
+}
+@media (max-width: 600px){
+  .heading{
+    font-size: 250%;
+  }
+  .heading-sm{
+    font-size: 180%
+  }
+  .two-col {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+  nav ul li{
+    font-size: 8px;
+  }
+}
+/*--------------------------------------------------*/
 
 
 
