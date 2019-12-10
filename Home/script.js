@@ -7,6 +7,23 @@ var slideDurationSetting = 300; //Amount of time for which slide is "locked"
 var currentSlideNumber = 0;
 var totalSlideNumber = $(".background").length;
 
+function goTo(slide){
+  var iter=slide-currentSlideNumber;
+  if (iter>0){
+    for (var i = 0; i < iter; i++) {
+        currentSlideNumber++;
+        nextItem();
+    }
+  }
+  else if(iter <0){
+    for (var i = 0; i < -iter; i++) {
+        currentSlideNumber--;
+        previousItem();
+    }
+  }
+  
+}
+
 // ------------- DETERMINE DELTA/SCROLL DIRECTION ------------- //
 function parallaxScroll(evt) {
   if (isFirefox) {
@@ -97,17 +114,15 @@ else {
 function nextItem() {
   var $previousSlide = $(".background").eq(currentSlideNumber - 1);
   $previousSlide.removeClass("up-scroll").addClass("down-scroll");
-  console.log('next called')
-  aa();
-
-
+  //console.log('next called')
+  $('title').text($('section.background .content-wrapper .content-title:eq('+currentSlideNumber+')').text());
 }
 
 function previousItem() {
   var $currentSlide = $(".background").eq(currentSlideNumber);
   $currentSlide.removeClass("down-scroll").addClass("up-scroll");
-  console.log('previous called')
-  aa();
+  //console.log('previous called')
+  $('title').text($('section.background .content-wrapper .content-title:eq('+currentSlideNumber+')').text());
 
 }
 //======================for menu bar===============================================

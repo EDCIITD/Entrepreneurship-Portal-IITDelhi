@@ -135,8 +135,9 @@ html, body {
 
 header{
   font-family: "Open Sans Condensed";
-  position: sticky;
-  position: -webkit-sticky;
+  position: fixed;
+  display: block;
+  width: 100vw;
   top: 0;
   background-color: #000;
   z-index: 10;
@@ -251,6 +252,8 @@ ul.nav li a:hover .nav-item{
     position: relative;
     display: none;
     left: 0;
+    height: 100vh;
+    vertical-align: middle;
   }
 
   ul.nav li {
