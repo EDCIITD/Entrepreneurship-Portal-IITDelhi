@@ -250,10 +250,12 @@ ul.nav li a:hover .nav-item{
 
   ul.nav{
     position: relative;
+    display: block;
     display: none;
     left: 0;
-    height: 100vh;
+    /*height: 100vh;*/
     vertical-align: middle;
+    /* background: rgba(0,0,0,0.5);*/
   }
 
   ul.nav li {

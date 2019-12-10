@@ -24,10 +24,24 @@
 
 		<script type="text/javascript">
 			$().ready(function(){
-				// Nav toggle slide in small device
-				$( "#toggle" ).click(function() {
+				
+        // Nav toggle slide in small device
+				var nav_op=0;
+        $( "#toggle" ).click(function() {
 			 		$('ul.nav').slideToggle("slow");
+          nav_op=1;
 				});
+
+        $( "ul.nav li>a" ).click(function() {
+          if (nav_op!=0){
+
+                  $('ul.nav').slideToggle("slow");
+                  nav_op=0;
+
+          }
+
+        });
+
 
 				if (window.location.hash) {
 					var i=$("section.background").index($(window.location.hash));
@@ -63,7 +77,7 @@
 		<li><a href="#mission">Mission</a></li>
 		<li><a href="#team">Team</a></li>
 		<li><a href="#sponsor">Sponsors</a></li>
-        <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact">Contact</a></li>
 	</ul>
 </header>
 <!--
