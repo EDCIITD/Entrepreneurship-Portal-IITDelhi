@@ -18,17 +18,16 @@
 	<!-- JQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-	<!-- Menu -->
-	<script type="text/javascript">
-		function ToggleNav(){
-			$('ul.nav').slideToggle("slow");
-		}
-	</script>
+
 
 	<title>S.Inc</title>
 
 		<script type="text/javascript">
 			$().ready(function(){
+				// Nav toggle slide in small device
+				$( "#toggle" ).click(function() {
+			 		$('ul.nav').slideToggle("slow");
+				});
 
 				if (window.location.hash) {
 					var i=$("section.background").index($(window.location.hash));
@@ -52,8 +51,8 @@
 
 </head>
 <body>
-<<!-- header>
-	<div id="toggle"><a onclick="$('ul.nav').slideToggle('slow');"><i class="material-icons" style="font-size:1.5em;color:#fff">menu</i></a></div>
+<header>
+	<div id="toggle"><a><i class="material-icons" style="font-size:1.5em;color:#fff">menu</i></a></div>
 	<div class="profile">
 		<img src="logo.png" class="header-logo">
 		<div class="header-title">S.Inc, IIT Delhi</div>
@@ -63,14 +62,16 @@
 		<li><a href="#values">Values</a></li>
 		<li><a href="#mission">Mission</a></li>
 		<li><a href="#team">Team</a></li>
+		<li><a href="#sponsor">Sponsors</a></li>
+        <li><a href="#contact">Contact</a></li>
 	</ul>
-</header -->>
+</header>
+<!--
 <nav>
       <div class="logo">
         <img src="./img/logo1.jpg" alt="SInC">
       </div>
       <div class="menu-icon">
-        <!-- <i class="fa fa-bars fa-2x"></i> -->
       </div>
       <ul>
         <li>Home</li>
@@ -81,6 +82,7 @@
         <li>Contact</li>
       </ul>
     </nav>
+-->
 <!-- partial:index.partial.html -->
 <div class="container">
   <section class="background" id="home">
@@ -91,13 +93,13 @@
   </section>
   <section class="background" id="values">
     <div class="content-wrapper" >
-      <p class="content-title" id="values">OUR VALUES</p>
+      <p class="content-title">OUR VALUES</p>
       <p class="content-subtitle">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ut massa mattis nibh semper pretium.</p>
     </div>
   </section>
   <section class="background" id="mission">
     <div class="content-wrapper">
-      <p class="content-title"></p>
+      <p class="content-title">OUR MISSION</p>
       <p class="content-subtitle">Nullam tristique urna sed tellus ornare congue. Etiam vitae erat at nibh aliquam dapibus.</p>
     </div>
   </section>
