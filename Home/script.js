@@ -116,7 +116,6 @@ function nextItem() {
   $previousSlide.removeClass("up-scroll").addClass("down-scroll");
   //console.log('next called')
   $('title').text($('section.background .content-wrapper .content-title:eq('+currentSlideNumber+')').text());
-
 }
 
 function previousItem() {
@@ -126,3 +125,11 @@ function previousItem() {
   $('title').text($('section.background .content-wrapper .content-title:eq('+currentSlideNumber+')').text());
 
 }
+//======================for menu bar===============================================
+function aa(){
+        if(currentSlideNumber>0){
+          $('nav').addClass('black');
+        }else {
+          $('nav').removeClass('black');
+        }
+      }

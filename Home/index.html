@@ -52,7 +52,7 @@
 
 </head>
 <body>
-<header>
+<<!-- header>
 	<div id="toggle"><a onclick="$('ul.nav').slideToggle('slow');"><i class="material-icons" style="font-size:1.5em;color:#fff">menu</i></a></div>
 	<div class="profile">
 		<img src="logo.png" class="header-logo">
@@ -64,7 +64,23 @@
 		<li><a href="#mission">Mission</a></li>
 		<li><a href="#team">Team</a></li>
 	</ul>
-</header>
+</header -->>
+<nav>
+      <div class="logo">
+        <img src="./img/logo1.jpg" alt="SInC">
+      </div>
+      <div class="menu-icon">
+        <!-- <i class="fa fa-bars fa-2x"></i> -->
+      </div>
+      <ul>
+        <li>Home</li>
+        <li>OUR VALUES</li>
+        <li>OUR MISSION</li>
+        <li>OUR TEAM</li>
+        <li>Employment</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
 <!-- partial:index.partial.html -->
 <div class="container">
   <section class="background" id="home">
@@ -81,7 +97,7 @@
   </section>
   <section class="background" id="mission">
     <div class="content-wrapper">
-      <p class="content-title">OUR MISSION</p>
+      <p class="content-title"></p>
       <p class="content-subtitle">Nullam tristique urna sed tellus ornare congue. Etiam vitae erat at nibh aliquam dapibus.</p>
     </div>
   </section>
@@ -90,7 +106,19 @@
       <p class="content-title">OUR TEAM</p>
       <p class="content-subtitle">Values</p>
     </div>
+  </section>
+  <section class="background" id="sponsor">
+    <div class="content-wrapper">
+      <p class="content-title">Sponsors</p>
+      <p class="content-subtitle">Become a Sponsor </p>
+    </div>
   </section>  
+  <section class="background" id="contact">
+    <div class="content-wrapper">
+      <p class="content-title">Contact Us</p>
+      <p class="content-subtitle">Values</p>
+    </div>
+  </section>    
 </div>
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
