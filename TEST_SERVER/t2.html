@@ -8,29 +8,33 @@
 
 <h1>Authors</h1>
 <ul id='authors'></ul>
-
 <script type="text/javascript">
-  const ul = document.getElementById('authors');
-  const url = 'https://iic.devclub.in/hello';
-  // const url = 'http://10.194.63.88:3000/hello';
-  var a=''
-  fetch(url,{credentials: 'omit'})
-  .then(function(response) {a=response.json()
-  	console.log('type is :');
-  	return a;
-  })
-  .then(function(a) {
-  	console.log('data is :');
-  	console.log(a);
-  })
-  .catch(function(error) {
-  	console.log('its an error');
-    console.log(error);});   
+function status(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return Promise.resolve(response)
+  } else {
+    return Promise.reject(new Error(response.statusText))
+  }
+}
+function json(response) {
+  return response.json()
+}
+
+fetch('https://iic.devclub.in/hello',{mode:'cors'})
+  .then(status)
+  .then(json)
+  .then(function(data) {
+    a=data;
+    console.log('Request succeeded with JSON response', data.data[1].name);
+    console.log(a.data[0].email);
+  }).catch(function(error) {
+    console.log('Request failed', error);
+  });
 </script>
 </body>
 </html>
-	
-	<!-- <script type="text/javascript">
+<!-- use as refrence for building the team page -->
+	<script type="text/javascript">
 	function createNode(element) {
       return document.createElement(element);
   }
@@ -59,4 +63,4 @@
   .catch(function(error) {
     console.log(error);
   });   
-</script> -->
+</script>
