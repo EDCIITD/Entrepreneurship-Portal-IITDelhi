@@ -1,0 +1,109 @@
+<html lang="en-US">
+  <!--<!
+  [endif]--><head>
+    <meta charset="UTF-8" />
+    <title>Our Team</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      id="style-css"
+      href="https://space10.com/content/themes/space10.io.wordpress/style.min.css?ver=1575903448"
+      type="text/css"
+      media="all"
+    />
+  </head>
+  <body
+    class="page-template-default page page-id-11571 page-type--page no-touch"
+    app="ready-for-space"
+    animated-in=""
+  >
+    <article class="page page-type--page page--init animated-in">
+      <page-inner style="transform: translate3d(0px, 0px, 0px);">
+        <div class="module module__textHeader" module-num="0">
+          <h1 class="h2" has-no-secondary="">Team</h1>
+        </div>
+        <div data-habitat="C1">
+          <div
+            class="module module__collaborators"
+            id="collaborators"
+            interaction="1"
+            compact="false"
+          >
+            <ul id="authors">
+              <!--
+              <li class="list-element">
+                <div class="profileElement">
+                  <div class="inner">
+                    <a class="image-outer" target="_self"
+                      ><picture
+                        ><img
+                          src="human.jpeg"
+                          class="blur-up lazyloaded"/></picture
+                    ></a>
+                    <a class="text" target="_self"
+                      ><h4>Katya Bryskina</h4>
+                      <h4 class="grey">Resident</h4></a
+                    >
+                  </div>
+                </div>
+              </li>-->
+            </ul>
+          </div>
+        </div>
+      </page-inner>
+    </article>
+    <script type="text/javascript">
+      function createNode(element) {
+        return document.createElement(element);
+      }
+      function append(parent, el) {
+        return parent.appendChild(el);
+      }
+      const ul = document.getElementById("authors");
+      const url = "https://randomuser.me/api/?results=10";
+      fetch(url)
+        .then(resp => resp.json())
+        .then(function(data) {
+          let authors = data.results;
+          return authors.map(function(author) {
+            let li = createNode("li"),
+              img = createNode("img"),
+              picture = createNode("picture");
+            div1 = createNode("div");
+            div2 = createNode("div");
+            a1 = createNode("a");
+            a2 = createNode("a");
+            h41 = createNode("h4");
+            h42 = createNode("h4");
+
+            li.classList.add("list-element");
+            div1.classList.add("profileElement");
+            div2.classList.add("inner");
+            a1.classList.add("image-outer");
+            a1.target = "_self";
+            a2.target = "_self";
+            a2.classList.add("text");
+            img.src = author.picture.medium;
+            img.classList.add("blur-up");
+            img.classList.add("lazyloaded");
+            h42.classList.add("grey");
+            h41.innerHTML = `${author.name.first}`;
+            h42.innerHTML = `${author.name.last}`;
+            append(a2, h41);
+            append(a2, h42);
+            append(picture, img);
+            append(a1, picture);
+            append(div2, a1);
+            append(div2, a2);
+            append(div1, div2);
+            append(li, div1);
+            append(ul, li);
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>
