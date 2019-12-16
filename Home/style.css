@@ -209,7 +209,7 @@ ul.nav li a{
   text-decoration: none;
   text-align: center;
   font-size: 1em;
-  padding: 3px 15px;
+  padding: 3px 10px;
   cursor: pointer;
   color: #fff;
 
@@ -241,7 +241,7 @@ ul.nav li a:hover .nav-item{
   cursor: pointer;
 }
 
-@media screen and (max-width: 850px){
+@media screen and (max-width: 900px){
 
   #toggle {
     display: inline-block;
