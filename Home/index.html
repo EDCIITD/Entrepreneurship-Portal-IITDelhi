@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Full Page Parallax Scroll Effect</title>
+  <title>Entrepreneurship Portal IIT Delhi</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,20 +27,20 @@
 				
         // Nav toggle slide in small device
 				var nav_op=0;
-        $( "#toggle" ).click(function() {
-			 		$('ul.nav').slideToggle("slow");
-          nav_op=1;
-				});
+		        $( "#toggle" ).click(function() {
+					 		$('ul.nav').slideToggle("slow");
+		          nav_op=1;
+						});
 
-        $( "ul.nav li>a" ).click(function() {
-          if (nav_op!=0){
+		        $( "ul.nav li>a" ).click(function() {
+		          if (nav_op!=0){
 
-                  $('ul.nav').slideToggle("slow");
-                  nav_op=0;
+		                  $('ul.nav').slideToggle("slow");
+		                  nav_op=0;
 
-          }
+		          }
 
-        });
+		        });
 
 
 				if (window.location.hash) {
@@ -54,9 +54,6 @@
 					goTo($("ul.nav li a").index(this));
 				})
 
-
-	        	
-	        
 
 			})
 
@@ -75,16 +72,17 @@
 		<li><a href="#home">Home</a></li>
 		<li><a href="#values">Values</a></li>
 		<li><a href="#Mission">Mission</a></li>
-    <li><a href="#events">Events</a></li>
-    <li><a href="#initiative">Initiatives</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#resources">Resources</a></li>
-    <li><a href="#showcase">Startup Showcase</a></li>
+	    <li><a href="#events">Events</a></li>
+	    <li><a href="#initiative">Initiatives</a></li>
+	    <li><a href="#blog">Blog</a></li>
+	    <li><a href="#resources">Resources</a></li>
+	    <li><a href="#showcase">Startup Showcase</a></li>
 		<li><a href="#team">Team</a></li>
 		<li><a href="#sponsor">Sponsors</a></li>
-    <li><a href="#contact">Contact Us</a></li>
+    	<li><a href="#contact">Contact Us</a></li>
 	</ul>
 </header>
+<!-- change in style.css while adding new sections!! -->
 <div class="container">
   <section class="background" id="home">
     <div class="content-wrapper">
@@ -119,37 +117,48 @@
   <section class="background" id="blog">
     <div class="content-wrapper">
       <p class="content-title">Blog</p>
-      <p class="content-subtitle">B</p>
+      <p class="content-subtitle">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
   </section>
   <section class="background" id="resources">
     <div class="content-wrapper">
       <p class="content-title">Resources</p>
-      <p class="content-subtitle">R</p>
+      <p class="content-subtitle">We are in need of this :P</p>
     </div>
   </section>
   <section class="background" id="showcase">
     <div class="content-wrapper">
       <p class="content-title">Startup Showcase</p>
-      <p class="content-subtitle">SS</p>
+      <p class="content-subtitle">Our startups </p>
     </div>
   </section>
   <section class="background" id="team">
     <div class="content-wrapper">
       <p class="content-title">OUR TEAM</p>
-      <p class="content-subtitle">Values</p>
+      <p class="content-subtitle">We have are a team of </p>
     </div>
   </section>  
   <section class="background" id="sponsor">
     <div class="content-wrapper">
       <p class="content-title">Sponsors</p>
-      <p class="content-subtitle">Become a Sponsor </p>
+      <p class="content-subtitle">Become a Sponsor now <br> to fund  </p>
     </div>
   </section>  
   <section class="background" id="contact">
     <div class="content-wrapper">
       <p class="content-title">Contact Us</p>
-      <p class="content-subtitle">Values</p>
+      <p class="content-subtitle">
+      	Mail: sinc[at]iitd[dot]ac[dot]in <br>
+      	Phone: 987654321 <br>
+      	Facebook | Twitter | LinkedIn | Instagram
+
+      </p>
     </div>
   </section>    
 </div>
