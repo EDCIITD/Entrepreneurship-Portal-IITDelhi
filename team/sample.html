@@ -12,6 +12,13 @@
       type="text/css"
       media="all"
     />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body
     class="page-template-default page page-id-11571 page-type--page no-touch"
@@ -74,9 +81,21 @@
             div2 = createNode("div");
             a1 = createNode("a");
             a2 = createNode("a");
+            a3 = createNode("a");
+            a4 = createNode("a");
+            a5 = createNode("a");
+
             h41 = createNode("h4");
             h42 = createNode("h4");
+            h43 = createNode("h5");
+            hr = createNode("hr");
 
+            //name
+            //Position
+            //email
+            //Facebook
+            //LinkedIn
+            //<a href="#" class="fa fa-facebook"></a>
             li.classList.add("list-element");
             div1.classList.add("profileElement");
             div2.classList.add("inner");
@@ -84,14 +103,35 @@
             a1.target = "_self";
             a2.target = "_self";
             a2.classList.add("text");
+
+            a3.classList.add("fa");
+            a3.classList.add("fa-facebook");
+            a3.setAttribute("href", "#");
+            a3.setAttribute("onclick", "alert('hi')");
+
+            a4.classList.add("fa");
+            a4.setAttribute("href", "#");
+            a4.classList.add("fa-linkedin");
+            a5.classList.add("fa");
+            a5.classList.add("fa-envelope");
+            a5.setAttribute("href", "#");
             img.src = author.picture.medium;
             img.classList.add("blur-up");
             img.classList.add("lazyloaded");
+            a1.classList.add("shadowimage");
             h42.classList.add("grey");
+            h43.classList.add("grey");
+            //h43.classList.add("text-monospace");
             h41.innerHTML = `${author.name.first}`;
             h42.innerHTML = `${author.name.last}`;
+            h43.innerHTML = "abcdfeeafaf@gmail.com";
             append(a2, h41);
             append(a2, h42);
+            append(a2, h43);
+            append(a2, a3);
+            append(a2, a4);
+            append(a2, a5);
+            append(a2, hr);
             append(picture, img);
             append(a1, picture);
             append(div2, a1);
