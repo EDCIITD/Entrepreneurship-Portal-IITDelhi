@@ -20,7 +20,7 @@
   <!-- FLEX -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="style1234.css">
 	<title>S.Inc</title>
 
 		<script type="text/javascript">
@@ -57,6 +57,18 @@
 
 
 			})
+
+      function ShowProjDesc(id) {
+    $('.projects #proj'+id+' .proj-popup').slideDown("slow");
+  }
+
+  function ToggleProjDesc(id) {
+    $('.projects #proj'+id+' .proj-popup').slideToggle("slow");
+  }
+
+  function HideProjDesc(id) {
+    $('.projects #proj'+id+' .proj-popup').slideUp("slow");
+  }
 
 
 		</script>
@@ -155,7 +167,104 @@
     <div class="content-wrapper">
       <p class="content-title">Resources</p>
       <p class="content-subtitle">We are in need of this :P</p>
-      <div class="container">
+     <div class="projects">
+      <div class="proj-list">
+        <div class="proj-item" id="proj1">
+          <img src="test2.png" class="proj-cover">
+          <div class="proj-title" onclick="ToggleProjDesc('1');">Title</div>
+          <div class="proj-popup" onclick="ToggleProjDesc('1');">
+            <div class="header">
+              <div class="proj-title1">Title</div>
+              <div class="proj-close"><a><i class="material-icons">arrow_drop_down_circle</i></a></div>
+            </div>
+            <div class="proj-desc">
+              Description
+            </div>
+         </div>
+        </div>
+        <div class="proj-item" id="proj2">
+          <img src="test2.png" class="proj-cover">
+          <div class="proj-title" onclick="ToggleProjDesc('1');">Title</div>
+          <div class="proj-popup" onclick="ToggleProjDesc('1');">
+            <div class="header">
+              <div class="proj-title1">Title</div>
+              <div class="proj-close"><a><i class="material-icons">arrow_drop_down_circle</i></a></div>
+            </div>
+            <div class="proj-desc">
+              Description
+            </div>
+         </div>
+        </div>
+        <div class="proj-item" id="proj3">
+          <img src="test2.png" class="proj-cover">
+          <div class="proj-title" onclick="ToggleProjDesc('1');">Title</div>
+          <div class="proj-popup" onclick="ToggleProjDesc('1');">
+            <div class="header">
+              <div class="proj-title1">Title</div>
+              <div class="proj-close"><a><i class="material-icons">arrow_drop_down_circle</i></a></div>
+            </div>
+            <div class="proj-desc">
+              Description
+            </div>
+         </div>
+        </div>
+        <div class="proj-item" id="proj4">
+          <img src="test2.png" class="proj-cover">
+          <div class="proj-title" onclick="ToggleProjDesc('1');">Title</div>
+          <div class="proj-popup" onclick="ToggleProjDesc('1');">
+            <div class="header">
+              <div class="proj-title1">Title</div>
+              <div class="proj-close"><a><i class="material-icons">arrow_drop_down_circle</i></a></div>
+            </div>
+            <div class="proj-desc">
+              Description
+            </div>
+         </div>
+        </div>
+        <div class="proj-item" id="proj5">
+          <img src="test2.png" class="proj-cover">
+          <div class="proj-title" onclick="ToggleProjDesc('1');">Title</div>
+          <div class="proj-popup" onclick="ToggleProjDesc('1');">
+            <div class="header">
+              <div class="proj-title1">Title</div>
+              <div class="proj-close"><a><i class="material-icons">arrow_drop_down_circle</i></a></div>
+            </div>
+            <div class="proj-desc">
+              Description
+            </div>
+         </div>
+        </div>
+        <div class="proj-item" id="proj6">
+          <img src="test2.png" class="proj-cover">
+          <div class="proj-title" onclick="ToggleProjDesc('1');">Title</div>
+          <div class="proj-popup" onclick="ToggleProjDesc('1');">
+            <div class="header">
+              <div class="proj-title1">Title</div>
+              <div class="proj-close"><a><i class="material-icons">arrow_drop_down_circle</i></a></div>
+            </div>
+            <div class="proj-desc">
+              Description
+            </div>
+         </div>
+        </div>
+        <div class="proj-item" id="proj7">
+          <img src="test2.png" class="proj-cover">
+          <div class="proj-title" onclick="ToggleProjDesc('1');">Title</div>
+          <div class="proj-popup" onclick="ToggleProjDesc('1');">
+            <div class="header">
+              <div class="proj-title1">Title</div>
+              <div class="proj-close"><a><i class="material-icons">arrow_drop_down_circle</i></a></div>
+            </div>
+            <div class="proj-desc">
+              Description
+            </div>
+         </div>
+        </div>
+
+      </div>
+     </div>
+
+      <!--<div class="container">
         <ul class="cards">
           <li class="cards__item">
             <div class="card">
@@ -201,7 +310,7 @@
               </div>
             </div>
           </li>
-        </ul>
+        </ul>-->
       </div>
   </section>
   <section class="background" id="showcase">
