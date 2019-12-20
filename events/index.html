@@ -1,147 +1,97 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Flexbox Cards</title>
-  <link href='https://fonts.googleapis.com/css?family=Jaldi|Roboto+Condensed' rel='stylesheet' type='text/css'>
-<meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'><link rel="stylesheet" href="./style.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<h1>Events</h1>
-<div class="container">
-	<div class="cards">
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/200/animals);">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				A summary will also be present.  two to three brief sentences about the content on the detail page.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/640/480/nature);">
-				<span class="card-title">
-					<h3>This is a title for a card that is a bit longer in length</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				Each card is created from an &lt;a&gt; tag so the whole card is linked.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-		
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/400/people)">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				Using Flexbox is such a an easy, well supported way for grid-style content, such as cards. The cards height will expand to match the longest item.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/200/tech);">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				A summary will also be present.  two to three brief sentences about the content on the detail page.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-		
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/200/people);">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				Each card is created from an &lt;a&gt; tag so the whole card is linked.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-		
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/250/nature);">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				Using Flexbox is such a an easy, well supported way for grid-style content, such as cards. The cards height will expand to match the longest item.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/250/animals);">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				A summary will also be present.  two to three brief sentences about the content on the detail page.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/600/600/people);">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				Each card is created from an &lt;a&gt; tag so the whole card is linked.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/400/tech);">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				Using Flexbox is such a an easy, well supported way for grid-style content, such as cards. The cards height will expand to match the longest item.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-	</div>
-</div>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Flexbox Cards</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Jaldi|Roboto+Condensed"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <h1>Events</h1>
+    <div class="container">
+      <div class="cards" id="authors">
+        <!--
+        <a class="card" href="#">
+          <span
+            class="card-header"
+            style="background-image: url(http://placeimg.com/400/400/tech);"
+          >
+            <span class="card-title">
+              <h3>This is a title for a card</h3>
+            </span>
+          </span>
+          <span class="card-summary">
+            Using Flexbox is such a an easy, well supported way for grid-style
+            content, such as cards. The cards height will expand to match the
+            longest item.
+          </span>
+          <span class="card-meta">
+            Published: June 18th, 2015
+          </span>
+        </a>-->
+      </div>
+    </div>
+    <!-- partial -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+      function createNode(element) {
+        return document.createElement(element);
+      }
+      function append(parent, el) {
+        return parent.appendChild(el);
+      }
+      const ul = document.getElementById("authors");
+      const url = "https://randomuser.me/api/?results=9";
+      fetch(url)
+        .then(resp => resp.json())
+        .then(function(data) {
+          let authors = data.results;
+          return authors.map(function(author) {
+            let a = createNode("a"),
+              h = createNode("h3"),
+              span1 = createNode("span"),
+              span2 = createNode("span"),
+              span3 = createNode("span"),
+              span4 = createNode("span");
+            a.classList.add("card");
+            span1.classList.add("card-header");
+            span2.classList.add("card-title");
+            span1.style.backgroundImage =
+              "url(" + `${author.picture.medium}` + ")";
+            //"url('http://placeimg.com/400/400/tech')";
+            h.innerHTML = `${author.name.first} ${author.name.last}`;
+            //span2.innerHTML = `${author.picture.medium} ${author.name.last}`;
+            span3.innerHTML =
+              "Using Flexbox is such a an easy, well supported way for grid-style  content, such as cards. The cards height will expand to match the  longest item.";
+            span4.innerHTML = `${author.name.first} ${author.name.last}`;
+            span3.classList.add("card-summary");
+            span4.classList.add("card-meta");
+            append(span2, h);
+            append(span1, span2);
+            append(a, span1);
+            append(a, span3);
+            append(a, span4);
+            append(ul, a);
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    </script>
+  </body>
 </html>
