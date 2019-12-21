@@ -65,7 +65,7 @@ img {
 @media(max-width:400px ){
   .cards{
     /*flex-wrap: wrap;*/
-    max-height: 300px;
+    max-height: 25vh;
   }
 
   .flexi{
