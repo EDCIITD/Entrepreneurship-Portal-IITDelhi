@@ -71,8 +71,7 @@
 	</div>
 	<ul class="nav">
 		<li><a href="#home">Home</a></li>
-		<li><a href="#values">Values</a></li>
-		<li><a href="#Mission">Mission</a></li>
+		<li><a href="#about">About</a></li>
 	    <li><a href="#events">Events</a></li>
 	    <li><a href="#initiative">Initiatives</a></li>
 	    <li><a href="#blog">Blog</a></li>
@@ -91,18 +90,27 @@
       <p class="content-subtitle">Scroll down and up to see the effect!</p>
     </div>
   </section>
-  <section class="background" id="values">
+
+  <section class="background" id="about">
     <div class="content-wrapper" >
-      <p class="content-title">OUR VALUES</p>
-      <p class="content-subtitle">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ut massa mattis nibh semper pretium.</p>
+      <p class="content-title">About Us</p>
+      <p class="content-subtitle"></p>
     </div>
   </section>
-  <section class="background" id="mission">
-    <div class="content-wrapper">
-      <p class="content-title">OUR MISSION</p>
-      <p class="content-subtitle">Nullam tristique urna sed tellus ornare congue. Etiam vitae erat at nibh aliquam dapibus.</p>
-    </div>
-  </section>
+  <!-- partial -->
+    <script type="text/javascript">
+      fetch("https://iic.devclub.in/api/about")
+        .then(resp => resp.json())
+        .then(function(data) {
+          $("#about .content-wrapper .content-subtitle").text(data.data.about);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    </script>
+
+
+
   <section class="background" id="events">
     <div class="content-wrapper">
       <p class="content-title">Events</p>
