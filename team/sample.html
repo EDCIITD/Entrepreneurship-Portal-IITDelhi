@@ -8,7 +8,7 @@
     <link
       rel="stylesheet"
       id="style-css"
-      href="https://space10.com/content/themes/space10.io.wordpress/style.min.css?ver=1575903448"
+      href="style1.min.css"
       type="text/css"
       media="all"
     />
@@ -68,11 +68,11 @@
         return parent.appendChild(el);
       }
       const ul = document.getElementById("authors");
-      const url = "https://randomuser.me/api/?results=10";
+      const url = "https://iic.devclub.in/api/team";
       fetch(url)
         .then(resp => resp.json())
         .then(function(data) {
-          let authors = data.results;
+          let authors = data.data;
           return authors.map(function(author) {
             let li = createNode("li"),
               img = createNode("img"),
@@ -87,7 +87,10 @@
 
             h41 = createNode("h4");
             h42 = createNode("h4");
+            h42b = createNode("h4");
+
             h43 = createNode("h5");
+            h43b = createNode("h5");
             hr = createNode("hr");
 
             //name
@@ -106,28 +109,36 @@
 
             a3.classList.add("fa");
             a3.classList.add("fa-facebook");
-            a3.setAttribute("href", "#");
-            a3.setAttribute("onclick", "alert('hi')");
+            a3.setAttribute("href", `${author.url.facebook}`);
+            //a3.setAttribute("onclick", "alert('hi')");
 
             a4.classList.add("fa");
-            a4.setAttribute("href", "#");
+            a4.setAttribute("href", `${author.url.linkedin}`);
             a4.classList.add("fa-linkedin");
             a5.classList.add("fa");
             a5.classList.add("fa-envelope");
-            a5.setAttribute("href", "#");
-            img.src = author.picture.medium;
+            a5.setAttribute("href", `${author.url.email}`);
+            img.src = `${author.img}`;
+            img.alt = "Profile image";
             img.classList.add("blur-up");
             img.classList.add("lazyloaded");
             a1.classList.add("shadowimage");
             h42.classList.add("grey");
+            h42b.classList.add("grey");
+
             h43.classList.add("grey");
+            h43b.classList.add("grey");
             //h43.classList.add("text-monospace");
-            h41.innerHTML = `${author.name.first}`;
-            h42.innerHTML = `${author.name.last}`;
-            h43.innerHTML = "abcdfeeafaf@gmail.com";
+            h41.innerHTML = `${author.name}`;
+            h42.innerHTML = `${author.position}`;
+            h42b.innerHTML = `${author.organisation}`;
+            h43.innerHTML = `${author.email}`;
+            h43b.innerHTML = "+91 " + `${author.contact}`;
             append(a2, h41);
             append(a2, h42);
+            append(a2, h42b);
             append(a2, h43);
+            append(a2, h43b);
             append(a2, a3);
             append(a2, a4);
             append(a2, a5);
