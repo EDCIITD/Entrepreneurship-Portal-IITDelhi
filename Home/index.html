@@ -97,19 +97,6 @@
       <p class="content-subtitle"></p>
     </div>
   </section>
-  <!-- partial -->
-    <script type="text/javascript">
-      fetch("https://iic.devclub.in/api/about")
-        .then(resp => resp.json())
-        .then(function(data) {
-          $("#about .content-wrapper .content-subtitle").text(data.data.about);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    </script>
-
-
 
   <section class="background" id="events">
     <div class="content-wrapper">
@@ -228,6 +215,16 @@
 <script  src="./script.js"></script>
 <!-- <script  src="./script2.js"></script> -->
 
-
+  <!-- partial  ABOUT-->
+    <script type="text/javascript">
+      fetch("https://iic.devclub.in/api/about")
+        .then(resp => resp.json())
+        .then(function(data) {
+          $("#about .content-wrapper .content-subtitle").text(data.data.about);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    </script>
 </body>
 </html>
