@@ -2,10 +2,10 @@
   filter: drop-shadow(5px 5px 0.2rem #999999);
 }
 .fa {
-  padding: 5px;
-  font-size: 20px;
-  width: 30px;
-  height: 30px;
+  padding: 7.5px;
+  font-size: 25px;
+  width: 40px;
+  height: 40px;
   text-align: center;
   text-decoration: none;
   margin: 5px 5px;
@@ -27,4 +27,65 @@
 .fa-envelope {
   background: #dd4b39;
   color: white;
+}
+#authors {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+/*
+*
+*
+*adjust padding to adjust size  of image
+*
+*
+*
+*/
+.card {
+  width: 26vw !important;
+  padding: 1% 5% 1% 5%;
+}
+@media (min-width: 992px) {
+  .card:nth-child(3n + 1) {
+    margin-left: 3.5vw !important;
+  }
+
+  .card:nth-child(3n + 0) {
+    margin-right: 3.5vw !important;
+  }
+}
+@media (max-width: 992px) {
+  @media (min-width: 768px) {
+    .card {
+      width: 41vw !important;
+    }
+
+    .card:nth-child(odd) {
+      margin-left: 3vw !important;
+    }
+
+    .card:nth-child(even) {
+      margin-right: 3vw !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      margin: 1% 5vw !important;
+      width: 90vw !important;
+    }
+  }
+}
+
+h1 {
+  color: black;
+  padding: 1.5% 1% 1% 3%;
+  box-shadow: black 0px 0px 20px 0px;
+}
+.up {
+  font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
+}
+
+h1 {
+  font-family: "Lobster", cursive !important;
 }
