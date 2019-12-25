@@ -38,7 +38,6 @@ h1 {
   -webkit-border-radius: 4px;
   border-radius: 4px;
   width: 29vw;  /* 2vw width for margin (see below) & 87 only available*/
-  cursor: pointer;
 }
 
 
@@ -106,7 +105,7 @@ h1 {
   display: block;
 }
 .card .card-summary {
-  padding: 5% 5% 3% 5%;
+  padding: 2% 5% 2% 5%;
 }
 .card .card-header {
   position: relative;
@@ -120,13 +119,15 @@ h1 {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px;
   border-radius: 4px 4px 0 0;
+    cursor: pointer;
+
 }
 .card .card-header:hover,
 .card .card-header:focus {
   background-color: rgba(255, 255, 255, 0);
 }
 .card .card-title {
-  background: rgba(157, 187, 63, 0.85);
+  background: #000;
 
   padding: 3.5% 0 2.5% 0;
   color: white;
@@ -137,7 +138,7 @@ h1 {
   width: 100%;
 }
 .card .card-title h3 {
-  font-size: 1.2em;
+  font-size: 1.25em;
   line-height: 1.2;
   padding: 0 3.5%;
   margin: 0;
@@ -173,7 +174,7 @@ h1 {
 }
 .card:hover .card-title,
 .card:focus .card-title {
-  background: rgba(157, 187, 63, 0.95);
+  background: rgba(0,0,0,0.7);
 }
 .card:hover .card-meta,
 .card:focus .card-meta {
@@ -203,9 +204,6 @@ img {
 
 body {
   background: #f0f0f0;
-  font-size: 17px;
-  line-height: 1.4;
-  font-family: "Jaldi", sans-serif;
 }
 
 * {
@@ -227,6 +225,8 @@ body {
   transition-timing-function: linear;
 }
 
+/*
+
 .date {
   text-align: left;
   font-size: medium;
@@ -244,4 +244,40 @@ body {
 }
 p {
   margin: 0.2rem;
+}
+*/
+
+
+
+.e-date,.e-time,.e-venue,.e-org,.e-type{
+  color: #666;
+  padding: 5px 1%;
+  font-size: 1.15em;
+}
+
+.e-more-info{
+  margin: 5px 50%;
+  display: inline-block;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #000;
+
+}
+
+.e-more-info:hover{
+  border-radius: 50%;
+  border: 2px solid #000;
+  color: #fff;
+  background-color: #000;
+
+}
+
+
+
+.material-icons{
+    display: inline-flex;
+    vertical-align: top;
+    text-shadow: 2px -2px 3px rgba(0,0,0,0.2);
+    font-size: 1.13em;
 }
