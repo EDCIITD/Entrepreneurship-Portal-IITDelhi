@@ -20,13 +20,13 @@ function json(response) {
   return response.json()
 }
 
-fetch('https://iic.devclub.in/hello',{mode:'cors'})
+fetch('https://iic.devclub.in/api/about',{mode:'cors'})
   .then(status)
   .then(json)
   .then(function(data) {
     a=data;
-    console.log('Request succeeded with JSON response', data.data[1].name);
-    console.log(a.data[0].email);
+    console.log('Request succeeded with JSON response', data.data);
+    console.log(a.data.about);
   }).catch(function(error) {
     console.log('Request failed', error);
   });
@@ -44,7 +44,8 @@ fetch('https://iic.devclub.in/hello',{mode:'cors'})
   }
 
   const ul = document.getElementById('authors');
-  const url = 'https://randomuser.me/api/?results=10';
+  // const url = 'https://randomuser.me/api/?results=10';
+  const url = 'https://iic.devclub.in/api/blog';
   fetch(url)
   .then((resp) => resp.json())
   .then(function(data) {
