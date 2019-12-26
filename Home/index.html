@@ -35,13 +35,24 @@
 
 		        $( "ul.nav li>a" ).click(function() {
 		          if (nav_op!=0){
-
 		                  $('ul.nav').slideToggle("slow");
 		                  nav_op=0;
 
 		          }
 
 		        });
+
+            $(window).resize(function(){
+              if(!window.matchMedia("(max-width: 980px)").matches)
+                { 
+                  $('ul.nav').fadeIn();
+                  nav_op=0;
+                }
+              else{
+                  $('ul.nav').css("display", "none");
+                  nav_op=0;
+                }
+            });
 
 
 				if (window.location.hash) {
@@ -53,11 +64,9 @@
 
 				$("ul.nav li a").click(function(){
 					goTo($("ul.nav li a").index(this));
-				})
+				});
 
-
-			})
-
+			});
 
 		</script>
 
