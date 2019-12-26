@@ -20,8 +20,10 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
   </head>
   <body>
     <!-- partial:index.partial.html -->
@@ -63,59 +65,66 @@
         .then(function(data) {
           let authors = data.data;
           return authors.map(function(author) {
-            let card=createNode("a"),
-                  card_header=createNode("div"),
-                  card_title=createNode("div"),
-                  card_title_h=createNode("h3"),
-                  card_summary=createNode("div"),
-                  e_date=createNode("div"),
-                  e_time=createNode("div"),
-                  e_venue=createNode("div"),
-                  e_org=createNode("div"),
-                  e_type=createNode("div"),
-                  e_more_info=createNode("div");
+            let card = createNode("a"),
+              card_header = createNode("div"),
+              card_title = createNode("div"),
+              card_title_h = createNode("h3"),
+              card_summary = createNode("div"),
+              e_date = createNode("div"),
+              e_time = createNode("div"),
+              e_venue = createNode("div"),
+              e_org = createNode("div"),
+              e_type = createNode("div"),
+              e_more_info = createNode("div");
 
-             card.classList.add("card");
-                
-                card_header.classList.add("card-header");
-                card_header.style.backgroundImage =  "url(" + `${author.metaData.img}` + ")";
-                  card_title.classList.add("card-title");
-                    card_title_h.innerHTML = `${author.metaData.title}`;
-                    append(card_title,card_title_h);
-                  append(card_header,card_title);
-                append(card,card_header);
+            card.classList.add("card");
 
+            card_header.classList.add("card-header");
+            card_header.style.backgroundImage =
+              "url(" + `${author.metaData.img}` + ")";
+            card_title.classList.add("card-title");
+            card_title_h.innerHTML = `${author.metaData.title}`;
+            append(card_title, card_title_h);
+            append(card_header, card_title);
+            append(card, card_header);
 
+            card_summary.classList.add("card-summary");
+            e_date.classList.add("e-date");
+            e_date.innerHTML =
+              "<i class='material-icons'>today</i> &nbsp" +
+              `${author.metaData.eventDate}`;
+            append(card_summary, e_date);
 
-                card_summary.classList.add("card-summary");
-                  e_date.classList.add("e-date");
-                  e_date.innerHTML = "<i class='material-icons'>today</i> &nbsp"+`${author.metaData.eventDate}`;
-                  append(card_summary,e_date);
+            e_time.classList.add("e-time");
+            e_time.innerHTML =
+              "<i class='material-icons'>access_time</i> &nbsp" +
+              `${author.metaData.eventDate}`;
+            append(card_summary, e_time);
 
-                  e_time.classList.add("e-time");
-                  e_time.innerHTML = "<i class='material-icons'>access_time</i> &nbsp"+`${author.metaData.eventDate}`;
-                  append(card_summary,e_time);
+            e_venue.classList.add("e-venue");
+            e_venue.innerHTML =
+              "<i class='material-icons'>location_on</i> &nbsp" +
+              `${author.metaData.venue}`;
+            append(card_summary, e_venue);
 
-                  e_venue.classList.add("e-venue");
-                  e_venue.innerHTML = "<i class='material-icons'>location_on</i> &nbsp"+`${author.metaData.venue}`;
-                  append(card_summary,e_venue);
+            e_org.classList.add("e-org");
+            e_org.innerHTML =
+              "<i class='material-icons'>person</i> &nbsp" +
+              `${author.metaData.organiser}`;
+            append(card_summary, e_org);
 
-                  e_org.classList.add("e-org");
-                  e_org.innerHTML = "<i class='material-icons'>person</i> &nbsp"+`${author.metaData.organiser}`;
-                  append(card_summary,e_org);
+            e_type.classList.add("e-type");
+            e_type.innerHTML = `${author.metaData.eventDate}`;
+            //append(card_summary,e_type);
 
-                  e_type.classList.add("e-type");
-                  e_type.innerHTML = `${author.metaData.eventDate}`;
-                  //append(card_summary,e_type);
+            e_more_info.classList.add("e-more-info");
+            e_more_info.innerHTML =
+              "<i class='material-icons' style='text-shadow: none;'>arrow_forward</i>";
+            append(card_summary, e_more_info);
 
-                  e_more_info.classList.add("e-more-info");
-                  e_more_info.innerHTML = "<i class='material-icons' style='text-shadow: none;'>arrow_forward</i>";
-                  append(card_summary,e_more_info);
+            append(card, card_summary);
 
-                append(card,card_summary);
-                 
-
-            append(ul,card);
+            append(ul, card);
             /*
 
 

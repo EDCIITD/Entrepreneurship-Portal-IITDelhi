@@ -28,10 +28,10 @@ html, body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .background:first-child {
-  background-image: url(./img/bg1.jpeg);
+  background-image: url(./img/0.jfif);
   -webkit-transform: translateY(-15vh);
           transform: translateY(-15vh);
 }
@@ -43,13 +43,13 @@ html, body {
   background-image: url(./img/tree.jpg);
 }
 .background:nth-child(3) {
-  background-image:url(./img/img1.jpg);
+  background-image:url(./img/bg12.jpg);
 }
 .background:nth-child(4) {
   background-image:url(./img/img2.jpg);
 }
 .background:nth-child(5) {
-  background-image:url(./img/cts.jpg);
+  background-image:url(./img/bg3.webp);
 }
 .background:nth-child(6) {
   background-image: url(./img/tree.jpg);
@@ -58,7 +58,7 @@ html, body {
   background-image: url(./img/sta.jpg);
 }
 .background:nth-child(8) {
-  background-image:url(./img/img1.jpg);
+  background-image:url(./img/team.jpg);
 }
 .background:nth-child(9) {
   background-image:url(./img/img2.jpg);
