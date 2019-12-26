@@ -81,7 +81,7 @@ $('body').bind('touchmove', function(e) {
     // console.log(p);
     // Replace this with your code.
 });
-
+var thresh=30;
 var clientX, clientY;
 var deltaY=0;
 window.addEventListener('touchstart', function(e) {
@@ -95,13 +95,13 @@ window.addEventListener('touchend', function(e) {
   deltaX = e.changedTouches[0].clientX - clientX;
   deltaY = e.changedTouches[0].clientY - clientY;
   console.log(deltaY);
-  if (deltaY<0) {
+  if (deltaY<-1*thresh) {
   	if (currentSlideNumber !== totalSlideNumber - 1) {
         currentSlideNumber++;
         nextItem();
   
 }}
-else {
+else if(deltaY>thresh) {
   if (currentSlideNumber !== 0) {
         currentSlideNumber--;
       }
