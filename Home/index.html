@@ -235,18 +235,13 @@
       
 
       <div class="myItems slideshow-container" id="aeiou">
-        
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
       </div>
 
 
-      <div class="dot-container">
-        <span class="dot" onclick="currentSlide(1)"></span> 
-        <span class="dot" onclick="currentSlide(2)"></span> 
-        <span class="dot" onclick="currentSlide(3)"></span> 
+      <div class="dot-container" id="aeioud">
       </div>
-
 
 
 
@@ -256,12 +251,18 @@
         //SLIDESHOW....................
         var slideIndex = 1;
         var ssize;
-        if(!window.matchMedia("(max-width: 980px)").matches)
-          ssize=3;
-        else if (!window.matchMedia("(max-width: 700px)").matches)
-          ssize=2;
-        else
-          ssize=1;
+
+        function numPerSlide(){
+          if(!window.matchMedia("(max-width: 980px)").matches)
+            ssize=3;
+          else if (!window.matchMedia("(max-width: 700px)").matches)
+            ssize=2;
+          else
+            ssize=1;
+        }
+
+        numPerSlide();
+        
 
         function createNode(element) {
           return document.createElement(element);
@@ -270,12 +271,13 @@
           return parent.appendChild(el);
         }
         const ul = document.getElementById("aeiou");
+        const uld = document.getElementById("aeioud");
         const url = "https://iic.devclub.in/api/events";
         fetch(url)
           .then(resp => resp.json())
           .then(function(data) {
             let authors = data.data;
-            return authors.map(function(author) {
+            var ret= authors.map(function(author) {
               let card=createNode("a"),
                     card_header=createNode("div"),
                     card_title=createNode("div"),
@@ -286,8 +288,7 @@
                     e_venue=createNode("div"),
                     e_org=createNode("div"),
                     e_type=createNode("div"),
-                    e_more_info=createNode("div"),
-                    dot=createNode("span");
+                    e_more_info=createNode("div");
 
                card.classList.add("myItem");
                card.classList.add("mySlides");
@@ -332,14 +333,46 @@
 
               append(ul,card);
             });
+            
+                          makeDots();
+                          showSlides(1);
+                  return ret;
+
           })
           .catch(function(error) {
             console.log(error);
-
-
           });
+var slides = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("dot");
 
-          showSlides(slideIndex);
+        function makeDots(){
+          var tot=Math.ceil(slides.length/ssize);
+          for (var j=1;j<=tot;j++){
+            let dot=createNode("span");
+            dot.classList.add("dot");
+            dot.setAttribute("onClick", "currentSlide("+j+")" );
+            append(uld,dot);
+
+          }
+        }
+
+       
+
+        $(window).resize(function(){
+          numPerSlide();
+
+          //ssize updt, now rem prev dots
+          var dots_c = document.getElementsByClassName("dot-container")[0]; 
+          var d_child = dots_c.lastElementChild;  
+          while (d_child) { 
+              dots_c.removeChild(d_child); 
+              d_child = dots_c.lastElementChild; 
+          } 
+                    makeDots();
+                    currentSlide(1);
+
+        });
+
 
 
         
@@ -354,25 +387,31 @@
 
 
 
+
+
         function showSlides(n) {
           var i;
-          var slides = document.getElementsByClassName("mySlides");
-          var dots = document.getElementsByClassName("dot");
-          if (ssize*n-ssize+1 > slides.length) {slideIndex = 1} 
-            if (n < 1) {slideIndex = Math.ceil(slides.length/ssize)}
+          
+
+
+          if (ssize*(n-1)+1 > slides.length) {slideIndex = 1} 
+          if (n < 1) {slideIndex = Math.ceil(slides.length/ssize)}
+
+
             for (i = 0; i < slides.length; i++) {
               slides[i].style.display = "none"; 
             }
             for (i = 0; i < dots.length; i++) {
               dots[i].className = dots[i].className.replace(" active", "");
             }
+
           for (i=0;i<ssize;i++){
             if ((slideIndex-1)*ssize+i<slides.length){
-              slides[(slideIndex-1)*ssize+i].style.display = "block"; 
-              dots[(slideIndex-1)*ssize+i].className += " active";
-            }
-            
+              slides[(slideIndex-1)*ssize+i].style.display = "block";  
+            }            
           }
+
+          dots[slideIndex-1].className += " active";
         }
 
         /*
