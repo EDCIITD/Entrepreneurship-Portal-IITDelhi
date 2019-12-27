@@ -364,11 +364,12 @@ var slides = document.getElementsByClassName("mySlides");
           var dots_c = document.getElementsByClassName("dot-container")[0]; 
           var d_child = dots_c.lastElementChild;  
           while (d_child) { 
-              e.removeChild(d_child); 
+              dots_c.removeChild(d_child); 
               d_child = dots_c.lastElementChild; 
           } 
                     makeDots();
                     currentSlide(1);
+
         });
 
 
@@ -409,7 +410,7 @@ var slides = document.getElementsByClassName("mySlides");
             }            
           }
 
-        // dots[slideIndex-1].classList.add( " active");
+         document.getElementsByClassName("dot")[slideIndex-1].className += " " + "active";
 
         }
 
