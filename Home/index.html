@@ -333,8 +333,9 @@
 
               append(ul,card);
             });
-            showSlides(1);
+            
                           makeDots();
+                          showSlides(1);
                   return ret;
 
           })
@@ -346,10 +347,10 @@ var slides = document.getElementsByClassName("mySlides");
 
         function makeDots(){
           var tot=Math.ceil(slides.length/ssize);
-          for (i=1;i<=tot;i++){
+          for (var j=1;j<=tot;j++){
             let dot=createNode("span");
             dot.classList.add("dot");
-            dot.setAttribute("onClick", "currentSlide("+i+")" );
+            dot.setAttribute("onClick", "currentSlide("+j+")" );
             append(uld,dot);
 
           }
@@ -410,8 +411,7 @@ var slides = document.getElementsByClassName("mySlides");
             }            
           }
 
-         document.getElementsByClassName("dot")[slideIndex-1].className += " " + "active";
-
+          dots[slideIndex-1].className += " active";
         }
 
         /*
