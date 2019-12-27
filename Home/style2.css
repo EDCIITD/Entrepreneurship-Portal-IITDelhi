@@ -1,7 +1,4 @@
 
-h1 {
-  align-content: center;
-}
 .myItems {
   display: -webkit-flex;
   display: flex;
@@ -26,17 +23,15 @@ h1 {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  width: 29vw;  /* 2vw width for margin (see below) & 87 only available*/
+  width: 29vw; /* 2vw width for margin (see below) & 87 only available*/
 }
 
-
-
 @media (min-width: 980px) {
-  .myItem:nth-child(3n+1){
-  margin-left: 3.5vw;   /*(1.5vw (already) + 2vw (required) )*/
+  .myItem:nth-child(3n + 1) {
+    margin-left: 3.5vw; /*(1.5vw (already) + 2vw (required) )*/
   }
 
-  .myItem:nth-child(3n+0){
+  .myItem:nth-child(3n + 0) {
     margin-right: 3.5vw;
   }
 }
@@ -48,14 +43,14 @@ h1 {
       width: 44vw;
     }
 
-    .myItem:nth-child(odd){
-    margin-left: 3vw;   /*(1.5vw (already) + 2vw (required) )*/
+    .myItem:nth-child(odd) {
+      margin-left: 3vw; /*(1.5vw (already) + 2vw (required) )*/
     }
 
-    .myItem:nth-child(even){
+    .myItem:nth-child(even) {
       margin-right: 3vw;
     }
-  /*    
+    /*    
       margin-right: 20px;
       margin-bottom: 20px;
     }
@@ -65,11 +60,10 @@ h1 {
   */
   }
 
-
   @media (max-width: 700px) {
-    .myItems{
+    .myItems {
       /* margin: 1% 1vw; */
-      justify-content:  center;
+      justify-content: center;
       -webkit-justify-content: center;
     }
 
@@ -108,8 +102,7 @@ h1 {
   -moz-border-radius: 4px 4px 0 0;
   -webkit-border-radius: 4px;
   border-radius: 4px 4px 0 0;
-    cursor: pointer;
-
+  cursor: pointer;
 }
 .myItem .myItem-header:hover,
 .myItem .myItem-header:focus {
@@ -163,7 +156,7 @@ h1 {
 }
 .myItem:hover .myItem-title,
 .myItem:focus .myItem-title {
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
 }
 .myItem:hover .myItem-meta,
 .myItem:focus .myItem-meta {
@@ -179,7 +172,7 @@ h1 {
   }
   .myItem .myItem-title,
   .myItem .myItem-title {
-    background: rgba(157, 187, 63, 0.95);
+    background: rgba(0, 0, 0, 1);
   }
   .myItem .myItem-meta,
   .myItem .myItem-meta {
@@ -235,37 +228,35 @@ p {
 }
 */
 
-
-
-.e-date,.e-time,.e-venue,.e-org,.e-type{
+.e-date,
+.e-time,
+.e-venue,
+.e-org,
+.e-type {
   color: #666;
   padding: 5px 1%;
   font-size: 1.15em;
 }
 
-.e-more-info{
+.e-more-info {
   margin: 5px 50%;
   display: inline-block;
   user-select: none;
   cursor: pointer;
   border-radius: 50%;
   border: 2px solid #000;
-
 }
 
-.e-more-info:hover{
+.e-more-info:hover {
   border-radius: 50%;
   border: 2px solid #000;
   color: #fff;
   background-color: #000;
-
 }
 
-
-
-.material-icons{
-    display: inline-flex;
-    vertical-align: top;
-    text-shadow: 2px -2px 3px rgba(0,0,0,0.2);
-    font-size: 1.13em;
+.material-icons {
+  display: inline-flex;
+  vertical-align: top;
+  text-shadow: 2px -2px 3px rgba(0, 0, 0, 0.2);
+  font-size: 1.13em;
 }
