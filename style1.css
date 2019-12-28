@@ -140,16 +140,16 @@ img {
   .hide_l{display: none;}
 }
 .card__image--flowers {
-  background-image:url(img/flex1.jpg); 
+  background-image:url(img/flex1.JPG); 
 }
 .card__image--river {
-  background-image: url(img/img3.jpg);
+  background-image: url(img/img3.JPG);
 }
 .card__image--record {
-  background-image: url(img/flex2.jpg);
+  background-image: url(img/flex2.JPG);
 }
 .card__image--fence {
-  background-image: url(img/flex1.jpg);
+  background-image: url(img/flex1.JPG);
 }
 .card__title {
   color: #696969;
