@@ -76,9 +76,11 @@
               e_org = createNode("div"),
               e_type = createNode("div"),
               e_more_info = createNode("div");
-
+            button = createNode("button");
+            bdiv = createNode("div");
             card.classList.add("card");
-
+            bdiv.classList.add("buttondiv");
+            button.classList.add("button");
             card_header.classList.add("card-header");
             card_header.style.backgroundImage =
               "url(" + `${author.metaData.img}` + ")";
@@ -87,48 +89,37 @@
             append(card_title, card_title_h);
             append(card_header, card_title);
             append(card, card_header);
-
             card_summary.classList.add("card-summary");
             e_date.classList.add("e-date");
             e_date.innerHTML =
               "<i class='material-icons'>today</i> &nbsp" +
               `${author.metaData.eventDate}`;
             append(card_summary, e_date);
-
             e_time.classList.add("e-time");
             e_time.innerHTML =
               "<i class='material-icons'>access_time</i> &nbsp" +
               `${author.metaData.eventDate}`;
             append(card_summary, e_time);
-
             e_venue.classList.add("e-venue");
             e_venue.innerHTML =
               "<i class='material-icons'>location_on</i> &nbsp" +
               `${author.metaData.venue}`;
             append(card_summary, e_venue);
-
             e_org.classList.add("e-org");
             e_org.innerHTML =
               "<i class='material-icons'>person</i> &nbsp" +
               `${author.metaData.organiser}`;
             append(card_summary, e_org);
-
             e_type.classList.add("e-type");
             e_type.innerHTML = `${author.metaData.eventDate}`;
             //append(card_summary,e_type);
+            bdiv.innerHTML =
+              "<label for='card1' class='button' >Details </label>";
 
-            e_more_info.classList.add("e-more-info");
-            e_more_info.innerHTML =
-              "<i class='material-icons' style='text-shadow: none;'>arrow_forward</i>";
-            append(card_summary, e_more_info);
-
+            append(card_summary, bdiv);
             append(card, card_summary);
-
             append(ul, card);
             /*
-
-
-
             let a = createNode("a"),
               h = createNode("h3"),
               span1 = createNode("span"),
