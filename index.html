@@ -1,496 +1,488 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Entrepreneurship Portal IIT Delhi</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel="stylesheet" href="style.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>Entrepreneurship Portal IIT Delhi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- IMPORT FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Lato&display=swap" rel="stylesheet">
+    <!-- ICONS !-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <!-- FLEX -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style2.css">
+    <title>S.Inc</title>
+    <script type="text/javascript">
+    $().ready(function() {
 
-  <!-- IMPORT FONTS -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Lato&display=swap" rel="stylesheet">
+        // Nav toggle slide in small device
+        var nav_op = 0;
+        $("#toggle").click(function() {
+            $('ul.nav').slideToggle("slow");
+            nav_op = 1;
+        });
 
-	<!-- ICONS !-->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
+        $("ul.nav li>a").click(function() {
+            if (nav_op != 0) {
+                $('ul.nav').slideToggle("slow");
+                nav_op = 0;
 
-	<!-- JQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <!-- FLEX -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="style1.css">
-  <link rel="stylesheet" href="style2.css">
-	
-  <title>S.Inc</title>
+            }
 
-		<script type="text/javascript">
-			$().ready(function(){
-				
-        	// Nav toggle slide in small device
-				var nav_op=0;
-		        $( "#toggle" ).click(function() {
-					 		$('ul.nav').slideToggle("slow");
-		          nav_op=1;
-						});
+        });
 
-		        $( "ul.nav li>a" ).click(function() {
-		          if (nav_op!=0){
-		                  $('ul.nav').slideToggle("slow");
-		                  nav_op=0;
-
-		          }
-
-		        });
-
-            $(window).resize(function(){
-              if(!window.matchMedia("(max-width: 980px)").matches)
-                { 
-                  $('ul.nav').fadeIn();
-                  nav_op=0;
-                }
-              else{
-                  $('ul.nav').css("display", "none");
-                  nav_op=0;
-                }
-            });
+        $(window).resize(function() {
+            if (!window.matchMedia("(max-width: 980px)").matches) {
+                $('ul.nav').fadeIn();
+                nav_op = 0;
+            } else {
+                $('ul.nav').css("display", "none");
+                nav_op = 0;
+            }
+        });
 
 
-				if (window.location.hash) {
-					var i=$("section.background").index($(window.location.hash));
-					if (i>=0)
-		                goTo(i);            
-	       		}
+        if (window.location.hash) {
+            var i = $("section.background").index($(window.location.hash));
+            if (i >= 0)
+                goTo(i);
+        }
 
 
-				$("ul.nav li a").click(function(){
-					goTo($("ul.nav li a").index(this));
-				});
+        $("ul.nav li a").click(function() {
+            goTo($("ul.nav li a").index(this));
+        });
 
 
 
-	        /*
-	        //SLideShow
-	        let dot_container=document.createElement("div");
-	        dot_container.classList.add("dot-container");
-	        for (int i=0;i<document.getElementsByClassName("mySlides").length;i++){
-	          let dot_container=document.createElement("span");
-	          dot.classList.add("dot");
-	          dot_container.appendChild(dot);
-	        }
-	        $('#showcase .content-wrapper').add(dot_container);
-	        */
+        /*
+        //SLideShow
+        let dot_container=document.createElement("div");
+        dot_container.classList.add("dot-container");
+        for (int i=0;i<document.getElementsByClassName("mySlides").length;i++){
+          let dot_container=document.createElement("span");
+          dot.classList.add("dot");
+          dot_container.appendChild(dot);
+        }
+        $('#showcase .content-wrapper').add(dot_container);
+        */
 
-			});
-
-		</script>
-
+    });
+    </script>
 </head>
+
 <body>
-<header>
-	<div id="toggle"><a><i class="material-icons" style="font-size:1.5em;color:#fff">menu</i></a></div>
-	<div class="profile">
-		<img src="logo.png" class="header-logo">
-		<div class="header-title">S.Inc, IIT Delhi</div>
-	</div>
-	<ul class="nav">
-		<li><a href="#home">Home</a></li>
-		<li><a href="#about">About</a></li>
-	    <li><a href="#events">Events</a></li>
-	    <li><a href="#initiative">Initiatives</a></li>
-	    <li><a href="#blog">Blog</a></li>
-	    <li><a href="#resources">Resources</a></li>
-	    <li><a href="#showcase">Startup Showcase</a></li>
-		<li><a href="#team">Team</a></li>
-		<li><a href="#sponsor">Sponsors</a></li>
-    	<li><a href="#contact">Contact Us</a></li>
-	</ul>
-</header>
-<!-- change in style.css while adding new sections!! -->
-<div class="container">
-  <section class="background" id="home">
-    <div class="content-wrapper">
-      <p class="content-title">Entrepreneurship Portal IIT Delhi</p>
-      <p class="content-subtitle">Scroll down and up to see the effect!</p>
-    </div>
-  </section>
-
-  <section class="background" id="about">
-    <div class="content-wrapper" >
-      <p class="content-title">About Us</p>
-      <p class="content-subtitle"></p>
-    </div>
-  </section>
-
-  <section class="background" id="events">
-    <div class="content-wrapper">
-      <p class="content-title"><a href="./events/">Events</a></p>
-      <p class="content-subtitle">blocks</p>
-    </div>
-  </section>
-  <section class="background" id="initiative">
-    <div class="content-wrapper">
-      <p class="content-title">Initiatives</p>
-      <p class="content-subtitle">Startup Initiatives to be put of here</p>
-    </div>
-  </section>
-  <section class="background" id="blog">
-    <div class="content-wrapper">
-      <p class="content-title">Blog</p>
-      <p class="content-subtitle">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-  </section>
-  <section class="background" id="resources">
-    <div class="content-wrapper">
-      <p class="content-title">Resources</p>
-      <p class="content-subtitle">We are in need of this :P</p>
-      <div class="container">
-        <ul class="cards hide_s">
-          <li class="cards__item">
-            <div class="card">
-              <div class="card__image card__image--fence"></div>
-              <div class="card__content">
-                <div class="card__title">Flex</div>
-                <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto. </p>
-                  <a href="www.facebook.com">
-                    <button class="btn btn--block card__btn">Button</button>
-                  </a>
-              </div>
-            </div>
-          </li>
-          <li class="cards__item">
-            <div class="card">
-              <div class="card__image card__image--river"></div>
-              <div class="card__content">
-                <div class="card__title">Flex Grow</div>
-                <p class="card__text">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up.</p>
-                <button class="btn btn--block card__btn">Button</button>
-              </div>
-            </div>
-          </li>
-          <li class="cards__item">
-            <div class="card">
-              <div class="card__image card__image--record"></div>
-              <div class="card__content">
-                <div class="card__title">Flex Shrink</div>
-                <p class="card__text">This defines the ability for a flex item to shrink if necessary. Negative numbers are invalid.</p>
-                <button class="btn btn--block card__btn">Button</button>
-              </div>
-            </div>
-          </li>
+    <header>
+        <div id="toggle"><a><i class="material-icons" style="font-size:1.5em;color:#fff">menu</i></a></div>
+        <div class="profile">
+            <img src="logo.png" class="header-logo">
+            <div class="header-title">S.Inc, IIT Delhi</div>
+        </div>
+        <ul class="nav">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#initiative">Initiatives</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#showcase">Startup Showcase</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#sponsor">Sponsors</a></li>
+            <li><a href="#contact">Contact Us</a></li>
         </ul>
-        <ul class="cards hide_l">
-        <li class="fleximg cards__item">
-      <img src="img/flex1.jpg">
-    </li>
-    <li class="fleximg cards__item" >
-      <img src="img/flex2.JPG">
-    </li>
-  </ul>
-  <ul class="cards hide_l">
-        <li class="fleximg cards__item">
-      <img src="img/flex1.JPG">
-    </li>
-    <li class="fleximg cards__item" >
-      <img src="img/flex2.JPG">
-    </li>
-  </ul>
-      </div>
-  </section>
-  <section class="background" id="showcase">
-    <div class="content-wrapper">
-      <p class="content-title">Startup Showcase</p>
-      <p class="content-subtitle">Our startups </p>
+    </header>
+    <!-- change in style.css while adding new sections!! -->
+    <div class="container">
+        <section class="background" id="home">
+            <div class="content-wrapper">
+                <p class="content-title">Entrepreneurship Portal IIT Delhi</p>
+                <p class="content-subtitle">Scroll down and up to see the effect!</p>
+            </div>
+        </section>
+        <section class="background" id="about">
+            <div class="content-wrapper">
+                <p class="content-title">About Us</p>
+                <p class="content-subtitle"></p>
+            </div>
+        </section>
+        <section class="background" id="events">
+            <div class="content-wrapper">
+                <p class="content-title"><a href="./events/">Events</a></p>
+                <p class="content-subtitle">blocks</p>
+            </div>
+        </section>
+        <section class="background" id="initiative">
+            <div class="content-wrapper">
+                <p class="content-title">Initiatives</p>
+                <p class="content-subtitle">Startup Initiatives to be put of here</p>
+            </div>
+        </section>
+        <section class="background" id="blog">
+            <div class="content-wrapper">
+                <p class="content-title">Blog</p>
+                <p class="content-subtitle">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </section>
+        <section class="background" id="resources">
+            <div class="content-wrapper">
+                <p class="content-title">Resources</p>
+                <p class="content-subtitle">We are in need of this :P</p>
+                <div class="container">
+                    <ul class="cards hide_s">
+                        <li class="cards__item">
+                            <div class="card">
+                                <div class="card__image card__image--fence"></div>
+                                <div class="card__content">
+                                    <div class="card__title">Flex</div>
+                                    <p class="card__text">This is the shorthand for flex-grow, flex-shrink and flex-basis combined. The second and third parameters (flex-shrink and flex-basis) are optional. Default is 0 1 auto. </p>
+                                    <a href="www.facebook.com">
+                                        <button class="btn btn--block card__btn">Button</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="cards__item">
+                            <div class="card">
+                                <div class="card__image card__image--river"></div>
+                                <div class="card__content">
+                                    <div class="card__title">Flex Grow</div>
+                                    <p class="card__text">This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up.</p>
+                                    <button class="btn btn--block card__btn">Button</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="cards__item">
+                            <div class="card">
+                                <div class="card__image card__image--record"></div>
+                                <div class="card__content">
+                                    <div class="card__title">Flex Shrink</div>
+                                    <p class="card__text">This defines the ability for a flex item to shrink if necessary. Negative numbers are invalid.</p>
+                                    <button class="btn btn--block card__btn">Button</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="cards hide_l">
+                        <a href="#">
+                            <li class="fleximg cards__item">
+                                <img src="img/flex1.jpg">
+                                <p class="text">Category 1</p>
+                            </li>
+                        </a>
+                        <a href="#">
+                            <li class="fleximg cards__item">
+                                <img src="img/flex2.JPG">
+                                <p class="text">Category 2</p>
+                            </li>
+                        </a>
+                    </ul>
+                    <ul class="cards hide_l">
+                    	                            <a href="#">
 
-      <!--
-      <div class="slideshow-container">
+                        <li class="fleximg cards__item">
+                                <img src="img/flex1.JPG">
+                                <p class="text">Category 3</p>
+                            </li></a>
+                                                        <a href="#">
 
-        <div class="mySlides">
-          <q>I love you the more in that I believe you had liked me for my own sake and for nothing else</q>
-          <p class="author">- John Keats</p>
-        </div>
+                        <li class="fleximg cards__item">
+                                <img src="img/flex2.JPG">
+                                <p class="text">Category 4</p>
+                            
+                        </li></a>
+                    </ul>
+                </div>
+        </section>
+        <section class="background" id="showcase">
+            <div class="content-wrapper">
+                <p class="content-title">Startup Showcase</p>
+                <p class="content-subtitle">Our startups </p>
+                <!--
+			      <div class="slideshow-container">
 
-        <div class="mySlides">
-          <q>But man is not made for defeat. A man can be destroyed but not defeated.</q>
-          <p class="author">- Ernest Hemingway</p>
-        </div>
+			        <div class="mySlides">
+			          <q>I love you the more in that I believe you had liked me for my own sake and for nothing else</q>
+			          <p class="author">- John Keats</p>
+			        </div>
 
-        <div class="mySlides">
-          <q>I have not failed. I've just found 10,000 ways that won't work.</q>
-          <p class="author">- Thomas A. Edison</p>
-        </div>
+			        <div class="mySlides">
+			          <q>But man is not made for defeat. A man can be destroyed but not defeated.</q>
+			          <p class="author">- Ernest Hemingway</p>
+			        </div>
 
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-      </div>
-    -->
+			        <div class="mySlides">
+			          <q>I have not failed. I've just found 10,000 ways that won't work.</q>
+			          <p class="author">- Thomas A. Edison</p>
+			        </div>
 
-      
+			        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+			      </div>
+			    -->
+                <div class="myItems slideshow-container" id="aeiou">
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <div class="dot-container" id="aeioud">
+                </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                <script type="text/javascript">
+                //SLIDESHOW....................
+                var slideIndex = 1;
+                var ssize;
 
-      <div class="myItems slideshow-container" id="aeiou">
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-      </div>
+                function numPerSlide() {
+                    if (!window.matchMedia("(max-width: 980px)").matches)
+                        ssize = 3;
+                    else if (!window.matchMedia("(max-width: 700px)").matches)
+                        ssize = 2;
+                    else
+                        ssize = 1;
+                }
 
-
-      <div class="dot-container" id="aeioud">
-      </div>
-
-
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-      <script type="text/javascript">
-
-        //SLIDESHOW....................
-        var slideIndex = 1;
-        var ssize;
-
-        function numPerSlide(){
-          if(!window.matchMedia("(max-width: 980px)").matches)
-            ssize=3;
-          else if (!window.matchMedia("(max-width: 700px)").matches)
-            ssize=2;
-          else
-            ssize=1;
-        }
-
-        numPerSlide();
-        
-
-        function createNode(element) {
-          return document.createElement(element);
-        }
-        function append(parent, el) {
-          return parent.appendChild(el);
-        }
-        const ul = document.getElementById("aeiou");
-        const uld = document.getElementById("aeioud");
-        const url = "https://iic.devclub.in/api/events";
-        fetch(url)
-          .then(resp => resp.json())
-          .then(function(data) {
-            let authors = data.data;
-            var ret= authors.map(function(author) {
-              let card=createNode("a"),
-                    card_header=createNode("div"),
-                    card_title=createNode("div"),
-                    card_title_h=createNode("h3"),
-                    card_summary=createNode("div"),
-                    e_date=createNode("div"),
-                    e_time=createNode("div"),
-                    e_venue=createNode("div"),
-                    e_org=createNode("div"),
-                    e_type=createNode("div"),
-                    e_more_info=createNode("div");
-
-               card.classList.add("myItem");
-               card.classList.add("mySlides");
-                  
-                  card_header.classList.add("myItem-header");
-                  card_header.style.backgroundImage =  "url(" + `${author.metaData.img}` + ")";
-                    card_title.classList.add("myItem-title");
-                      card_title_h.innerHTML = `${author.metaData.title}`;
-                      append(card_title,card_title_h);
-                    append(card_header,card_title);
-                  append(card,card_header);
+                numPerSlide();
 
 
+                function createNode(element) {
+                    return document.createElement(element);
+                }
 
-                  card_summary.classList.add("myItem-summary");
-                    e_date.classList.add("e-date");
-                    e_date.innerHTML = "<i class='material-icons'>today</i> &nbsp"+`${author.metaData.eventDate}`;
-                    append(card_summary,e_date);
+                function append(parent, el) {
+                    return parent.appendChild(el);
+                }
+                const ul = document.getElementById("aeiou");
+                const uld = document.getElementById("aeioud");
+                const url = "https://iic.devclub.in/api/events";
+                fetch(url)
+                    .then(resp => resp.json())
+                    .then(function(data) {
+                        let authors = data.data;
+                        var ret = authors.map(function(author) {
+                            let card = createNode("a"),
+                                card_header = createNode("div"),
+                                card_title = createNode("div"),
+                                card_title_h = createNode("h3"),
+                                card_summary = createNode("div"),
+                                e_date = createNode("div"),
+                                e_time = createNode("div"),
+                                e_venue = createNode("div"),
+                                e_org = createNode("div"),
+                                e_type = createNode("div"),
+                                e_more_info = createNode("div");
 
-                    e_time.classList.add("e-time");
-                    e_time.innerHTML = "<i class='material-icons'>access_time</i> &nbsp"+`${author.metaData.eventDate}`;
-                    append(card_summary,e_time);
+                            card.classList.add("myItem");
+                            card.classList.add("mySlides");
 
-                    e_venue.classList.add("e-venue");
-                    e_venue.innerHTML = "<i class='material-icons'>location_on</i> &nbsp"+`${author.metaData.venue}`;
-                    append(card_summary,e_venue);
+                            card_header.classList.add("myItem-header");
+                            card_header.style.backgroundImage = "url(" + `${author.metaData.img}` + ")";
+                            card_title.classList.add("myItem-title");
+                            card_title_h.innerHTML = `${author.metaData.title}`;
+                            append(card_title, card_title_h);
+                            append(card_header, card_title);
+                            append(card, card_header);
 
-                    e_org.classList.add("e-org");
-                    e_org.innerHTML = "<i class='material-icons'>person</i> &nbsp"+`${author.metaData.organiser}`;
-                    append(card_summary,e_org);
 
-                    e_type.classList.add("e-type");
-                    e_type.innerHTML = `${author.metaData.eventDate}`;
-                    //append(card_summary,e_type);
 
-                    e_more_info.classList.add("e-more-info");
-                    e_more_info.innerHTML = "<i class='material-icons' style='text-shadow: none;'>arrow_forward</i>";
-                    append(card_summary,e_more_info);
+                            card_summary.classList.add("myItem-summary");
+                            e_date.classList.add("e-date");
+                            e_date.innerHTML = "<i class='material-icons'>today</i> &nbsp" + `${author.metaData.eventDate}`;
+                            append(card_summary, e_date);
 
-                  append(card,card_summary);
-                   
+                            e_time.classList.add("e-time");
+                            e_time.innerHTML = "<i class='material-icons'>access_time</i> &nbsp" + `${author.metaData.eventDate}`;
+                            append(card_summary, e_time);
 
-              append(ul,card);
-            });
-            
-                          makeDots();
-                          showSlides(1);
-                  return ret;
+                            e_venue.classList.add("e-venue");
+                            e_venue.innerHTML = "<i class='material-icons'>location_on</i> &nbsp" + `${author.metaData.venue}`;
+                            append(card_summary, e_venue);
 
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
-var slides = document.getElementsByClassName("mySlides");
-          var dots = document.getElementsByClassName("dot");
+                            e_org.classList.add("e-org");
+                            e_org.innerHTML = "<i class='material-icons'>person</i> &nbsp" + `${author.metaData.organiser}`;
+                            append(card_summary, e_org);
 
-        function makeDots(){
-          var tot=Math.ceil(slides.length/ssize);
-          for (var j=1;j<=tot;j++){
-            let dot=createNode("span");
-            dot.classList.add("dot");
-            dot.setAttribute("onClick", "currentSlide("+j+")" );
-            append(uld,dot);
+                            e_type.classList.add("e-type");
+                            e_type.innerHTML = `${author.metaData.eventDate}`;
+                            //append(card_summary,e_type);
 
-          }
-        }
+                            e_more_info.classList.add("e-more-info");
+                            e_more_info.innerHTML = "<i class='material-icons' style='text-shadow: none;'>arrow_forward</i>";
+                            append(card_summary, e_more_info);
 
-       
+                            append(card, card_summary);
 
-        $(window).resize(function(){
-          numPerSlide();
 
-          //ssize updt, now rem prev dots
-          var dots_c = document.getElementsByClassName("dot-container")[0]; 
-          var d_child = dots_c.lastElementChild;  
-          while (d_child) { 
-              dots_c.removeChild(d_child); 
-              d_child = dots_c.lastElementChild; 
-          } 
+                            append(ul, card);
+                        });
+
+                        makeDots();
+                        showSlides(1);
+                        return ret;
+
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                    });
+                var slides = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("dot");
+
+                function makeDots() {
+                    var tot = Math.ceil(slides.length / ssize);
+                    for (var j = 1; j <= tot; j++) {
+                        let dot = createNode("span");
+                        dot.classList.add("dot");
+                        dot.setAttribute("onClick", "currentSlide(" + j + ")");
+                        append(uld, dot);
+
+                    }
+                }
+
+
+
+                $(window).resize(function() {
+                    numPerSlide();
+
+                    //ssize updt, now rem prev dots
+                    var dots_c = document.getElementsByClassName("dot-container")[0];
+                    var d_child = dots_c.lastElementChild;
+                    while (d_child) {
+                        dots_c.removeChild(d_child);
+                        d_child = dots_c.lastElementChild;
+                    }
                     makeDots();
                     currentSlide(1);
 
-        });
-
-
-
-        
-      
-        function plusSlides(n) {
-          showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-          showSlides(slideIndex = n);
-        }
+                });
 
 
 
 
 
-        function showSlides(n) {
-          var i;
-          
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
 
-
-          if (ssize*(n-1)+1 > slides.length) {slideIndex = 1} 
-          if (n < 1) {slideIndex = Math.ceil(slides.length/ssize)}
-
-
-            for (i = 0; i < slides.length; i++) {
-              slides[i].style.display = "none"; 
-            }
-            for (i = 0; i < dots.length; i++) {
-              dots[i].className = dots[i].className.replace(" active", "");
-            }
-
-          for (i=0;i<ssize;i++){
-            if ((slideIndex-1)*ssize+i<slides.length){
-              slides[(slideIndex-1)*ssize+i].style.display = "block";  
-            }            
-          }
-
-          dots[slideIndex-1].className += " active";
-        }
-
-        /*
-        //SLIDESHOW....................
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-          showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-          showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-          var i;
-          var slides = document.getElementsByClassName("mySlides");
-          var dots = document.getElementsByClassName("dot");
-          if (n > slides.length) {slideIndex = 1} 
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-              slides[i].style.display = "none"; 
-            }
-            for (i = 0; i < dots.length; i++) {
-              dots[i].className = dots[i].className.replace(" active", "");
-            }
-          slides[slideIndex-1].style.display = "block"; 
-          dots[slideIndex-1].className += " active";
-        }
-        */
-        
-      </script>
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
 
 
 
 
+
+                function showSlides(n) {
+                    var i;
+
+
+
+                    if (ssize * (n - 1) + 1 > slides.length) { slideIndex = 1 }
+                    if (n < 1) { slideIndex = Math.ceil(slides.length / ssize) }
+
+
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                    }
+
+                    for (i = 0; i < ssize; i++) {
+                        if ((slideIndex - 1) * ssize + i < slides.length) {
+                            slides[(slideIndex - 1) * ssize + i].style.display = "block";
+                        }
+                    }
+
+                    dots[slideIndex - 1].className += " active";
+                }
+
+                /*
+                //SLIDESHOW....................
+                var slideIndex = 1;
+                showSlides(slideIndex);
+
+                function plusSlides(n) {
+                  showSlides(slideIndex += n);
+                }
+
+                function currentSlide(n) {
+                  showSlides(slideIndex = n);
+                }
+
+                function showSlides(n) {
+                  var i;
+                  var slides = document.getElementsByClassName("mySlides");
+                  var dots = document.getElementsByClassName("dot");
+                  if (n > slides.length) {slideIndex = 1} 
+                    if (n < 1) {slideIndex = slides.length}
+                    for (i = 0; i < slides.length; i++) {
+                      slides[i].style.display = "none"; 
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                      dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                  slides[slideIndex-1].style.display = "block"; 
+                  dots[slideIndex-1].className += " active";
+                }
+                */
+                </script>
+            </div>
+        </section>
+        <section class="background" id="team">
+            <div class="content-wrapper">
+                <p class="content-title"><a href="./team/sample.html">OUR TEAM</a></p>
+                <p class="content-subtitle">Meet the people who make awesome stuffs</p>
+                <!-- ------------------------------- -->
+                
+            </div>
+
+        </section>
+        <section class="background" id="sponsor">
+            <div class="content-wrapper">
+                <p class="content-title">Sponsors</p>
+                <p class="content-subtitle">Become a Sponsor now <br> to fund </p>
+            </div>
+        </section>
+        <section class="background" id="contact">
+            <div class="content-wrapper">
+                <p class="content-title">Contact Us</p>
+                <p class="content-subtitle">
+                    Mail: sinc[at]iitd[dot]ac[dot]in <br>
+                    Phone: 987654321 <br>
+                    Facebook | Twitter | LinkedIn | Instagram
+                </p>
+            </div>
+        </section>
     </div>
-  </section>
-  <section class="background" id="team">
-    <div class="content-wrapper">
-      <p class="content-title"><a href="./team/sample.html">OUR TEAM</a></p>
-      <p class="content-subtitle">We have are a team of </p>
-    </div>
-  </section>  
-  <section class="background" id="sponsor">
-    <div class="content-wrapper">
-      <p class="content-title">Sponsors</p>
-      <p class="content-subtitle">Become a Sponsor now <br> to fund  </p>
-    </div>
-  </section>  
-  <section class="background" id="contact">
-    <div class="content-wrapper">
-      <p class="content-title">Contact Us</p>
-      <p class="content-subtitle">
-      	Mail: sinc[at]iitd[dot]ac[dot]in <br>
-      	Phone: 987654321 <br>
-      	Facebook | Twitter | LinkedIn | Instagram
-
-      </p>
-    </div>
-  </section>    
-</div>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
-<script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
-<script  src="./script.js"></script>
-<!-- <script  src="./script2.js"></script> -->
-
-  <!-- partial  ABOUT-->
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
+    <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+    <script src="./script.js"></script>
+    <!-- <script  src="./script2.js"></script> -->
+    <!-- partial  ABOUT-->
     <script type="text/javascript">
-      fetch("https://iic.devclub.in/api/about")
+    fetch("https://iic.devclub.in/api/about")
         .then(resp => resp.json())
         .then(function(data) {
-          $("#about .content-wrapper .content-subtitle").text(data.data.about);
+            $("#about .content-wrapper .content-subtitle").text(data.data.about);
         })
         .catch(function(error) {
-          console.log(error);
+            console.log(error);
         });
     </script>
 </body>
+
 </html>

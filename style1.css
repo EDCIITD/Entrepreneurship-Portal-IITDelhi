@@ -34,7 +34,19 @@ img {
   -webkit-filter: contrast(100%);
   filter: contrast(100%);
 }
+.fleximg .text{
+  color: white;
+  position: absolute;
+  z-index: 20;
+  margin: 0 auto;
+  left: 0.6rem;
+  right: 0.6rem;
+  background: rgba(0,0,0,0.5);
+  top:45%;
+  font-family:  cursive;
+  font-size: 3.5vh;
 
+}
 .btn {
   background-color: white;
   border: 1px solid #cccccc;

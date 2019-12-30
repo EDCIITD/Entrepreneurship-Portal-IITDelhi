@@ -141,8 +141,8 @@ html, body {
 }
 
 .background.down-scroll {
-  -webkit-transform: translate3d(0, -130vh, 0);
-          transform: translate3d(0, -130vh, 0);
+  -webkit-transform: translate3d(0, -131.5vh, 0);
+          transform: translate3d(0, -131.5vh, 0);
 }
 .background.down-scroll .content-wrapper {
   -webkit-transform: translateY(40vh);
@@ -166,7 +166,7 @@ header{
   display: block;
   width: 100vw;
   top: 0;
-  background-color: #000;
+  background-color: #00000061;
   z-index: 100;
 }
 
@@ -181,7 +181,7 @@ header .profile{
 
 
 header .profile .header-logo{
-  height: 2.5em;
+  height: 3em;
   width: 3em;
   border-radius: 50%;
 }
@@ -263,7 +263,7 @@ ul.nav li a:hover .nav-item{
 #toggle{
   position: relative;
   display: none;
-  padding: 12px;
+  padding: 21px;
   float: right;
   cursor: pointer;
 }
@@ -510,7 +510,7 @@ nav ul li:hover{
   width: auto;
   margin-top: -30px;
   padding: 16px;
-  color: #888;
+  color: #120a92;
   font-weight: bold;
   font-size: 20px;
   border-radius: 0 3px 3px 0;
