@@ -192,6 +192,7 @@ header .profile .header-title{
   color: #fff;
   white-space: nowrap;
   overflow-x: hidden;
+  overflow-y: hidden;
   text-overflow: ellipsis;
 }
 
@@ -235,7 +236,7 @@ ul.nav li a{
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
-  font-size: 1em;
+  font-size: 1.05em;
   padding: 3px 10px;
   cursor: pointer;
   color: #fff;
@@ -243,7 +244,7 @@ ul.nav li a{
 }
 
 ul.nav li a:hover{
-  color: #dadada;
+  color: #ffe000;
 }
 
 ul.nav li a.selected{
