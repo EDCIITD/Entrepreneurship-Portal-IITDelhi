@@ -9,20 +9,26 @@ var totalSlideNumber = $(".background").length;
 
 function goTo(slide){
   var iter=slide-currentSlideNumber;
+$("ul.nav li:nth-child("+currentSlideNumber+1+") > a").removeClass("yellow");
+  
   if (iter>0){
     for (var i = 0; i < iter; i++) {
         currentSlideNumber++;
         nextItem();
     }
+    $("ul.nav li:nth-child("+currentSlideNumber+1+") > a").addClass("yellow");
   }
   else if(iter <0){
     for (var i = 0; i < -iter; i++) {
         currentSlideNumber--;
         previousItem();
     }
+    $("ul.nav li:nth-child("+currentSlideNumber+1+") > a").addClass("yellow");
+
   }
   
 }
+
 
 // ------------- DETERMINE DELTA/SCROLL DIRECTION ------------- //
 function parallaxScroll(evt) {
@@ -114,15 +120,25 @@ else if(deltaY>thresh) {
 function nextItem() {
   var $previousSlide = $(".background").eq(currentSlideNumber - 1);
   $previousSlide.removeClass("up-scroll").addClass("down-scroll");
+
   //console.log('next called')
   $('title').text($('section.background .content-wrapper .content-title:eq('+currentSlideNumber+')').text()+' | Entrepreneurship IITD');
+  var xx=currentSlideNumber+1;
+  $("ul.nav li:nth-child("+xx+") > a").addClass("yellow");
+  xx=xx-1
+  $("ul.nav li:nth-child("+xx+") > a").removeClass("yellow");
+
 }
 
 function previousItem() {
   var $currentSlide = $(".background").eq(currentSlideNumber);
   $currentSlide.removeClass("down-scroll").addClass("up-scroll");
-  //console.log('previous called')
+    //console.log('previous called')
   $('title').text($('section.background .content-wrapper .content-title:eq('+currentSlideNumber+')').text()+' | Entrepreneurship IITD');
+  var xx=currentSlideNumber+1;
+  $("ul.nav li:nth-child("+xx+") > a").addClass("yellow");
+  xx=xx+1
+  $("ul.nav li:nth-child("+xx+") > a").removeClass("yellow");
 
 }
 //======================for menu bar===============================================
@@ -133,3 +149,4 @@ function aa(){
           $('nav').removeClass('black');
         }
       }
+

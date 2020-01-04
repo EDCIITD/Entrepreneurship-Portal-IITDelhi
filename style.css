@@ -41,31 +41,31 @@ body {
   transform: translateY(15vh);
 }
 .background:nth-child(2) {
-  background-image: url(./img/tree.jpg);
+  background-image: url(./img/about_us.jpg);
 }
 .background:nth-child(3) {
-  background-image: url(./img/bg12.jpg);
+  background-image: url(./img/events.jpg);
 }
 .background:nth-child(4) {
   background-image: url(./img/img2.jpg);
 }
-.background:nth-child(5) {
+/*.background:nth-child(5) {
   background-image: url(./img/bg3.jpg);
+}*/
+.background:nth-child(5) {
+  background-image: url(./img/resources.jpg);
 }
 .background:nth-child(6) {
-  background-image: url(./img/tree.jpg);
-}
-.background:nth-child(7) {
   background-image: url(./img/sta.jpg);
 }
-.background:nth-child(8) {
+.background:nth-child(7) {
   background-image: url(./img/team.jpg);
 }
-.background:nth-child(9) {
+.background:nth-child(8) {
   background-image: url(./img/img2.jpg);
 }
-.background:nth-child(10) {
-  background-image: url(./img/cts.jpg);
+.background:nth-child(9) {
+  background-image: url(./img/contact_us.jpg);
 }
 
 /* Set stacking context of slides */
@@ -98,7 +98,7 @@ body {
 .background:nth-child(9) {
   z-index: 2;
 }
-.background:nth-child(10) {
+.background:nth-child(10  ) {
   z-index: 1;
 }
 
@@ -228,13 +228,15 @@ ul.nav > li {
   float: left;
   cursor: pointer;
 }
-
+.yellow{
+  color: #ffe000 !important;
+}
 ul.nav li a {
   display: inline-block;
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
-  font-size: 1.05em;
+  font-size: 1.1em;
   padding: 3px 10px;
   cursor: pointer;
   color: #fff;
@@ -243,6 +245,7 @@ ul.nav li a {
 ul.nav li a:hover {
   color: #ffe000;
 }
+
 
 ul.nav li a.selected {
   color: #dadada;
