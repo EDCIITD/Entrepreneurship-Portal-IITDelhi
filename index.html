@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Lato&display=swap" rel="stylesheet">
     <!-- ICONS !-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="style1.css">
     <link rel="stylesheet" href="style2.css">
-      <link rel="stylesheet" href="style-team.css">
+    <link rel="stylesheet" href="style-team.css">
 
     <title>S.Inc</title>
 
@@ -76,13 +76,20 @@
 
         if (window.location.hash) {
             var i = $("section.background").index($(window.location.hash));
+                
             if (i >= 0)
+                console.log('i is '+i);
                 goTo(i);
-        }
+        } 
 
 
         $("ul.nav li a").click(function() {
-            goTo($("ul.nav li a").index(this));
+            // console.log('going to')
+            if ($("ul.nav li a").index(this)>4){
+            goTo($("ul.nav li a").index(this)-1);
+            }
+            else{goTo($("ul.nav li a").index(this));}
+
         });
 
 
@@ -120,12 +127,13 @@
             <li><a href="#about">About</a></li>
             <li><a href="#events">Events</a></li>
             <li><a href="#initiative">Initiatives</a></li>
-            <li><a href="blog/index.html">Blog</a></li>
             <li><a href="#resources">Resources</a></li>
             <li><a href="#showcase">Startup Showcase</a></li>
             <li><a href="#team">Team</a></li>
             <li><a href="#sponsor">Sponsors</a></li>
             <li><a href="#contact">Contact Us</a></li>
+            <li><a href="blog/index.html">Blog</a></li>
+
         </ul>
     </header>
     <!-- change in style.css while adding new sections!! -->
