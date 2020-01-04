@@ -23,7 +23,28 @@
       <link rel="stylesheet" href="style-team.css">
 
     <title>S.Inc</title>
+
+    <style>
+        #loaderr { display: block; position: absolute; left: 0; top: 0; height:100vh; width: 100vw; background: black; z-index: 9999; color: white; text-align:  center; font-size: 5em;}
+        .loader {
+          border: 16px solid #f3f3f3; /* Light grey */
+          border-top: 16px solid #3498db; /* Blue */
+          border-radius: 50%;
+          width: 120px;
+          height: 120px;
+          animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+    </style>
+
+         
     <script type="text/javascript">
+
+
     $().ready(function() {
 
         // Nav toggle slide in small device
@@ -83,6 +104,10 @@
 </head>
 
 <body>
+    <section id="loaderr">
+        <div class="loader"></div>
+        Loading...
+    </section>
     <header>
         <div id="toggle"><a><i class="material-icons" style="font-size:1.5em;color:#fff">menu</i></a></div>
         <div class="profile">
@@ -532,5 +557,16 @@
         });
     </script>
 </body>
+
+    <script>
+        // Wait for window load
+        document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'complete') {
+         document.getElementById('interactive');
+         $('#loaderr').fadeOut();
+         }
+        }    
+    </script> 
 
 </html>
