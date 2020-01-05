@@ -70,35 +70,32 @@ body {
 
 /* Set stacking context of slides */
 .background:nth-child(1) {
-  z-index: 10;
-}
-
-.background:nth-child(2) {
   z-index: 9;
 }
 
-.background:nth-child(3) {
+.background:nth-child(2) {
   z-index: 8;
 }
-.background:nth-child(4) {
+
+.background:nth-child(3) {
   z-index: 7;
 }
-.background:nth-child(5) {
+.background:nth-child(4) {
   z-index: 6;
 }
-.background:nth-child(6) {
+.background:nth-child(5) {
   z-index: 5;
 }
-.background:nth-child(7) {
+.background:nth-child(6) {
   z-index: 4;
 }
-.background:nth-child(8) {
+.background:nth-child(7) {
   z-index: 3;
 }
-.background:nth-child(9) {
+.background:nth-child(8) {
   z-index: 2;
 }
-.background:nth-child(10  ) {
+.background:nth-child(9) {
   z-index: 1;
 }
 
