@@ -85,10 +85,8 @@
 
         $("ul.nav li a").click(function() {
             // console.log('going to')
-            if ($("ul.nav li a").index(this)>4){
-            goTo($("ul.nav li a").index(this)-1);
-            }
-            else{goTo($("ul.nav li a").index(this));}
+            
+            goTo($("ul.nav li a").index(this));
 
         });
 
