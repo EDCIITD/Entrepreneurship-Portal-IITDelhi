@@ -25,20 +25,263 @@
     <title>S.Inc</title>
 
     <style>
-        #loaderr { display: block; position: absolute; left: 0; top: 0; height:100vh; width: 100vw; background: black; z-index: 9999; color: white; text-align:  center; font-size: 5em;}
-        .loader {
-          border: 16px solid #f3f3f3; /* Light grey */
-          border-top: 16px solid #3498db; /* Blue */
+        #loaderr { display: block; position: absolute; vertical-align: middle;  height:100vh; width: 100vw; background: black; z-index: 9999; color: #aaa; text-align:  center; font-size: 1.5em;}
+        .lds-circle {
+          display: inline-block;
+          transform: translateZ(1px);
+        }
+        .lds-circle > div {
+          display: inline-block;
+          width: 1.5em;
+          height: 1.5em;
+          margin: 0.2em;
           border-radius: 50%;
-          width: 120px;
-          height: 120px;
-          animation: spin 2s linear infinite;
+          background: #aaa;
+          animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        }
+        @keyframes lds-circle {
+          0%, 100% {
+            animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+          }
+          0% {
+            transform: rotateY(0deg);
+          }
+          50% {
+            transform: rotateY(1800deg);
+            animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+          }
+          100% {
+            transform: rotateY(3600deg);
+          }
         }
 
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+        body {
+          background: #ffffff;
         }
+
+        .load-dots {
+          width: 0;
+          height: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto;
+          -webkit-filter: url(#goo);
+                  filter: url(#goo);
+        }
+
+        .load-dot {
+          width: 0;
+          height: 0;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+        .load-dot:before {
+          content: '';
+          width: 35px;
+          height: 35px;
+          border-radius: 50px;
+          background: #FBD301;
+          position: absolute;
+          left: 50%;
+          -webkit-transform: translateY(0) rotate(0deg);
+                  transform: translateY(0) rotate(0deg);
+          margin-left: -17.5px;
+          margin-top: -17.5px;
+        }
+        @-webkit-keyframes dot-move {
+          0% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+          }
+          18%, 22% {
+            -webkit-transform: translateY(-70px);
+                    transform: translateY(-70px);
+          }
+          40%, 100% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+          }
+        }
+        @keyframes dot-move {
+          0% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+          }
+          18%, 22% {
+            -webkit-transform: translateY(-70px);
+                    transform: translateY(-70px);
+          }
+          40%, 100% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+          }
+        }
+        @-webkit-keyframes dot-colors {
+          0% {
+            background-color: #FBD301;
+          }
+          25% {
+            background-color: #FF3270;
+          }
+          50% {
+            background-color: #208BF1;
+          }
+          75% {
+            background-color: #AFE102;
+          }
+          100% {
+            background-color: #FBD301;
+          }
+        }
+        @keyframes dot-colors {
+          0% {
+            background-color: #FBD301;
+          }
+          25% {
+            background-color: #FF3270;
+          }
+          50% {
+            background-color: #208BF1;
+          }
+          75% {
+            background-color: #AFE102;
+          }
+          100% {
+            background-color: #FBD301;
+          }
+        }
+        .load-dot:nth-child(5):before {
+          z-index: 100;
+          width: 45.5px;
+          height: 45.5px;
+          margin-left: -22.75px;
+          margin-top: -22.75px;
+          -webkit-animation: dot-colors 4s ease infinite;
+                  animation: dot-colors 4s ease infinite;
+        }
+        @-webkit-keyframes dot-rotate-1 {
+          0% {
+            -webkit-transform: rotate(-105deg);
+                    transform: rotate(-105deg);
+          }
+          100% {
+            -webkit-transform: rotate(270deg);
+                    transform: rotate(270deg);
+          }
+        }
+        @keyframes dot-rotate-1 {
+          0% {
+            -webkit-transform: rotate(-105deg);
+                    transform: rotate(-105deg);
+          }
+          100% {
+            -webkit-transform: rotate(270deg);
+                    transform: rotate(270deg);
+          }
+        }
+        .load-dot:nth-child(1) {
+          -webkit-animation: dot-rotate-1 4s 0s linear infinite;
+                  animation: dot-rotate-1 4s 0s linear infinite;
+        }
+        .load-dot:nth-child(1):before {
+          background-color: #FF3270;
+          -webkit-animation: dot-move 4s 0s ease infinite;
+                  animation: dot-move 4s 0s ease infinite;
+        }
+        @-webkit-keyframes dot-rotate-2 {
+          0% {
+            -webkit-transform: rotate(165deg);
+                    transform: rotate(165deg);
+          }
+          100% {
+            -webkit-transform: rotate(540deg);
+                    transform: rotate(540deg);
+          }
+        }
+        @keyframes dot-rotate-2 {
+          0% {
+            -webkit-transform: rotate(165deg);
+                    transform: rotate(165deg);
+          }
+          100% {
+            -webkit-transform: rotate(540deg);
+                    transform: rotate(540deg);
+          }
+        }
+        .load-dot:nth-child(2) {
+          -webkit-animation: dot-rotate-2 4s 1s linear infinite;
+                  animation: dot-rotate-2 4s 1s linear infinite;
+        }
+        .load-dot:nth-child(2):before {
+          background-color: #208BF1;
+          -webkit-animation: dot-move 4s 1s ease infinite;
+                  animation: dot-move 4s 1s ease infinite;
+        }
+        @-webkit-keyframes dot-rotate-3 {
+          0% {
+            -webkit-transform: rotate(435deg);
+                    transform: rotate(435deg);
+          }
+          100% {
+            -webkit-transform: rotate(810deg);
+                    transform: rotate(810deg);
+          }
+        }
+        @keyframes dot-rotate-3 {
+          0% {
+            -webkit-transform: rotate(435deg);
+                    transform: rotate(435deg);
+          }
+          100% {
+            -webkit-transform: rotate(810deg);
+                    transform: rotate(810deg);
+          }
+        }
+        .load-dot:nth-child(3) {
+          -webkit-animation: dot-rotate-3 4s 2s linear infinite;
+                  animation: dot-rotate-3 4s 2s linear infinite;
+        }
+        .load-dot:nth-child(3):before {
+          background-color: #AFE102;
+          -webkit-animation: dot-move 4s 2s ease infinite;
+                  animation: dot-move 4s 2s ease infinite;
+        }
+        @-webkit-keyframes dot-rotate-4 {
+          0% {
+            -webkit-transform: rotate(705deg);
+                    transform: rotate(705deg);
+          }
+          100% {
+            -webkit-transform: rotate(1080deg);
+                    transform: rotate(1080deg);
+          }
+        }
+        @keyframes dot-rotate-4 {
+          0% {
+            -webkit-transform: rotate(705deg);
+                    transform: rotate(705deg);
+          }
+          100% {
+            -webkit-transform: rotate(1080deg);
+                    transform: rotate(1080deg);
+          }
+        }
+        .load-dot:nth-child(4) {
+          -webkit-animation: dot-rotate-4 4s 3s linear infinite;
+                  animation: dot-rotate-4 4s 3s linear infinite;
+        }
+        .load-dot:nth-child(4):before {
+          background-color: #FBD301;
+          -webkit-animation: dot-move 4s 3s ease infinite;
+                  animation: dot-move 4s 3s ease infinite;
+        }
+
+
+
     </style>
 
          
@@ -109,9 +352,22 @@
 </head>
 
 <body>
-    <section id="loaderr">
-        <div class="loader"></div>
-        Loading...
+     <section id="loaderr">
+        <!--
+        <div>
+        <div class="lds-circle"><div></div></div>
+        <div class="load-text">Just a moment...</div>
+        -->
+        <div class="load-dots">
+              <div class="load-dot"></div>
+              <div class="load-dot"></div>
+              <div class="load-dot"></div>
+              <div class="load-dot"></div>
+              <div class="load-dot"></div>
+        </div>
+
+
+        </div>
     </section>
     <header>
         <div id="toggle"><a><i class="material-icons" style="font-size:1.5em;color:#fff">menu</i></a></div>
@@ -602,7 +858,7 @@
         var state = document.readyState
         if (state == 'complete') {
          document.getElementById('interactive');
-         $('#loaderr').fadeOut();
+         //$('#loaderr').fadeOut();
          }
         }    
     </script> 
