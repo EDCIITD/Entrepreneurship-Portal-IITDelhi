@@ -14,13 +14,15 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
     <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <!-- FLEX -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="style1.css">
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="style-team.css">
+    <link rel="stylesheet" href="./style-slide.css">
+
+
 
     <title>S.Inc</title>
 
@@ -288,7 +290,7 @@
     <script type="text/javascript">
 
 
-    $().ready(function() {
+     $().ready(function() {
 
         // Nav toggle slide in small device
         var nav_op = 0;
@@ -353,11 +355,7 @@
 
 <body>
      <section id="loaderr">
-        <!--
-        <div>
-        <div class="lds-circle"><div></div></div>
-        <div class="load-text">Just a moment...</div>
-        -->
+        
         <div class="load-dots">
               <div class="load-dot"></div>
               <div class="load-dot"></div>
@@ -399,9 +397,47 @@
             </div>
         </section>
         <section class="background" id="about">
+            <div class="splitview skewed">
+            <div class="panel bottom">
+            <a href="SInC">
+                <div class="content">
+                <div class="description">
+                    <h1>About SInC IITD</h1>
+                    <!-- <p>This is how the image looks like before applying a duotone effect.</p> -->
+                    <p>The Student Incubation Cell, IIT Delhi is formed with an intent to promote design thinking, planful ideation and support budding Entrepreneurs at IIT DELHI who can make a mark on the world map through their vision, next-generation technology, and services by leading from the front.Our mission is to empower every student in the campus in every way possible who aim high to translate their ideas into real-world Startup and to help in a smooth transition in every phase of this journey. As they say “It’s not about ideas, it’s about making ideas happen and we are committed to pave the way with every step one takes.</p>
+                    <h4>Our Aim</h4> 
+                    <p>SInC aims to support and augment the efforts of budding entrepreneurs by providing them the necessary cash to start, connecting them to the industry experts, investors, provide them incubation spaces, easy access to resources for their product development and make them pitch ready.The motto is to create an ecosystem where healthy discussions with professors,industry veterans,investors and peers is fostered which encourages the students to pursue their ideas freely.</p>
+                    <h3>Vision</h3>
+                </div>
+
+                <img src="./logo.png" alt="SInc">
+            </div></a>
+            </div>
+
+            <div class="panel top">
+            <a href="EDC">
+            <div class="content">
+                <div class="description">
+                    <h1>About EDC IITD</h1>
+                    <p>The Entrepreneurship Development Cell (eDC, IITD) was initiated in January, 2007 with a vision to promote Entrepreneurship amongst the students of IIT Delhi and to build an exhaustive resource pool to aid potential student entrepreneurs. Since our inception, we have organized various events ranged over social entrepreneurship events on campus to PAN IIT business plan contests and we have definitely brought about a surge in entrepreneurial activities on campus</p>
+                    <h4>Our mission</h4>
+                    <p>With an aim to strive towards promoting entrepreneurship, we at eDC IIT Delhi are a group of enthusiasts working continuously to provide a platform to foster, inspire and help the young aspiring students open the door of the promising & exciting world of entrepreneurship</p>
+                    <h4>Vision</h4>
+                    <p>Entrepreneurship in India is yet to reveal its hidden potential. It will not only help India to frontier with the world leaders but also unlock the quality of brains that we are so proud of. With this idea, The Entrepreneurship Development Cell, IIT Delhi wishes to inculcate and Enrich the entrepreneurial environment in India by creating an easily accessible and exhaustive set of resources for the entrepreneurs, which including the students, the budding professionals, mentors, angel investors and the venture capitalists through various fun-filled yet educating sessions such as Startup Showcases, competitions, eTalks and so on and so forth</p>
+
+                </div>
+
+                <img src="./edc-logo.png" alt="EDC">
+            </div>
+                </a>
+                </div>
+
+                <div class="handle"></div>
+            </div>
+
             <div class="content-wrapper">
-                <p class="content-title">About Us</p>
-                <p class="content-subtitle"></p>
+                <!-- <p class="content-title">About Us</p> -->
+                <!-- <p class="content-subtitle"></p> -->
             </div>
         </section>
         <section class="background" id="events">
@@ -835,10 +871,7 @@
         </section>
     </div>
     <!-- partial -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
-    <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
-    <script src="./script.js"></script>
-    <!-- <script  src="./script2.js"></script> -->
+    
     <!-- partial  ABOUT-->
     <script type="text/javascript">
     fetch("https://iic.devclub.in/api/about")
@@ -850,6 +883,12 @@
             console.log(error);
         });
     </script>
+    <script  src="./script-slide.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
+    <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+    <script src="./script.js"></script>
+
 </body>
 
     <script>

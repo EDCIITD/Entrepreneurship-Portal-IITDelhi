@@ -1,44 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>Events</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Jaldi|Roboto+Condensed"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Jaldi|Roboto+Condensed" rel="stylesheet" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css" />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <script src="https://kit.fontawesome.com/531e1de8e8.js" crossorigin="anonymous"></script>
+</head>
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <script
-      src="https://kit.fontawesome.com/531e1de8e8.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
+<body>
     <!-- partial:index.partial.html -->
     <h1 align="center">Events</h1>
     <div class="container">
-      <div class="cards" id="authors">
-        <!-- <div class="card">
+        <div class="cards" id="authors">
+            <!-- <div class="card">
           <input type="checkbox" id="card1" class="more" aria-hidden="true" />
           <div class="content">
             <div class="front" style="background-image: url('80')">
@@ -86,112 +68,114 @@
             </div>
           </div>
         </div> -->
-      </div>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript">
-      function createNode(element) {
+    function createNode(element) {
         return document.createElement(element);
-      }
-      function append(parent, el) {
+    }
+
+    function append(parent, el) {
         return parent.appendChild(el);
-      }
-      const ul = document.getElementById("authors");
-      const url = "https://iic.devclub.in/api/events";
-      var count = 1;
-      fetch(url)
+    }
+    const ul = document.getElementById("authors");
+    const url = "https://iic.devclub.in/api/events";
+    var count = 1;
+    fetch(url)
         .then(resp => resp.json())
         .then(function(data) {
-          let authors = data.data;
-          return authors.map(function(author) {
-            let div_card = createNode("div"),
-              input = createNode("input"),
-              divcontent = createNode("div"),
-              divfront = createNode("div"),
-              divinner1 = createNode("div"),
-              divdate = createNode("div"),
-              divtime = createNode("div"),
-              divvenue = createNode("div"),
-              divorg = createNode("div"),
-              label1 = createNode("label"),
-              label2 = createNode("label"),
-              divback = createNode("div"),
-              divinner2 = createNode("div"),
-              divdesc = createNode("div"),
-              p = createNode("p");
-            h2 = createNode("h2");
+            let authors = data.data;
+            return authors.map(function(author) {
+                let div_card = createNode("div"),
+                    input = createNode("input"),
+                    divcontent = createNode("div"),
+                    divfront = createNode("div"),
+                    divinner1 = createNode("div"),
+                    divdate = createNode("div"),
+                    divtime = createNode("div"),
+                    divvenue = createNode("div"),
+                    divorg = createNode("div"),
+                    label1 = createNode("label"),
+                    label2 = createNode("label"),
+                    divback = createNode("div"),
+                    divinner2 = createNode("div"),
+                    divdesc = createNode("div"),
+                    p = createNode("p");
+                h2 = createNode("h2");
 
-            div_card.classList.add("card");
-            input.classList.add("more");
-            input.id = "card" + count;
-            input.type = "checkbox";
-            divcontent.classList.add("content");
-            divfront.classList.add("front");
-            divfront.style.backgroundImage =
-              "url(" + `${author.metaData.img}` + ")";
-            divinner1.classList.add("inner");
-            h2.innerHTML = `${author.metaData.title}`;
-            divdate.classList.add("e-date");
-            divdate.innerHTML =
-              "<i class='material-icons'>today</i> &nbsp" +
-              `${author.metaData.eventDate}`;
-            divtime.classList.add("e-time");
-            divtime.innerHTML =
-              "<i class='material-icons'>access_time</i> &nbsp" +
-              `${author.metaData.eventDate}`;
+                div_card.classList.add("card");
+                input.classList.add("more");
+                input.id = "card" + count;
+                input.type = "checkbox";
+                divcontent.classList.add("content");
+                divfront.classList.add("front");
+                divfront.style.backgroundImage =
+                    "url(" + `${author.metaData.img}` + ")";
+                divinner1.classList.add("inner");
+                h2.innerHTML = `${author.metaData.title}`;
+                divdate.classList.add("e-date");
+                divdate.innerHTML =
+                    "<i class='material-icons'>today</i> &nbsp" +
+                    `${author.metaData.eventDate}`;
+                divtime.classList.add("e-time");
+                divtime.innerHTML =
+                    "<i class='material-icons'>access_time</i> &nbsp" +
+                    `${author.metaData.eventDate}`;
 
-            divvenue.classList.add("e-venue");
-            divvenue.innerHTML =
-              "<i class='material-icons'>location_on</i> &nbsp" +
-              `${author.metaData.venue}`;
-            divorg.classList.add("e-org");
-            divorg.innerHTML =
-              "<i class='material-icons'>person</i> &nbsp" +
-              `${author.metaData.organiser}`;
-            var att = document.createAttribute("for");
-            //label1.sestAttribute("for", "card" + count);
-            att.value = "card" + count;
-            var att2 = document.createAttribute("for");
-            att2.value = "card" + count;
-            label1.setAttributeNode(att);
-            label2.setAttributeNode(att2);
+                divvenue.classList.add("e-venue");
+                divvenue.innerHTML =
+                    "<i class='material-icons'>location_on</i> &nbsp" +
+                    `${author.metaData.venue}`;
+                divorg.classList.add("e-org");
+                divorg.innerHTML =
+                    "<i class='material-icons'>person</i> &nbsp" +
+                    `${author.metaData.organiser}`;
+                var att = document.createAttribute("for");
+                //label1.sestAttribute("for", "card" + count);
+                att.value = "card" + count;
+                var att2 = document.createAttribute("for");
+                att2.value = "card" + count;
+                label1.setAttributeNode(att);
+                label2.setAttributeNode(att2);
 
-            //
+                //
 
-            label1.classList.add("button");
-            label1.innerHTML = "Details";
-            divback.classList.add("back");
-            divinner2.classList.add("inner");
-            divdesc.classList.add("description");
-            p.innerHTML = `${author.metaData.description}`;
-            //label2.for = "card" + count;
-            //label2.sestAttribute("for", "card" + count);
+                label1.classList.add("button");
+                label1.innerHTML = "Details";
+                divback.classList.add("back");
+                divinner2.classList.add("inner");
+                divdesc.classList.add("description");
+                p.innerHTML = `${author.metaData.description}`;
+                //label2.for = "card" + count;
+                //label2.sestAttribute("for", "card" + count);
 
-            label2.classList.add("button");
-            label2.classList.add("return");
-            label2.innerHTML = "<i class='material-icons'>arrow_back</i>";
-            append(divdesc, p);
-            append(divinner2, divdesc);
-            append(divinner2, label2);
-            append(divback, divinner2);
-            append(divinner1, h2);
-            append(divinner1, divdate);
-            append(divinner1, divtime);
-            append(divinner1, divvenue);
-            append(divinner1, divorg);
-            append(divinner1, label1);
-            append(divfront, divinner1);
-            append(divcontent, divfront);
-            append(divcontent, divback);
-            append(div_card, input);
-            append(div_card, divcontent);
-            append(ul, div_card);
-            count = count + 1;
-          });
+                label2.classList.add("button");
+                label2.classList.add("return");
+                label2.innerHTML = "<i class='material-icons'>arrow_back</i>";
+                append(divdesc, p);
+                append(divinner2, divdesc);
+                append(divinner2, label2);
+                append(divback, divinner2);
+                append(divinner1, h2);
+                append(divinner1, divdate);
+                append(divinner1, divtime);
+                append(divinner1, divvenue);
+                append(divinner1, divorg);
+                append(divinner1, label1);
+                append(divfront, divinner1);
+                append(divcontent, divfront);
+                append(divcontent, divback);
+                append(div_card, input);
+                append(div_card, divcontent);
+                append(ul, div_card);
+                count = count + 1;
+            });
         })
         .catch(function(error) {
-          console.log(error);
+            console.log(error);
         });
     </script>
-  </body>
+</body>
+
 </html>
