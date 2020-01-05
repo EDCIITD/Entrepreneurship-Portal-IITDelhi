@@ -184,8 +184,8 @@
           }
         }
         .load-dot:nth-child(1) {
-          -webkit-animation: dot-rotate-1 4s 4s linear infinite;
-                  animation: dot-rotate-1 4s 4s linear infinite;
+          -webkit-animation: dot-rotate-1 4s 0s linear infinite;
+                  animation: dot-rotate-1 4s 0s linear infinite;
         }
         .load-dot:nth-child(1):before {
           background-color: #FF3270;
@@ -366,17 +366,8 @@
               <div class="load-dot"></div>
               <div class="load-dot"></div>
               <div class="load-dot"></div>
-            </div>
+        </div>
 
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-          <defs>
-            <filter id="goo">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-              <feBlend in="SourceGraphic" in2="goo" />
-            </filter>
-          </defs>
-        </svg>
 
         </div>
     </section>
@@ -869,7 +860,7 @@
         var state = document.readyState
         if (state == 'complete') {
          document.getElementById('interactive');
-         $('#loaderr').fadeOut();
+         //$('#loaderr').fadeOut();
          }
         }    
     </script> 
