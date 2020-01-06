@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="fi/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="fi/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="fi/favicon-16x16.png">
+<link rel="manifest" href="fi/site.webmanifest">
+<link rel="mask-icon" href="fi/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
     <meta charset="UTF-8">
     <title>Entrepreneurship Portal IIT Delhi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
@@ -14,6 +21,8 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'>
     <!-- JQuery -->
+    <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <!-- FLEX -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -21,270 +30,18 @@
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="style-team.css">
     <link rel="stylesheet" href="./style-slide.css">
+    <link rel="stylesheet" type="text/css" href="./slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="loader.css"> 
+    
+
+
+  <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
 
 
 
     <title>S.Inc</title>
 
-    <style>
-        #loaderr { display: block; position: absolute; vertical-align: middle;  height:100vh; width: 100vw; background: black; z-index: 9999; color: #aaa; text-align:  center; font-size: 1.5em;}
-        .lds-circle {
-          display: inline-block;
-          transform: translateZ(1px);
-        }
-        .lds-circle > div {
-          display: inline-block;
-          width: 1.5em;
-          height: 1.5em;
-          margin: 0.2em;
-          border-radius: 50%;
-          background: #aaa;
-          animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-        }
-        @keyframes lds-circle {
-          0%, 100% {
-            animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
-          }
-          0% {
-            transform: rotateY(0deg);
-          }
-          50% {
-            transform: rotateY(1800deg);
-            animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
-          }
-          100% {
-            transform: rotateY(3600deg);
-          }
-        }
-
-        body {
-          background: #ffffff;
-        }
-
-        .load-dots {
-          width: 0;
-          height: 0;
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          margin: auto;
-          -webkit-filter: url(#goo);
-                  filter: url(#goo);
-        }
-
-        .load-dot {
-          width: 0;
-          height: 0;
-          position: absolute;
-          left: 0;
-          top: 0;
-        }
-        .load-dot:before {
-          content: '';
-          width: 35px;
-          height: 35px;
-          border-radius: 50px;
-          background: #FBD301;
-          position: absolute;
-          left: 50%;
-          -webkit-transform: translateY(0) rotate(0deg);
-                  transform: translateY(0) rotate(0deg);
-          margin-left: -17.5px;
-          margin-top: -17.5px;
-        }
-        @-webkit-keyframes dot-move {
-          0% {
-            -webkit-transform: translateY(0);
-                    transform: translateY(0);
-          }
-          18%, 22% {
-            -webkit-transform: translateY(-70px);
-                    transform: translateY(-70px);
-          }
-          40%, 100% {
-            -webkit-transform: translateY(0);
-                    transform: translateY(0);
-          }
-        }
-        @keyframes dot-move {
-          0% {
-            -webkit-transform: translateY(0);
-                    transform: translateY(0);
-          }
-          18%, 22% {
-            -webkit-transform: translateY(-70px);
-                    transform: translateY(-70px);
-          }
-          40%, 100% {
-            -webkit-transform: translateY(0);
-                    transform: translateY(0);
-          }
-        }
-        @-webkit-keyframes dot-colors {
-          0% {
-            background-color: #FBD301;
-          }
-          25% {
-            background-color: #FF3270;
-          }
-          50% {
-            background-color: #208BF1;
-          }
-          75% {
-            background-color: #AFE102;
-          }
-          100% {
-            background-color: #FBD301;
-          }
-        }
-        @keyframes dot-colors {
-          0% {
-            background-color: #FBD301;
-          }
-          25% {
-            background-color: #FF3270;
-          }
-          50% {
-            background-color: #208BF1;
-          }
-          75% {
-            background-color: #AFE102;
-          }
-          100% {
-            background-color: #FBD301;
-          }
-        }
-        .load-dot:nth-child(5):before {
-          z-index: 100;
-          width: 45.5px;
-          height: 45.5px;
-          margin-left: -22.75px;
-          margin-top: -22.75px;
-          -webkit-animation: dot-colors 4s ease infinite;
-                  animation: dot-colors 4s ease infinite;
-        }
-        @-webkit-keyframes dot-rotate-1 {
-          0% {
-            -webkit-transform: rotate(-105deg);
-                    transform: rotate(-105deg);
-          }
-          100% {
-            -webkit-transform: rotate(270deg);
-                    transform: rotate(270deg);
-          }
-        }
-        @keyframes dot-rotate-1 {
-          0% {
-            -webkit-transform: rotate(-105deg);
-                    transform: rotate(-105deg);
-          }
-          100% {
-            -webkit-transform: rotate(270deg);
-                    transform: rotate(270deg);
-          }
-        }
-        .load-dot:nth-child(1) {
-          -webkit-animation: dot-rotate-1 4s 0s linear infinite;
-                  animation: dot-rotate-1 4s 0s linear infinite;
-        }
-        .load-dot:nth-child(1):before {
-          background-color: #FF3270;
-          -webkit-animation: dot-move 4s 0s ease infinite;
-                  animation: dot-move 4s 0s ease infinite;
-        }
-        @-webkit-keyframes dot-rotate-2 {
-          0% {
-            -webkit-transform: rotate(165deg);
-                    transform: rotate(165deg);
-          }
-          100% {
-            -webkit-transform: rotate(540deg);
-                    transform: rotate(540deg);
-          }
-        }
-        @keyframes dot-rotate-2 {
-          0% {
-            -webkit-transform: rotate(165deg);
-                    transform: rotate(165deg);
-          }
-          100% {
-            -webkit-transform: rotate(540deg);
-                    transform: rotate(540deg);
-          }
-        }
-        .load-dot:nth-child(2) {
-          -webkit-animation: dot-rotate-2 4s 1s linear infinite;
-                  animation: dot-rotate-2 4s 1s linear infinite;
-        }
-        .load-dot:nth-child(2):before {
-          background-color: #208BF1;
-          -webkit-animation: dot-move 4s 1s ease infinite;
-                  animation: dot-move 4s 1s ease infinite;
-        }
-        @-webkit-keyframes dot-rotate-3 {
-          0% {
-            -webkit-transform: rotate(435deg);
-                    transform: rotate(435deg);
-          }
-          100% {
-            -webkit-transform: rotate(810deg);
-                    transform: rotate(810deg);
-          }
-        }
-        @keyframes dot-rotate-3 {
-          0% {
-            -webkit-transform: rotate(435deg);
-                    transform: rotate(435deg);
-          }
-          100% {
-            -webkit-transform: rotate(810deg);
-                    transform: rotate(810deg);
-          }
-        }
-        .load-dot:nth-child(3) {
-          -webkit-animation: dot-rotate-3 4s 2s linear infinite;
-                  animation: dot-rotate-3 4s 2s linear infinite;
-        }
-        .load-dot:nth-child(3):before {
-          background-color: #AFE102;
-          -webkit-animation: dot-move 4s 2s ease infinite;
-                  animation: dot-move 4s 2s ease infinite;
-        }
-        @-webkit-keyframes dot-rotate-4 {
-          0% {
-            -webkit-transform: rotate(705deg);
-                    transform: rotate(705deg);
-          }
-          100% {
-            -webkit-transform: rotate(1080deg);
-                    transform: rotate(1080deg);
-          }
-        }
-        @keyframes dot-rotate-4 {
-          0% {
-            -webkit-transform: rotate(705deg);
-                    transform: rotate(705deg);
-          }
-          100% {
-            -webkit-transform: rotate(1080deg);
-                    transform: rotate(1080deg);
-          }
-        }
-        .load-dot:nth-child(4) {
-          -webkit-animation: dot-rotate-4 4s 3s linear infinite;
-                  animation: dot-rotate-4 4s 3s linear infinite;
-        }
-        .load-dot:nth-child(4):before {
-          background-color: #FBD301;
-          -webkit-animation: dot-move 4s 3s ease infinite;
-                  animation: dot-move 4s 3s ease infinite;
-        }
-
-
-
-    </style>
+    
 
          
     <script type="text/javascript">
@@ -320,34 +77,16 @@
 
 
         if (window.location.hash) {
-            var i = $("section.background").index($(window.location.hash));
-                
+            var i = $("section.background").index($(window.location.hash));    
             if (i >= 0)
-                console.log('i is '+i);
                 goTo(i);
         } 
 
 
         $("ul.nav li a.scroll-to").click(function() {
-            // console.log('going to')
-            
             goTo($("ul.nav li a").index(this));
 
         });
-
-
-
-        /*
-        //SLideShow
-        let dot_container=document.createElement("div");
-        dot_container.classList.add("dot-container");
-        for (int i=0;i<document.getElementsByClassName("mySlides").length;i++){
-          let dot_container=document.createElement("span");
-          dot.classList.add("dot");
-          dot_container.appendChild(dot);
-        }
-        $('#showcase .content-wrapper').add(dot_container);
-        */
 
     });
     </script>
@@ -444,6 +183,42 @@
             <div class="content-wrapper">
                 <p class="content-title"><a href="./events/">Events</a></p>
                 <p class="content-subtitle">blocks</p>
+                <section class="horizontal-center-3 slider">
+                  <div>
+                    <a href="#1">
+                    <img src="http://placehold.it/350x100?text=1">
+                  
+                  </a></div>
+                  <div>
+                    <a href="#2">
+                    <img src="http://placehold.it/350x100?text=2">
+                  </a></div>
+                  <div><a href="#3">
+                    <img src="http://placehold.it/350x100?text=3">
+                  </a></div>
+                  <div><a href="#4">
+                    <img src="http://placehold.it/350x100?text=4">
+                  </a></div>
+                  <div>
+                    <img src="http://placehold.it/350x100?text=5">
+                  </div>
+                  <div>
+                    <img src="http://placehold.it/350x100?text=6">
+                  </div>
+                  <div>
+                    <img src="http://placehold.it/350x100?text=7">
+                  </div>
+                  <div>
+                    <img src="http://placehold.it/350x100?text=8">
+                  </div>
+                  <div>
+                    <img src="http://placehold.it/350x100?text=9">
+                  </div>
+                  <div>
+                    <img src="http://placehold.it/350x100?text=10">
+                  </div>
+              </section>
+
             </div>
         </section>
         <section class="background" id="initiative">
@@ -451,6 +226,7 @@
                 <p class="content-title">Initiatives</p>
                 <p class="content-subtitle">Startup Initiatives to be put of here</p>
             </div>
+              
         </section>
        <!-- <section class="background" id="blog">
             <div class="content-wrapper">
@@ -775,7 +551,7 @@
                  <div class="container">
                 <div class="team-member">
                     <figure>
-                        <img src="http://www.mauritiusdsilva.com/themes/hallooou/assets/images/lauren-cox.jpg" alt="">
+                        <img src="./team/lauren-cox.jpg" alt="">
                         <figcaption>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae asperiores mollitia.</p>
                             <ul>
@@ -790,7 +566,7 @@
                 </div>
                 <div class="team-member">
                     <figure>
-                        <img src="http://www.mauritiusdsilva.com/themes/hallooou/assets/images/jessie-barnett.jpg" alt="">
+                        <img src="./team/jessie-barnett.jpg" alt="">
                         <figcaption>
                             <p>Neque minima ea, a praesentium saepe nihil maxime quod esse numquam explicabo eligendi.quod esse numquam explicabo eligendi.</p>
                             <ul>
@@ -805,7 +581,7 @@
                 </div><!-- /.team-member-->
                 <div class="team-member">
                     <figure>
-                        <img src="http://www.mauritiusdsilva.com/themes/hallooou/assets/images/jessie-barnett.jpg" alt="">
+                        <img src="./team/jessie-barnett.jpg" alt="">
                         <figcaption>
                             <p>Neque minima ea, a praesentium saepe nihil maxime quod esse numquam explicabo eligendi.</p>
                             <ul>
@@ -820,7 +596,7 @@
                 </div><!-- /.team-member-->
                 <div class="team-member">
                     <figure>
-                        <img src="http://www.mauritiusdsilva.com/themes/hallooou/assets/images/lauren-cox.jpg" alt="">
+                        <img src="./team/lauren-cox.jpg" alt="">
                         <figcaption>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae asperiores mollitia.</p>
                             <ul>
@@ -835,7 +611,7 @@
                 </div>
                 <div class="team-member">
                     <figure>
-                        <img src="http://www.mauritiusdsilva.com/themes/hallooou/assets/images/lauren-cox.jpg" alt="">
+                        <img src="./team/lauren-cox.jpg" alt="">
                         <figcaption>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae asperiores mollitia.</p>
                             <ul>
@@ -874,7 +650,7 @@
     
     <!-- partial  ABOUT-->
     <script type="text/javascript">
-    fetch("https://iic.devclub.in/api/about")
+      fetch("https://iic.devclub.in/api/about")
         .then(resp => resp.json())
         .then(function(data) {
             $("#about .content-wrapper .content-subtitle").text(data.data.about);
@@ -887,9 +663,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
     <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+      <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>
     <script src="./script.js"></script>
 
 </body>
+<script type="text/javascript">
+                $(document).on('ready', function() {
+                $(".horizontal-center-3").slick({
+                dots: true,
+                horizontal: true,
+                centerMode: true,
+                slidesToShow: 3,
+                slidesToScroll: 3
+                });
+                });
+            </script>
 
     <script>
         // Wait for window load

@@ -9,21 +9,24 @@ var totalSlideNumber = $(".background").length;
 
 function goTo(slide){
   var iter=slide-currentSlideNumber;
-$("ul.nav li:nth-child("+currentSlideNumber+1+") > a").removeClass("yellow");
+  var xy=currentSlideNumber+1;
+$("ul.nav li:nth-child("+xy+") > a").removeClass("yellow");
   
   if (iter>0){
     for (var i = 0; i < iter; i++) {
         currentSlideNumber++;
         nextItem();
     }
-    $("ul.nav li:nth-child("+currentSlideNumber+1+") > a").addClass("yellow");
+    xy=currentSlideNumber+1;
+    $("ul.nav li:nth-child("+xy+") > a").addClass("yellow");
   }
   else if(iter <0){
     for (var i = 0; i < -iter; i++) {
         currentSlideNumber--;
         previousItem();
     }
-    $("ul.nav li:nth-child("+currentSlideNumber+1+") > a").addClass("yellow");
+    xy=currentSlideNumber+1;
+    $("ul.nav li:nth-child("+xy+") > a").addClass("yellow");
 
   }
   
@@ -125,7 +128,7 @@ function nextItem() {
   $('title').text($('section.background .content-wrapper .content-title:eq('+currentSlideNumber+')').text()+' | Entrepreneurship IITD');
   var xx=currentSlideNumber+1;
   $("ul.nav li:nth-child("+xx+") > a").addClass("yellow");
-  xx=xx-1
+  xx-=1
   $("ul.nav li:nth-child("+xx+") > a").removeClass("yellow");
 
 }
@@ -137,7 +140,7 @@ function previousItem() {
   $('title').text($('section.background .content-wrapper .content-title:eq('+currentSlideNumber+')').text()+' | Entrepreneurship IITD');
   var xx=currentSlideNumber+1;
   $("ul.nav li:nth-child("+xx+") > a").addClass("yellow");
-  xx=xx+1
+  xx+=1
   $("ul.nav li:nth-child("+xx+") > a").removeClass("yellow");
 
 }

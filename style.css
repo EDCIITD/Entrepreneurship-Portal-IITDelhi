@@ -119,6 +119,9 @@ body {
   font-size: 2.5em;
   line-height: 1.4;
 }
+.content-title a{
+  color: white;
+}
 
 .background.up-scroll {
   -webkit-transform: translate3d(0, -15vh, 0);
