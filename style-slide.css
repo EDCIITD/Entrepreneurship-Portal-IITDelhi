@@ -240,16 +240,19 @@ body {
 
 .breadcrumb__title {
   font-weight: bold;
+    transition-duration: 0s !important;
+  -webkit-transition-duration:0s !important;
 }
 
 .breadcrumb a.active, .breadcrumb a:hover {
-  background: #996300;
-  color: white;
+  background: #4c256f;
+  color: #ffd600;
 }
 
 .breadcrumb a.active:after, .breadcrumb a:hover:after {
-  background: #996300;
+  background: #4c256f;
   color: white;
+
 }
 
 @media all and (max-width: 1000px) {
