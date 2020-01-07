@@ -117,6 +117,8 @@ h6 {
   -moz-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
+    max-height: 120px;
+
 }
 
 .team-member figure:hover img {
