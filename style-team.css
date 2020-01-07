@@ -118,6 +118,7 @@ h6 {
   -o-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
     max-height: 120px;
+    border-radius: 2px;
 
 }
 
