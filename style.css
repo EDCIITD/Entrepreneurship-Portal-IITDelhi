@@ -62,7 +62,11 @@ body {
   background-image: url(./img/team.jpg);
 }
 .background:nth-child(8) {
-  background-image: url(./img/img2.jpg);
+  background-image: url(./img/white.jpg);
+  background-color: white !important;
+}
+.background:nth-child(8):before {
+  background-color: white !important;
 }
 .background:nth-child(9) {
   background-image: url(./img/contact_us.jpg);
@@ -119,7 +123,7 @@ body {
   font-size: 2.5em;
   line-height: 1.4;
 }
-.content-title a{
+.content-title a {
   color: white;
 }
 
@@ -205,7 +209,6 @@ header .profile:hover .header-title {
   cursor: pointer;
 }
 
-
 ul.nav {
   position: absolute;
   right: 1%;
@@ -220,7 +223,7 @@ ul.nav > li {
   float: left;
   cursor: pointer;
 }
-.yellow{
+.yellow {
   color: #ffe000 !important;
 }
 ul.nav li a {
@@ -237,7 +240,6 @@ ul.nav li a {
 ul.nav li a:hover {
   color: #ffe000;
 }
-
 
 ul.nav li a.selected {
   color: #dadada;
