@@ -63,6 +63,10 @@
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
+	                 	//$('.popup div').html("");
+	                 	//$('.popup div').append("<table border='1'></table>");
+	                 	//$('.popup div table').append("<tr><td>title</td><td><input type='text' ")
+	                 	alert("Full feature coming soon! see console for now...");
 	                     console.info(data);
 	                 }
 	             });
@@ -84,13 +88,13 @@
 
 
 	                 	let authors = data.data;
-	                 	var ret = authors.map(function(author) {
+	                 	return authors.map(function(author) {
 	                 		$(".res>table").append("<tr><td>"+`${author.metaData.title}`+"</td><td>"+`${author.metaData.eventDate}`+"</td><td>"+`${author.metaData.eventTime}`+"</td><td>"+`${author.metaData.venue}`+"</td><td>"+`${author.metaData.organiser}`+"</td><td><a onclick=\"$.Edit('events','"+`${author._id}`+"')\" >edit</td></tr>");
 	                 	    
 	                 	   
 						$('.res').fadeIn();
 
-	                     console.info(data);
+	                     //console.info(data);
 	                 });
 	                 }
 	             });
@@ -157,6 +161,45 @@
 	    });
 
 
+
+
+
+	    $("#menu-users").click(function(){
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/users',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        "Authorization": token  //for object property name, use quoted notation shown
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+
+	                 	$(".res").html("<table border='1'></table>");
+
+
+	                 	let authors = data.data;
+	                 	return authors.map(function(author) {
+	                 		$(".res>table").append("<tr><td>"+`${author.username}`+"</td><td>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.access}`+"</td><td>"+`${author.organisation}`+"</td><td>manage</td></tr>");
+	                 	    
+	                 	   
+						 $('.res').fadeIn();
+
+						 $('.popup div').html("<form><input type='text' id='newuser-username' placeholder='username'><input type='text' id='newuser-name' placeholder='name'><input type='password' id='newuser-pass' placeholder='password'><input type='submit' id='newuser-submit'</form>");
+
+						 $('.popup').fadeIn();
+						 
+	                     console.info(data);
+	                 });
+	                 }
+	             });
+	    });
+
+	    $("#newuser-submit").click(function(){
+
+	    	alert("It");
+	    });
+
       });
     </script>
 </head>
@@ -176,10 +219,13 @@
 		<input type='submit' value='RESOURCES' id='menu-resources'>
 		<input type='submit' value='SHOWCASE' id='menu-showcase'>
 		<input type='submit' value='TEAM' id='menu-team'>
+		|
+		<input type='submit' value='Users' id='menu-users'>
+
 		<hr>		
 	</div>
 	<div class="res"></div>
-	<div class="popup"><hr><div></div></div>
+	<div class="popup"><span>Partial</span><hr><div></div></div>
 
 
 
