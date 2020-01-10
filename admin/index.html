@@ -5,9 +5,13 @@
 
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script>
+
       $(document).ready(function(){
       	$('form').submit(false);
-      	$('#events').css('display', 'none');
+      	$('#menu').css('display', 'none');
+      	$('.res').css('display', 'none');
+      	$('.popup').css('display', 'none');
+
         var user,pass,token;
         $("#login-submit").click(function(){
           user=$("#login-username").val();
@@ -16,9 +20,8 @@
           $.post("https://iic.devclub.in/login",{username: user,password: pass}, function(data){
             if(data.status){
             	token=data.data.token;
-            	$('#res').css('color','black');
-            	$('#res').text("Successful! See Console for results");
-            	$('#events').fadeIn();
+            	//$('#res').css('color','black');
+            	//$('#res').text("Successful! See Console for results");
             	$.ajax({
             	    url: 'https://iic.devclub.in/api/admin',
             	    type: 'get',
@@ -31,6 +34,13 @@
             	        console.info(data);
             	    }
             	});
+            	$('#login').fadeOut(function(){
+            		$('title').text("Welcome "+user);
+            		$('#menu').slideDown();
+            	});
+
+
+
             }
             else
               {
@@ -41,10 +51,99 @@
           });
         });
 
-        $("#events").click(function(){
+        $.Edit = function(what,id){ 
 
+        	if (what=="events"){
+        		$.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/events/'+id,
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        "Authorization": token  
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                     console.info(data);
+	                 }
+	             });
+        	}
+           }
+
+
+        $("#menu-events").click(function(){
 	        $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/events',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        "Authorization": token  //for object property name, use quoted notation shown
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                 	$(".res").html("<table border='1'></table>");
+
+
+	                 	let authors = data.data;
+	                 	var ret = authors.map(function(author) {
+	                 		$(".res>table").append("<tr><td>"+`${author.metaData.title}`+"</td><td>"+`${author.metaData.eventDate}`+"</td><td>"+`${author.metaData.eventTime}`+"</td><td>"+`${author.metaData.venue}`+"</td><td>"+`${author.metaData.organiser}`+"</td><td><a onclick=\"$.Edit('events','"+`${author._id}`+"')\" >edit</td></tr>");
+	                 	    
+	                 	   
+						$('.res').fadeIn();
+
+	                     console.info(data);
+	                 });
+	                 }
+	             });
+	    });
+
+	    $("#menu-blogs").click(function(){
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/blog',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        "Authorization": token  //for object property name, use quoted notation shown
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                     console.info(data);
+	                 }
+	             });
+	    });
+
+	    $("#menu-resources").click(function(){
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/resources',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        "Authorization": token  //for object property name, use quoted notation shown
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                     console.info(data);
+	                 }
+	             });
+	    });
+
+	    $("#menu-showcase").click(function(){
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/showcase',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        "Authorization": token  //for object property name, use quoted notation shown
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                     console.info(data);
+	                 }
+	             });
+	    });
+
+	    $("#menu-team").click(function(){
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/team',
 	                 type: 'get',
             	    
             	    headers: {
@@ -62,7 +161,7 @@
     </script>
 </head>
 <body>
-	<form>
+	<form id="login">
 		<input type="text" name="username" id="login-username">
 		<input type="password" name="password" id="login-password">
 		<input type="submit" value="GO" id="login-submit">
@@ -70,6 +169,19 @@
 		<hr>
 
 	</form>
-	<input type="submit" value="EVENTS" id="events">
+
+	<div class="menu" id="menu">
+		<input type='submit' value='EVENTS' id='menu-events'>
+		<input type='submit' value='BLOGS' id='menu-blogs'>
+		<input type='submit' value='RESOURCES' id='menu-resources'>
+		<input type='submit' value='SHOWCASE' id='menu-showcase'>
+		<input type='submit' value='TEAM' id='menu-team'>
+		<hr>		
+	</div>
+	<div class="res"></div>
+	<div class="popup"><hr><div></div></div>
+
+
+
 </body>
 </html>
