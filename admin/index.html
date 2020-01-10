@@ -7,19 +7,57 @@
     <script>
       $(document).ready(function(){
       	$('form').submit(false);
-        var user,pass;
+      	$('#events').css('display', 'none');
+        var user,pass,token;
         $("#login-submit").click(function(){
           user=$("#login-username").val();
           pass=$("#login-password").val();
           //$('#res').text(user+" " +pass);
           $.post("https://iic.devclub.in/login",{username: user,password: pass}, function(data){
-            if(data.data=='')
+            if(data.status){
+            	token=data.data.token;
+            	$('#res').css('color','black');
+            	$('#res').text("Successful! See Console for results");
+            	$('#events').fadeIn();
+            	$.ajax({
+            	    url: 'https://iic.devclub.in/api/admin',
+            	    type: 'get',
+            	    
+            	    headers: {
+            	        "Authorization": token  //for object property name, use quoted notation shown
+            	    },
+            	    dataType: 'json',
+            	    success: function (data) {
+            	        console.info(data);
+            	    }
+            	});
+            }
+            else
               {
                 //alert("Failed");
+                $('#res').css('color','red');
                 $('#res').text(data.message);
-              }
+              }        
           });
         });
+
+        $("#events").click(function(){
+
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/events',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        "Authorization": token  //for object property name, use quoted notation shown
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                     console.info(data);
+	                 }
+	             });
+	    });
+
+
       });
     </script>
 </head>
@@ -29,6 +67,9 @@
 		<input type="password" name="password" id="login-password">
 		<input type="submit" value="GO" id="login-submit">
 		<div id="res"></div>
+		<hr>
+
 	</form>
+	<input type="submit" value="EVENTS" id="events">
 </body>
 </html>
