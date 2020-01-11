@@ -172,7 +172,7 @@
 	                 type: 'get',
             	    
             	    headers: {
-            	        "Authorization": token  //for object property name, use quoted notation shown
+            	        "Authorization": token 
             	    },
             	    users: {
             	        "access": token  //for object property name, use quoted notation shown
@@ -185,47 +185,107 @@
 
 	                 	let authors = data.data;
 	                 	authors.map(function(author) {
-	                 		$(".res>table").append("<tr><td>"+`${author.username}`+"</td><td>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.access}`+"</td><td>"+`${author.organisation}`+"</td><td>manage</td></tr>");});
+	                 		$(".res>table").append("<tr><td>"+`${author.username}`+"</td><td>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.access}`+"</td><td>"+`${author.organisation}`+"</td><td><button class='user-edit'>Edit</button></td><td>"+`${author._id}`+"</td></tr>");});
 	                 	    
 	                 	   
 						 $('.res').fadeIn();
 
 
-						 $('.popup div').html("<form id='newuser'><input type='text' id='newuser-username' placeholder='username'><input type='text' id='newuser-name' placeholder='name'><input type='password' id='newuser-pass' placeholder='password'><input type='submit' id='newuser-submit'></form>");
+						 $('.popup div').html("<form><input type='text' id='newuser-username' placeholder='username' required='true'><input type='text' id='newuser-name' placeholder='name' required='true'><input type='password' id='newuser-password' placeholder='password' required='true'><select id='newuser-access' retruequired=''><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select><input type='text' id='newuser-position' placeholder='position' required='true'><input type='text' id='newuser-organisation' required='true'> <input type='submit' id='newuser-submit'><input type='submit' value=''></form>");
 						 $('.popup div form').submit(false);
 
 						 $('.popup').fadeIn();
-						 $('.popup div').append("<div>"+token+"</div>");
+						 //$('.popup div').append("<div>"+token+"</div>");
 	                     console.info(data);
-	                
+	               
 	                 }
+	                 
 	             });
+	        //handle failure & empty values(before ajax call) properly
+	    });
+
+
+	    $(".popup div").on("click",".user-edit",function(){
+	    	$('.popup').fadeOut();
+	    	var user_edit_id=$(".user-edit+input ").val();
+
+	    	 $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/users/'+user_edit_id,
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        "Authorization": token 
+            	    },
+            	    users: {
+            	        "access": token  //for object property name, use quoted notation shown
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+
+	                 	alert('Hi');
+	                 	/*$(".res").html("<table border='1'></table>");
+
+
+	                 	let authors = data.data;
+	                 	authors.map(function(author) {
+	                 	    	$('.popup div').html("<form><input type='text' id='newuser-username' placeholder='username' required='true'><input type='text' id='newuser-name' placeholder='name' required='true'><input type='password' id='newuser-password' placeholder='password' required='true'><select id='newuser-access' retruequired=''><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select><input type='text' id='newuser-position' placeholder='position' required='true'><input type='text' id='newuser-organisation' required='true'> <input type='submit' id='newuser-submit'><input type='submit' value=''></form>");
+	                 	    	$('.popup div form').submit(false);
+
+	                 	    	$('.popup').fadeIn();
+
+
+	                 	    	$('#newuser-username').val(`${author.username}`);
+	                             
+
+	                 	    	var username_newuser= $('#newuser-username').val(),
+	                             	    	password_newuser= $('#newuser-password').val(),
+	                             	    	name_newuser= $('#newuser-name').val(),
+	                             	    	position_newuser= $('#newuser-position').val() ,
+	                             	    	organisation_newuser= $('#newuser-organisation').val(),
+	                             	    	access_newuser= $('#newuser-access').val() ;						 //$('.popup div').append("<div>"+token+"</div>");
+	                     console.info(data);
+	               
+	                 })
+	                 	*/
+
+	                 
+	           
+	             }
+	    	});
+
+
+	    	
+	    	
 	    });
 
 	    $(".popup div").on("click","#newuser-submit",function(){
 
+	    	var username_newuser= $('#newuser-username').val(),
+            	    	password_newuser= $('#newuser-password').val(),
+            	    	name_newuser= $('#newuser-name').val(),
+            	    	position_newuser= $('#newuser-position').val() ,
+            	    	organisation_newuser= $('#newuser-organisation').val(),
+            	    	access_newuser= $('#newuser-access').val() ;
 	    	$.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/users',
 	                 type: 'post',
             	    
             	    headers: {
-            	        "Authorization": token  //for object property name, use quoted notation shown
+            	        "Authorization": token
             	    },
-
-
-
             	    data: {
-            	    	username: "username",
-            	    	password: "password",
-            	    	name: "name",
-            	    	position: "Pos1",
-            	    	organisation: "org",
-            	    	access: "user"       	    	
+            	    	username: username_newuser,
+            	    	password: password_newuser,
+            	    	name: name_newuser,
+            	    	position: position_newuser,
+            	    	organisation: organisation_newuser,
+            	    	access: access_newuser       	    	
             	    },
             	    dataType: 'json',
 	                success: function (data) {
 	                     console.log(data);
-	                 }
+	                 },
+	                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 	             });
 	    });
 
