@@ -27,7 +27,7 @@
             	    type: 'get',
             	    
             	    headers: {
-            	        "Authorization": token  //for object property name, use quoted notation shown
+            	        Authorization: token  //for object property name, use quoted notation shown
             	    },
             	    dataType: 'json',
             	    success: function (data) {
@@ -59,7 +59,7 @@
 	                 type: 'get',
             	    
             	    headers: {
-            	        "Authorization": token  
+            	        Authorization: token  
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
@@ -75,12 +75,13 @@
 
 
         $("#menu-events").click(function(){
+	        $('.popup').fadeOut();
 	        $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/events',
 	                 type: 'get',
             	    
             	    headers: {
-            	        "Authorization": token  //for object property name, use quoted notation shown
+            	        Authorization: token  //for object property name, use quoted notation shown
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
@@ -102,12 +103,13 @@
 	    });
 
 	    $("#menu-blogs").click(function(){
+	        $('.popup').fadeOut();
 	        $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/blog',
 	                 type: 'get',
             	    
             	    headers: {
-            	        "Authorization": token  //for object property name, use quoted notation shown
+            	        Authorization: token  //for object property name, use quoted notation shown
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
@@ -117,12 +119,13 @@
 	    });
 
 	    $("#menu-resources").click(function(){
+	        $('.popup').fadeOut();
 	        $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/resources',
 	                 type: 'get',
             	    
             	    headers: {
-            	        "Authorization": token  //for object property name, use quoted notation shown
+            	        Authorization: token  //for object property name, use quoted notation shown
             	    },
 
             	    dataType: 'json',
@@ -133,12 +136,13 @@
 	    });
 
 	    $("#menu-showcase").click(function(){
+	        $('.popup').fadeOut();
 	        $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/showcase',
 	                 type: 'get',
             	    
             	    headers: {
-            	        "Authorization": token  //for object property name, use quoted notation shown
+            	        Authorization: token  //for object property name, use quoted notation shown
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
@@ -148,12 +152,13 @@
 	    });
 
 	    $("#menu-team").click(function(){
+	    	$('.popup').fadeOut();
 	        $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/team',
 	                 type: 'get',
             	    
             	    headers: {
-            	        "Authorization": token  //for object property name, use quoted notation shown
+            	        Authorization: token  //for object property name, use quoted notation shown
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
@@ -172,7 +177,7 @@
 	                 type: 'get',
             	    
             	    headers: {
-            	        "Authorization": token 
+            	        Authorization: token 
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
@@ -212,7 +217,7 @@
 	                 type: 'get',
             	    
             	    headers: {
-            	        "Authorization": token 
+            	        Authorization: token 
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
@@ -271,7 +276,7 @@
 	                 type: 'post',
             	    
             	    headers: {
-            	        "Authorization": token
+            	        Authorization: token
             	    },
             	    data: {
             	    	username: username_user,
@@ -302,7 +307,7 @@
 	                 type: 'delete',
             	    
             	    headers: {
-            	        "Authorization": token
+            	        Authorization: token
             	    },
             	    data: {
             	    	username: username_user,
@@ -330,7 +335,7 @@
 	                 type: 'post',
             	    
             	    headers: {
-            	        "Authorization": token
+            	        Authorization: token
             	    },
             	    data: {
             	    	password: password_user,
@@ -357,7 +362,7 @@
 	                 type: 'post',
             	    
             	    headers: {
-            	        "Authorization": token
+            	        Authorization: token
             	    },
             	    data: {
             	    	username: username_newuser,
@@ -401,7 +406,7 @@
 		<hr>		
 	</div>
 	<div class="res"></div>
-	<div class="popup"><span>Partial</span><hr><div></div></div>
+	<div class="popup"><span>Popup</span><hr><div></div></div>
 
 
 
