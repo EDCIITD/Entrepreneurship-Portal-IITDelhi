@@ -221,7 +221,7 @@
 
 
 	                 	let authors = data.data;
-	                 	    	$('.popup div').html("<form><input type='text' id='user-id' placeholder='id' required='true' readonly='true'><input type='text' id='user-username' placeholder='username' required='true'><input type='text' id='user-name' placeholder='name' required='true'><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select><input type='text' id='user-position' placeholder='position' required='true'><input type='text' id='user-organisation' required='true'> <input type='submit' value='Update' id='user-update'><input type='button' value='DELETE' id='user-delete'></form>");
+	                 	    	$('.popup div').html("<input type='text' id='user-id' placeholder='id' required='true' readonly='true'><form><input type='text' id='user-username' placeholder='username' required='true'><input type='text' id='user-name' placeholder='name' required='true'><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select><input type='text' id='user-position' placeholder='position' required='true'><input type='text' id='user-organisation' required='true'> <input type='submit' value='Update' id='user-update'></form><br><form><label><input type='checkbox' required='true'>Confirm</label><input type='button' value='DELETE' id='user-delete'></form><br><form><input type='password' id='user-password' required='true' placeholder='New Password'><input type='submit' value='Reset Password' id='user-reset-password'></form>");
 	                 	    	$('.popup div form').submit(false);
 
 	                 	    	
@@ -312,6 +312,30 @@
             	    dataType: 'json',
 	                success: function (data) {
 	                	alert("Updated!");
+	                	$('#menu-users').trigger('click');
+	                     console.log(data);
+	                 }
+	             });
+	    });
+
+
+	    $(".popup div").on("click","#user-reset-password",function(){
+
+	    	var password_user= $('#user-password').val(),
+            	    	id_user= $('#user-id').val();
+	    	$.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/users/'+id_user+'/password',
+	                 type: 'post',
+            	    
+            	    headers: {
+            	        "Authorization": token
+            	    },
+            	    data: {
+            	    	password: password_user,
+            	    },
+            	    dataType: 'json',
+	                success: function (data) {
+	                	alert("Reset success!"); 
 	                	$('#menu-users').trigger('click');
 	                     console.log(data);
 	                 }
