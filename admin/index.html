@@ -221,6 +221,8 @@
 
 
 	                 	let authors = data.data;
+
+	                 		$('.popup').fadeOut();
 	                 	    	$('.popup div').html("<input type='text' id='user-id' placeholder='id' required='true' readonly='true'><form><input type='text' id='user-username' placeholder='username' required='true'><input type='text' id='user-name' placeholder='name' required='true'><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select><input type='text' id='user-position' placeholder='position' required='true'><input type='text' id='user-organisation' required='true'> <input type='submit' value='Update' id='user-update'></form><br><form><label><input type='checkbox' required='true'>Confirm</label><input type='button' value='DELETE' id='user-delete'></form><br><form><input type='password' id='user-password' required='true' placeholder='New Password'><input type='submit' value='Reset Password' id='user-reset-password'></form>");
 	                 	    	$('.popup div form').submit(false);
 
