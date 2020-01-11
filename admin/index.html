@@ -88,14 +88,15 @@
 
 
 	                 	let authors = data.data;
-	                 	return authors.map(function(author) {
-	                 		$(".res>table").append("<tr><td>"+`${author.metaData.title}`+"</td><td>"+`${author.metaData.eventDate}`+"</td><td>"+`${author.metaData.eventTime}`+"</td><td>"+`${author.metaData.venue}`+"</td><td>"+`${author.metaData.organiser}`+"</td><td><a onclick=\"$.Edit('events','"+`${author._id}`+"')\" >edit</td></tr>");
+	                 	 authors.map(function(author) {
+	                 		$(".res>table").append("<tr><td>"+`${author.metaData.title}`+"</td><td>"+`${author.metaData.eventDate}`+"</td><td>"+`${author.metaData.eventTime}`+"</td><td>"+`${author.metaData.venue}`+"</td><td>"+`${author.metaData.organiser}`+"</td><td><a onclick=\"$.Edit('events','"+`${author._id}`+"')\" >edit</td></tr>");});
+
 	                 	    
 	                 	   
 						$('.res').fadeIn();
 
 	                     //console.info(data);
-	                 });
+	                
 	                 }
 	             });
 	    });
@@ -123,6 +124,7 @@
             	    headers: {
             	        "Authorization": token  //for object property name, use quoted notation shown
             	    },
+
             	    dataType: 'json',
 	                 success: function (data) {
 	                     console.info(data);
@@ -172,6 +174,9 @@
             	    headers: {
             	        "Authorization": token  //for object property name, use quoted notation shown
             	    },
+            	    users: {
+            	        "access": token  //for object property name, use quoted notation shown
+            	    },
             	    dataType: 'json',
 	                 success: function (data) {
 
@@ -179,25 +184,49 @@
 
 
 	                 	let authors = data.data;
-	                 	return authors.map(function(author) {
-	                 		$(".res>table").append("<tr><td>"+`${author.username}`+"</td><td>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.access}`+"</td><td>"+`${author.organisation}`+"</td><td>manage</td></tr>");
+	                 	authors.map(function(author) {
+	                 		$(".res>table").append("<tr><td>"+`${author.username}`+"</td><td>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.access}`+"</td><td>"+`${author.organisation}`+"</td><td>manage</td></tr>");});
 	                 	    
 	                 	   
 						 $('.res').fadeIn();
 
-						 $('.popup div').html("<form><input type='text' id='newuser-username' placeholder='username'><input type='text' id='newuser-name' placeholder='name'><input type='password' id='newuser-pass' placeholder='password'><input type='submit' id='newuser-submit'</form>");
+
+						 $('.popup div').html("<form id='newuser'><input type='text' id='newuser-username' placeholder='username'><input type='text' id='newuser-name' placeholder='name'><input type='password' id='newuser-pass' placeholder='password'><input type='submit' id='newuser-submit'></form>");
+						 $('.popup div form').submit(false);
 
 						 $('.popup').fadeIn();
-						 
+						 $('.popup div').append("<div>"+token+"</div>");
 	                     console.info(data);
-	                 });
+	                
 	                 }
 	             });
 	    });
 
-	    $("#newuser-submit").click(function(){
+	    $(".popup div").on("click","#newuser-submit",function(){
 
-	    	alert("It");
+	    	$.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/users',
+	                 type: 'post',
+            	    
+            	    headers: {
+            	        "Authorization": token  //for object property name, use quoted notation shown
+            	    },
+
+
+
+            	    data: {
+            	    	username: "username",
+            	    	password: "password",
+            	    	name: "name",
+            	    	position: "Pos1",
+            	    	organisation: "org",
+            	    	access: "user"       	    	
+            	    },
+            	    dataType: 'json',
+	                success: function (data) {
+	                     console.log(data);
+	                 }
+	             });
 	    });
 
       });
