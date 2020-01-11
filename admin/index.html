@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Login</title>
 
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
@@ -196,7 +197,8 @@
 						 $('.popup div').html("<form><input type='text' id='newuser-username' placeholder='username' required='true'><input type='text' id='newuser-name' placeholder='name' required='true'><input type='password' id='newuser-password' placeholder='password' required='true'><select id='newuser-access' retruequired=''><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select><input type='text' id='newuser-position' placeholder='position' required='true'><input type='text' id='newuser-organisation' required='true' placeholder='organisation'> <input type='submit' id='newuser-submit'></form>");
 						 $('.popup div form').submit(false);
 
-						 $('.popup').fadeIn();
+						 // $('.popup').fadeIn();
+
 						 //$('.popup div').append("<div>"+token+"</div>");
 	                     console.info(data);
 	               
@@ -290,6 +292,7 @@
 	                	alert("Updated!");
 	                	$('#menu-users').trigger('click');
 	                     console.log(data);
+	                    $('.popup').fadeOut();
 	                 }
 	             });
 	    });
@@ -324,7 +327,7 @@
 	                 }
 	             });
 	    });
-
+	    $('.popup').fadeOut();
 
 	    $(".popup div").on("click","#user-reset-password",function(){
 
@@ -386,8 +389,8 @@
 </head>
 <body>
 	<form id="login">
-		<input type="text" name="username" id="login-username">
-		<input type="password" name="password" id="login-password">
+		<input type="text" name="username" id="login-username" placeholder="username" class="login">
+		<input type="password" name="password" id="login-password" placeholder="password" class="login">
 		<input type="submit" value="GO" id="login-submit">
 		<div id="res"></div>
 		<hr>
@@ -406,9 +409,10 @@
 		<hr>		
 	</div>
 	<div class="res"></div>
-	<div class="popup"><span>Popup</span><hr><div></div></div>
+	<div class="popup"><span>EDIT</span><hr><div></div></div>
 
 
 
 </body>
+
 </html>

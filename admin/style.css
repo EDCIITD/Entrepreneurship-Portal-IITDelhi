@@ -1,0 +1,105 @@
+body {
+    font: Helvetica Arial sans-serif;
+    letter-spacing: 0.01em;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    align-items: center;
+    background-color: #222222;
+    color: white;
+}
+
+table {
+    border: none;
+}
+
+table tr {
+    border-bottom: 1px solid #cbcbcb;
+}
+
+table td {
+    padding: 0.5em .5em;
+    border-width: 0 0 1px 0;
+    border-bottom: 1px solid #cbcbcb;
+    border-left: 1px solid #cbcbcb;
+    display: table-cell;
+
+
+}
+
+table th {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: -internal-center;
+    color: black;
+    padding: 0.5em 1em;
+
+}
+}
+input [type='text']{
+	padding: 2px;
+	margin-left: 2px;
+}
+input [type='button'] {
+    border: 0px;
+
+}
+
+ #login-submit {
+    overflow: visible;
+    vertical-align: middle;
+    border-radius: 4px;
+    padding: 5px 16px;
+    font-size: 1em;
+}
+}
+
+button {
+    background: rgb(223, 117, 20);
+    color: white;
+    border-radius: 4px;
+    padding: .5em 1em;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: center;
+    -webkit-user-drag: none;
+}
+
+.login {
+    border: 0;
+    border-bottom: 2px solid $gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: white;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+
+    &::placeholder {
+        color: transparent;
+    }
+
+    &:placeholder-shown~.form__label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 20px;
+    }
+}
+
+.login:focus {
+    color: white;
+
+}
+.popup{
+	display: none;
+	position: absolute;
+	margin-top: 50%;
+	width: 80%;
+    background: rgba(255,255,255,0.9);
+    padding: 10px;
+    border-radius: 5px;
+
+}
