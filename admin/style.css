@@ -8,9 +8,6 @@ body {
     display: flex;
     flex-direction: column;
     /*justify-content: center;*/
-    align-items: center;
-    background-color: #222222;
-    color: white;
 
 }
 
@@ -19,6 +16,83 @@ body {
     font-size: 2em;
     text-transform: uppercase;;
 }
+
+a.btn{
+    display: inline-block;
+    padding: 6px 6px;
+    background-color: #000;
+    border: 1px solid #000;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.75em;
+}
+
+a.btn:hover{
+    background-color: #f1f1f1;
+    color:#000; 
+}
+
+.refresh{
+    display: block;
+    position: fixed; right: 1ch; z-index: 1;
+
+}
+
+.add{
+    margin: 8px auto;
+}
+
+
+
+table{
+    overflow-y: scroll;
+    min-width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #000;
+    cursor: default;
+}
+
+tr{
+    vertical-align: middle;
+}
+
+td,th{
+    padding: 3px;
+    white-space: nowrap;
+}
+
+thead>tr th{
+    background-color: #000;
+    color: #fff;
+    vertical-align: middle;
+    text-align: left;
+
+}
+
+tbody{
+    overflow-y: scroll;
+}
+
+
+
+tr{
+    border-bottom: 1px solid #000;
+}
+
+td.sticky{
+    background-color: #fff;
+}
+
+
+tr:hover,tr:hover td.sticky{
+    background-color: #dadada;
+}
+
+
+
+/*
 
 table {
     border: none;
@@ -47,15 +121,8 @@ table th {
     padding: 0.5em 1em;
 
 }
-}
-input [type='text']{
-	padding: 2px;
-	margin-left: 2px;
-}
-input [type='button'] {
-    border: 0px;
+*/
 
-}
 
  #login-submit {
     overflow: visible;
@@ -98,6 +165,49 @@ button {
         top: 20px;
     }
 }
+
+
+
+
+
+
+
+
+div.tab{
+    display: block;
+    background-color: #dadada;
+    font-family: "Open Sans Condensed";
+    position: sticky;
+    position: -webkit-sticky;
+    z-index: 2008;
+    top: 8px;
+
+}
+
+div.tab>div.tab-item{
+    float: left;
+    padding: 9px 15px;
+    cursor:  pointer;
+    user-select:  none;
+
+}
+
+div.tab>div.tab-item:hover,div.tab>.selected{
+    background-color: #fff;
+}
+
+div.tab>div.tab-item a{
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+
+div.tab::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
 
 
 /*New Popup*/
@@ -163,47 +273,9 @@ form .box>:not(.h){
     display: inline-flex;
     vertical-align: top;
     text-shadow: 0 3px 2px rgba(0,0,0,0.2);
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
-input {
-    border-radius: 0;
-    width: 75%; 
-    margin-top: 3px;
-    padding: 8px 6px 9px;
-    outline: none;
-    font-size: 0.95em;
-    background-color: #F1F1F1;
-}
-
-input:hover{
-    outline: 1px solid #000;
-}
-
-input:focus {
-    outline: 1px solid #000;
-    background-color: #000;
-    color: #fff
-}
-
-
-input[type=submit].login-btn {
-    -moz-appearance: none; 
-    -webkit-appearance: none; 
-    appearance: none;
-    min-width: 40%;
-    padding: 12px 12px;
-    background-color: DodgerBlue;
-    border: 1px solid DodgerBlue;
-    color: #fff;
-    cursor: pointer;
-    text-transform: uppercase;
-}
-
-input[type=submit]:hover.login-btn{
-    background-color: #fff;
-    color: #000;
-}
 
 
 .popup{
@@ -277,4 +349,63 @@ input[type=submit]:hover.login-btn{
 @keyframes animatezoom {
   from {transform: scale(0)} 
   to {transform: scale(1)}
+}
+
+
+
+
+
+
+input, textarea, select {
+    width: 80%; 
+    padding: 4.7px 6px 7.5px;
+    outline: none;
+    font-size: 0.95em;
+    background-color: #F1F1F1;
+}
+
+textarea{
+    resize: none;
+}
+
+select{
+    -moz-appearance: none; 
+    -webkit-appearance: none; 
+    appearance: none;
+    border-radius: 0;
+    width: 80%; 
+    margin-top: 3px;
+    padding: 8px 6px 9px;
+    outline: none;
+    font-size: 0.95em;
+    background-color: #F1F1F1;
+}
+
+input:hover, textarea:hover,select:hover,option:hover {
+    outline: 1px solid #000;
+}
+
+input:focus, textarea:focus,select:focus {
+    outline: 1px solid #000;
+    background-color: #000;
+    color: #fff;
+}
+
+
+input[type=submit] {
+    -moz-appearance: none; 
+    -webkit-appearance: none; 
+    appearance: none;
+    min-width: 40%;
+    padding: 12px 12px;
+    background-color: DodgerBlue;
+    border: 1px solid DodgerBlue;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+input[type=submit]:hover{
+    background-color: #fff;
+    color: #000;
 }

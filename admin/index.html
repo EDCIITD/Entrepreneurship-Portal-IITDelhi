@@ -179,11 +179,20 @@
 	             });
 	    });
 
+	    $.AddNewUser=function(){
+	    	   	$('.popup').fadeOut();
+	    	                 	    	
+	    	                 			//$('.popup').html("<form class='popup-content animate'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newuser-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='newuser-username' placeholder='Username' required='true'></label></div><div><label for='newuser-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newuser-name' placeholder='Name' required='true'></label></div><div><label for='newuser-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='newuser-password' placeholder='Password' required='true'></label></div><div><label for='newuser-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newuser-organisation' required='true' placeholder='Organisation'></label></div><div><label for='newuser-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newuser-position' placeholder='Position' required='true'></label></div><div><label for='newuser-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='newuser-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' id='newuser-submit'></div></div></form>");
 
-
+	    	                 $('.popup').fadeIn();
+	    	    };
 
 
 	    $("#menu-users").click(function(){
+
+	    	$('.tab>div').removeClass('selected');
+	    	$('#menu-users').addClass('selected');
+
 	        $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/users',
 	                 type: 'get',
@@ -194,19 +203,20 @@
             	    dataType: 'json',
 	                 success: function (data) {
 
-	                 	$(".res").html("<table border='1'></table>");
+	                 	$(".res").html("<a class='btn add' onclick='AddNewUser()'>Add</a><table border='1'><thead><tr><th class='sticky'>Username</th><th>Name</th><th>Organisation</th><th>Position</th><th>Access</th><th></th></thead><tbody></tbody></table>");
 
 
 	                 	let authors = data.data;
 	                 	authors.map(function(author) {
-	                 		$(".res>table").append("<tr><td>"+`${author.username}`+"</td><td>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.access}`+"</td><td>"+`${author.organisation}`+"</td><td><button class='user-edit'>Edit</button><input value='"+`${author._id}`+"' readonly='true' hidden='true'></td></tr>");});
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.username}`+"</td><td>"+`${author.name}`+"</td><td>"+`${author.organisation}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.access}`+"</td><td><a class='btn' onclick=\"$('#msg-box').load('message.php #msg-box');\" class='user-edit'>Edit</button><input value='"+`${author._id}`+"' readonly='true' hidden='true'></td></tr>");});
 	                 	    
 	                 	   
 						 $('.res').fadeIn();
 
 
-						 $('.popup div').html("<form><input type='text' id='newuser-username' placeholder='username' required='true'><input type='text' id='newuser-name' placeholder='name' required='true'><input type='password' id='newuser-password' placeholder='password' required='true'><select id='newuser-access' retruequired=''><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select><input type='text' id='newuser-position' placeholder='position' required='true'><input type='text' id='newuser-organisation' required='true' placeholder='organisation'> <input type='submit' id='newuser-submit'></form>");
-						 $('.popup div form').submit(false);
+
+
+						 
 
 						 // $('.popup').fadeIn();
 
@@ -218,6 +228,8 @@
 	             });
 	        //handle failure & empty values(before ajax call) properly
 	    });
+
+	    
 
 
 	    $(".res").on("click",".user-edit",function(){
@@ -241,8 +253,11 @@
 	                 	let authors = data.data;
 
 	                 		$('.popup').fadeOut();
-	                 	    	$('.popup div').html("<input type='text' id='user-id' placeholder='id' required='true' readonly='true'><form><input type='text' id='user-username' placeholder='username' required='true'><input type='text' id='user-name' placeholder='name' required='true'><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select><input type='text' id='user-position' placeholder='position' required='true'><input type='text' id='user-organisation' required='true'> <input type='submit' value='Update' id='user-update'></form><br><form><label><input type='checkbox' required='true'>Confirm</label><input type='button' value='DELETE' id='user-delete'></form><br><form><input type='password' id='user-password' required='true' placeholder='New Password'><input type='submit' value='Reset Password' id='user-reset-password'></form>");
-	                 	    	$('.popup div form').submit(false);
+	                 	    	
+	                 			$('.popup').html("<form class='popup-content animate'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newuser-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='newuser-username' placeholder='Username' required='true'></label></div><div><label for='newuser-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newuser-name' placeholder='Name' required='true'></label></div><div><label for='newuser-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='newuser-password' placeholder='Password' required='true'></label></div><div><label for='newuser-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newuser-organisation' required='true' placeholder='Organisation'></label></div><div><label for='newuser-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newuser-position' placeholder='Position' required='true'></label></div><div><label for='newuser-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='newuser-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' id='newuser-submit'></div></div></form>");
+
+	                 	    	//$('.popup div').html("<input type='text' id='user-id' placeholder='id' required='true' readonly='true'><form><input type='text' id='user-username' placeholder='username' required='true'><input type='text' id='user-name' placeholder='name' required='true'><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select><input type='text' id='user-position' placeholder='position' required='true'><input type='text' id='user-organisation' required='true'> <input type='submit' value='Update' id='user-update'></form><br><form><label><input type='checkbox' required='true'>Confirm</label><input type='button' value='DELETE' id='user-delete'></form><br><form><input type='password' id='user-password' required='true' placeholder='New Password'><input type='submit' value='Reset Password' id='user-reset-password'></form>");
+	                 	    	$('.popup form').submit(false);
 
 	                 	    	
 
@@ -396,6 +411,12 @@
 	    });
 
       });
+
+			window.onclick = function(event) {
+	   			if (event.target == $('.popup')) {
+	        		$('.popup').fadeOut();
+	    		}
+			}
     </script>
 </head>
 <body>
@@ -413,21 +434,22 @@
 	</div>
 	
 
-	<div class="menu" id="menu">
-		<input type='submit' value='EVENTS' id='menu-events'>
-		<input type='submit' value='BLOGS' id='menu-blogs'>
-		<input type='submit' value='RESOURCES' id='menu-resources'>
-		<input type='submit' value='SHOWCASE' id='menu-showcase'>
-		<input type='submit' value='TEAM' id='menu-team'>
-		|
-		<input type='submit' value='Users' id='menu-users'>
+	<div class="menu tab" id="menu">
+		<div class='tab-item' id='menu-events'>EVENTS</div>
+		<div class='tab-item' id='menu-blogs'>BLOGS</div>
+		<div class='tab-item' id='menu-resources'>RESOURCES</div>
+		<div class='tab-item' id='menu-showcase'>SHOWCASE</div>
+		<div class='tab-item' id='menu-team'>TEAM</div>
+		
+		<div class='tab-item' id='menu-users'>Users</div>
 
 		<hr>		
 	</div>
 	<div class="res"></div>
-	<div class="popup"><span>EDIT</span><hr><div></div></div>
+	<div class="popup-dump"></div>
 
 
+	<div class="popup" id="add-newuser-popup"><form class="popup-content animate"><div class="box"><div class="h">Add User<span onclick="$('#add-newuser-popup').fadeOut()" class="close" style=" float: right;">&times</span></div><div><label for='newuser-username'><div class='icon'><i class="fa fa-user"></i></div><input type='text' id='newuser-username' placeholder='Username' required='true'></label></div><div><label for='newuser-name'><div class='icon'><i class="fa fa-user-tie"></i></div><input type='text' id='newuser-name' placeholder='Name' required='true'></label></div><div><label for='newuser-password'><div class='icon'><i class="fa fa-key"></i></div><input type='password' id='newuser-password' placeholder='Password' required='true'></label></div><div><label for='newuser-organisation'><div class='icon'><i class="fa fa-building"></i></div><input type='text' id='newuser-organisation' required='true' placeholder='Organisation'></label></div><div><label for='newuser-position'><div class='icon'><i class="fa fa-group"></i></div><input type='text' id='newuser-position' placeholder='Position' required='true'></label></div><div><label for='newuser-access'><div class='icon'><i class="fa fa-eye"></i></div><select id='newuser-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' id='newuser-submit'></div></div></form></div>
 
 </body>
 
