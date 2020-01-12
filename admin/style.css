@@ -1,13 +1,23 @@
+*{
+    box-sizing: border-box;
+}
+
 body {
-    font: Helvetica Arial sans-serif;
     letter-spacing: 0.01em;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans';
     display: flex;
     flex-direction: column;
     /*justify-content: center;*/
     align-items: center;
     background-color: #222222;
     color: white;
+
+}
+
+.title{
+    font-family: "Open Sans Condensed";
+    font-size: 2em;
+    text-transform: uppercase;;
 }
 
 table {
@@ -89,17 +99,182 @@ button {
     }
 }
 
-.login:focus {
-    color: white;
+
+/*New Popup*/
+
+.login{
+    display: block;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: #dadada; 
+}
+
+.login-content {
+  background-color: #f1f1f1;
+  margin: 10vh auto 7vw auto;
+  border: 1px solid #888;
+  width: 65vw; 
+  padding: 5vh 2.5vw;
+  text-align: center;
+  box-shadow: 4px 4px 6px #aaa;
+}
+
+
+@media screen and (max-width: 900px){
+    .login-content {
+        margin: 5vh auto 3vw auto;
+        width: 90vw;
+    }
+}
+
+form .box{
+    border: 1px solid #000;
+}
+
+form .box>.h{
+    background-color: #000000;
+    color: White;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    padding: 10px;
+}
+
+form .box>:not(.h){
+    padding: 2vh;
+}
+
+
+.icon {
+  display: inline-block;
+  padding: 10px;
+  background: #000;
+  color: white;
+  width: 50px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.fa{
+    display: inline-flex;
+    vertical-align: top;
+    text-shadow: 0 3px 2px rgba(0,0,0,0.2);
+    font-size: 1.1em;
+}
+
+input {
+    border-radius: 0;
+    width: 75%; 
+    margin-top: 3px;
+    padding: 8px 6px 9px;
+    outline: none;
+    font-size: 0.95em;
+    background-color: #F1F1F1;
+}
+
+input:hover{
+    outline: 1px solid #000;
+}
+
+input:focus {
+    outline: 1px solid #000;
+    background-color: #000;
+    color: #fff
+}
+
+
+input[type=submit].login-btn {
+    -moz-appearance: none; 
+    -webkit-appearance: none; 
+    appearance: none;
+    min-width: 40%;
+    padding: 12px 12px;
+    background-color: DodgerBlue;
+    border: 1px solid DodgerBlue;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+input[type=submit]:hover.login-btn{
+    background-color: #fff;
+    color: #000;
+}
+
+
+.popup{
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.25);
+}
+
+.popup-content {
+  background-color: #f1f1f1;
+  margin: 10vh auto 7vw auto;
+  border: 1px solid #888;
+  width: 65vw; 
+  padding: 5vh 2.5vw;
+  text-align: center;
 
 }
-.popup{
-	display: none;
-	position: absolute;
-	margin-top: 50%;
-	width: 80%;
-    background: rgba(255,255,255,0.9);
-    padding: 10px;
-    border-radius: 5px;
 
+@media screen and (max-width: 900px){
+    .popup-content {
+        margin: 5vh auto 3vw auto;
+        width: 90vw;
+    }
+}
+
+.box{
+    border: 1px solid #000;
+}
+
+.box>.h{
+    background-color: #000000;
+    color: White;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    padding: 10px;
+    font-family: "Open Sans Condensed";
+}
+
+.box>:not(.h){
+    padding: 2vh;
+}
+
+
+
+.close{
+    color: #fff;
+    cursor: pointer;
+}
+
+.close:hover, .close:focus {
+  color: ##dadada;
+}
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
 }
