@@ -312,7 +312,7 @@ form .box>:not(.h){
     border: 1px solid #000;
 }
 
-.box>.h{
+.h{
     background-color: #000000;
     color: White;
     text-transform: uppercase;

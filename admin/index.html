@@ -202,7 +202,7 @@
 
 	                 	let authors = data.data;
 	                 	authors.map(function(author) {
-	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.username}`+"</td><td>"+`${author.name}`+"</td><td>"+`${author.organisation}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.access}`+"</td><td><a class='btn' onclick=\"$('#msg-box').load('message.php #msg-box');\" class='user-edit'>Edit</button><input value='"+`${author._id}`+"' readonly='true' hidden='true'></td></tr>");});
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.username}`+"</td><td>"+`${author.name}`+"</td><td>"+`${author.organisation}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.access}`+"</td><td><a class='btn user-edit'>Manage</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'></td></tr>");});
 	                 	    
 	                 	   
 						 $('.res').fadeIn();
@@ -290,7 +290,10 @@
 
 	                 		$('.popup').fadeOut();
 	                 	    	
-	                 			$('.popup').html("<form class='popup-content animate'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newuser-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='newuser-username' placeholder='Username' required='true'></label></div><div><label for='newuser-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newuser-name' placeholder='Name' required='true'></label></div><div><label for='newuser-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='newuser-password' placeholder='Password' required='true'></label></div><div><label for='newuser-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newuser-organisation' required='true' placeholder='Organisation'></label></div><div><label for='newuser-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newuser-position' placeholder='Position' required='true'></label></div><div><label for='newuser-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='newuser-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' id='newuser-submit'></div></div></form>");
+	     			//$('.popup').html("<div class='popup-content animate'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').fadeOut()\" class='close' style=' float: right;'>&times</span></div><form><div><label for='newuser-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='newuser-username' placeholder='Username' required='true'></label></div><div><label for='newuser-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newuser-name' placeholder='Name' required='true'></label></div><div><label for='newuser-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='newuser-password' placeholder='Password' required='true'></label></div><div><label for='newuser-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newuser-organisation' required='true' placeholder='Organisation'></label></div><div><label for='newuser-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newuser-position' placeholder='Position' required='true'></label></div><div><label for='newuser-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='newuser-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' id='newuser-submit'></div></form></div></div>");
+                 			
+
+	                 			$('.popup').html("<div class='popup-content animate'><div class='box'><div class='h'>Manage User<span onclick=\"$('.popup').fadeOut()\" class='close' style=' float: right;'>&times</span></div><input type='text' id='user-id' placeholder='id' required='true' readonly='true' hidden='true'><br><div class='h'>Update details</div><form id='form-edituser'><div><label for='user-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='user-username' placeholder='Username' required='true'></label></div><div><label for='user-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='user-name' placeholder='Name' required='true'></label></div><div><label for='user-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='user-organisation' required='true' placeholder='Organisation'></label></div><div><label for='user-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='user-position' placeholder='Position' required='true'></label></div><div><label for='user-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' id='user-update' value='Update'></div></form><div class='h'>Remove user</div><form id='form-remuser'><div><label><input type='checkbox' required='true'>Confirm</label></div><div><input type='submit' value='DELETE' id='user-delete'></div></form><div class='h'>Reset Password</div><form id='form-resetpassuser'><div><label for='user-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='user-password' required='true' placeholder='New Password'></label></div><div><input type='submit' value='Reset Password' id='user-reset-password'></div></form></div></div>");
 
 	                 	    	//$('.popup div').html("<input type='text' id='user-id' placeholder='id' required='true' readonly='true'><form><input type='text' id='user-username' placeholder='username' required='true'><input type='text' id='user-name' placeholder='name' required='true'><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select><input type='text' id='user-position' placeholder='position' required='true'><input type='text' id='user-organisation' required='true'> <input type='submit' value='Update' id='user-update'></form><br><form><label><input type='checkbox' required='true'>Confirm</label><input type='button' value='DELETE' id='user-delete'></form><br><form><input type='password' id='user-password' required='true' placeholder='New Password'><input type='submit' value='Reset Password' id='user-reset-password'></form>");
 	                 	    	$('.popup form').submit(false);
@@ -327,7 +330,7 @@
 	    });
 
 
-	    $(".popup div").on("click","#user-update",function(){
+	    $(".popup").on("click","#user-update",function(){
 
 	    	var username_user= $('#user-username').val(),
             	    	id_user= $('#user-id').val(),
@@ -353,13 +356,13 @@
 	                success: function (data) {
 	                	alert("Updated!");
 	                	$('#menu-users').trigger('click');
-	                     console.log(data);
+	                    // console.log(data);
 	                    $('.popup').fadeOut();
 	                 }
 	             });
 	    });
 
-	    $(".popup div").on("click","#user-delete",function(){
+	    $(".popup").on("click","#user-delete",function(){
 
 	    	var username_user= $('#user-username').val(),
             	    	id_user= $('#user-id').val(),
@@ -384,14 +387,14 @@
             	    dataType: 'json',
 	                success: function (data) {
 	                	alert("Updated!");
+	                	$('.popup').fadeOut();
 	                	$('#menu-users').trigger('click');
-	                     console.log(data);
+	                     //console.log(data);
 	                 }
 	             });
 	    });
-	    $('.popup').fadeOut();
 
-	    $(".popup div").on("click","#user-reset-password",function(){
+	    $(".popup").on("click","#user-reset-password",function(){
 
 	    	var password_user= $('#user-password').val(),
             	    	id_user= $('#user-id').val();
@@ -408,8 +411,9 @@
             	    dataType: 'json',
 	                success: function (data) {
 	                	alert("Reset success!"); 
+	                	$('.popup').fadeOut();
 	                	$('#menu-users').trigger('click');
-	                     console.log(data);
+	                    // console.log(data);
 	                 }
 	             });
 	    });
