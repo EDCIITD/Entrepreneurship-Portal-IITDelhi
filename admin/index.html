@@ -179,10 +179,67 @@
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
+	                     $(".res").html("<a class='btn add' id='addnewteammem-btn'><i class='fa fa-plus'></i>Add Member</a><table border='1'><thead><tr><th class='sticky'>Name</th><th>Position</th><th>Organisation</th><th></th></thead><tbody></tbody></table>");
+
+
+	                 	let authors = data.data;
+	                 	authors.map(function(author) {
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.organisation}`+"</td><td><a class='btn mem-edit'>Manage</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'></td></tr>");});
+	                 	    
+	                 	   
+						 $('.res').fadeIn();
 	                     console.info(data);
 	                 }
 	             });
 	    });
+
+
+	    $('.res').on('click','a#addnewteammem-btn',function(){
+	    	   	$('.popup').fadeOut();
+	    	                 	    	
+     			$('.popup').html("<form class='popup-content animate'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newteammem-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newteammem-name' placeholder='Name' required='true'></label></div><div><label for='newteammem-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newteammem-position' placeholder='Position' required='true'></label></div><div><label for='newteammem-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newteammem-organisation' placeholder='Organisation'></label></div><div><label for='newteammem-mobile'><div class='icon'><i class='fa fa-mobile'></i></div><input type='number' id='newteammem-mobile' required='true' placeholder='Mobile'></label></div><div><label for='newteammem-email'><div class='icon'><i class='fa fa-at'></i></div><input type='email' id='newteammem-email' required='true' placeholder='Email ID'></label></div><div><label for='newteammem-bio'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newteammem-bio' placeholder='Bio' required='true'></textarea></label></div><div><label for='newteammem-fb'><div class='icon'><i class='fa fa-facebook'></i></div><input type='url' id='newteammem-fb' placeholder='Email ID'></label></div><div><input type='submit' id='newteammem-submit'></div></div></form>");
+
+     				$('.popup form').submit(false);
+	    	        $('.popup').fadeIn();
+	    	    });
+
+	     $(".popup").on("click","#newteammem-submit",function(){
+
+	    	var name_newteammem= $('#newteammem-name').val(),
+            	    	position_newteammem= $('#newteammem-position').val() ,
+            	    	organisation_newteammem= $('#newteammem-organisation').val(),
+            	    	email_newteammem= $('#newteammem-email').val(),
+            	    	mobile_newteammem= $('#newteammem-mobile').val(),
+            	    	bio_newteammem= $('#newteammem-bio').val(),
+            	    	fb_newteammem= $('#newteammem-fb').val();
+	    	$.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/team',
+	                 type: 'post',
+            	    
+            	    headers: {
+            	        Authorization: token
+            	    },
+            	    data: {
+            	    	name: name_newteammem,
+            	    	position: position_newteammem,
+            	    	organisation: organisation_newteammem,
+            	    	email: email_newteammem,
+            	    	contact: mobile_newteammem,
+            	    	url: { facebook: fb_newteammem},
+            	    	bio: bio_newteammem,
+            	    	hidden: 'false'
+
+            	    },
+            	    dataType: 'json',
+	                success: function (data) {
+	                	$('.popup').fadeOut();
+	                	$('#menu-team').trigger('click');
+	                     //console.log(data);
+	                 },
+	                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	             });
+	    });
+
 
 	    
 
