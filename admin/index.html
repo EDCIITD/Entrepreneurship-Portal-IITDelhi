@@ -179,13 +179,7 @@
 	             });
 	    });
 
-	    $.AddNewUser=function(){
-	    	   	$('.popup').fadeOut();
-	    	                 	    	
-	    	                 			//$('.popup').html("<form class='popup-content animate'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newuser-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='newuser-username' placeholder='Username' required='true'></label></div><div><label for='newuser-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newuser-name' placeholder='Name' required='true'></label></div><div><label for='newuser-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='newuser-password' placeholder='Password' required='true'></label></div><div><label for='newuser-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newuser-organisation' required='true' placeholder='Organisation'></label></div><div><label for='newuser-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newuser-position' placeholder='Position' required='true'></label></div><div><label for='newuser-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='newuser-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' id='newuser-submit'></div></div></form>");
-
-	    	                 $('.popup').fadeIn();
-	    	    };
+	    
 
 
 	    $("#menu-users").click(function(){
@@ -203,7 +197,7 @@
             	    dataType: 'json',
 	                 success: function (data) {
 
-	                 	$(".res").html("<a class='btn add' onclick='AddNewUser()'>Add</a><table border='1'><thead><tr><th class='sticky'>Username</th><th>Name</th><th>Organisation</th><th>Position</th><th>Access</th><th></th></thead><tbody></tbody></table>");
+	                 	$(".res").html("<a class='btn add' id='addnewuser-btn'>Add</a><table border='1'><thead><tr><th class='sticky'>Username</th><th>Name</th><th>Organisation</th><th>Position</th><th>Access</th><th></th></thead><tbody></tbody></table>");
 
 
 	                 	let authors = data.data;
@@ -227,6 +221,48 @@
 	                 
 	             });
 	        //handle failure & empty values(before ajax call) properly
+	    });
+
+	    $('.res').on('click','a#addnewuser-btn',function(){
+	    	   	$('.popup').fadeOut();
+	    	                 	    	
+     			$('.popup').html("<form class='popup-content animate'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newuser-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='newuser-username' placeholder='Username' required='true'></label></div><div><label for='newuser-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newuser-name' placeholder='Name' required='true'></label></div><div><label for='newuser-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='newuser-password' placeholder='Password' required='true'></label></div><div><label for='newuser-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newuser-organisation' required='true' placeholder='Organisation'></label></div><div><label for='newuser-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newuser-position' placeholder='Position' required='true'></label></div><div><label for='newuser-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='newuser-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' id='newuser-submit'></div></div></form>");
+
+     				$('.popup form').submit(false);
+	    	        $('.popup').fadeIn();
+	    	    });
+
+	   $(".popup").on("click","#newuser-submit",function(){
+
+	    	var username_newuser= $('#newuser-username').val(),
+            	    	password_newuser= $('#newuser-password').val(),
+            	    	name_newuser= $('#newuser-name').val(),
+            	    	position_newuser= $('#newuser-position').val() ,
+            	    	organisation_newuser= $('#newuser-organisation').val(),
+            	    	access_newuser= $('#newuser-access').val() ;
+	    	$.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/users',
+	                 type: 'post',
+            	    
+            	    headers: {
+            	        Authorization: token
+            	    },
+            	    data: {
+            	    	username: username_newuser,
+            	    	password: password_newuser,
+            	    	name: name_newuser,
+            	    	position: position_newuser,
+            	    	organisation: organisation_newuser,
+            	    	access: access_newuser       	    	
+            	    },
+            	    dataType: 'json',
+	                success: function (data) {
+	                	$('.popup').fadeOut();
+	                	$('#menu-users').trigger('click');
+	                     //console.log(data);
+	                 },
+	                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	             });
 	    });
 
 	    
@@ -378,37 +414,7 @@
 	             });
 	    });
 
-	    $(".popup div").on("click","#newuser-submit",function(){
-
-	    	var username_newuser= $('#newuser-username').val(),
-            	    	password_newuser= $('#newuser-password').val(),
-            	    	name_newuser= $('#newuser-name').val(),
-            	    	position_newuser= $('#newuser-position').val() ,
-            	    	organisation_newuser= $('#newuser-organisation').val(),
-            	    	access_newuser= $('#newuser-access').val() ;
-	    	$.ajax({
-	                 url: 'https://iic.devclub.in/api/admin/users',
-	                 type: 'post',
-            	    
-            	    headers: {
-            	        Authorization: token
-            	    },
-            	    data: {
-            	    	username: username_newuser,
-            	    	password: password_newuser,
-            	    	name: name_newuser,
-            	    	position: position_newuser,
-            	    	organisation: organisation_newuser,
-            	    	access: access_newuser       	    	
-            	    },
-            	    dataType: 'json',
-	                success: function (data) {
-	                	$('#menu-users').trigger('click');
-	                     console.log(data);
-	                 },
-	                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
-	             });
-	    });
+	    
 
       });
 
