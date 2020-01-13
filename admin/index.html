@@ -184,7 +184,7 @@
 
 	                 	let authors = data.data;
 	                 	authors.map(function(author) {
-	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.organisation}`+"</td><td><a class='btn mem-edit'>Manage</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'></td></tr>");});
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.organisation}`+"</td><td><a class='btn teammem-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn teammem-rem'>Remove</a></td></tr>");});
 	                 	    
 	                 	   
 						 $('.res').fadeIn();
@@ -197,11 +197,28 @@
 	    $('.res').on('click','a#addnewteammem-btn',function(){
 	    	   	$('.popup').fadeOut();
 	    	                 	    	
-     			$('.popup').html("<form class='popup-content animate'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newteammem-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newteammem-name' placeholder='Name' required='true'></label></div><div><label for='newteammem-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newteammem-position' placeholder='Position' required='true'></label></div><div><label for='newteammem-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newteammem-organisation' placeholder='Organisation'></label></div><div><label for='newteammem-mobile'><div class='icon'><i class='fa fa-mobile'></i></div><input type='number' id='newteammem-mobile' required='true' placeholder='Mobile'></label></div><div><label for='newteammem-email'><div class='icon'><i class='fa fa-at'></i></div><input type='email' id='newteammem-email' required='true' placeholder='Email ID'></label></div><div><label for='newteammem-bio'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newteammem-bio' placeholder='Bio' required='true'></textarea></label></div><div><label for='newteammem-fb'><div class='icon'><i class='fa fa-facebook'></i></div><input type='url' id='newteammem-fb' placeholder='Email ID'></label></div><div><input type='submit' id='newteammem-submit'></div></div></form>");
+     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newteammem-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newteammem-name' placeholder='Name' required='true'></label></div><div><label for='newteammem-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newteammem-position' placeholder='Position' required='true'></label></div><div><label for='newteammem-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newteammem-organisation' placeholder='Organisation'></label></div><div><label for='newteammem-mobile'><div class='icon'><i class='fa fa-mobile'></i></div><input type='number' id='newteammem-mobile' required='true' placeholder='Mobile'></label></div><div><label for='newteammem-email'><div class='icon'><i class='fa fa-at'></i></div><input type='email' id='newteammem-email' required='true' placeholder='Email ID'></label></div><div><label for='newteammem-bio'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newteammem-bio' placeholder='Bio' required='true'></textarea></label></div><div><label for='newteammem-fb'><div class='icon'><i class='fa fa-facebook'></i></div><input type='url' id='newteammem-fb' placeholder='Facebook'></label></div><div><label><input type='file' id='newteammem-dp' accept='image/*' required='true'></label><img src='' id='newteammem-dp-preview' style='width: 100px; height: auto;' /></div><div><input type='submit' id='newteammem-submit'></div></div></form>");
 
      				$('.popup form').submit(false);
 	    	        $('.popup').fadeIn();
 	    	    });
+
+	    /*
+	    //Image preview
+	    function readURL(input) {
+        	if (input.files && input.files[0]) {
+            	var reader = new FileReader();
+            
+            	reader.onload = function (e) {
+                	$('#newteammem-dp-preview').attr('src', e.target.result);
+            	}
+            	reader.readAsDataURL(input.files[0]);
+        	}
+    	}
+    	$("#newteammem-dp").change(function(){
+     	   readURL(this);
+    	});
+    	*/
 
 	     $(".popup").on("click","#newteammem-submit",function(){
 
@@ -211,33 +228,50 @@
             	    	email_newteammem= $('#newteammem-email').val(),
             	    	mobile_newteammem= $('#newteammem-mobile').val(),
             	    	bio_newteammem= $('#newteammem-bio').val(),
-            	    	fb_newteammem= $('#newteammem-fb').val();
-	    	$.ajax({
-	                 url: 'https://iic.devclub.in/api/admin/team',
-	                 type: 'post',
-            	    
-            	    headers: {
-            	        Authorization: token
-            	    },
-            	    data: {
-            	    	name: name_newteammem,
-            	    	position: position_newteammem,
-            	    	organisation: organisation_newteammem,
-            	    	email: email_newteammem,
-            	    	contact: mobile_newteammem,
-            	    	url: { facebook: fb_newteammem},
-            	    	bio: bio_newteammem,
-            	    	hidden: 'false'
+            	    	fb_newteammem= $('#newteammem-fb').val(),
+            	    	dp_newteammem=$('#newteammem-dp').prop('files')[0];
 
-            	    },
-            	    dataType: 'json',
-	                success: function (data) {
-	                	$('.popup').fadeOut();
-	                	$('#menu-team').trigger('click');
-	                     //console.log(data);
-	                 },
-	                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
-	             });
+
+            	    //Security issue to be seen (exploited)
+                    $.ajax({
+		            url : "updp.php",
+		            type: "POST",
+		            data: {img: dp_newteammem},
+		            success: function (imgname) {
+
+	                    $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/team',
+		                 type: 'post',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    data: {
+	            	    	name: name_newteammem,
+	            	    	position: position_newteammem,
+	            	    	organisation: organisation_newteammem,
+	            	    	email: email_newteammem,
+	            	    	contact: mobile_newteammem,
+	            	    	url: { facebook: fb_newteammem},
+	            	    	bio: bio_newteammem,
+	            	    	hidden: 'false',
+	            	    	img: imgname
+
+	            	    },
+	            	    dataType: 'json',
+		                success: function (data) {
+		                	$('.popup').fadeOut();
+		                	$('#menu-team').trigger('click');
+		                     //console.log(data);
+		                 },
+		                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+
+		            	alert("Done");
+		                }
+		            });
+
+                    
 	    });
 
 
