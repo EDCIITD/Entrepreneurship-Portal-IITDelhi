@@ -1,0 +1,82 @@
+/* The card */
+.card-showcase {
+  position: relative;
+  height: 400px;
+  width: 60vw;
+  margin: 200px auto;
+  background-color: #fff;
+  -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+}
+.thumbnail-showcase{  
+  
+}
+
+.thumbnail-showcase {
+  
+  float: left;
+  position: relative;
+  left: -2.5vw;
+  top: 5vh;
+  height: 50vh;
+  width: 40vw;
+  -webkit-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+}
+img.left-showcase {
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: auto;
+  width: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+@media(min-width:768px){
+
+  .divn{
+    display: grid;
+          grid-template-columns: auto auto;
+  
+  }
+.right-showcase {
+ 
+ 
+  margin-right: 2vw;
+  
+ 
+}}
+.right-showcase h1 {
+  padding-top: 15px;
+  font-size: 2.5em;
+  color: #272727;
+}
+
+
+
+.right-showcase p {
+  text-align: justify;
+  padding-top: 10px;
+  font-size: 1em;
+  line-height: 150%;
+  color: #4b4b4b;
+}
+@media(max-width:768px){
+  .thumbnail-showcase {
+float: none;
+justify-content: center;
+top:-2.5vh;
+left: 0.5vw;
+
+  }
+  .right-showcase{
+    padding: 2em;
+    margin-top: -7vh;
+  }
+}
+.divn{}

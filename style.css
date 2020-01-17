@@ -56,7 +56,7 @@ body {
   background-image: url(./img/resources.jpg);
 }
 .background:nth-child(6) {
-  background-image: url(./img/sta.jpg);
+  background-image: url(./img/sta1.jpeg);
 }
 .background:nth-child(7) {
   background-image: url(./img/team.jpg);
@@ -120,7 +120,8 @@ body {
   transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
 }
 .content-title {
-  font-size: 2.5em;
+  font-size: 4em;
+  color: white;
   line-height: 1.4;
 }
 .content-title a {
