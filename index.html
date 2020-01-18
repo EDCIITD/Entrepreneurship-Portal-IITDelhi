@@ -33,50 +33,51 @@
     <link rel="stylesheet" type="text/css" href="loader.css">
     <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
     <link rel="stylesheet" href="startup_style.css">
+    <link rel="stylesheet" href="initiative-style.css">
     <title>S.Inc</title>
     <script type="text/javascript">
-    $().ready(function() {
+        $().ready(function () {
 
-        // Nav toggle slide in small device
-        var nav_op = 0;
-        $("#toggle").click(function() {
-            $('ul.nav').slideToggle("slow");
-            nav_op = 1;
-        });
-
-        $("ul.nav li>a").click(function() {
-            if (nav_op != 0) {
+            // Nav toggle slide in small device
+            var nav_op = 0;
+            $("#toggle").click(function () {
                 $('ul.nav').slideToggle("slow");
-                nav_op = 0;
+                nav_op = 1;
+            });
 
+            $("ul.nav li>a").click(function () {
+                if (nav_op != 0) {
+                    $('ul.nav').slideToggle("slow");
+                    nav_op = 0;
+
+                }
+
+            });
+
+            $(window).resize(function () {
+                if (!window.matchMedia("(max-width: 980px)").matches) {
+                    $('ul.nav').fadeIn();
+                    nav_op = 0;
+                } else {
+                    $('ul.nav').css("display", "none");
+                    nav_op = 0;
+                }
+            });
+
+
+            if (window.location.hash) {
+                var i = $("section.background").index($(window.location.hash));
+                if (i >= 0)
+                    goTo(i);
             }
 
-        });
 
-        $(window).resize(function() {
-            if (!window.matchMedia("(max-width: 980px)").matches) {
-                $('ul.nav').fadeIn();
-                nav_op = 0;
-            } else {
-                $('ul.nav').css("display", "none");
-                nav_op = 0;
-            }
-        });
+            $("ul.nav li a.scroll-to").click(function () {
+                goTo($("ul.nav li a").index(this));
 
-
-        if (window.location.hash) {
-            var i = $("section.background").index($(window.location.hash));
-            if (i >= 0)
-                goTo(i);
-        }
-
-
-        $("ul.nav li a.scroll-to").click(function() {
-            goTo($("ul.nav li a").index(this));
+            });
 
         });
-
-    });
     </script>
 </head>
 
@@ -113,12 +114,12 @@
     <!-- change in style.css while adding new sections!! -->
     <div class="container">
         <section class="background" id="home">
-             <video autoplay loop muted>
-                    <source src="tpv.mp4" type="video/mp4">
-                </video>
-                <div class="black_overlay"></div>
+            <video autoplay loop muted>
+                <source src="tpv.mp4" type="video/mp4">
+            </video>
+            <div class="black_overlay"></div>
             <div class="content-wrapper">
-               
+
                 <p class="content-title ">Entrepreneurship Portal IIT Delhi</p>
                 <div class="wrapper">
                     <p class="content-title ">WE</p>
@@ -136,7 +137,8 @@
             </div>
         </section>
         <section class="background" id="initiative">
-            <div class="content-wrapper"><a href="https://spark.adobe.com/page/X7y0NpemNdMHM/">
+            <!-- <div class="content-wrapper">
+                <a href="https://spark.adobe.com/page/X7y0NpemNdMHM/">
                     <p class="content-title">Initiatives</p>
                 </a>
                 <ul class="cards hide_l">
@@ -195,6 +197,21 @@
                         </li>
                     </a>
                 </ul>
+            </div> -->
+           
+            <div class="content-wrapper">
+                <h1 class="initiative-heading">INITIATIVES</h1 c>
+                
+               <div class="initiative-wrapper">
+                <div class="initiative-block"><img class="initiative-image" src="Logo/E-Connect/Black.png" alt=""><div><h2 class="initiative-title">E-connect</h2><p class="initiative-content">TED is a global set of conferences run by the private non-profit Sapling Foundation, under the slogan "Ideas Worth Spreading". TED was founded in 1984 as a one-off event; the annual conference series began in 1990. TEDx IIT Kanpur is an independent initiative by Entrepreneurship Cell, IIT Kanpur, under the umbrella of TED, to organize versatile an annual talk series from several eminent speakers from the field of Technology, Entertainment and Design.</p></div></div>
+                <div class="initiative-block"><img class="initiative-image" src="Logo/HatchStart/White.png" alt=""><div><h2 class="initiative-title">Hatchstart</h2><p class="initiative-content">TED is a global set of conferences run by the private non-profit Sapling Foundation, under the slogan "Ideas Worth Spreading". TED was founded in 1984 as a one-off event; the annual conference series began in 1990. TEDx IIT Kanpur is an independent initiative by Entrepreneurship Cell, IIT Kanpur, under the umbrella of TED, to organize versatile an annual talk series from several eminent speakers from the field of Technology, Entertainment and Design.</p></div></div>
+                <div class="initiative-block"><img class="initiative-image" src="Logo/Incubation/White.png" alt=""><div><h2 class="initiative-title">Incubation</h2><p class="initiative-content">TED is a global set of conferences run by the private non-profit Sapling Foundation, under the slogan "Ideas Worth Spreading". TED was founded in 1984 as a one-off event; the annual conference series began in 1990. TEDx IIT Kanpur is an independent initiative by Entrepreneurship Cell, IIT Kanpur, under the umbrella of TED, to organize versatile an annual talk series from several eminent speakers from the field of Technology, Entertainment and Design.</p></div></div>
+                <div class="initiative-block"><img class="initiative-image" src="Logo/Mentorship/White.png" alt=""><div><h2 class="initiative-title">Mentorship</h2><p class="initiative-content">TED is a global set of conferences run by the private non-profit Sapling Foundation, under the slogan "Ideas Worth Spreading". TED was founded in 1984 as a one-off event; the annual conference series began in 1990. TEDx IIT Kanpur is an independent initiative by Entrepreneurship Cell, IIT Kanpur, under the umbrella of TED, to organize versatile an annual talk series from several eminent speakers from the field of Technology, Entertainment and Design.</p></div></div>
+                <div class="initiative-block"><img class="initiative-image" src="Logo/Meraki/White.png" alt=""><div><h2 class="initiative-title">Meraki</h2><p class="initiative-content">TED is a global set of conferences run by the private non-profit Sapling Foundation, under the slogan "Ideas Worth Spreading". TED was founded in 1984 as a one-off event; the annual conference series began in 1990. TEDx IIT Kanpur is an independent initiative by Entrepreneurship Cell, IIT Kanpur, under the umbrella of TED, to organize versatile an annual talk series from several eminent speakers from the field of Technology, Entertainment and Design.</p></div></div>
+                <div class="initiative-block"><img class="initiative-image" src="Logo/Resources/White.png" alt=""><div><h2 class="initiative-title">Resources</h2><p class="initiative-content">TED is a global set of conferences run by the private non-profit Sapling Foundation, under the slogan "Ideas Worth Spreading". TED was founded in 1984 as a one-off event; the annual conference series began in 1990. TEDx IIT Kanpur is an independent initiative by Entrepreneurship Cell, IIT Kanpur, under the umbrella of TED, to organize versatile an annual talk series from several eminent speakers from the field of Technology, Entertainment and Design.</p></div></div>
+                <div class="initiative-block"><img class="initiative-image" src="Logo/StartupX/White.png" alt=""><div><h2 class="initiative-title">StartupX</h2><p class="initiative-content">TED is a global set of conferences run by the private non-profit Sapling Foundation, under the slogan "Ideas Worth Spreading". TED was founded in 1984 as a one-off event; the annual conference series began in 1990. TEDx IIT Kanpur is an independent initiative by Entrepreneurship Cell, IIT Kanpur, under the umbrella of TED, to organize versatile an annual talk series from several eminent speakers from the field of Technology, Entertainment and Design.</p></div></div>
+                <div class="initiative-block"><img class="initiative-image" src="Logo/HatchStart/White.png" alt=""><div><h2 class="initiative-title">BeCon</h2><p class="initiative-content">TED is a global set of conferences run by the private non-profit Sapling Foundation, under the slogan "Ideas Worth Spreading". TED was founded in 1984 as a one-off event; the annual conference series began in 1990. TEDx IIT Kanpur is an independent initiative by Entrepreneurship Cell, IIT Kanpur, under the umbrella of TED, to organize versatile an annual talk series from several eminent speakers from the field of Technology, Entertainment and Design.</p></div></div>
+                </div c>
             </div>
         </section>
         <section class="background" id="resources">
@@ -421,208 +438,209 @@
                     </a> -->
                 </div>
                 <div class="dot-container" id="aeioud">
-                    <span class="dot active" onclick="currentSlide(1)"></span><span class="dot" onclick="currentSlide(2)"></span></div>
+                    <span class="dot active" onclick="currentSlide(1)"></span><span class="dot"
+                        onclick="currentSlide(2)"></span></div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
                 <script type="text/javascript">
-                //SLIDESHOW....................
-                var slideIndex = 1;
-                var ssize;
+                    //SLIDESHOW....................
+                    var slideIndex = 1;
+                    var ssize;
 
-                function numPerSlide() {
-                    ssize = 1;
-                }
-
-                numPerSlide();
-
-
-                function createNode(element) {
-                    return document.createElement(element);
-                }
-
-                function append(parent, el) {
-                    return parent.appendChild(el);
-                }
-                const ul = document.getElementById("aeiou");
-                const uld = document.getElementById("aeioud");
-                const url = "https://iic.devclub.in/api/events";
-                fetch(url)
-                    .then(resp => resp.json())
-                    .then(function(data) {
-                        let authors = data.data;
-                        var ret = authors.map(function(author) {
-                            let a = createNode("a"),
-                                div1 = createNode("div"),
-                                div2 = createNode("div"),
-                                img = createNode("img"),
-                                h = createNode("h1"),
-                                p = createNode("p"),
-                                divn = createNode("div");
-                            img.classList.add("left-showcase");
-                            div1.classList.add("thumbnail-showcase");
-                            div2.classList.add("right-showcase");
-                            divn.classList.add("divn");
-                            img.src = "tech-startup.jpg";
-                            a.classList.add("myItem");
-                            a.classList.add("mySlides");
-                            h.innerHTML = `${author.metaData.title}`;
-                            p.innerHTML = " Magnesium is one of the six essential macro-minerals that is requiredby the body for energy production and synthesis of protein andenzymes. It contris to the development and mostimportantly responsible for synthesis of your DNA and RNA. A newreport that has appeared in theBritish Journal of Cancer, gives youanother reason to add more magnesium to your diet.";
-                            append(div2, h);
-                            append(div2, p);
-                            append(div1, img);
-                            append(divn, div1);
-                            append(divn, div2);
-                            append(a, divn);
-                            append(ul, a);
-                            // card_header.classList.add("myItem-header");
-                            // card_header.style.backgroundImage = "url(" + `${author.metaData.img}` + ")";
-                            // card_title.classList.add("myItem-title");
-                            // card_title_h.innerHTML = `${author.metaData.title}`;
-                            // append(card_title, card_title_h);
-                            // append(card_header, card_title);
-                            // append(card, card_header);
-
-
-
-                            // card_summary.classList.add("myItem-summary");
-                            // e_date.classList.add("e-date");
-                            // e_date.innerHTML = "<i class='material-icons'>today</i> &nbsp" + `${author.metaData.eventDate}`;
-                            // append(card_summary, e_date);
-
-                            // e_time.classList.add("e-time");
-                            // e_time.innerHTML = "<i class='material-icons'>access_time</i> &nbsp" + `${author.metaData.eventDate}`;
-                            // append(card_summary, e_time);
-
-                            // e_venue.classList.add("e-venue");
-                            // e_venue.innerHTML = "<i class='material-icons'>location_on</i> &nbsp" + `${author.metaData.venue}`;
-                            // append(card_summary, e_venue);
-
-                            // e_org.classList.add("e-org");
-                            // e_org.innerHTML = "<i class='material-icons'>person</i> &nbsp" + `${author.metaData.organiser}`;
-                            // append(card_summary, e_org);
-
-                            // e_type.classList.add("e-type");
-                            // e_type.innerHTML = `${author.metaData.eventDate}`;
-                            // //append(card_summary,e_type);
-
-                            // e_more_info.classList.add("e-more-info");
-                            // e_more_info.innerHTML = "<i class='material-icons' style='text-shadow: none;'>arrow_forward</i>";
-                            // append(card_summary, e_more_info);
-
-                            // append(card, card_summary);
-
-
-                            // append(ul, card);
-                        });
-
-                        makeDots();
-                        showSlides(1);
-                        return ret;
-
-                    })
-                    .catch(function(error) {
-                        console.log(error);
-                    });
-                var slides = document.getElementsByClassName("mySlides");
-                var dots = document.getElementsByClassName("dot");
-
-                function makeDots() {
-                    var tot = slides.length;
-                    for (var j = 1; j <= tot; j++) {
-                        let dot = createNode("span");
-                        dot.classList.add("dot");
-                        dot.setAttribute("onClick", "currentSlide(" + j + ")");
-                        append(uld, dot);
-
+                    function numPerSlide() {
+                        ssize = 1;
                     }
-                }
 
-
-
-                $(window).resize(function() {
                     numPerSlide();
 
-                    //ssize updt, now rem prev dots
-                    var dots_c = document.getElementsByClassName("dot-container")[0];
-                    var d_child = dots_c.lastElementChild;
-                    while (d_child) {
-                        dots_c.removeChild(d_child);
-                        d_child = dots_c.lastElementChild;
-                    }
-                    makeDots();
-                    currentSlide(1);
 
-                });
-
-
-
-
-
-                function plusSlides(n) {
-                    showSlides(slideIndex += n);
-                }
-
-                function currentSlide(n) {
-                    showSlides(slideIndex = n);
-                }
-
-
-
-
-
-                function showSlides(n) {
-                    var i;
-
-
-
-                    if (ssize * (n - 1) + 1 > slides.length) { slideIndex = 1 }
-                    if (n < 1) { slideIndex = Math.ceil(slides.length / ssize) }
-
-
-                    for (i = 0; i < slides.length; i++) {
-                        slides[i].style.display = "none";
-                    }
-                    for (i = 0; i < dots.length; i++) {
-                        dots[i].className = dots[i].className.replace(" active", "");
+                    function createNode(element) {
+                        return document.createElement(element);
                     }
 
-                    for (i = 0; i < ssize; i++) {
-                        if ((slideIndex - 1) * ssize + i < slides.length) {
-                            slides[(slideIndex - 1) * ssize + i].style.display = "block";
+                    function append(parent, el) {
+                        return parent.appendChild(el);
+                    }
+                    const ul = document.getElementById("aeiou");
+                    const uld = document.getElementById("aeioud");
+                    const url = "https://iic.devclub.in/api/events";
+                    fetch(url)
+                        .then(resp => resp.json())
+                        .then(function (data) {
+                            let authors = data.data;
+                            var ret = authors.map(function (author) {
+                                let a = createNode("a"),
+                                    div1 = createNode("div"),
+                                    div2 = createNode("div"),
+                                    img = createNode("img"),
+                                    h = createNode("h1"),
+                                    p = createNode("p"),
+                                    divn = createNode("div");
+                                img.classList.add("left-showcase");
+                                div1.classList.add("thumbnail-showcase");
+                                div2.classList.add("right-showcase");
+                                divn.classList.add("divn");
+                                img.src = "tech-startup.jpg";
+                                a.classList.add("myItem");
+                                a.classList.add("mySlides");
+                                h.innerHTML = `${author.metaData.title}`;
+                                p.innerHTML = " Magnesium is one of the six essential macro-minerals that is requiredby the body for energy production and synthesis of protein andenzymes. It contris to the development and mostimportantly responsible for synthesis of your DNA and RNA. A newreport that has appeared in theBritish Journal of Cancer, gives youanother reason to add more magnesium to your diet.";
+                                append(div2, h);
+                                append(div2, p);
+                                append(div1, img);
+                                append(divn, div1);
+                                append(divn, div2);
+                                append(a, divn);
+                                append(ul, a);
+                                // card_header.classList.add("myItem-header");
+                                // card_header.style.backgroundImage = "url(" + `${author.metaData.img}` + ")";
+                                // card_title.classList.add("myItem-title");
+                                // card_title_h.innerHTML = `${author.metaData.title}`;
+                                // append(card_title, card_title_h);
+                                // append(card_header, card_title);
+                                // append(card, card_header);
+
+
+
+                                // card_summary.classList.add("myItem-summary");
+                                // e_date.classList.add("e-date");
+                                // e_date.innerHTML = "<i class='material-icons'>today</i> &nbsp" + `${author.metaData.eventDate}`;
+                                // append(card_summary, e_date);
+
+                                // e_time.classList.add("e-time");
+                                // e_time.innerHTML = "<i class='material-icons'>access_time</i> &nbsp" + `${author.metaData.eventDate}`;
+                                // append(card_summary, e_time);
+
+                                // e_venue.classList.add("e-venue");
+                                // e_venue.innerHTML = "<i class='material-icons'>location_on</i> &nbsp" + `${author.metaData.venue}`;
+                                // append(card_summary, e_venue);
+
+                                // e_org.classList.add("e-org");
+                                // e_org.innerHTML = "<i class='material-icons'>person</i> &nbsp" + `${author.metaData.organiser}`;
+                                // append(card_summary, e_org);
+
+                                // e_type.classList.add("e-type");
+                                // e_type.innerHTML = `${author.metaData.eventDate}`;
+                                // //append(card_summary,e_type);
+
+                                // e_more_info.classList.add("e-more-info");
+                                // e_more_info.innerHTML = "<i class='material-icons' style='text-shadow: none;'>arrow_forward</i>";
+                                // append(card_summary, e_more_info);
+
+                                // append(card, card_summary);
+
+
+                                // append(ul, card);
+                            });
+
+                            makeDots();
+                            showSlides(1);
+                            return ret;
+
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                    var slides = document.getElementsByClassName("mySlides");
+                    var dots = document.getElementsByClassName("dot");
+
+                    function makeDots() {
+                        var tot = slides.length;
+                        for (var j = 1; j <= tot; j++) {
+                            let dot = createNode("span");
+                            dot.classList.add("dot");
+                            dot.setAttribute("onClick", "currentSlide(" + j + ")");
+                            append(uld, dot);
+
                         }
                     }
 
-                    dots[slideIndex - 1].className += " active";
-                }
 
-                /*
-                //SLIDESHOW....................
-                var slideIndex = 1;
-                showSlides(slideIndex);
 
-                function plusSlides(n) {
-                  showSlides(slideIndex += n);
-                }
+                    $(window).resize(function () {
+                        numPerSlide();
 
-                function currentSlide(n) {
-                  showSlides(slideIndex = n);
-                }
+                        //ssize updt, now rem prev dots
+                        var dots_c = document.getElementsByClassName("dot-container")[0];
+                        var d_child = dots_c.lastElementChild;
+                        while (d_child) {
+                            dots_c.removeChild(d_child);
+                            d_child = dots_c.lastElementChild;
+                        }
+                        makeDots();
+                        currentSlide(1);
 
-                function showSlides(n) {
-                  var i;
-                  var slides = document.getElementsByClassName("mySlides");
-                  var dots = document.getElementsByClassName("dot");
-                  if (n > slides.length) {slideIndex = 1}
-                    if (n < 1) {slideIndex = slides.length}
-                    for (i = 0; i < slides.length; i++) {
-                      slides[i].style.display = "none";
+                    });
+
+
+
+
+
+                    function plusSlides(n) {
+                        showSlides(slideIndex += n);
                     }
-                    for (i = 0; i < dots.length; i++) {
-                      dots[i].className = dots[i].className.replace(" active", "");
+
+                    function currentSlide(n) {
+                        showSlides(slideIndex = n);
                     }
-                  slides[slideIndex-1].style.display = "block";
-                  dots[slideIndex-1].className += " active";
-                }
-                */
+
+
+
+
+
+                    function showSlides(n) {
+                        var i;
+
+
+
+                        if (ssize * (n - 1) + 1 > slides.length) { slideIndex = 1 }
+                        if (n < 1) { slideIndex = Math.ceil(slides.length / ssize) }
+
+
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        for (i = 0; i < dots.length; i++) {
+                            dots[i].className = dots[i].className.replace(" active", "");
+                        }
+
+                        for (i = 0; i < ssize; i++) {
+                            if ((slideIndex - 1) * ssize + i < slides.length) {
+                                slides[(slideIndex - 1) * ssize + i].style.display = "block";
+                            }
+                        }
+
+                        dots[slideIndex - 1].className += " active";
+                    }
+
+                    /*
+                    //SLIDESHOW....................
+                    var slideIndex = 1;
+                    showSlides(slideIndex);
+
+                    function plusSlides(n) {
+                      showSlides(slideIndex += n);
+                    }
+
+                    function currentSlide(n) {
+                      showSlides(slideIndex = n);
+                    }
+
+                    function showSlides(n) {
+                      var i;
+                      var slides = document.getElementsByClassName("mySlides");
+                      var dots = document.getElementsByClassName("dot");
+                      if (n > slides.length) {slideIndex = 1}
+                        if (n < 1) {slideIndex = slides.length}
+                        for (i = 0; i < slides.length; i++) {
+                          slides[i].style.display = "none";
+                        }
+                        for (i = 0; i < dots.length; i++) {
+                          dots[i].className = dots[i].className.replace(" active", "");
+                        }
+                      slides[slideIndex-1].style.display = "block";
+                      dots[slideIndex-1].className += " active";
+                    }
+                    */
                 </script>
             </div>
         </section>
@@ -756,7 +774,8 @@
                             <li><img src="sponsor/tinder.png" alt=""></li>
                             <li><img src="sponsor/zomato.png" alt=""></li>
                         </ul>
-                        <marquee class="mar-img" width="80%" direction="right" behaviour="Scroll" height="150px" style="color: black;" onmouseover="this.stop()" onmouseout="this.start()">
+                        <marquee class="mar-img" width="80%" direction="right" behaviour="Scroll" height="150px"
+                            style="color: black;" onmouseover="this.stop()" onmouseout="this.start()">
                             <!--<ul>
                         <img src="sponsor/droom.png" alt=""> 
                         <img src="sponsor/oneco.png" alt="">
@@ -805,14 +824,14 @@
     <!-- partial -->
     <!-- partial  ABOUT-->
     <script type="text/javascript">
-    fetch("https://iic.devclub.in/api/about")
-        .then(resp => resp.json())
-        .then(function(data) {
-            $("#about .content-wrapper .content-subtitle").text(data.data.about);
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
+        fetch("https://iic.devclub.in/api/about")
+            .then(resp => resp.json())
+            .then(function (data) {
+                $("#about .content-wrapper .content-subtitle").text(data.data.about);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     </script>
     <script src="./script-slide.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -824,43 +843,43 @@
     <script src="./script.js"></script>
 </body>
 <script type="text/javascript">
-$(document).on('ready', function() {
-    $(".horizontal-center-3").slick({
-        dots: true,
-        horizontal: true,
-        centerMode: true,
-        slidesToShow: 3,
-        slidesToScroll: 3
+    $(document).on('ready', function () {
+        $(".horizontal-center-3").slick({
+            dots: true,
+            horizontal: true,
+            centerMode: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+        });
     });
-});
 </script>
 <script>
-// Wait for window load
-document.onreadystatechange = function() {
-    var state = document.readyState
-    if (state == 'complete') {
-        document.getElementById('interactive');
-        $('#loaderr').fadeOut();
+    // Wait for window load
+    document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'complete') {
+            document.getElementById('interactive');
+            $('#loaderr').fadeOut();
+        }
     }
-}
 </script>
 <!--
 sample
 -->
 <script>
-var swiper = new Swiper('.blog-slider', {
-    spaceBetween: 30,
-    effect: 'fade',
-    loop: true,
-    mousewheel: {
-        invert: false,
-    },
-    // autoHeight: true,
-    pagination: {
-        el: '.blog-slider__pagination',
-        clickable: true,
-    }
-});
+    var swiper = new Swiper('.blog-slider', {
+        spaceBetween: 30,
+        effect: 'fade',
+        loop: true,
+        mousewheel: {
+            invert: false,
+        },
+        // autoHeight: true,
+        pagination: {
+            el: '.blog-slider__pagination',
+            clickable: true,
+        }
+    });
 </script>
 
 </html>

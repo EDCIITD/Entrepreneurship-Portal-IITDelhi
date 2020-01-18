@@ -1,0 +1,29 @@
+.initiative-block{
+    display: inline-block;
+    width: 20vw;
+    margin: 3em;
+}
+.initiative-title{
+    font-size: 1.5em;
+}
+
+.initiative-image{
+    width:8.5em;
+    height: 8.5em;
+    border-radius: 50%;
+    padding: 1em;
+}
+.initiative-image:hover{
+   background-color: orange;
+   
+   
+}
+.initiative-content{
+    line-height: 1.6;
+}
+.initiative-heading{
+    margin-top: 1.8em;
+}
+.initiative-wrapper{
+    margin-top: -4em;
+}
