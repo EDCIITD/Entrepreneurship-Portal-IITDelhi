@@ -9,9 +9,7 @@
   -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
 }
-.thumbnail-showcase{  
-  
-}
+
 
 .thumbnail-showcase {
   
@@ -19,7 +17,7 @@
   position: relative;
   left: -2.5vw;
   top: 5vh;
-  height: 50vh;
+  height: 25vw;
   width: 40vw;
   -webkit-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
@@ -27,7 +25,7 @@
   overflow: hidden;
 }
 img.left-showcase {
-
+  object-fit: cover;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -66,7 +64,15 @@ img.left-showcase {
   line-height: 150%;
   color: #4b4b4b;
 }
+@media(min-width:600px){
+  .right-showcase p {
+    font-size: 0.9em;
+  }
+}
 @media(max-width:768px){
+  .right-showcase p {
+    font-size: 0.8em;
+  }
   .thumbnail-showcase {
 float: none;
 justify-content: center;
