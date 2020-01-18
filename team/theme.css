@@ -165,15 +165,14 @@
     display: block;
     float: left;
     position: relative;
-    width: 52px;
-    height: 52px;
-    margin-left: 5px;
-    margin-bottom: 15px;
-    font-size: 28px;
+    width: 30px;
+    height: 30px;
+    margin-left: 2.88px;
+    margin-bottom: 8.64px;
+    font-size: 16.128px;
     color: #fff;
-    line-height: 52px;
+    line-height: 30px;
     text-decoration: none;
-    top: 200px;
 }
 .material-card .mc-footer a:nth-child(1) {
     -webkit-transition: all 0.5s;
