@@ -2,8 +2,8 @@
 .myItems {
   display: -webkit-flex;
   display: flex;
-  -webkit-justify-content: left;
-  justify-content: left;
+  -webkit-justify-content: center;
+  justify-content: center;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
   user-select: none;
@@ -14,7 +14,7 @@
   position: relative;
   margin: 1% 1.5vw;
   padding-bottom: 3px;
-  background: #fefff9;
+  background: rgb(240, 240, 240);
   color: #3d3c3c;
   text-decoration: none;
   -moz-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
@@ -23,56 +23,9 @@
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  width: 29vw; /* 2vw width for margin (see below) & 87 only available*/
+  height:63vh;
+  width: 65vw; /* 2vw width for margin (see below) & 87 only available*/
 }
-
-@media (min-width: 980px) {
-  .myItem:nth-child(3n + 1) {
-    margin-left: 3.5vw; /*(1.5vw (already) + 2vw (required) )*/
-  }
-
-  .myItem:nth-child(3n + 0) {
-    margin-right: 3.5vw;
-  }
-}
-
-/*@media (min-width: 700px) {*/
-@media (max-width: 980px) {
-  @media (min-width: 700px) {
-    .myItem {
-      width: 44vw;
-    }
-
-    .myItem:nth-child(odd) {
-      margin-left: 3vw; /*(1.5vw (already) + 2vw (required) )*/
-    }
-
-    .myItem:nth-child(even) {
-      margin-right: 3vw;
-    }
-    /*    
-      margin-right: 20px;
-      margin-bottom: 20px;
-    }
-    .myItem:nth-child(even) {
-      margin-right: 0;
-    }
-  */
-  }
-
-  @media (max-width: 700px) {
-    .myItems {
-      /* margin: 1% 1vw; */
-      justify-content: center;
-      -webkit-justify-content: center;
-    }
-
-    .myItem {
-      margin: 1% 5vw;
-      width: 90vw;
-    }
-  }
-
   /*
   @media (min-width: 980px) {
     .myItem:nth-child(even) {
@@ -82,7 +35,7 @@
       margin-right: 0;
     }
   }*/
-}
+
 
 .myItem span {
   display: block;
@@ -162,23 +115,7 @@
 .myItem:focus .myItem-meta {
   max-height: 1em;
 }
-@media (max-width: 900px) {
-  .myItem,
-  .myItem {
-    background: white;
-    -moz-box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 20px 0px;
-    -webkit-box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 20px 0px;
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 20px 0px;
-  }
-  .myItem .myItem-title,
-  .myItem .myItem-title {
-    background: rgba(44, 91, 131, 0.8);
-  }
-  .myItem .myItem-meta,
-  .myItem .myItem-meta {
-    max-height: 1em;
-  }
-}
+
 
 img {
   max-width: 100%;
