@@ -545,11 +545,13 @@ nav ul li:hover {
 .dot:hover {
   background-color: #717171;
 }
-  
-  .rolodex {
+
+ .rolodex {
   height: 2em;
   overflow: hidden;
   font-size: 38px;
+  color: #4c256f;
+  font-weight: bold;
 }
 .rolodex ul {
   -webkit-margin-before: 0px;
@@ -579,21 +581,25 @@ nav ul li:hover {
     -webkit-transform: translateY(0);
             transform: translateY(0);
   }
-  25% {
+  20% {
     -webkit-transform: translateY(-2em);
             transform: translateY(-2em);
   }
-  50% {
+  40% {
     -webkit-transform: translateY(-4em);
             transform: translateY(-4em);
   }
-  75% {
+  60% {
     -webkit-transform: translateY(-6em);
             transform: translateY(-6em);
   }
-  100% {
+  80% {
     -webkit-transform: translateY(-8em);
             transform: translateY(-8em);
+  }
+  100% {
+    -webkit-transform: translateY(-10em);
+            transform: translateY(-10em);
   }
 }
 @keyframes roll-up-one {
@@ -601,28 +607,53 @@ nav ul li:hover {
     -webkit-transform: translateY(0);
             transform: translateY(0);
   }
-  25% {
+  20% {
     -webkit-transform: translateY(-2em);
             transform: translateY(-2em);
   }
-  50% {
+  40% {
     -webkit-transform: translateY(-4em);
             transform: translateY(-4em);
   }
-  75% {
+  60% {
     -webkit-transform: translateY(-6em);
             transform: translateY(-6em);
   }
-  100% {
+  80% {
     -webkit-transform: translateY(-8em);
             transform: translateY(-8em);
   }
+  100% {
+    -webkit-transform: translateY(-10em);
+            transform: translateY(-10em);
+  }
 }
 .wrapper {
+   margin:0 auto; 
   display: flex;
-  flex-direction: column;
-  width: 450px;
+  flex-direction: row;
+  /*width: 450px;*/
 }
 h2 {
   weight: 700;
+}
+
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -3;
+    transform: translateX(-50%) translateY(-50%);
+ /*background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;*/
+  background-size: cover;
+  transition: 1s opacity;
+}
+.black_overlay{
+  color: black;
+  opacity: .4;
+
 }
