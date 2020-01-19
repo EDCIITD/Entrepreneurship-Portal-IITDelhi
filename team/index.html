@@ -35,19 +35,22 @@
 <body>
 <section class="container">
     <div class="page-header">
-        <h1>Material cards<br>
-            <small>material cards with a simple jquery script</small></h1>
+        <h1>Our Team<br>
+            <small>Meet the people behind the scenes</small></h1>
     </div>
-    <div class="row active-with-click">
+
+    <div class="row active-with-click" id="container">
+
+<!--
         <div class="col-md-4 col-sm-6 col-xs-12">
             <article class="material-card Red">
                 <h2>
                     <span>Christopher Walken</span>
                     <strong>
-                        <i class="fa fa-fw fa-group"></i>
-                        The Deer Hunter<br/>
-                        <i class="fa fa-fw fa-company"></i>
-                        Sinc
+                        <span><i class="fa fa-fw fa-group"></i>
+                        The Deer Hunter<br/></span>
+                        <span class="organisation"><i class="fa fa-fw fa-company"></i>
+                        Sinc</span>
                     </strong>
                 </h2>
                 <div class="mc-content">
@@ -64,7 +67,6 @@
                 <div class="mc-footer">
                     <h4>
                         <div><i class="fa fa-fw fa-at"></i>anmol@edc.iitd.ac.in</div>
-                        <!-- <div><i class="fa fa-fw fa-mobile"></i>+91-98401 12345</div> -->
                     </h4>
                     <a class="fa fa-fw fa-facebook"></a>
                     <a class="fa fa-fw fa-whatsapp"></a>
@@ -635,13 +637,18 @@
                 </div>
             </article>
         </div>
+
+    -->
+
+
     </div>
 </section>
+
 
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
     $(function() {
-        $('.material-card > .mc-btn-action').click(function () {
+        $('#container').on('click','.material-card > .mc-btn-action',function () {
             var card = $(this).parent('.material-card');
             var icon = $(this).children('i');
             icon.addClass('fa-spin-fast');
@@ -655,7 +662,8 @@
                         .removeClass('fa-spin-fast')
                         .addClass('fa-bars');
 
-                }, 350);
+                }, 500);
+
             } else {
                 card.addClass('mc-active');
 
@@ -665,10 +673,40 @@
                         .removeClass('fa-spin-fast')
                         .addClass('fa-arrow-left');
 
-                }, 350);
+                }, 500);
             }
         });
     });
 </script>
+
+
+<!--PARTIAL-->
+<script type="text/javascript">
+
+    
+    const url = "https://iic.devclub.in/api/team";
+    fetch(url)
+      .then(resp => resp.json())
+      .then(function(data) {
+        let authors = data.data;
+        return authors.map(function(author) {
+            $("#container").append('<div class="col-md-4 col-sm-6 col-xs-12"><article class="material-card Blue"><h2><span>'+`${author.name}`+'</span><strong><i class="fa fa-fw fa-group"></i>'+`${author.position}`+', '+`${author.organisation}`+'</strong></h2><div class="mc-content"><div class="img-container"><img class="img-responsive" src="dp/'+`${author._id}`+'.png"></div><div class="mc-description">'+`${author.bio}`+'</div></div><a class="mc-btn-action"><i class="fa fa-bars"></i></a><div class="mc-footer"><h4><div><i class="fa fa-fw fa-at"></i>'+`${author.email}`+'</div></h4><a class="fa fa-fw fa-facebook" href="'+`${author.url.facebook}`+'"></a><a class="fa fa-fw fa-linkedin" href="'+`${author.url.linkedin}`+'"></a><a class="fa fa-fw fa-whatsapp" href="http://api.whatsapp.com/send?phone=91'+`${author.mobile}`+'"></a><a class="fa fa-fw fa-envelope" href="mailto:'+`${author.email}`+'"></a></div></article></div>');
+
+
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+      /*
+
+        
+        */
+
+</script>
+
+
+
 </body>
 </html>
