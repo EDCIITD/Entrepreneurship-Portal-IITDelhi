@@ -14,12 +14,12 @@
 }
 @keyframes fa-spin-fast {
     0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
         -webkit-transform: rotate(359deg);
         transform: rotate(359deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
 }
 .material-card {
@@ -210,6 +210,7 @@
     transition: all 0.9s;
 }
 .material-card .img-container {
+    background: url('dp/default.png');
     overflow: hidden;
     position: absolute;
     left: 0;
@@ -224,6 +225,7 @@
     transition: all 0.3s;
 }
 .material-card.mc-active .img-container {
+    background: none;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
