@@ -152,16 +152,16 @@ img {
   .hide_l{display: none;}
 }
 .card__image--flowers {
-  background-image:url(img/flex1.JPG); 
+  background-image:url(img/books.jpg); 
 }
 .card__image--river {
-  background-image: url(img/img3.JPG);
+  background-image: url(img/courses.png);
 }
 .card__image--record {
-  background-image: url(img/flex2.JPG);
+  background-image: url(img/img3.JPG);
 }
 .card__image--fence {
-  background-image: url(img/flex1.JPG);
+  background-image: url(img/books.jpg);
 }
 .card__title {
   color: #696969;

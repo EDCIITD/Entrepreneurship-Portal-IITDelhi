@@ -120,8 +120,11 @@ body {
   transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
 }
 .content-title {
-  font-size: 2.5em;
+  font-size: 4.5em;
   color: white;
+  line-height: 1.4;
+}
+.main-title{
   line-height: 1.4;
 }
 .content-title a {
