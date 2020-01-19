@@ -690,7 +690,36 @@
       .then(function(data) {
         let authors = data.data;
         return authors.map(function(author) {
-            $("#container").append('<div class="col-md-4 col-sm-6 col-xs-12"><article class="material-card Blue"><h2><span>'+`${author.name}`+'</span><strong><i class="fa fa-fw fa-group"></i>'+`${author.position}`+', '+`${author.organisation}`+'</strong></h2><div class="mc-content"><div class="img-container"><img class="img-responsive" src="dp/'+`${author._id}`+'.png" onerror="this.src=\'dp/default.png\';"></div><div class="mc-description">'+`${author.bio}`+'</div></div><a class="mc-btn-action"><i class="fa fa-bars"></i></a><div class="mc-footer"><h4><div><i class="fa fa-fw fa-at"></i>'+`${author.email}`+'</div></h4><a class="fa fa-fw fa-facebook" href="'+`${author.url.facebook}`+'"></a><a class="fa fa-fw fa-linkedin" href="'+`${author.url.linkedin}`+'"></a><a class="fa fa-fw fa-whatsapp" href="http://api.whatsapp.com/send?phone=91'+`${author.mobile}`+'"></a><a class="fa fa-fw fa-envelope" href="mailto:'+`${author.email}`+'"></a></div></article></div>');
+            var color='Pink',pos_org=`${author.position}`+', '+`${author.organisation}`;
+            if (`${author.position}`=='Professor'){
+                color='Blue-Grey';
+                pos_org='Guide';
+
+            }
+            else if (`${author.organisation}`=='EDC'){
+                if (`${author.position}`=='Overall Coordinator')
+                    color='Teal';
+                else if (`${author.position}`=='Coordinator')
+                    color='Green';
+                else if (`${author.position}`=='Executive')
+                    color='Light-Green';
+                else
+                    color='Red';
+            }
+            else if (`${author.organisation}`=='SInC'){
+                if (`${author.position}`=='Overall Coordinator')
+                    color='Indigo';
+                else if (`${author.position}`=='Coordinator')
+                    color='Blue';
+                else if (`${author.position}`=='Executive')
+                    color='Light-Blue';
+                else
+                    color='Deep-Orange';
+            }
+            else{
+                color='Pink';
+            }
+            $("#container").append('<div class="col-md-4 col-sm-6 col-xs-12"><article class="material-card '+color+'"><h2><span>'+`${author.name}`+'</span><strong><i class="fa fa-fw fa-group"></i>'+pos_org+'</strong></h2><div class="mc-content"><div class="img-container"><img class="img-responsive" src="dp/'+`${author._id}`+'.png" onerror="this.src=\'dp/default.png\';"></div><div class="mc-description">'+`${author.bio}`+'</div></div><a class="mc-btn-action"><i class="fa fa-bars"></i></a><div class="mc-footer"><h4><div><i class="fa fa-fw fa-at"></i>'+`${author.email}`+'</div></h4><a class="fa fa-fw fa-facebook" href="'+`${author.url.facebook}`+'"></a><a class="fa fa-fw fa-linkedin" href="'+`${author.url.linkedin}`+'"></a><a class="fa fa-fw fa-whatsapp" href="http://api.whatsapp.com/send?phone=91'+`${author.mobile}`+'"></a><a class="fa fa-fw fa-envelope" href="mailto:'+`${author.email}`+'"></a></div></article></div>');
 
 
         });
