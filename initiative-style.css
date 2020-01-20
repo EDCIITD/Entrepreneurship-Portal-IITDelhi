@@ -33,9 +33,11 @@ top: 0;
     transition-duration: 0.3s;
     border-radius: 5px;
 }
+@media(min-width:450px){
 .initiative-block:hover .ini-overlay{
     opacity: 1;
     transition-duration: 0.3s;
+}
 }
 .initiative-content{
     color: black;
@@ -86,11 +88,24 @@ top: 0;
   }
   
    */
-  @media(max-width:400px){
+   @media(max-width:400px){
     .initiative-wrapper{
       margin-bottom: 0px;
     }
     .initiative-image{
       width: 25vw;
     }
+  } 
+
+
+  .initiative-title-mob{
+    display: none;
+  }
+  @media(max-width:700px){
+      .initiative-block{
+        width: 40vw;
+      }
+      .initiative-title-mob{
+        display: inline;
+      }
   }
