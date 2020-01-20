@@ -123,6 +123,7 @@ body {
   font-size: 4.5em;
   color: white;
   line-height: 1.4;
+  margin-top: 50px;
 }
 .main-title{
   line-height: 1.4;
@@ -499,7 +500,8 @@ nav ul li:hover {
   width: auto;
   margin-top: -30px;
   padding: 16px;
-  color: #120a92;
+  color: white;
+background-color:brown ;
   font-weight: bold;
   font-size: 20px;
   border-radius: 0 3px 3px 0;
@@ -508,12 +510,12 @@ nav ul li:hover {
 }
 
 .prev {
-  left: 1vw;
+  left: 7vw;
 }
 
 /* Position the "next button" to the right */
 .next {
-  right: 1vw;
+  right: 7vw;
   border-radius: 3px 0 0 3px;
 }
 

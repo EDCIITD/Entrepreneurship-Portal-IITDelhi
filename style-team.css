@@ -37,6 +37,7 @@ h6 {
   overflow: hidden;
   padding: 0;
   margin: 0;
+  border-radius: 5px;
 }
 
 .team-member figcaption p {
@@ -140,7 +141,7 @@ div {
 
 @media (max-width: 660px) {
   h1 {
-    font-size: 1vw;
+    font-size: 10vw;
   }
   .team-member {
     width: 35%;

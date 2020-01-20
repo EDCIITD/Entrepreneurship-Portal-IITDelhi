@@ -2,7 +2,7 @@
     display: inline-block;
     position: relative;
     width: 20vw;
-    margin: 3em 3em 5em 3em;
+    margin: 3em 1em 5em 1em;;
 
 }
 .initiative-title{
@@ -12,8 +12,7 @@
 .initiative-image{
     width: 15vw;
     padding:  2vw;
-    margin-left: 1vw;
-    
+    margin: 0 auto;
    display: block;
    align-items: center;
 }
@@ -24,17 +23,19 @@
 .ini-overlay{
 position: absolute;
 opacity: 0;
-background-color: orange;
-width: 20vw;
-height:33em;
-padding:0em 1em 1em 1em;
+background-color:#fba70e;
+width: inherit;
+height:30em;
 top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    transition-duration: 0.3s;
+    border-radius: 5px;
 }
 .initiative-block:hover .ini-overlay{
     opacity: 1;
+    transition-duration: 0.3s;
 }
 .initiative-content{
     color: black;
@@ -47,10 +48,10 @@ top: 0;
     transform: translate(-50%, -50%); */
 }
 .initiative-heading{
-    margin-bottom: 5em;
+    margin-top: 50px;
 }
 .initiative-wrapper{
-    margin-bottom: 20em;
+    /* margin-bottom: 20em; */
 } 
 
 
@@ -84,14 +85,12 @@ top: 0;
     opacity: 1;
   }
   
-  .text {
-    color: white;
-    font-size: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
-  } */
+   */
+  @media(max-width:400px){
+    .initiative-wrapper{
+      margin-bottom: 0px;
+    }
+    .initiative-image{
+      width: 25vw;
+    }
+  }

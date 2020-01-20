@@ -48,11 +48,23 @@ img {
 
 }
 .btn {
-  background-color: white;
+  background-color:#5724ce;
   border: 1px solid #cccccc;
-  color: #696969;
+  color: white;
   padding: 0.5rem;
   text-transform: lowercase;
+  border-radius: 4px;
+    padding: 0 16px;
+    min-width: 64px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    transition: box-shadow 0.2s;
+}
+.btn:hover{
+
 }
 .btn--block {
   display: block;
@@ -180,7 +192,7 @@ img {
  max-width: 100%;
   margin: auto;
  margin-bottom: 0px;
- margin-top: 10px;
+ /* margin-top: 10px; */
 }
 
 .footer-distributed {
@@ -345,7 +357,8 @@ img {
 .footer-distributed .footer-icons a:hover{
   background-color: yellowgreen;
 }
-.footer-distributed .footer-center i:hover{
+.footer-distributed .footer-center i
+:hover{
   background-color: yellowgreen;
 }
 
