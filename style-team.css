@@ -1,27 +1,3 @@
-@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css";
-
-body {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  color: #999;
-  background-color: #fff;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 0 20px 0;
-  text-transform: none;
-  color: rgba(254, 82, 76, 1);
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  letter-spacing: 1px;
-  line-height: 1.5;
-}
-
 .team {
   margin: 40px;
 }
@@ -43,7 +19,6 @@ h6 {
 .team-member figcaption p {
   font-size: 1.2vw;
   margin-block-end: 0px;
-  /*max-width: 50%;*/
 }
 
 .team-member figcaption ul {
@@ -135,7 +110,6 @@ h6 {
   transition: all 0.4s ease-in-out;
 }
 div {
-  /*display:table-cell;*/
   display: inline-block;
 }
 
