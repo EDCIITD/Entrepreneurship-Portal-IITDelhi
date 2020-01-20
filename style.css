@@ -660,3 +660,6 @@ video {
   opacity: .4;
 
 }
+.foot{
+  justify-content: flex-end;
+}
