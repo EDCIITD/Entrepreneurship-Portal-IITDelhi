@@ -125,8 +125,15 @@ body {
   line-height: 1.4;
   margin-top: 50px;
 }
+ @media(max-width:760px){
+  .total-title {
+    font-size: 3em;
+} 
+ }
 .main-title{
-  line-height: 1.4;
+  line-height: 0em;
+  
+ 
 }
 .content-title a {
   color: white;
@@ -581,6 +588,8 @@ background-color:brown ;
   -webkit-animation: roll-up-one 4s infinite cubic-bezier(0.75, 0, 0.25, 1);
           animation: roll-up-one 4s infinite cubic-bezier(0.75, 0, 0.25, 1);
 }
+
+
 @-webkit-keyframes roll-up-one {
   0% {
     -webkit-transform: translateY(0);
