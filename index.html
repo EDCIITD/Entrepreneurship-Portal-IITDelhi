@@ -755,16 +755,6 @@
         });
     });
 </script>
-<script>
-    // Wait for window load
-    document.onreadystatechange = function () {
-        var state = document.readyState
-        if (state == 'complete') {
-            document.getElementById('interactive');
-            $('#loaderr').fadeOut();
-        }
-    }
-</script>
 <!--
 sample
 -->
@@ -782,6 +772,19 @@ sample
             clickable: true,
         }
     });
+</script>
+
+
+<!--This must come at the end always!-->
+<script>
+    // Wait for window load
+    document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'complete') {
+            document.getElementById('interactive');
+            $('#loaderr').fadeOut();
+        }
+    }
 </script>
 
 </html>
