@@ -68,9 +68,9 @@
             }
 
 
-            $("ul.nav li a.scroll-to").click(function () {
-                goTo($("ul.nav li a").index(this));
-
+            $("ul.nav li.scroll-to a").click(function () {
+                goTo($("ul.nav li.scroll-to a").index(this));
+                //alert("Hi"+$("ul.nav li.scroll-to a").index(this));
             });
 
         });
@@ -100,15 +100,15 @@
             <a title="eDC | IIT Delhi"><img src="edc-logo.png" class="header-logo"></a>
         </div>
         <ul class="nav">
-            <li><a href="#home" class="scroll-to">Home</a></li>
-            <li><a href="./about" class="scroll-to">About</a></li>
+            <li class="scroll-to"><a href="#home" >Home</a></li>
+            <li><a href="./about">About</a></li>
             <li><a href="./comingsoon/" class="scroll-to">Events</a></li>
-            <li><a href="#initiative" class="scroll-to">Initiatives</a></li>
-            <li><a href="#resources" class="scroll-to">Resources</a></li>
-            <li><a href="#showcase" class="scroll-to">Startup Showcase</a></li>
-            <li><a href="#team" class="scroll-to">Team</a></li>
-            <li><a href="#sponsor" class="scroll-to">Sponsors</a></li>
-            <li><a href="#contact" class="scroll-to">Contact Us</a></li>
+            <li class="scroll-to"><a href="#initiative">Initiatives</a></li>
+            <li class="scroll-to"><a href="#resources">Resources</a></li>
+            <li class="scroll-to"><a href="#showcase">Startup Showcase</a></li>
+            <li  class="scroll-to"><a href="#team">Team</a></li>
+            <li class="scroll-to"><a href="#sponsor">Sponsors</a></li>
+            <li class="scroll-to"><a href="#contact" >Contact Us</a></li>
             <li><a href="https://ecelliitd.wordpress.com/">Blog</a></li>
         </ul>
     </header>
