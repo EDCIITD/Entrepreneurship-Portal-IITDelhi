@@ -4,11 +4,11 @@ body {
   overflow: hidden;
   min-height: 100%;
   color: #999999;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;
-  padding: 0rem; /*changed this*/ 
+  padding: 0rem; /*changed this*/
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -135,26 +135,23 @@ body {
   line-height: 1.4;
   margin-top: 50px;
 }
- @media(max-width:760px){
+@media (max-width: 760px) {
   .total-title {
     font-size: 3em;
-} 
-@media(max-width:500px){
-  .content-title{
-    font-size: 3.5em;
+  }
+  @media (max-width: 500px) {
+    .content-title {
+      font-size: 3.5em;
+    }
   }
 }
- }
-.main-title{
-<<<<<<< HEAD
+/* .main-title{
   line-height: 0em;
   
  
-=======
   line-height: 1.4;
   margin-top: 0px;
->>>>>>> 309fb251941dd937451ee22aeb125696fa8cd5ff
-}
+} */
 .content-title a {
   color: white;
 }
@@ -528,7 +525,7 @@ nav ul li:hover {
   margin-top: -30px;
   padding: 16px;
   color: white;
-background-color:brown ;
+  background-color: brown;
   font-weight: bold;
   font-size: 20px;
   border-radius: 0 3px 3px 0;
@@ -578,7 +575,7 @@ background-color:brown ;
   background-color: #717171;
 }
 
- .rolodex {
+.rolodex {
   height: 2em;
   overflow: hidden;
   font-size: 38px;
@@ -587,9 +584,9 @@ background-color:brown ;
 }
 .rolodex ul {
   -webkit-margin-before: 0px;
-          margin-block-start: 0px;
+  margin-block-start: 0px;
   -webkit-margin-after: 0px;
-          margin-block-end: 0px;
+  margin-block-end: 0px;
 }
 .rolodex > p,
 .rolodex ul,
@@ -606,64 +603,63 @@ background-color:brown ;
 }
 .rolodex .roll-one {
   -webkit-animation: roll-up-one 4s infinite cubic-bezier(0.75, 0, 0.25, 1);
-          animation: roll-up-one 4s infinite cubic-bezier(0.75, 0, 0.25, 1);
+  animation: roll-up-one 4s infinite cubic-bezier(0.75, 0, 0.25, 1);
 }
-
 
 @-webkit-keyframes roll-up-one {
   0% {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
   20% {
     -webkit-transform: translateY(-2em);
-            transform: translateY(-2em);
+    transform: translateY(-2em);
   }
   40% {
     -webkit-transform: translateY(-4em);
-            transform: translateY(-4em);
+    transform: translateY(-4em);
   }
   60% {
     -webkit-transform: translateY(-6em);
-            transform: translateY(-6em);
+    transform: translateY(-6em);
   }
   80% {
     -webkit-transform: translateY(-8em);
-            transform: translateY(-8em);
+    transform: translateY(-8em);
   }
   100% {
     -webkit-transform: translateY(-10em);
-            transform: translateY(-10em);
+    transform: translateY(-10em);
   }
 }
 @keyframes roll-up-one {
   0% {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
   20% {
     -webkit-transform: translateY(-2em);
-            transform: translateY(-2em);
+    transform: translateY(-2em);
   }
   40% {
     -webkit-transform: translateY(-4em);
-            transform: translateY(-4em);
+    transform: translateY(-4em);
   }
   60% {
     -webkit-transform: translateY(-6em);
-            transform: translateY(-6em);
+    transform: translateY(-6em);
   }
   80% {
     -webkit-transform: translateY(-8em);
-            transform: translateY(-8em);
+    transform: translateY(-8em);
   }
   100% {
     -webkit-transform: translateY(-10em);
-            transform: translateY(-10em);
+    transform: translateY(-10em);
   }
 }
 .wrapper {
-   margin:0 auto; 
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   /*width: 450px;*/
@@ -685,30 +681,28 @@ h6 {
   letter-spacing: 1px;
   line-height: 1.5;
 }
-video { 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -3;
-    transform: translateX(-50%) translateY(-50%);
+video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -3;
+  transform: translateX(-50%) translateY(-50%);
   background-size: cover;
   transition: 1s opacity;
 }
-.black_overlay{
+.black_overlay {
   color: black;
-  opacity: .4;
-
+  opacity: 0.4;
 }
-.foot{
+.foot {
   justify-content: flex-end;
 }
 
-.footer-left .profile{
+.footer-left .profile {
   width: 9em;
   /* height: 9em; */
-
 }

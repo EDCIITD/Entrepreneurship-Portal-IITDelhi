@@ -30,6 +30,8 @@
     <link rel="stylesheet" type="text/css" href="loader.css">
     <link rel="stylesheet" href="startup_style.css">
     <link rel="stylesheet" href="initiative-style.css">
+    <link rel="stylesheet" href="particles.js-master/demo/css/style.css">
+    
     <title>S.Inc</title>
     <script type="text/javascript">
         $().ready(function () {
@@ -115,13 +117,36 @@
     <!-- change in style.css while adding new sections!! -->
     <div class="container">
         <section class="background" id="home">
-            <video autoplay loop muted>
-                <source src="tpv.mp4" type="video/mp4">
-            </video>
-            <div class="black_overlay"></div>
-            <div class="content-wrapper">
 
-                <p class="content-title total-title">Entrepreneurship Portal IIT Delhi</p>
+            <!-- <div class="black_overlay"></div> -->
+            <div class="content-wrapper">
+                <!-- #region -->
+                <!-- count particles -->
+                <!-- <div class="count-particles">
+    <span class="js-count-particles">--</span> particles
+  </div> -->
+
+                <!-- particles.js container -->
+                <div id="particles-js">
+                    <div class="hi">
+
+                        <p class="content-title total-title">Entrepreneurship Portal IIT Delhi</p>
+                        <div class="wrapper">
+                            <p class="content-title main-title">WE</p>
+                            <div class="rolodex ">
+                                <ul class="roll-one">
+                                    <li>IDEATE</li>
+                                    <li>INNOVATE</li>
+                                    <li>INCUBATE</li>
+                                    <li>NURTURE</li>
+                                    <li>GUIDE</li>
+                                    <li>CREATE</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+                    <!-- <p class="content-title total-title">Entrepreneurship Portal IIT Delhi</p>
                 <div class="wrapper">
                     <p class="content-title main-title">WE</p>
                     <div class="rolodex ">
@@ -134,9 +159,40 @@
                             <li>CREATE</li>
                         </ul>
                     </div>
+                </div> -->
                 </div>
-            </div>
         </section>
+        <!--start-->
+        <!-- scripts -->
+        <script src="particles.js-master/demo/js/particles.js"></script>
+        <script src="particles.js-master/demo/js/app.js"></script>
+
+        <!-- stats.js -->
+        <!-- <script src="particles.js-master/demo/js/lib/stats.js"></script> -->
+        <script>
+            var count_particles, stats, update;
+            stats = new Stats();
+            stats.setMode(0);
+            stats.domElement.style.position = "absolute";
+            stats.domElement.style.left = "0px";
+            stats.domElement.style.top = "0px";
+            document.body.appendChild(stats.domElement);
+            count_particles = document.querySelector(".js-count-particles");
+            update = function () {
+                stats.begin();
+                stats.end();
+                if (
+                    window.pJSDom[0].pJS.particles &&
+                    window.pJSDom[0].pJS.particles.array
+                ) {
+                    count_particles.innerText =
+                        window.pJSDom[0].pJS.particles.array.length;
+                }
+                requestAnimationFrame(update);
+            };
+            requestAnimationFrame(update);
+        </script>
+        <!-- #region -->
         <section class="background" id="initiative">
             <div class="content-wrapper">
                 <h1 class="initiative-heading">INITIATIVES</h1>
