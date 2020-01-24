@@ -66,13 +66,13 @@ body {
   background-image: url(./img/resources.jpg);
 }
 .background:nth-child(6) {
-  background-image: url(./img/sta1.jpeg);
+  background-image: url(./img/white.jpg);
 }
 .background:nth-child(7) {
   background-image: url(./img/team.jpg);
 }
 .background:nth-child(8) {
-  background-image: url(./img/white.jpg);
+  background-image: url(./img/sta1.jpeg);
   background-color: white !important;
 }
 .background:nth-child(8):before {
@@ -139,6 +139,11 @@ body {
   .total-title {
     font-size: 3em;
 } 
+@media(max-width:500px){
+  .content-title{
+    font-size: 3.5em;
+  }
+}
  }
 .main-title{
 <<<<<<< HEAD
@@ -700,4 +705,10 @@ video {
 }
 .foot{
   justify-content: flex-end;
+}
+
+.footer-left .profile{
+  width: 9em;
+  /* height: 9em; */
+
 }
