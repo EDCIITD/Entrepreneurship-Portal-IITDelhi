@@ -50,68 +50,54 @@ body {
   -webkit-transform: translateY(15vh);
   transform: translateY(15vh);
 }
-.background:nth-child(2) {
+section:nth-of-type(2) {
   background-image: url(./img/about_us.jpg);
 }
-.background:nth-child(3) {
+ section:nth-of-type(3) {
   background-image: url(./img/events.jpg);
 }
-.background:nth-child(4) {
+ section:nth-of-type(4) {
   background-image: url(./img/img2.jpg);
 }
-/*.background:nth-child(5) {
-  background-image: url(./img/bg3.jpg);
-}*/
-.background:nth-child(5) {
+
+ section:nth-of-type(5) {
   background-image: url(./img/resources.jpg);
 }
-.background:nth-child(6) {
+ section:nth-of-type(6) {
   background-image: url(./img/white.jpg);
 }
-.background:nth-child(7) {
+ section:nth-of-type(7) {
   background-image: url(./img/team.jpg);
-}
-.background:nth-child(8) {
-  background-image: url(./img/sta1.jpeg);
-  background-color: white !important;
-}
-.background:nth-child(8):before {
-  background-color: white !important;
-}
-.background:nth-child(9) {
-  background-image: url(./img/contact_us.jpg);
 }
 
 /* Set stacking context of slides */
-.background:nth-child(1) {
-  z-index: 9;
-}
-
-.background:nth-child(2) {
+.background:first-child{
   z-index: 8;
 }
-
-.background:nth-child(3) {
+ section:nth-of-type(2) {
   z-index: 7;
 }
-.background:nth-child(4) {
+
+ section:nth-of-type(3) {
   z-index: 6;
 }
-.background:nth-child(5) {
+
+ section:nth-of-type(4) {
   z-index: 5;
 }
-.background:nth-child(6) {
+ section:nth-of-type(5) {
   z-index: 4;
 }
-.background:nth-child(7) {
+ section:nth-of-type(6) {
   z-index: 3;
 }
-.background:nth-child(8) {
+ section:nth-of-type(7) {
   z-index: 2;
 }
-.background:nth-child(9) {
+ section:nth-of-type(8) {
   z-index: 1;
 }
+
 
 .content-wrapper {
   height: 100vh;

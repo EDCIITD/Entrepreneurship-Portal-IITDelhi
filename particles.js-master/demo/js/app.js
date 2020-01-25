@@ -16,7 +16,7 @@ particlesJS('particles-js',
   {
     "particles": {
       "number": {
-        "value": 80,
+        "value": 120,
         "density": {
           "enable": true,
           "value_area": 800
@@ -51,7 +51,7 @@ particlesJS('particles-js',
         }
       },
       "size": {
-        "value": 5,
+        "value": 6,
         "random": true,
         "anim": {
           "enable": false,
@@ -85,7 +85,7 @@ particlesJS('particles-js',
       "detect_on": "canvas",
       "events": {
         "onhover": {
-          "enable": true,
+          "enable": false,//changed this to false
           "mode": "repulse"
         },
         "onclick": {
@@ -109,7 +109,7 @@ particlesJS('particles-js',
           "speed": 3
         },
         "repulse": {
-          "distance": 200
+          "distance": 20
         },
         "push": {
           "particles_nb": 4
