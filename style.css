@@ -53,51 +53,50 @@ body {
 section:nth-of-type(2) {
   background-image: url(./img/about_us.jpg);
 }
- section:nth-of-type(3) {
+section:nth-of-type(3) {
   background-image: url(./img/events.jpg);
 }
- section:nth-of-type(4) {
+section:nth-of-type(4) {
   background-image: url(./img/img2.jpg);
 }
 
- section:nth-of-type(5) {
+section:nth-of-type(5) {
   background-image: url(./img/resources.jpg);
 }
- section:nth-of-type(6) {
+section:nth-of-type(6) {
   background-image: url(./img/white.jpg);
 }
- section:nth-of-type(7) {
+section:nth-of-type(7) {
   background-image: url(./img/team.jpg);
 }
 
 /* Set stacking context of slides */
-.background:first-child{
+.background:first-child {
   z-index: 8;
 }
- section:nth-of-type(2) {
+section:nth-of-type(2) {
   z-index: 7;
 }
 
- section:nth-of-type(3) {
+section:nth-of-type(3) {
   z-index: 6;
 }
 
- section:nth-of-type(4) {
+section:nth-of-type(4) {
   z-index: 5;
 }
- section:nth-of-type(5) {
+section:nth-of-type(5) {
   z-index: 4;
 }
- section:nth-of-type(6) {
+section:nth-of-type(6) {
   z-index: 3;
 }
- section:nth-of-type(7) {
+section:nth-of-type(7) {
   z-index: 2;
 }
- section:nth-of-type(8) {
+section:nth-of-type(8) {
   z-index: 1;
 }
-
 
 .content-wrapper {
   height: 100vh;
