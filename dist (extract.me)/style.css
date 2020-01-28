@@ -3,16 +3,18 @@
 .text {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
-  font-size: 50px;
+  font-size: 4em;
   position: absolute;
-  width: 750px;
-  left: 50%;
-  margin-left: -475px;
+  margin-left: -10vw;
   height: 40px;
   top: 90%;
   /* margin-top: -20px; */
 }
-
+@media (max-width: 480px) {
+  .text {
+    margin-left: -15vw;
+  }
+}
 .text p {
   display: inline-block;
   vertical-align: top;
