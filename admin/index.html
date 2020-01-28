@@ -165,9 +165,47 @@
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
+	                     $(".res").html("<form id='newshow-form'><input type='text' id='newshow-title' placeholder='title'><input type='text' id='newshow-founder' placeholder='founder'><textarea id='newshow-content'></textarea><input type='url' id='newshow-url' placeholder='url'><input type='date' id='newshow-founded' placeholder='founded'><input type='submit'></form>");
 	                     console.info(data);
 	                 }
 	             });
+	    });
+
+	    $(".res").on("submit","#newshow-form",function(e){
+	     	e.preventDefault();
+	     	var show_title= $('#newshow-title').val(),
+	     		show_founder= $('#newshow-founder').val(),
+	     		show_founded= $('#newshow-founded').val(),
+	     		show_url= $('#newshow-url').val(),
+	     		show_content= $('#newshow-content').val();
+
+
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/showcase/5e10f8fa9f9a4d0020fb7895',
+		                 type: 'delete',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    data: {
+	            	    	body: show_content,
+	            	    	hidden: 'false',
+
+	            	    	metaData:
+	            	    	{ founder: show_founder,
+	            	    		title: show_title,
+	            	    		url: show_url,
+	            	    		founded: show_founded }
+
+	            	    },
+	            	    dataType: 'json',
+		                success: function (data) {
+		                	
+		            	   alert("success");
+		            	   console.log(data);
+		                 }
+		             });
+                    
 	    });
 
 	    $("#menu-team").click(function(){
