@@ -33,9 +33,9 @@
 
 .testimonial .icon {
   display: inline-block;
-  font-size: 80px;
+  font-size: 60px;
   color: #ffe000;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   opacity: 0.6;
 }
 
@@ -61,6 +61,7 @@
   overflow: hidden;
   z-index: 1;
   position: relative;
+  width: 60%;
 }
 
 .testimonial .pic img {
