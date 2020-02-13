@@ -1,0 +1,177 @@
+._row1{
+  height: 45vh;
+  margin-top: 2.5vh;
+}
+
+._row1>._col1,._row1>._col2,._row1>._col3{
+  height:42.5vh;
+  width: 30vw;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.4);
+  float:  left;
+  font-size: 4em;
+}
+
+._row1>._col1 ._title,._row1>._col2 ._title,._row1>._col3 ._title{
+  bottom: 6px;
+}
+
+._row1>._col1{
+  margin: 0 1.5vw 2.5vh 2vw;
+}
+
+._row1>._col2{
+  margin: 0 1.5vw 2.5vh;
+}
+
+._row1>._col3{
+  margin: 0 2vw 2.5vh 1.5vw;
+}
+
+._row2{
+  position: relative;
+  height: 50vh;
+  margin: 0 2.5vw 2.5vh;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+._row2>.col1_{
+  width: 20vw;
+  float:  left;
+  height: 35vh;
+}
+
+._row2>.col1_>div{
+  width: 100%;
+  padding: 12px;
+  user-select: none;
+  cursor:  pointer;
+}
+
+._row2>.col1_>div:hover{
+  background-color: #888;
+  color: black;
+}
+
+._row2>.col1_>div.active_{
+  background-color: #dadada;
+  color: black;
+}
+
+
+
+
+
+._row2>.col2_{
+  width:  75vw;
+  float:   left;
+  height: 35vh;
+  align-items: left;
+  text-align: left;
+}
+
+._row2>.col2_>.col2_head_{
+  text-align: center;
+  padding: 0.75em 0;
+  font-size: 2.5em;
+  text-transform:  uppercase;
+}
+
+
+._row2>.col2_>.col21_{
+  width: 40%;
+  float:  left;
+  padding: 12px;
+
+}
+
+
+
+._row2>.col2_>.col21_>div{
+  width: 100%;
+  padding: 5px 3px;
+  font-size: 1.25em;
+}
+
+._row2>.col2_>.col21_>.row211_{
+  padding: 0.5em 0;
+  font-size: 2em;
+}
+
+i.fa_{
+  display: inline-block;
+  border-radius: 50%;
+  background-color: white;
+  color: #444;
+  padding: 6px;
+  margin-right: 9px;
+}
+
+
+
+
+
+._row2>.col2_>.col22_{
+  width: 60%;
+  float: left;
+  padding: 12px;
+}
+
+._row2>.col2_>.col22_>.row221_{
+  padding: 0.5em 0;
+  font-size: 2em;
+}
+
+._row2>.col2_>.col22_>.row222_{
+  height: calc(100%-3em);
+  overflow-y: scroll;
+}
+
+
+
+
+
+._footer{
+  position: absolute;
+  bottom: 10vh;
+}
+
+._footer>div{
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Add a black background color to the top navigation */
+.__topnav {
+  overflow: scroll;
+}
+
+/* Style the links inside the navigation bar */
+.__topnav a {
+  float: left;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the color of links on hover */
+.__topnav a:hover {
+  color: yellow;
+}
+
+/* Add a color to the active/current link */
+.__topnav a.__active {
+  color: yellow;
+}

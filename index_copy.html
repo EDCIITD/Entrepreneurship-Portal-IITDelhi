@@ -24,21 +24,12 @@
     <!-- FLEX -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-        <link rel="stylesheet" href="style-last.css">
     <link rel="stylesheet" href="style1.css">
     <link rel="stylesheet" href="style-team.css">
     <link rel="stylesheet" href="./style-slide.css">
     <link rel="stylesheet" type="text/css" href="loader.css">
     <link rel="stylesheet" href="startup_style.css">
     <link rel="stylesheet" href="initiative-style.css">
-    <link rel="stylesheet" href="particles.js-master/demo/css/style.css">
-    <link rel="stylesheet" href="./dist (extract.me)/style.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-    <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'> -->
-
-    <link rel="stylesheet" href="./dist-t/style-t.css">
-
-    
     <title>S.Inc</title>
     <script type="text/javascript">
         $().ready(function () {
@@ -82,17 +73,16 @@
                 //alert("Hi"+$("ul.nav li.scroll-to a").index(this));
             });
 
-            $("__topnav a.scroll-to").click(function () {
-                goTo($("__topnav a.scroll-to").index(this));
-                //alert("Hi"+$("ul.nav li.scroll-to a").index(this));
-            });
-
         });
     </script>
+    <!-- <script>
+        function onHover() {
+            $("#id1").attr('src', 'Logo/HatchStart/Black.png');
+        }
+    </script> -->
 </head>
 
 <body>
-
     <section id="loaderr">
         <div class="load-dots">
             <div class="load-dot"></div>
@@ -112,7 +102,7 @@
         <ul class="nav">
             <li class="scroll-to"><a href="#home" >Home</a></li>
             <li><a href="./about">About</a></li>
-            <li><a href="#">Events</a></li>
+            <li><a href="./comingsoon/" class="scroll-to">Events</a></li>
             <li class="scroll-to"><a href="#initiative">Initiatives</a></li>
             <li class="scroll-to"><a href="#resources">Resources</a></li>
             <li class="scroll-to"><a href="#showcase">Startup Showcase</a></li>
@@ -125,37 +115,27 @@
     <!-- change in style.css while adding new sections!! -->
     <div class="container">
         <section class="background" id="home">
-
-            <!-- <div class="black_overlay"></div> -->
+            <video autoplay loop muted>
+                <source src="tpv.mp4" type="video/mp4">
+            </video>
+            <div class="black_overlay"></div>
             <div class="content-wrapper">
-                <!-- #region -->
-                <!-- count particles -->
-                <!-- <div class="count-particles">
-			    <span class="js-count-particles">--</span> particles
-			  </div> -->
 
-                <!-- particles.js container -->
-                <div id="particles-js">
-                    <div class="hi">
-
-                        <p class="content-title total-title">Entrepreneurship Portal IIT Delhi</p>
-                        <!-- partial:index.partial.html -->
-                        <div class="text">
-                            <p>WE</p>
-                            <p>
-                              <span class="word wisteria">IDEATE.</span>
-                              <span class="word belize">INNOVATE.</span>
-                              <span class="word pomegranate">INCUBATE.</span>
-                              <span class="word green">NURTURE.</span>
-                              <span class="word midnight">GUIDE.</span>
-                              <span class="word midnight">CREATE.</span>
-                            </p>
-                          </div>
-                          <!-- partial -->
+                <p class="content-title total-title">Entrepreneurship Portal IIT Delhi</p>
+                <div class="wrapper">
+                    <p class="content-title main-title">WE</p>
+                    <div class="rolodex ">
+                        <ul class="roll-one">
+                            <li>IDEATE</li>
+                            <li>INNOVATE</li>
+                            <li>INCUBATE</li>
+                            <li>NURTURE</li>
+                            <li>GUIDE</li>
+                            <li>CREATE</li>
+                        </ul>
                     </div>
-                    <!-- #endregion -->
-                   
                 </div>
+            </div>
         </section>
         <section class="background" id="initiative">
             <div class="content-wrapper">
@@ -245,6 +225,17 @@
                         </div>
                     </div>
                 </div>
+
+
+                <!-- <div class="c-container">
+                    <img src="Logo/Incubation/White.png" alt="Avatar" class="image">
+                    <div class="overlay">
+                        <div class="text">Hello World</div>
+                    </div>
+                </div>
+                
+                 -->
+
             </div>
         </section>
         <section class="background" id="resources">
@@ -320,7 +311,7 @@
                     </ul>
                 </div>
         </section>
-        <section class="background" id="showcase">
+        <section class="background up-scroll" id="showcase">
             <div class="content-wrapper">
                 <p class="content-title">Startup Showcase</p>
                 <p class="content-subtitle">Our startups </p>
@@ -328,19 +319,12 @@
                     <a class="prev" onclick="plusSlides(-1)">❮</a>
                     <a class="next" onclick="plusSlides(1)">❯</a>
 
-                    <a class="myItem mySlides" style="display: block;"><div class="divn"><div class="thumbnail-showcase"><img class="left-showcase" src="files/showcase/sun.jpeg"></div><div class="right-showcase"><h1>Sun Microsystems</h1><p>Vinod Khosla, an alumni of IIT Delhi founded Sun Microsystems, Inc. (Sun for short) as an American company that sold computers, computer components, software, and information technology services and created the Java programming language, the Solaris operating system, ZFS, the Network File System (NFS), and SPARC. Sun contributed significantly to the evolution of several key computing technologies, among them Unix, RISC processors, thin client computing, and virtualized computing. In January 2010, the company was sold to Oracle.</p></div></div></a>
-                    <a class="myItem mySlides" style="display: block;"><div class="divn"><div class="thumbnail-showcase"><img class="left-showcase" src="files/showcase/flipkart.jpeg"></div><div class="right-showcase"><h1>Flipkart</h1><p>Flipkart, the big billion e-commerce startup, was founded in 2007 by Sachin Bansal and Binny Bansal, both alumni of the Indian Institute of Technology Delhi. They left their jobs at Amazon and brought sales under the roof of technology. They started this venture when e-commerce was more of a risk than opportunity but with a clear vision of offering the best consumer experience to internet users, they witnessed incredible growth in the last 12 years.</p></div></div></a>
-                    <a class="myItem mySlides" style="display: block;"><div class="divn"><div class="thumbnail-showcase"><img class="left-showcase" src="files/showcase/zomato.jpeg"></div><div class="right-showcase"><h1>Zomato</h1><p>Our very own alumni Deepinder Goyal, a maths and computing graduate, started an internet directory for restaurant menus out of his apartment in 2008 which now has become one of the biggest restaurant aggregator and food delivery startup in 24 countries and more than 10,000 cities.</p></div></div></a>
-                    <a class="myItem mySlides" style="display: block;"><div class="divn"><div class="thumbnail-showcase"><img class="left-showcase" src="files/showcase/cohesity.jpeg"></div><div class="right-showcase"><h1>Cohesity</h1><p>Cohesity is a privately held information technology company headquartered in San Jose, California. The company develops software that allows IT professionals to backup, manage and gain insights from their data, across multiple systems or cloud providers. Cohesity was founded in June 2013 by Mohit Aron, who previously co-founded storage company Nutanix. While still in stealth mode, it closed a Series A funding round of $15M. Cohesity was founded in June 2013 by Mohit Aron, who previously co-founded storage company Nutanix. Cohesity develops software used to consolidate and simplify data management and includes analytics capabilities. The company's software also solves the problem of mass data fragmentation, as data proliferates across multiple systems or cloud providers. The company's main product, DataPlatform, is hyper-converged software that allows businesses to consolidate a variety of workloads, including backups, archives, test and development, along with analytics data, onto a single cloud-native platform. It works with physical servers as well as virtual machines.</p></div></div></a>
                 </div>
-                <div class="dot-container" id="aeioud">
-                    <!-- <span class="dot active" onclick="currentSlide(1)"></span><span class="dot"
-                        onclick="currentSlide(2)"></span>-->
-                        	
-                </div>
+                <div class="dot-container" id="aeioud"></div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
                 <script type="text/javascript">
-                    //SLIDESHOW....................
+                    /*
+                    //SLIDESHOW....................(responsive)
                     var slideIndex = 1;
                     var ssize;
 
@@ -360,8 +344,8 @@
                     }
                     const ul = document.getElementById("aeiou");
                     const uld = document.getElementById("aeioud");
-                    const url = "https://iic.devclub.in/api/showcase";
-                    /*fetch(url)
+                    const url = "https://iic.devclub.in/api/events";
+                    fetch(url)
                         .then(resp => resp.json())
                         .then(function (data) {
                             let authors = data.data;
@@ -381,7 +365,7 @@
                                 a.classList.add("myItem");
                                 a.classList.add("mySlides");
                                 h.innerHTML = `${author.metaData.title}`;
-                                p.innerHTML = `${author.body}`;
+                                p.innerHTML = " Magnesium is one of the six essential macro-minerals that is requiredby the body for energy production and synthesis of protein andenzymes. It contris to the development and mostimportantly responsible for synthesis of your DNA and RNA. A newreport that has appeared in theBritish Journal of Cancer, gives youanother reason to add more magnesium to your diet.";
                                 append(div2, h);
                                 append(div2, p);
                                 append(div1, img);
@@ -432,14 +416,12 @@
 
                             makeDots();
                             showSlides(1);
-                            console.log(data);
                             return ret;
 
                         })
                         .catch(function (error) {
                             console.log(error);
                         });
-                        */
                     var slides = document.getElementsByClassName("mySlides");
                     var dots = document.getElementsByClassName("dot");
 
@@ -453,8 +435,6 @@
 
                         }
                     }
-                    makeDots();
-                    showSlides(1);
 
 
 
@@ -514,10 +494,9 @@
                         dots[slideIndex - 1].className += " active";
                     }
 
-                    /*
+                    */
                     //SLIDESHOW....................
                     var slideIndex = 1;
-                    showSlides(slideIndex);
 
                     function plusSlides(n) {
                       showSlides(slideIndex += n);
@@ -527,10 +506,109 @@
                       showSlides(slideIndex = n);
                     }
 
+                     function createNode(element) {
+                        return document.createElement(element);
+                    }
+
+                    function append(parent, el) {
+                        return parent.appendChild(el);
+                    }
+                    const ul = document.getElementById("aeiou");
+                    const uld = document.getElementById("aeioud");
+                    const url = "https://iic.devclub.in/api/events";
+                    fetch(url)
+                        .then(resp => resp.json())
+                        .then(function (data) {
+                            let authors = data.data;
+                            var ret = authors.map(function (author) {
+                                let a = createNode("a"),
+                                    div1 = createNode("div"),
+                                    div2 = createNode("div"),
+                                    img = createNode("img"),
+                                    h = createNode("h1"),
+                                    p = createNode("p"),
+                                    divn = createNode("div");
+                                img.classList.add("left-showcase");
+                                div1.classList.add("thumbnail-showcase");
+                                div2.classList.add("right-showcase");
+                                divn.classList.add("divn");
+                                img.src = "tech-startup.jpg";
+                                a.classList.add("myItem");
+                                a.classList.add("mySlides");
+                                h.innerHTML = `${author.metaData.title}`;
+                                p.innerHTML = " Magnesium is one of the six essential macro-minerals that is requiredby the body for energy production and synthesis of protein andenzymes. It contris to the development and mostimportantly responsible for synthesis of your DNA and RNA. A newreport that has appeared in theBritish Journal of Cancer, gives youanother reason to add more magnesium to your diet.";
+                                append(div2, h);
+                                append(div2, p);
+                                append(div1, img);
+                                append(divn, div1);
+                                append(divn, div2);
+                                append(a, divn);
+                                append(ul, a);
+                                // card_header.classList.add("myItem-header");
+                                // card_header.style.backgroundImage = "url(" + `${author.metaData.img}` + ")";
+                                // card_title.classList.add("myItem-title");
+                                // card_title_h.innerHTML = `${author.metaData.title}`;
+                                // append(card_title, card_title_h);
+                                // append(card_header, card_title);
+                                // append(card, card_header);
+
+
+
+                                // card_summary.classList.add("myItem-summary");
+                                // e_date.classList.add("e-date");
+                                // e_date.innerHTML = "<i class='material-icons'>today</i> &nbsp" + `${author.metaData.eventDate}`;
+                                // append(card_summary, e_date);
+
+                                // e_time.classList.add("e-time");
+                                // e_time.innerHTML = "<i class='material-icons'>access_time</i> &nbsp" + `${author.metaData.eventDate}`;
+                                // append(card_summary, e_time);
+
+                                // e_venue.classList.add("e-venue");
+                                // e_venue.innerHTML = "<i class='material-icons'>location_on</i> &nbsp" + `${author.metaData.venue}`;
+                                // append(card_summary, e_venue);
+
+                                // e_org.classList.add("e-org");
+                                // e_org.innerHTML = "<i class='material-icons'>person</i> &nbsp" + `${author.metaData.organiser}`;
+                                // append(card_summary, e_org);
+
+                                // e_type.classList.add("e-type");
+                                // e_type.innerHTML = `${author.metaData.eventDate}`;
+                                // //append(card_summary,e_type);
+
+                                // e_more_info.classList.add("e-more-info");
+                                // e_more_info.innerHTML = "<i class='material-icons' style='text-shadow: none;'>arrow_forward</i>";
+                                // append(card_summary, e_more_info);
+
+                                // append(card, card_summary);
+
+
+                                // append(ul, card);
+                            });
+
+                            makeDots();
+                            showSlides(1);
+                            return ret;
+
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                    var slides = document.getElementsByClassName("mySlides");
+                    var dots = document.getElementsByClassName("dot");
+
+                    function makeDots() {
+                        var tot = slides.length;
+                        for (var j = 1; j <= tot; j++) {
+                            let dot = createNode("span");
+                            dot.classList.add("dot");
+                            dot.setAttribute("onClick", "currentSlide(" + j + ")");
+                            append(uld, dot);
+
+                        }
+                    }
+
                     function showSlides(n) {
                       var i;
-                      var slides = document.getElementsByClassName("mySlides");
-                      var dots = document.getElementsByClassName("dot");
                       if (n > slides.length) {slideIndex = 1}
                         if (n < 1) {slideIndex = slides.length}
                         for (i = 0; i < slides.length; i++) {
@@ -542,7 +620,7 @@
                       slides[slideIndex-1].style.display = "block";
                       dots[slideIndex-1].className += " active";
                     }
-                    */
+                    
                 </script>
             </div>
         </section>
@@ -550,7 +628,7 @@
             <div class="content-wrapper">
                 <p class="content-title"><a href="./team/index.html">Team</a></p>
                 <p class="content-subtitle">Meet the people who make awesome stuffs</p>
-                <!-- <div class="container">
+                <div class="container">
                     <div class="team-member">
                         <figure>
                             <img src="./team/anmol1.jpeg" alt="">
@@ -595,7 +673,7 @@
                         </figure>
                         <h4>Divyansh </h4>
                         <p>Overall Coordinator EDC</p>
-                    </div
+                    </div><!-- /.team-member-->
                     <div class="team-member">
                         <figure>
                             <img src="./team/arunima.jpeg" alt="">
@@ -610,7 +688,7 @@
                         </figure>
                         <h4>Arunima </h4>
                         <p>Overall Coordinator EDC</p>
-                    </div>
+                    </div><!-- /.team-member-->
                     <div class="team-member">
                         <figure>
                             <img src="./team/vishal.jpeg" alt="">
@@ -626,94 +704,7 @@
                         <h4>Vishal</h4>
                         <p>Overall Coordinator EDC</p>
                     </div>
-                </div> -->
-                <!-- /.container -->
-                <div class="demo">
-                    <div class="container1">
-                      <div class="row">
-                        <div id="testimonial-slider" class="owl-carousel">
-                          <div class="testimonial">
-                            <span class="icon fa fa-quote-left"></span>
-                            <p class="description">
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                            </p>
-                            <div class="testimonial-content">
-                              <div class="pic">
-                                <img src="./team/PM.jpeg" alt="">
-                              </div>
-                              <h3 class="name">Prashant Mishra</h3>
-                              <span class="title">Project Manager</span>
-                            </div>
-                          </div>
-                          <div class="testimonial">
-                            <span class="icon fa fa-quote-left"></span>
-                            <p class="description">
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                            </p>
-                            <div class="testimonial-content">
-                              <div >
-                                <img class="pic" src="./team/anmol-u.jpeg" alt="">
-                              </div>
-                              <h3 class="name">Anmol Ratan</h3>
-                              <span class="title">Overall Coordinator SINC</span>
-                            </div>
-                          </div>
-                          <div class="testimonial">
-                            <span class="icon fa fa-quote-left"></span>
-                            <p class="description">
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                            </p>
-                            <div class="testimonial-content">
-                              <div>
-                                <img class="pic" src="./team/divyansh-u.jpeg" alt="">
-                              </div>
-                              <h3 class="name">Divyansh Rana</h3>
-                              <span class="title">Overall Coordinator SINC</span>
-                            </div>
-                          </div>
-                          <div class="testimonial">
-                            <span class="icon fa fa-quote-left"></span>
-                            <p class="description">
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                            </p>
-                            <div class="testimonial-content">
-                              <div >
-                                <img class="pic" src="./team/arunima-u.jpeg" alt="">
-                              </div>
-                              <h3 class="name">Arunima</h3>
-                              <span class="title">Overall Coordinator EDC</span>
-                            </div>
-                          </div>
-                          <div class="testimonial">
-                            <span class="icon fa fa-quote-left"></span>
-                            <p class="description">
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                            </p>
-                            <div class="testimonial-content">
-                              <div >
-                                <img class="pic" src="./team/vishal-u.jpeg" alt="">
-                              </div>
-                              <h3 class="name">Vishal Gupta</h3>
-                              <span class="title">Overall Coordinator EDC</span>
-                            </div>
-                          </div>
-                                  <div class="testimonial">
-                            <span class="icon fa fa-quote-left"></span>
-                            <p class="description">
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                            </p>
-                            <div class="testimonial-content">
-                              <div>
-                                <img class="pic" src="./team/lauren-cox.jpg" alt="">
-                              </div>
-                              <h3 class="name">Vikas Verma</h3>
-                              <span class="title">Overall Coordinator SINC</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                </div><!-- /.container -->
             </div>
         </section>
         <section class="background" id="sponsor">
@@ -781,62 +772,7 @@
             </div>
         </section>
         <section class="background" id="contact">
-            <div class="content-wrapper">
-                <div class="_row1">
-                    <div class="_col1"><div class="_title">Events</div></div>
-                    <div class="_col2"><div class="_title">Team</div></div>
-                    <div class="_col3"><div class="_title">Blog</div></div>
-                </div>
-                <div class="_row2">
-                    <div class="col1_">
-                        <div class="active_">Sinc</div>
-                        <div>EDC</div>
-                        <div>Something</div>
-                        
-                    </div>
-                    <div class="col2_">
-                        <div class="col21_">
-                            <div class="row211_">Contact</div>
-                            <div>
-                                <i class="fa fa-phone fa_"></i> 
-                                <span>+91 XXXXXXXXXX</span>
-                            </div>
-                            <div><i class="fa fa-envelope fa_"></i>
-                                <span><a href="mailto:support@sinc.iitd.ac.in">support@sinc.iitd.ac.in</a></span>
-                            </div>
-                            <div><i class="fa fa-map-marker fa_"></i>
-                                <span>IIT Delhi, Hauz Khas New Delhi</span>
-                            </div>
-
-                            <hr class="hr_">
-
-                            <div class="row211_">Connect</div>
-                            
-                            <div class="footer-icons">
-                                <a href="https://m.facebook.com/edciitdelhi/"><i class="fa fa-facebook fa_"></i></a>
-                                <a href="https://instagram.com/edc_iitd?igshid=2s7a9c1sa5xi"><i class="fa fa-instagram fa_"></i></a>
-                                <a href="https://www.linkedin.com/company/entrepreneurship-development-cell-edc-iit-delhi"><i class="fa fa-linkedin fa_"></i></a>
-                                <a href="https://www.youtube.com/channel/UCpCxOtRhLy5442eZCoIZNYA"><i class="fa fa-youtube fa_"></i></a>
-                            </div>
-                        </div>
-                        <div class="col22_">
-                            <div class="row221_">About</div>
-                            <div class="row222_">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                        </div>
-                    </div>
-                    <div class="_footer">
-                        <div class="__dev">Developed by me</div>
-                        <div class="__pow">Powered by Dev Club</div>
-                        <div class="__copy">E-Cell &copy 2020</div>
-                    </div>
-                </div>
-            </div>
-            <!--<div class="content-wrapper foot">
+            <div class="content-wrapper foot">
                 <footer class="footer-distributed">
                     <div class="footer-left">
                         <div class="profile">
@@ -878,23 +814,62 @@
                         </div>
                     </div>
                 </footer>
-            </div>-->
+            </div>
         </section>
     </div>
-
+    <!-- partial -->
+    <!-- partial  ABOUT-->
+    <!-- <script type="text/javascript">
+        fetch("https://iic.devclub.in/api/about")
+            .then(resp => resp.json())
+            .then(function (data) {
+                $("#about .content-wrapper .content-subtitle").text(data.data.about);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    </script> -->
+    <script src="./script-slide.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
     <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+    <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>
     <script src="./script.js"></script>
-    <script src="particles.js-master/demo/js/particles.js"></script>
-    <script src="particles.js-master/demo/js/app.js"></script>
-    <script src="./dist (extract.me)/script.js"></script>
-    <script src="./dist-t/script-t.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js'></script>
 </body>
+<script type="text/javascript">
+    $(document).on('ready', function () {
+        $(".horizontal-center-3").slick({
+            dots: true,
+            horizontal: true,
+            centerMode: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+        });
+    });
+</script>
+<!--
+sample
+-->
+<script>
+    var swiper = new Swiper('.blog-slider', {
+        spaceBetween: 30,
+        effect: 'fade',
+        loop: true,
+        mousewheel: {
+            invert: false,
+        },
+        // autoHeight: true,
+        pagination: {
+            el: '.blog-slider__pagination',
+            clickable: true,
+        }
+    });
+</script>
+
+
+<!--This must come at the end always!-->
 <script>
     // Wait for window load
     document.onreadystatechange = function () {
