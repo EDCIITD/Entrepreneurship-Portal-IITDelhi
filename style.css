@@ -119,6 +119,7 @@ section:nth-of-type(8) {
   color: white;
   line-height: 1.4;
   margin-top: 50px;
+  width: 101vw;
 }
 @media (max-width: 760px) {
   .total-title {
