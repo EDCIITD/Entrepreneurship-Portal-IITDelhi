@@ -121,21 +121,11 @@
 	             });
 	    });
 
-	    $("#menu-blogs").click(function(){
-	        $('.popup').html('').fadeOut();
-	        $.ajax({
-	                 url: 'https://iic.devclub.in/api/admin/blog',
-	                 type: 'get',
-            	    
-            	    headers: {
-            	        Authorization: token  //for object property name, use quoted notation shown
-            	    },
-            	    dataType: 'json',
-	                 success: function (data) {
-	                     console.info(data);
-	                 }
-	             });
-	    });
+
+
+
+
+	  
 
 	    $("#menu-resources").click(function(){
 	        $('.popup').html('').fadeOut();
@@ -170,6 +160,13 @@
 	                 }
 	             });
 	    });
+
+
+
+
+
+
+
 
 	    $(".res").on("submit","#newshow-form",function(e){
 	     	e.preventDefault();
@@ -208,23 +205,40 @@
                     
 	    });
 
-	    $("#menu-team").click(function(){
-	    	$('.popup').html('').fadeOut();
+
+
+
+
+
+
+
+
+
+
+
+
+
+	    /*BLOG MENU */
+
+	    $("#menu-blogs").click(function(){
+	        $('.popup').html('').fadeOut();
 	        $.ajax({
-	                 url: 'https://iic.devclub.in/api/admin/team',
+	                 url: 'https://iic.devclub.in/api/admin/blog',
 	                 type: 'get',
             	    
             	    headers: {
-            	        Authorization: token  //for object property name, use quoted notation shown
+            	        Authorization: token  
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
-	                     $(".res").html("<a class='btn add' id='addnewteammem-btn'><i class='fa fa-plus'></i>Add Member</a><table border='1'><thead><tr><th class='sticky'>Name</th><th>Position</th><th>Organisation</th><th></th></thead><tbody></tbody></table>");
+	                     $(".res").html("<a class='btn add' id='addnewblog-btn'><i class='fa fa-plus'></i>Add Blog Post</a><table border='1'><thead><tr><th class='sticky'>Title</th><th>Author</th><th>Organisation</th><th>OnGoing</th><th></th></thead><tbody></tbody></table>");
 
 
 	                 	let authors = data.data;
+	                 	
 	                 	authors.map(function(author) {
-	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.organisation}`+"</td><td><a class='btn' id='teammem-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><input type='password' value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn teammem-rem'>Remove</a></td></tr>");});
+	                 		let authorM = author.metaData;
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${authorM.title}`+"</td><td>"+`${authorM.author}`+"</td><td>"+`${authorM.organisation}`+"</td><td>"+`${author.onGoing}`+"</td><td><a class='btn' id='blog-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn blog-rem'>Remove</a></td></tr>");});
 	                 	    
 	                 	   
 						 $('.res').fadeIn();
@@ -234,6 +248,88 @@
 	    });
 
 
+	    /* ADD NEW POST POPUP*?
+
+	    /* ADD new TEAM MEM */
+	    $('.res').on('click','a#addnewblog-btn',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	                 	    	
+     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='addnewblog-submit'><div class='box'><div class='h'>Add Post<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newblog-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newblog-title' placeholder='Title' required='true'></label></div><div><label for='newblog-position'><div class='icon'><i class='fa fa-group'></i></div><select id='newteammem-position' required='true'><option value=''>-SELECT Position-</option><option value='Professor'>Professor</option><option value='Overall Coordinator'>Overall Coordinator</option><option value='Coordinator'>Coordinator</option><option value='Executive'>Executive</option><option value='Representative'>Representative</option><option value='Volunteer'>Volunteer</option></select></label></div><div><label for='newteammem-organisation'><div class='icon'><i class='fa fa-building'></i></div><select id='newteammem-organisation' required='true'><option value=''>-SELECT Organisation-</option><option value='EDC'>EDC</option><option value='IIC'>IIC</option><option value='SInC'>SInC</option></select></label></div><div><label for='newteammem-email'><div class='icon'><i class='fa fa-at'></i></div><input type='email' id='newteammem-email' required='true' placeholder='Email ID'></label></div><div><label for='newteammem-mobile'><div class='icon'><i class='fa fa-mobile'></i></div><input type='number' id='newteammem-mobile' placeholder='Mobile'></label></div><div><label for='newteammem-bio'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newteammem-bio' placeholder='Bio' required='true'></textarea></label></div><div><label for='newteammem-fb'><div class='icon'><i class='fa fa-facebook'></i></div><input type='url' id='newteammem-fb' placeholder='Facebook'></label></div><div><label for='newteammem-linkedin'><div class='icon'><i class='fa fa-linkedin'></i></div><input type='url' id='newteammem-linkedin' placeholder='Linkedin'></label></div><div><label><input type='file' id='newteammem-dp' accept='image/*'></label><img src='' id='newteammem-dp-preview' style='width: 100px; height: auto;' /></div><div><input type='submit' ></div></div></form>");
+
+     				//$('.popup form').submit(false);
+	    	        $('.popup').fadeIn();
+	    	    });
+
+
+
+
+	    /* REMOVE BLOG POST  */
+
+	     $(".res").on("click",".blog-rem",function(){
+
+	     	// Add confirmation 
+
+	     	var blog_edit_id=$(this).prev().val();
+	    	
+
+
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/blog/'+blog_edit_id,
+		                 type: 'delete',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    
+	            	    dataType: 'json',
+		                success: function (data) {
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	   
+		            	    var type="blog";
+		                    $.ajax({
+				            url : "remdp.php",
+				            type: "POST",
+				            data:  {fid:user_edit_id,type:type},
+				            cache: false				            
+				            });
+		                	$('#menu-team').trigger('click');
+		                    console.log(data);
+		                 },
+		                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+	    });
+
+
+	    /* TEAM MENU CLICK, load add team mem and table */
+
+	    $("#menu-team").click(function(){
+	    	$('.popup').html('').fadeOut();
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/team',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token  
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                     $(".res").html("<a class='btn add' id='addnewteammem-btn'><i class='fa fa-plus'></i>Add Member</a><table border='1'><thead><tr><th class='sticky'>Name</th><th>Position</th><th>Organisation</th><th></th></thead><tbody></tbody></table>");
+
+
+	                 	let authors = data.data;
+	                 	authors.map(function(author) {
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.organisation}`+"</td><td><a class='btn' id='teammem-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn teammem-rem'>Remove</a></td></tr>");});
+	                 	    
+	                 	   
+						 $('.res').fadeIn();
+	                     console.info(data);
+	                 }
+	             });
+	    });
+
+
+	    /* ADD new TEAM MEM */
 	    $('.res').on('click','a#addnewteammem-btn',function(){
 	    	   	$('.popup').html('').fadeOut();
 	    	                 	    	
@@ -259,6 +355,8 @@
      	   readURL(this);
     	});
     	*/
+
+    	/* SUMBIT NEW TEAM MEM from popup */
 
     	$(".popup").on("submit","#newteammem-submit",function(e){
 	     	e.preventDefault();
@@ -297,8 +395,8 @@
 		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
 		            	    
 		            	    var form_data=new FormData();
-		            	    form_data.append('dp', $( '#newteammem-dp' )[0].files[0]);
-		            	    form_data.append('fid',data.data._id);
+		            	    form_data.append('img', $( '#newteammem-dp' )[0].files[0]);
+		            	    form_data.append('type','team','fid',data.data._id);
 		            	    
 		                    $.ajax({
 				            url : "updp.php",
@@ -319,11 +417,15 @@
                     
 	    });
 
+	    /* REMOVE TEAM MEM */
+
 	     $(".res").on("click",".teammem-rem",function(){
-	     	//e.preventDefault();
+
+	     	// Add confirmation 
+
 	     	var user_edit_id=$(this).prev().val();
 	    	
-
+	     				var type="team";
 
             	    	 $.ajax({
 		                 url: 'https://iic.devclub.in/api/admin/team/'+user_edit_id,
@@ -342,7 +444,7 @@
 		                    $.ajax({
 				            url : "remdp.php",
 				            type: "POST",
-				            data:  {fid:user_edit_id},
+				            data:  {type:type,fid:user_edit_id},
 				            cache: false				            
 				            });
 		                	$('#menu-team').trigger('click');
@@ -350,11 +452,9 @@
 		                 },
 		                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 		             });
-
-            	    
-
-                    
 	    });
+
+	     /* Edit TEAM mem detail */
 
 	    $('.res').on('click','a#teammem-edit',function(){
 	    	   	$('.popup').html('').fadeOut();
@@ -369,41 +469,98 @@
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
-	                 	alert("Feature coming soooon!!");
 
 	                 	let authors = data.data;
 
 	                 		$('.popup').html('').fadeOut();
 
-	                 		$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='teammem-submit'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='teammem-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='teammem-name' placeholder='Name' required='true'></label></div><div><label for='teammem-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='teammem-position' placeholder='Position' required='true'></label></div><div><label for='teammem-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='teammem-organisation' placeholder='Organisation'></label></div><div><label for='teammem-mobile'><div class='icon'><i class='fa fa-mobile'></i></div><input type='number' id='teammem-mobile' required='true' placeholder='Mobile'></label></div><div><label for='teammem-email'><div class='icon'><i class='fa fa-at'></i></div><input type='email' id='teammem-email' required='true' placeholder='Email ID'></label></div><div><label for='teammem-bio'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='teammem-bio' placeholder='Bio' required='true'></textarea></label></div><div><label for='teammem-fb'><div class='icon'><i class='fa fa-facebook'></i></div><input type='url' id='teammem-fb' placeholder='Facebook'></label></div><div><label><input type='file' id='teammem-dp' accept='image/*' required='true'></label><img src='' id='teammem-dp-preview' style='width: 100px; height: auto;' /></div><div><input type='submit' ></div></div></form>");
+	                 		$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='teammem-submit'><div class='box'><div class='h'>Edit Member Details<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='teammem-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='teammem-name' placeholder='Name' required='true'></label></div><div><label for='teammem-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='teammem-position' placeholder='Position' required='true'></label></div><div><label for='teammem-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='teammem-organisation' placeholder='Organisation'></label></div><div><label for='teammem-mobile'><div class='icon'><i class='fa fa-mobile'></i></div><input type='number' id='teammem-mobile' required='true' placeholder='Mobile'></label></div><div><label for='teammem-email'><div class='icon'><i class='fa fa-at'></i></div><input type='email' id='teammem-email' required='true' placeholder='Email ID'></label></div><div><label for='teammem-bio'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='teammem-bio' placeholder='Bio' required='true'></textarea></label></div><div><label for='teammem-fb'><div class='icon'><i class='fa fa-facebook'></i></div><input type='url' id='teammem-fb' placeholder='Facebook'></label></div><div><label><input type='file' id='teammem-dp' accept='image/*' required='true'></label><img src='' id='teammem-dp-preview' style='width: 100px; height: auto;' /></div><div><input type='submit' ></div></div></form>");
 	                 	    	
 	     			
 
 
-	                 	    	$('#user-username').val(`${authors.username}`);
-	                            $('#user-name').val(`${authors.name}`);
-	                            $('#user-organisation').val(`${authors.organisation}`);
-	                            $('#user-position').val(`${authors.position}`);
-	                            $('#user-access').val(`${authors.access}`);
-	                            $('#user-id').val(`${authors._id}`);
+	                 	    	$('#teammem-name').val(`${authors.name}`);
+	                 	    	$('#teammem-position').val(`${authors.position}`);
+	                 	    	$('#teammem-organisation').val(`${authors.organisation}`);
+	                 	    	$('#teammem-mobile').val(`${authors.mobile}`);
+	                 	    	$('#teammem-email').val(`${authors.email}`);
+	                 	    	$('#teammem-fb').val(`${authors.url.fb}`);
+	                 	    	$('#teammem-linkedin').val(`${authors.url.linkedin}`);
 
-
-
-
-
-
-	                 	    	$('.popup').fadeIn();
+	                            
 	                     console.info(data);
-	               
-	                 
-	                 	
-
-	                 
 	           
 	             }
 	    	});
 	    	                 	    
 	   	});
+
+
+
+	   	    	/* SUMBIT EDIT TEAM MEM from popup */
+
+	   	    	$(".popup").on("submit","#teammem-submit",function(e){
+	   		     	e.preventDefault();
+
+	   		    	var name_newteammem= $('#teammem-name').val(),
+	   	            	    	position_newteammem= $('#teammem-position').val() ,
+	   	            	    	organisation_newteammem= $('#teammem-organisation').val(),
+	   	            	    	email_newteammem= $('#teammem-email').val(),
+	   	            	    	mobile_newteammem= $('#teammem-mobile').val(),
+	   	            	    	bio_newteammem= $('#teammem-bio').val(),
+	   	            	    	fb_newteammem= $('#teammem-fb').val();
+	   	            	    	linkedin_newteammem= $('#teammem-linkedin').val();
+
+
+	   	            	    	 $.ajax({
+	   			                 url: 'https://iic.devclub.in/api/admin/team',
+	   			                 type: 'post',
+	   		            	    
+	   		            	    headers: {
+	   		            	        Authorization: token
+	   		            	    },
+	   		            	    data: {
+	   		            	    	name: name_newteammem,
+	   		            	    	position: position_newteammem,
+	   		            	    	organisation: organisation_newteammem,
+	   		            	    	email: email_newteammem,
+	   		            	    	contact: mobile_newteammem,
+	   		            	    	url: { facebook: fb_newteammem, linkedin: linkedin_newteammem},
+	   		            	    	bio: bio_newteammem,
+	   		            	    	hidden: 'false'
+
+	   		            	    },
+	   		            	    dataType: 'json',
+	   			                success: function (data) {
+	   			                	
+	   			            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+
+
+	   			            	    //Do if uploadis not empty!!
+	   			            	    var form_data=new FormData();
+	   			            	    form_data.append('img', $( '#newteammem-dp' )[0].files[0]);
+	   			            	    form_data.append('type','team','fid',data.data._id);
+	   			            	    
+	   			                    $.ajax({
+	   					            url : "updp.php",
+	   					            type: "POST",
+	   					            data:  form_data,
+	   					            contentType: false,
+	   					            cache: false,
+	   					            processData:false,
+	   					           
+	   					            
+	   					            });
+	   					            $('.popup').html('').fadeOut();
+	   			                	$('#menu-team').trigger('click');
+	   			                    console.log(data);
+	   			                 },
+	   			                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	   			             });
+	   	                    
+	   		    });
+
+
 
 	    /*
 	    //Image preview
@@ -490,10 +647,9 @@
 	    
 
 
-	    $("#menu-users").click(function(){
+	    /* LOAD USER ON CLICK ON MENU*/
 
-	    	//$('.tab>div').removeClass('selected');
-	    	//$(this).addClass('selected');
+	    $("#menu-users").click(function(){
 
 	        $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/users',
@@ -514,31 +670,25 @@
 	                 	    
 	                 	   
 						 $('.res').fadeIn();
-
-
-
-
-						 
-
-						 // $('.popup').fadeIn();
-
-						 //$('.popup div').append("<div>"+token+"</div>");
 	                     console.info(data);
-	               
 	                 }
 	                 
 	             });
 	        //handle failure & empty values(before ajax call) properly
 	    });
 
+
+	    /*NEW USER POPUP on BUTTON CLICK*/
+
 	    $('.res').on('click','a#addnewuser-btn',function(){
 	    	   	$('.popup').html('').fadeOut();
 	    	                 	    	
      			$('.popup').html("<form class='popup-content animate' id='newuser-submit'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newuser-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='newuser-username' placeholder='Username' required='true'></label></div><div><label for='newuser-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newuser-name' placeholder='Name' required='true'></label></div><div><label for='newuser-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='newuser-password' placeholder='Password' required='true'></label></div><div><label for='newuser-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newuser-organisation' required='true' placeholder='Organisation'></label></div><div><label for='newuser-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newuser-position' placeholder='Position' required='true'></label></div><div><label for='newuser-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='newuser-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' ></div></div></form>");
 
-     				//$('.popup form').submit(false);
 	    	        $('.popup').fadeIn();
 	    	    });
+
+	    /* NEW USER SUBMIT FROM POPUP */
 
 	   $(".popup").on("submit","#newuser-submit",function(e){
 	   		e.preventDefault();
@@ -574,7 +724,7 @@
 	    });
 
 	    
-
+	   /* MANAGE EXISTING USER POPUP DISPLAy */
 
 	    $(".res").on("click",".user-edit",function(){
 	    	$('.popup').html('').fadeOut();
@@ -591,21 +741,12 @@
             	    dataType: 'json',
 	                 success: function (data) {
 
-	                 	//alert('Hi');
-
-
 	                 	let authors = data.data;
-
-	                 		$('.popup').html('').fadeOut();
+	                 	$('.popup').html('').fadeOut();
 	                 	    	
-	     			//$('.popup').html("<div class='popup-content animate'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><form><div><label for='newuser-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='newuser-username' placeholder='Username' required='true'></label></div><div><label for='newuser-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newuser-name' placeholder='Name' required='true'></label></div><div><label for='newuser-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='newuser-password' placeholder='Password' required='true'></label></div><div><label for='newuser-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newuser-organisation' required='true' placeholder='Organisation'></label></div><div><label for='newuser-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newuser-position' placeholder='Position' required='true'></label></div><div><label for='newuser-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='newuser-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' id='newuser-submit'></div></form></div></div>");
                  			
 
-	                 			$('.popup').html("<div class='popup-content animate'><div class='box'><div class='h'>Manage User<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><input type='text' id='user-id' placeholder='id' required='true' readonly='true' hidden='true'><br><div class='h'>Update details</div><form  id='user-update'><div><label for='user-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='user-username' placeholder='Username' required='true'></label></div><div><label for='user-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='user-name' placeholder='Name' required='true'></label></div><div><label for='user-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='user-organisation' required='true' placeholder='Organisation'></label></div><div><label for='user-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='user-position' placeholder='Position' required='true'></label></div><div><label for='user-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' value='Update'></div></form><div class='h'>Remove user</div><form id='user-delete'><div><label><input type='checkbox' required='true'>Confirm</label></div><div><input type='submit' value='DELETE' ></div></form><div class='h'>Reset Password</div><form  id='user-reset-password'><div><label for='user-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='user-password' required='true' placeholder='New Password'></label></div><div><input type='submit' value='Reset Password'></div></form></div></div>");
-
-	                 	    	//$('.popup div').html("<input type='text' id='user-id' placeholder='id' required='true' readonly='true'><form><input type='text' id='user-username' placeholder='username' required='true'><input type='text' id='user-name' placeholder='name' required='true'><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select><input type='text' id='user-position' placeholder='position' required='true'><input type='text' id='user-organisation' required='true'> <input type='submit' value='Update' id='user-update'></form><br><form><label><input type='checkbox' required='true'>Confirm</label><input type='button' value='DELETE' id='user-delete'></form><br><form><input type='password' id='user-password' required='true' placeholder='New Password'><input type='submit' value='Reset Password' id='user-reset-password'></form>");
-	                 	    	//$('.popup form').submit(false);
-
+	                 $('.popup').html("<div class='popup-content animate'><div class='box'><div class='h'>Manage User<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><input type='text' id='user-id' placeholder='id' required='true' readonly='true' hidden='true'><br><div class='h'>Update details</div><form  id='user-update'><div><label for='user-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='user-username' placeholder='Username' required='true'></label></div><div><label for='user-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='user-name' placeholder='Name' required='true'></label></div><div><label for='user-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='user-organisation' required='true' placeholder='Organisation'></label></div><div><label for='user-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='user-position' placeholder='Position' required='true'></label></div><div><label for='user-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' value='Update'></div></form><div class='h'>Remove user</div><form id='user-delete'><div><label><input type='checkbox' required='true'>Confirm</label></div><div><input type='submit' value='DELETE' ></div></form><div class='h'>Reset Password</div><form  id='user-reset-password'><div><label for='user-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='user-password' required='true' placeholder='New Password'></label></div><div><input type='submit' value='Reset Password'></div></form></div></div>");
 	                 	    	
 
 
@@ -615,20 +756,8 @@
 	                            $('#user-position').val(`${authors.position}`);
 	                            $('#user-access').val(`${authors.access}`);
 	                            $('#user-id').val(`${authors._id}`);
-
-
-
-
-
-
 	                 	    	$('.popup').fadeIn();
 	                     console.info(data);
-	               
-	                 
-	                 	
-
-	                 
-	           
 	             }
 	    	});
 
@@ -638,6 +767,8 @@
 	    });
 
 
+
+	    /*USER UPDATE SUBMIT */
 	    $(".popup").on("submit","#user-update",function(e){
 	    	e.preventDefault();
 	    	var username_user= $('#user-username').val(),
@@ -670,6 +801,8 @@
 	             });
 	    });
 
+	    /*USER delete SUBMIT*/
+
 	    $(".popup").on("submit","#user-delete",function(e){
 	    	e.preventDefault();
 	    	var username_user= $('#user-username').val(),
@@ -701,6 +834,8 @@
 	                 }
 	             });
 	    });
+
+	    /*USER PASSWORD RESET SUBMIT*/
 
 	    $(".popup").on("submit","#user-reset-password",function(e){
 	    	e.preventDefault();

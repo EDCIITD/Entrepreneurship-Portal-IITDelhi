@@ -1,6 +1,7 @@
 <?php
 	
-			$dir='../team/dp/';
+			$type=$_POST['type'];
+			$dir='../'+$type+'/img/';
 
 			
 			$name=$_POST['fid']; 
