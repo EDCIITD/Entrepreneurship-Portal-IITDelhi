@@ -57,7 +57,7 @@
             }
             else
               {
-                //alert("Failed");
+                //alert("errored");
                 $('#login-err').css('color','red');
                 $('#login-err').text(data.message);
               }  
@@ -267,7 +267,8 @@
 
 	     $(".res").on("click",".blog-rem",function(){
 
-	     	// Add confirmation 
+	     if (confirm("You are about to remove a blog post and this process is irreversible! Are you sure you have taken the right step?")) {
+
 
 	     	var blog_edit_id=$(this).prev().val();
 	    	
@@ -296,8 +297,9 @@
 		                	$('#menu-team').trigger('click');
 		                    console.log(data);
 		                 },
-		                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 		             });
+			}
 	    });
 
 
@@ -412,7 +414,7 @@
 		                	$('#menu-team').trigger('click');
 		                    console.log(data);
 		                 },
-		                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 		             });
                     
 	    });
@@ -421,9 +423,8 @@
 
 	     $(".res").on("click",".teammem-rem",function(){
 
-	     	// Add confirmation 
-
-	     	var user_edit_id=$(this).prev().val();
+	     	if (confirm("You are about to remove a team member and this process is irreversible! Are you sure you have taken the right step?")) {
+	     	    	var user_edit_id=$(this).prev().val();
 	    	
 	     				var type="team";
 
@@ -450,8 +451,11 @@
 		                	$('#menu-team').trigger('click');
 		                    console.log(data);
 		                 },
-		                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 		             });
+	     	  }
+
+	     	
 	    });
 
 	     /* Edit TEAM mem detail */
@@ -555,7 +559,7 @@
 	   			                	$('#menu-team').trigger('click');
 	   			                    console.log(data);
 	   			                 },
-	   			                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	   			                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 	   			             });
 	   	                    
 	   		    });
@@ -633,7 +637,7 @@
 		                	$('#menu-team').trigger('click');
 		                    console.log(data);
 		                 },
-		                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 		             });
 
             	    
@@ -674,7 +678,7 @@
 	                 }
 	                 
 	             });
-	        //handle failure & empty values(before ajax call) properly
+	        //handle errorure & empty values(before ajax call) properly
 	    });
 
 
@@ -719,7 +723,7 @@
 	                	$('#menu-users').trigger('click');
 	                     //console.log(data);
 	                 },
-	                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 	             });
 	    });
 
@@ -729,7 +733,6 @@
 	    $(".res").on("click",".user-edit",function(){
 	    	$('.popup').html('').fadeOut();
 	    	var user_edit_id=$(this).next().val();
-	    	//alert(user_edit_id);
 
 	    	 $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/users/'+user_edit_id,
