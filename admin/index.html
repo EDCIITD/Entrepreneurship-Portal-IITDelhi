@@ -152,64 +152,263 @@
 
 	   
 
-	    
+	    /*SHOWCASE MENU */
+
+	    $("#menu-showcase").click(function(){
+	        $('.popup').html('').fadeOut();
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/showcase',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token  
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                     $(".res").html("<a class='btn add' id='addnewshowcase-btn'><i class='fa fa-plus'></i>Add Startup</a><table border='1'><thead><tr><th class='sticky'>Name</th><th>Founder</th><th>Website</th><th></th></thead><tbody></tbody></table>");
+
+
+	                 	let authors = data.data;
+	                 	
+	                 	authors.map(function(author) {
+	                 		let authorM = author.metaData;
+	                 		var url_bool='NA';
+	                 		if (`${authorM.url}`!='')
+	                 			url_bool='Available';
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${authorM.title}`+"</td><td>"+`${authorM.founder}`+"</td><td>"+url_bool+"</td><td><a class='btn' id='showcase-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn showcase-rem'>Remove</a></td></tr>");});
+	                 	    
+						 $('.res').fadeIn();
+	                     console.info(data);
+	                 }
+	             });
+	    });
+
+
+	    /* ADD NEW STARTUP POPUP*/
+
+	    $('.res').on('click','a#addnewshowcase-btn',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	                 	    	
+     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='newshowcase-submit'><div class='box'><div class='h'>Add Startup<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newshowcase-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newshowcase-title' placeholder='Startup Name' required='true'></label></div><div><label for='newshowcase-founder'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newshowcase-founder' placeholder='Founder'></label></div><div><label for='newshowcase-url'><div class='icon'><i class='fa fa-at'></i></div><input type='url' id='newshowcase-url' placeholder='Website'></label></div><div><label for='newshowcase-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newshowcase-body' placeholder='Short Story' required='true' row='9'></textarea></label></div><input type='file' id='newshowcase-img' accept='image/*'></label><img src='' id='newshowcase-img-preview' style='width: 100px; height: auto;' /></div><div><input type='submit' ></div></div></form>");
+
+     				//$('.popup form').submit(false);
+	    	        $('.popup').fadeIn();
+	    	    });
+
+
+	    /* SUMBIT NEW STARTUP from popup */
+
+    	$(".popup").on("submit","#newshowcase-submit",function(e){
+	     	e.preventDefault();
+
+	    	var title_newshowcase= $('#newshowcase-title').val(),
+            	    	founder_newshowcase= $('#newshowcase-founder').val(),
+            	    	url_newshowcase= $('#newshowcase-url').val(),
+            	    	body_newshowcase= $('#newshowcase-body').val();
+
+
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/showcase',
+		                 type: 'post',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    data: {
+	            	    	metaData : {
+	            	    		title: title_newshowcase,
+	            	    		founder: founder_newshowcase,
+	            	    		url: url_newshowcase
+	            	    	},
+	            	    	body: body_newshowcase,
+	            	    	hidden: 'false'
+	            	    	
+
+	            	    },
+	            	    dataType: 'json',
+		                success: function (data) {
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	   if ($( '#newshowcase-img' )!='') {
+		            	    
+			            	    var form_data=new FormData();
+			            	    form_data.append('img', $( '#newshowcase-img' )[0].files[0]);
+			            	    form_data.append('type','showcase');
+			            	    form_data.append('fid',data.data._id);
+			            	    
+			                    $.ajax({
+					            url : "updp.php",
+					            type: "POST",
+					            data:  form_data,
+					            contentType: false,
+					            cache: false,
+					            processData:false,
+					           
+					            
+					            });
+			                }
+				            
+				            $('.popup').html('').fadeOut();
+		                	$('#menu-showcase').trigger('click');
+		                    console.log(data);
+		                    
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+                    
+	    });
+
+
+	     /* Edit SHOWCASE startup detail */
+
+	    $('.res').on('click','a#showcase-edit',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	   	var showcase_edit_id=$(this).next().val();
+
+	    	   	$.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/showcase/'+showcase_edit_id,
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token 
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+
+	                 	let authors = data.data;
+
+	                 		$('.popup').html('').fadeOut();
+
+     						$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='showcase-submit'><div class='box'><div class='h'>Update Startup<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='showcase-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='showcase-title' placeholder='Startup Name' required='true'></label></div><div><label for='showcase-founder'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='showcase-founder' placeholder='Founder'></label></div><div><label for='showcase-url'><div class='icon'><i class='fa fa-at'></i></div><input type='url' id='showcase-url' placeholder='Website'></label></div><div><label for='showcase-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='showcase-body' placeholder='Short Story' required='true' row='9'></textarea></label></div><input type='file' id='showcase-img' accept='image/*'></label><img src='' id='showcase-img-preview' style='width: 100px; height: auto;' /></div><div><input id='showcase-id' readonly='true' hidden='true'><input type='submit' ></div></div></form>");
+	                 	    	
+	     						$('#showcase-id').val(showcase_edit_id);
+
+
+	                 	    	$('#showcase-title').val(`${authors.metaData.title}`);
+	                 	    	$('#showcase-founder').val(`${authors.metaData.founder}`);
+	                 	    	$('#showcase-url').val(`${authors.metaData.url}`);
+	                 	    	$('#showcase-body').val(`${authors.body}`);
+
+	                 	    	$('.popup').fadeIn();
+
+
+
+	                            
+	                     console.info(data);
+	           
+	             }
+	    	});
+	    	                 	    
+	   	});
 
 
 
 
 
+    	/* SUMBIT EDIT SHOWCASE startup from popup */
+
+	   	    	$(".popup").on("submit","#showcase-submit",function(e){
+	   		     	e.preventDefault();
+
+	   		    	var showcase_edit_id=$('#showcase-id').val(),
+	   		    				title_showcase= $('#showcase-title').val(),
+	   	            	    	founder_showcase= $('#showcase-founder').val(),
+	   	            	    	url_showcase= $('#showcase-url').val(),
+	   	            	    	body_showcase= $('#showcase-body').val();
 
 
+	   	            	    	 $.ajax({
+	   			                 url: 'https://iic.devclub.in/api/admin/showcase/'+showcase_edit_id,
+	   			                 type: 'post',
+	   		            	    
+	   		            	    headers: {
+	   		            	        Authorization: token
+	   		            	    },
+	   		            	    data: {
+
+	   		            	    	metaData : {
+	   		            	    		title: title_showcase,
+	   		            	    		founder: founder_showcase,
+	   		            	    		url: url_showcase
+	   		            	    	},
+	   		            	    	body: body_showcase,
+	   		            	    	hidden: 'false'
+
+	   		            	    },
+	   		            	    dataType: 'json',
+	   			                success: function (data) {
+	   			                	
+	   			            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+
+	   			            	    if ($( '#showcase-img' ).val()!=''){
+		   			            	    //Do if uploadis not empty!!
+		   			            	    var form_data=new FormData();
+		   			            	    form_data.append('img', $( '#showcase-img' )[0].files[0]);
+		   			            	    form_data.append('type','showcase');
+		            	    			form_data.append('fid',data.data._id);
+		   			            	    
+
+		   			                    $.ajax({
+		   					            url : "updp.php",
+		   					            type: "POST",
+		   					            data:  form_data,
+		   					            contentType: false,
+		   					            cache: false,
+		   					            processData:false,
+		   					           
+		   					            
+		   					            });
+		   			                }
+	   					            $('.popup').html('').fadeOut();
+	   			                	$('#menu-showcase').trigger('click');
+	   			                    console.log(data);
+	   			                 },
+	   			                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	   			             });
+	   	                    
+	   		    });
 
 
+	    /* REMOVE SHOWCASE startup  */
+
+	     $(".res").on("click",".showcase-rem",function(){
+
+	     if (confirm("You are about to remove a startup from showcase and this process is irreversible! Are you sure you have taken the right step?")) {
 
 
+	     	var showcase_edit_id=$(this).prev().val();
+	    	
 
 
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/showcase/'+showcase_edit_id,
+		                 type: 'delete',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    
+	            	    dataType: 'json',
+		                success: function (data) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		                	$('#menu-showcase').trigger('click');
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	   
+		            	    var type="showcase";
+		                    $.ajax({
+				            url : "remdp.php",
+				            type: "POST",
+				            data:  {fid:user_edit_id,type:type},
+				            cache: false				            
+				            });
+		                	
+		                    console.log(data);
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+			}
+	    });
 
 
 
