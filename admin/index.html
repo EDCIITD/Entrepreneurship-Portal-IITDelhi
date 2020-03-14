@@ -93,41 +93,8 @@
 	    	$(this).addClass('selected');
 	    });
 
-        $("#menu-events").click(function(){
-	        $('.popup').html('').fadeOut();
-	        $.ajax({
-	                 url: 'https://iic.devclub.in/api/admin/events',
-	                 type: 'get',
-            	    
-            	    headers: {
-            	        Authorization: token  //for object property name, use quoted notation shown
-            	    },
-            	    dataType: 'json',
-	                 success: function (data) {
-	                 	$(".res").html("<table border='1'></table>");
 
-
-	                 	let authors = data.data;
-	                 	 authors.map(function(author) {
-	                 		$(".res>table").append("<tr><td>"+`${author.metaData.title}`+"</td><td>"+`${author.metaData.eventDate}`+"</td><td>"+`${author.metaData.eventTime}`+"</td><td>"+`${author.metaData.venue}`+"</td><td>"+`${author.metaData.organiser}`+"</td><td><a onclick=\"$.Edit('events','"+`${author._id}`+"')\" >edit</td></tr>");});
-
-	                 	    
-	                 	   
-						$('.res').fadeIn();
-
-	                     //console.info(data);
-	                
-	                 }
-	             });
-	    });
-
-
-
-
-
-	  
-
-	    $("#menu-resources").click(function(){
+         $("#menu-resources").click(function(){
 	        $('.popup').html('').fadeOut();
 	        $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/resources',
@@ -143,6 +110,323 @@
 	                 }
 	             });
 	    });
+
+
+
+
+
+	     /*EVENTS MENU */
+
+	    $("#menu-events").click(function(){
+	        $('.popup').html('').fadeOut();
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/events',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token  
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                     $(".res").html("<a class='btn add' id='addnewevent-btn'><i class='fa fa-plus'></i>Add Event</a><table border='1'><thead><tr><th class='sticky'>Title</th><th>Date</th><th>Time</th><th>Venue</th><th>Organiser</th><th>onGoing</th><th></th></thead><tbody></tbody></table>");
+
+
+	                 	let authors = data.data;
+	                 	
+	                 	authors.map(function(author) {
+	                 		
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.metaData.title}`+"</td><td>"+`${author.metaData.eventDate}`+"</td><td>"+`${author.metaData.eventTime}`+"</td><td>"+`${author.metaData.venue}`+"</td><td>"+`${author.metaData.organiser}`+"</td><td>"+`${author.onGoing}`+"</td><td><a class='btn' id='event-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn event-rem'>Remove</a></td></tr>");});
+	                 	    
+						 $('.res').fadeIn();
+	                     console.info(data);
+	                 }
+	             });
+	    });
+
+
+	    /* ADD NEW EVENT POPUP*/
+
+	    $('.res').on('click','a#addnewevent-btn',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	                 	    	
+     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='newevent-submit'><div class='box'><div class='h'>Add Event<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newevent-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newevent-title' placeholder='Event Name' required='true'></label></div><div><label for='newevent-date'><div class='icon'><i class='fa fa-calender'></i></div><input type='date' id='newevent-date' placeholder='Date' required='true'></label></div><div><label for='newevent-time'><div class='icon'><i class='fa fa-clock-o'></i></div><input type='time' id='newevent-time' placeholder='Time' required='true'></label></div><div><label for='newevent-venue'><div class='icon'><i class='fa fa-map-marker'></i></div><input type='text' id='newevent-venue' placeholder='Venue' required='true'></label></div><div><label for='newevent-organiser'><div class='icon'><i class='fa fa-map-user-group'></i></div><input type='text' id='newevent-organiser' placeholder='Organiser' required='true'></label></div><div><label for='newevent-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newevent-body' placeholder='Description' required='true' ></textarea></label></div><div><label for='newevent-ongoing'><div class='icon'><i class='fa fa-eye'></i></div><select id='newevent-ongoing' required='true'><option value=''>- onGoing? -</option><option value='true'>true</option><option value='false'>false</option></select></label></div><input type='file' id='newevent-img' accept='image/*'></label><img src='' id='newevent-img-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div></form>");
+
+	    	        $('.popup').fadeIn();
+	    	    });
+
+
+	    /* SUMBIT NEW EVENT from popup */
+
+    	$(".popup").on("submit","#newevent-submit",function(e){
+	     	e.preventDefault();
+
+	    	var title_newevent= $('#newevent-title').val(),
+            	    	date_newevent= $('#newevent-date').val(),
+            	    	time_newevent= $('#newevent-time').val(),
+            	    	venue_newevent= $('#newevent-venue').val(),
+            	    	organiser_newevent= $('#newevent-organiser').val(),
+            	    	ongoing_newevent= $('#newevent-ongoing').val(),
+            	    	body_newevent= $('#newevent-body').val();
+
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/events',
+		                 type: 'post',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    data: {
+	            	    	metaData : {
+	            	    		title: title_newevent,
+	            	    		eventDate: date_newevent,
+	            	    		eventTime: time_newevent,
+	            	    		organiser: organiser_newevent,
+	            	    		venue: venue_newevent
+	            	    	},
+	            	    	body: body_newevent,
+	            	    	onGoing: ongoing_newevent,
+	            	    	hidden: 'false'
+	            	    	
+
+	            	    },
+	            	    dataType: 'json',
+		                success: function (data) {
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	   if ($( '#newevent-img' )!='') {
+		            	    
+			            	    var form_data=new FormData();
+			            	    form_data.append('img', $( '#newevent-img' )[0].files[0]);
+			            	    form_data.append('type','events');
+			            	    form_data.append('fid',data.data._id);
+			            	    
+			                    $.ajax({
+					            url : "updp.php",
+					            type: "POST",
+					            data:  form_data,
+					            contentType: false,
+					            cache: false,
+					            processData:false,
+					           
+					            
+					            });
+			                }
+				            
+				            $('.popup').html('').fadeOut();
+		                	$('#menu-events').trigger('click');
+		                    console.log(data);
+		                    
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+                    
+	    });
+
+
+	     /* Edit EVENT detail */
+
+	    $('.res').on('click','a#event-edit',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	   	var event_edit_id=$(this).next().val();
+
+	    	   	$.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/events/'+event_edit_id,
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token 
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+
+	                 	let authors = data.data;
+
+	                 		$('.popup').html('').fadeOut();
+
+	                 		$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='event-submit'><div class='box'><div class='h'>Add Event<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='event-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='event-title' placeholder='Event Name' required='true'></label></div><div><label for='event-date'><div class='icon'><i class='fa fa-calender'></i></div><input type='date' id='event-date' placeholder='Date' required='true'></label></div><div><label for='event-time'><div class='icon'><i class='fa fa-clock-o'></i></div><input type='time' id='event-time' placeholder='Time' required='true'></label></div><div><label for='event-venue'><div class='icon'><i class='fa fa-map-marker'></i></div><input type='text' id='event-venue' placeholder='Venue' required='true'></label></div><div><label for='event-organiser'><div class='icon'><i class='fa fa-map-user-group'></i></div><input type='text' id='event-organiser' placeholder='Organiser' required='true'></label></div><div><label for='event-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='event-body' placeholder='Description' required='true' ></textarea></label></div><div><label for='event-ongoing'><div class='icon'><i class='fa fa-eye'></i></div><select id='event-ongoing' required='true'><option value=''>- onGoing? -</option><option value='true'>true</option><option value='false'>false</option></select></label></div><input type='file' id='event-img' accept='image/*'></label><img src='' id='event-img-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div><input id='event-id' readonly='true' hidden='true'></form>");
+	                 	    	
+	     						$('#event-id').val(event_edit_id);
+
+
+    							$('#event-title').val(`${authors.metaData.title}`);
+    							$('#event-date').val(`${authors.metaData.eventDate}`);
+    							$('#event-time').val(`${authors.metaData.eventTime}`);
+    							$('#event-venue').val(`${authors.metaData.venue}`);
+    							$('#event-organiser').val(`${authors.metaData.organiser}`);
+    	            	    	$('#event-body').val(`${authors.body}`);
+    	            	    	$('#event-ongoing').val(`${authors.onGoing}`);
+
+
+	                 	    	$('.popup').fadeIn();
+
+
+
+	                            
+	                     console.info(data);
+	           
+	             }
+	    	});
+	    	                 	    
+	   	});
+
+
+
+
+
+    	/* SUMBIT EDIT EVENT from popup */
+
+	   	    	$(".popup").on("submit","#event-submit",function(e){
+	   		     	e.preventDefault();
+
+	   		    	var event_edit_id=$('#event-id').val(),
+	   		    		title_event= $('#event-title').val(),
+            	    	date_event= $('#event-date').val(),
+            	    	time_event= $('#event-time').val(),
+            	    	venue_event= $('#event-venue').val(),
+            	    	organiser_event= $('#event-organiser').val(),
+            	    	ongoing_event= $('#event-ongoing').val(),
+            	    	body_event= $('#event-body').val();
+
+
+	   	            	    	 $.ajax({
+	   			                 url: 'https://iic.devclub.in/api/admin/events/'+event_edit_id,
+	   			                 type: 'post',
+	   		            	    
+	   		            	    headers: {
+	   		            	        Authorization: token
+	   		            	    },
+	   		            	    data: {
+
+	   		            	    	metaData : {
+			            	    		title: title_event,
+			            	    		eventDate: date_event,
+			            	    		eventTime: time_event,
+			            	    		organiser: organiser_event,
+			            	    		venue: venue_event
+			            	    	},
+			            	    	body: body_event,
+			            	    	onGoing: ongoing_event,
+			            	    	hidden: 'false'
+
+	   		            	    },
+	   		            	    dataType: 'json',
+	   			                success: function (data) {
+	   			                	
+	   			            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+
+	   			            	    if ($( '#event-img' ).val()!=''){
+		   			            	    //Do if uploadis not empty!!
+		   			            	    var form_data=new FormData();
+		   			            	    form_data.append('img', $( '#event-img' )[0].files[0]);
+		   			            	    form_data.append('type','events');
+		            	    			form_data.append('fid',data.data._id);
+		   			            	    
+
+		   			                    $.ajax({
+		   					            url : "updp.php",
+		   					            type: "POST",
+		   					            data:  form_data,
+		   					            contentType: false,
+		   					            cache: false,
+		   					            processData:false,
+		   					           
+		   					            
+		   					            });
+		   			                }
+	   					            $('.popup').html('').fadeOut();
+	   			                	$('#menu-events').trigger('click');
+	   			                    console.log(data);
+	   			                 },
+	   			                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	   			             });
+	   	                    
+	   		    });
+
+
+	    /* REMOVE EVENT startup  */
+
+	     $(".res").on("click",".event-rem",function(){
+
+	     if (confirm("You are about to remove a event and this process is irreversible! Are you sure you have taken the right step?")) {
+
+
+	     	var event_edit_id=$(this).prev().val();
+	    	
+
+
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/events/'+event_edit_id,
+		                 type: 'delete',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    
+	            	    dataType: 'json',
+		                success: function (data) {
+
+		                	$('#menu-events').trigger('click');
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	   
+		            	    var type="events";
+		                    $.ajax({
+				            url : "remdp.php",
+				            type: "POST",
+				            data:  {fid:event_edit_id,type:type},
+				            cache: false				            
+				            });
+		                	
+		                    console.log(data);
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+			}
+	    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	    
 
@@ -189,7 +473,7 @@
 	    $('.res').on('click','a#addnewshowcase-btn',function(){
 	    	   	$('.popup').html('').fadeOut();
 	    	                 	    	
-     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='newshowcase-submit'><div class='box'><div class='h'>Add Startup<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newshowcase-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newshowcase-title' placeholder='Startup Name' required='true'></label></div><div><label for='newshowcase-founder'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newshowcase-founder' placeholder='Founder'></label></div><div><label for='newshowcase-url'><div class='icon'><i class='fa fa-at'></i></div><input type='url' id='newshowcase-url' placeholder='Website'></label></div><div><label for='newshowcase-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newshowcase-body' placeholder='Short Story' required='true' row='9'></textarea></label></div><input type='file' id='newshowcase-img' accept='image/*'></label><img src='' id='newshowcase-img-preview' style='width: 100px; height: auto;' /></div><div><input type='submit' ></div></div></form>");
+     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='newshowcase-submit'><div class='box'><div class='h'>Add Startup<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newshowcase-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newshowcase-title' placeholder='Startup Name' required='true'></label></div><div><label for='newshowcase-founder'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newshowcase-founder' placeholder='Founder'></label></div><div><label for='newshowcase-url'><div class='icon'><i class='fa fa-at'></i></div><input type='url' id='newshowcase-url' placeholder='Website'></label></div><div><label for='newshowcase-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newshowcase-body' placeholder='Short Story' required='true' row='9'></textarea></label></div><div><label><input type='file' id='newshowcase-img' accept='image/*'></label></div><img src='' id='newshowcase-img-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div></form>");
 
      				//$('.popup form').submit(false);
 	    	        $('.popup').fadeIn();
@@ -279,7 +563,7 @@
 
 	                 		$('.popup').html('').fadeOut();
 
-     						$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='showcase-submit'><div class='box'><div class='h'>Update Startup<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='showcase-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='showcase-title' placeholder='Startup Name' required='true'></label></div><div><label for='showcase-founder'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='showcase-founder' placeholder='Founder'></label></div><div><label for='showcase-url'><div class='icon'><i class='fa fa-at'></i></div><input type='url' id='showcase-url' placeholder='Website'></label></div><div><label for='showcase-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='showcase-body' placeholder='Short Story' required='true' row='9'></textarea></label></div><input type='file' id='showcase-img' accept='image/*'></label><img src='' id='showcase-img-preview' style='width: 100px; height: auto;' /></div><div><input id='showcase-id' readonly='true' hidden='true'><input type='submit' ></div></div></form>");
+     						$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='showcase-submit'><div class='box'><div class='h'>Update Startup<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='showcase-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='showcase-title' placeholder='Startup Name' required='true'></label></div><div><label for='showcase-founder'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='showcase-founder' placeholder='Founder'></label></div><div><label for='showcase-url'><div class='icon'><i class='fa fa-at'></i></div><input type='url' id='showcase-url' placeholder='Website'></label></div><div><label for='showcase-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='showcase-body' placeholder='Short Story' required='true' row='9'></textarea></label></div><div><label><input type='file' id='showcase-img' accept='image/*'></label></div><img src='' id='showcase-img-preview' style='width: 100px; height: auto;' /><div><input id='showcase-id' readonly='true' hidden='true'><input type='submit' ></div></div></form>");
 	                 	    	
 	     						$('#showcase-id').val(showcase_edit_id);
 
@@ -446,7 +730,7 @@
 	    $('.res').on('click','a#addnewblog-btn',function(){
 	    	   	$('.popup').html('').fadeOut();
 	    	                 	    	
-     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='newblog-submit'><div class='box'><div class='h'>Add Post<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newblog-title'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newblog-title' placeholder='Title' required='true'></label></div><div><label for='newblog-organisation'><div class='icon'><i class='fa fa-building'></i></div><select id='newblog-organisation' required='true'><option value=''>-SELECT Organisation-</option><option value='EDC'>EDC</option><option value='IIC'>IIC</option><option value='SInC'>SInC</option></select></label></div><div><label for='newblog-author'><div class='icon'><i class='fa fa-at'></i></div><input type='text' id='newblog-author' required='true' placeholder='Author'></label></div><div><label for='newblog-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newblog-body' placeholder='Body' required='true' row='9'></textarea></label></div><input type='file' id='newblog-img' accept='image/*'></label><img src='' id='newteammem-dp-preview' style='width: 100px; height: auto;' /></div><div><input type='submit' ></div></div></form>");
+     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='newblog-submit'><div class='box'><div class='h'>Add Post<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newblog-title'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newblog-title' placeholder='Title' required='true'></label></div><div><label for='newblog-organisation'><div class='icon'><i class='fa fa-building'></i></div><select id='newblog-organisation' required='true'><option value=''>-SELECT Organisation-</option><option value='EDC'>EDC</option><option value='IIC'>IIC</option><option value='SInC'>SInC</option></select></label></div><div><label for='newblog-author'><div class='icon'><i class='fa fa-at'></i></div><input type='text' id='newblog-author' required='true' placeholder='Author'></label></div><div><label for='newblog-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newblog-body' placeholder='Body' required='true' row='9'></textarea></label></div><div><label><input type='file' id='newblog-img' accept='image/*'></label></div><img src='' id='newteammem-dp-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div></form>");
 
      				//$('.popup form').submit(false);
 	    	        $('.popup').fadeIn();
@@ -537,7 +821,7 @@
 
 	                 		$('.popup').html('').fadeOut();
 
-	                 		$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='blog-submit'><div class='box'><div class='h'>Edit Blog Post<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='blog-title'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='blog-title' placeholder='Title' required='true'></label></div><div><label for='blog-organisation'><div class='icon'><i class='fa fa-building'></i></div><select id='blog-organisation' required='true'><option value=''>-SELECT Organisation-</option><option value='EDC'>EDC</option><option value='IIC'>IIC</option><option value='SInC'>SInC</option></select></label></div><div><label for='blog-author'><div class='icon'><i class='fa fa-at'></i></div><input type='text' id='blog-author' required='true' placeholder='Author'></label></div><div><label for='blog-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='blog-body' placeholder='Body' required='true'  row='9'></textarea></label></div><input type='file' id='blog-img' accept='image/*'></label><img src='' id='newteammem-dp-preview' style='width: 100px; height: auto;' /></div><div><input type='submit' ></div></div><input id='blog-id' hidden='true' readonly='true'></form>");
+	                 		$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='blog-submit'><div class='box'><div class='h'>Edit Blog Post<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='blog-title'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='blog-title' placeholder='Title' required='true'></label></div><div><label for='blog-organisation'><div class='icon'><i class='fa fa-building'></i></div><select id='blog-organisation' required='true'><option value=''>-SELECT Organisation-</option><option value='EDC'>EDC</option><option value='IIC'>IIC</option><option value='SInC'>SInC</option></select></label></div><div><label for='blog-author'><div class='icon'><i class='fa fa-at'></i></div><input type='text' id='blog-author' required='true' placeholder='Author'></label></div><div><label for='blog-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='blog-body' placeholder='Body' required='true'  row='9'></textarea></label></div><div><label><input type='file' id='blog-img' accept='image/*'></label></div><img src='' id='newteammem-dp-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div><input id='blog-id' hidden='true' readonly='true'></form>");
 	                 	    	
 	     						$('#blog-id').val(blog_edit_id);
 
@@ -1300,6 +1584,7 @@
 	</div>
 	<div class="res"></div>
 	<div class="popup"></div>
+
 
 
 </body>
