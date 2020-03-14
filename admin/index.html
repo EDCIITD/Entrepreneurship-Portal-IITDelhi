@@ -144,22 +144,15 @@
 	             });
 	    });
 
-	    $("#menu-showcase").click(function(){
-	        $('.popup').html('').fadeOut();
-	        $.ajax({
-	                 url: 'https://iic.devclub.in/api/admin/showcase',
-	                 type: 'get',
-            	    
-            	    headers: {
-            	        Authorization: token  //for object property name, use quoted notation shown
-            	    },
-            	    dataType: 'json',
-	                 success: function (data) {
-	                     $(".res").html("<form id='newshow-form'><input type='text' id='newshow-title' placeholder='title'><input type='text' id='newshow-founder' placeholder='founder'><textarea id='newshow-content'></textarea><input type='url' id='newshow-url' placeholder='url'><input type='date' id='newshow-founded' placeholder='founded'><input type='submit'></form>");
-	                     console.info(data);
-	                 }
-	             });
-	    });
+	    
+
+
+
+
+
+	   
+
+	    
 
 
 
@@ -168,42 +161,44 @@
 
 
 
-	    $(".res").on("submit","#newshow-form",function(e){
-	     	e.preventDefault();
-	     	var show_title= $('#newshow-title').val(),
-	     		show_founder= $('#newshow-founder').val(),
-	     		show_founded= $('#newshow-founded').val(),
-	     		show_url= $('#newshow-url').val(),
-	     		show_content= $('#newshow-content').val();
 
 
-            	    	 $.ajax({
-		                 url: 'https://iic.devclub.in/api/admin/showcase/5e10f8fa9f9a4d0020fb7895',
-		                 type: 'delete',
-	            	    
-	            	    headers: {
-	            	        Authorization: token
-	            	    },
-	            	    data: {
-	            	    	body: show_content,
-	            	    	hidden: 'false',
 
-	            	    	metaData:
-	            	    	{ founder: show_founder,
-	            	    		title: show_title,
-	            	    		url: show_url,
-	            	    		founded: show_founded }
 
-	            	    },
-	            	    dataType: 'json',
-		                success: function (data) {
-		                	
-		            	   alert("success");
-		            	   console.log(data);
-		                 }
-		             });
-                    
-	    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -292,22 +287,25 @@
 		                success: function (data) {
 		                	
 		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	    if ($( '#newblog-img' ).val()!=''){
+
 		            	    
-		            	    
-		            	    var form_data=new FormData();
-		            	    form_data.append('img', $( '#newblog-img' )[0].files[0]);
-		            	    form_data.append('type','blog','fid',data.data._id);
-		            	    
-		                    $.ajax({
-				            url : "updp.php",
-				            type: "POST",
-				            data:  form_data,
-				            contentType: false,
-				            cache: false,
-				            processData:false,
-				           
-				            
-				            });
+			            	    var form_data=new FormData();
+			            	    form_data.append('img', $( '#newblog-img' )[0].files[0]);
+			            	    form_data.append('type','blog');
+			            	    form_data.append('fid',data.data._id);
+			            	    
+			                    $.ajax({
+					            url : "updp.php",
+					            type: "POST",
+					            data:  form_data,
+					            contentType: false,
+					            cache: false,
+					            processData:false,
+					           
+					            
+					            });
+			                }
 				            
 				            $('.popup').html('').fadeOut();
 		                	$('#menu-blogs').trigger('click');
@@ -405,7 +403,8 @@
 		   			            	    //Do if uploadis not empty!!
 		   			            	    var form_data=new FormData();
 		   			            	    form_data.append('img', $( '#blog-img' )[0].files[0]);
-		   			            	    form_data.append('type','blog','fid',data.data._id);
+		   			            	    form_data.append('type','blog');
+		            	    			form_data.append('fid',data.data._id);
 		   			            	    
 
 		   			                    $.ajax({
@@ -562,22 +561,24 @@
 	            	    dataType: 'json',
 		                success: function (data) {
 		                	
-		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
-		            	    
-		            	    var form_data=new FormData();
-		            	    form_data.append('img', $( '#newteammem-dp' )[0].files[0]);
-		            	    form_data.append('type','team','fid',data.data._id);
-		            	    
-		                    $.ajax({
-				            url : "updp.php",
-				            type: "POST",
-				            data:  form_data,
-				            contentType: false,
-				            cache: false,
-				            processData:false,
-				           
-				            
-				            });
+		                	if ($( '#newteammem-dp' ).val()!=''){
+			            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+			            	    
+			            	    var form_data=new FormData();
+			            	    form_data.append('img', $( '#newteammem-dp' )[0].files[0]);
+			            	    form_data.append('type','team');
+			            	    form_data.append('fid',data.data._id);		            	    
+			                    $.ajax({
+					            url : "updp.php",
+					            type: "POST",
+					            data:  form_data,
+					            contentType: false,
+					            cache: false,
+					            processData:false,
+					           
+					            
+					            });
+			                }
 				            $('.popup').html('').fadeOut();
 		                	$('#menu-team').trigger('click');
 		                    console.log(data);
@@ -715,11 +716,12 @@
 	   			                	
 	   			            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
 
-	   			            	    if ($( '#newteammem-dp' ).val()!=''){
+	   			            	    if ($( '#teammem-dp' ).val()!=''){
 		   			            	    //Do if uploadis not empty!!
 		   			            	    var form_data=new FormData();
-		   			            	    form_data.append('img', $( '#newteammem-dp' )[0].files[0]);
-		   			            	    form_data.append('type','team','fid',data.data._id);
+		   			            	    form_data.append('img', $( '#teammem-dp' )[0].files[0]);
+		   			            	    form_data.append('type','team');
+		            	    			form_data.append('fid',data.data._id);
 		   			            	    
 
 		   			                    $.ajax({
