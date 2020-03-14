@@ -243,7 +243,7 @@
 
 	                 		$('.popup').html('').fadeOut();
 
-	                 		$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='event-submit'><div class='box'><div class='h'>Add Event<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='event-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='event-title' placeholder='Event Name' required='true'></label></div><div><label for='event-date'><div class='icon'><i class='fa fa-calender'></i></div><input type='date' id='event-date' placeholder='Date' required='true'></label></div><div><label for='event-time'><div class='icon'><i class='fa fa-clock-o'></i></div><input type='time' id='event-time' placeholder='Time' required='true'></label></div><div><label for='event-venue'><div class='icon'><i class='fa fa-map-marker'></i></div><input type='text' id='event-venue' placeholder='Venue' required='true'></label></div><div><label for='event-organiser'><div class='icon'><i class='fa fa-map-user-group'></i></div><input type='text' id='event-organiser' placeholder='Organiser' required='true'></label></div><div><label for='event-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='event-body' placeholder='Description' required='true' ></textarea></label></div><div><label for='event-ongoing'><div class='icon'><i class='fa fa-eye'></i></div><select id='event-ongoing' required='true'><option value=''>- onGoing? -</option><option value='true'>true</option><option value='false'>false</option></select></label></div><input type='file' id='event-img' accept='image/*'></label><img src='' id='event-img-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div><input id='event-id' readonly='true' hidden='true'></form>");
+	                 		$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='event-submit'><div class='box'><div class='h'>Update Event<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='event-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='event-title' placeholder='Event Name' required='true'></label></div><div><label for='event-date'><div class='icon'><i class='fa fa-calender'></i></div><input type='date' id='event-date' placeholder='Date' required='true'></label></div><div><label for='event-time'><div class='icon'><i class='fa fa-clock-o'></i></div><input type='time' id='event-time' placeholder='Time' required='true'></label></div><div><label for='event-venue'><div class='icon'><i class='fa fa-map-marker'></i></div><input type='text' id='event-venue' placeholder='Venue' required='true'></label></div><div><label for='event-organiser'><div class='icon'><i class='fa fa-map-user-group'></i></div><input type='text' id='event-organiser' placeholder='Organiser' required='true'></label></div><div><label for='event-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='event-body' placeholder='Description' required='true' ></textarea></label></div><div><label for='event-ongoing'><div class='icon'><i class='fa fa-eye'></i></div><select id='event-ongoing' required='true'><option value=''>- onGoing? -</option><option value='true'>true</option><option value='false'>false</option></select></label></div><input type='file' id='event-img' accept='image/*'></label><img src='' id='event-img-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div><input id='event-id' readonly='true' hidden='true'></form>");
 	                 	    	
 	     						$('#event-id').val(event_edit_id);
 
@@ -401,6 +401,241 @@
 
 
 
+
+
+
+
+
+
+ /*SPONSOR MENU */
+
+	    $("#menu-sponsors").click(function(){
+	        $('.popup').html('').fadeOut();
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/sponsors',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token  
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                     $(".res").html("<a class='btn add' id='addnewsponsor-btn'><i class='fa fa-plus'></i>Add Sponsor</a><table border='1'><thead><tr><th class='sticky'>Name</th><th></th></thead><tbody></tbody></table>");
+
+
+	                 	let authors = data.data;
+	                 	
+	                 	authors.map(function(author) {
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.name}`+"</td><td><a class='btn' id='sponsor-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn sponsor-rem'>Remove</a></td></tr>");});
+	                 	    
+						 $('.res').fadeIn();
+	                     console.info(data);
+	                 }
+	             });
+	    });
+
+
+	    /* ADD NEW SPONSOR POPUP*/
+
+	    $('.res').on('click','a#addnewsponsor-btn',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	                 	    	
+     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='newsponsor-submit'><div class='box'><div class='h'>Add Sponsor<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newsponsor-name'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newsponsor-name' placeholder='Name' required='true'></label></div><div><label><input type='file' id='newsponsor-img' accept='image/*' required='true'></label></div><img src='' id='newsponsor-img-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div></form>");
+
+	    	        $('.popup').fadeIn();
+	    	    });
+
+
+	    /* SUMBIT NEW SPONSOR from popup */
+
+    	$(".popup").on("submit","#newsponsor-submit",function(e){
+	     	e.preventDefault();
+
+	    	var name_newsponsor= $('#newsponsor-name').val();
+
+
+            	    $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/sponsors',
+		                 type: 'post',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    data: {
+	            	    	name: name_newsponsor,
+	            	    	hidden: 'false'
+	            	    },
+	            	    dataType: 'json',
+		                success: function (data) {
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	    
+			            	    var form_data=new FormData();
+			            	    form_data.append('img', $( '#newsponsor-img' )[0].files[0]);
+			            	    form_data.append('type','sponsors');
+			            	    form_data.append('fid',data.data._id);
+			            	    
+			                    $.ajax({
+					            url : "updp.php",
+					            type: "POST",
+					            data:  form_data,
+					            contentType: false,
+					            cache: false,
+					            processData:false,
+					           
+					            
+					            });
+			                
+				            
+				            $('.popup').html('').fadeOut();
+		                	$('#menu-sponsors').trigger('click');
+		                    console.log(data);
+		                    
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+                    
+	    });
+
+
+	     /* Edit SPONSOR detail */
+
+	    $('.res').on('click','a#sponsor-edit',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	   	var sponsor_edit_id=$(this).next().val();
+
+	    	   	$.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/sponsors/'+sponsor_edit_id,
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token 
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+
+	                 	let authors = data.data;
+
+	                 		$('.popup').html('').fadeOut();
+
+     						$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='sponsor-submit'><div class='box'><div class='h'>Update Sponsor<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='sponsor-name'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='sponsor-name' placeholder='Name' required='true'></label></div><div><label><input type='file' id='sponsor-img' accept='image/*'></label></div><img src='' id='sponsor-img-preview' style='width: 100px; height: auto;' /><div><input id='sponsor-id' readonly='true' hidden='true'><input type='submit' ></div></div></form>");
+	                 	    	
+	     						$('#sponsor-id').val(sponsor_edit_id);
+
+
+	                 	    	$('#sponsor-name').val(`${authors.name}`);
+
+	                 	    	$('.popup').fadeIn();
+
+
+
+	                            
+	                     console.info(data);
+	           
+	             }
+	    	});
+	    	                 	    
+	   	});
+
+
+
+
+
+    	/* SUMBIT EDIT SPONSOR  from popup */
+
+	   	    	$(".popup").on("submit","#sponsor-submit",function(e){
+	   		     	e.preventDefault();
+
+	   		    	var sponsor_edit_id=$('#sponsor-id').val(),
+	   		    				name_sponsor= $('#sponsor-name').val();
+
+
+	   	            	    	 $.ajax({
+	   			                 url: 'https://iic.devclub.in/api/admin/sponsors/'+sponsor_edit_id,
+	   			                 type: 'post',
+	   		            	    
+	   		            	    headers: {
+	   		            	        Authorization: token
+	   		            	    },
+	   		            	    data: {
+	   		            	    	name: name_sponsor,
+	   		            	    	hidden: 'false'
+
+	   		            	    },
+	   		            	    dataType: 'json',
+	   			                success: function (data) {
+	   			                	
+	   			            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+
+	   			            	    if ($( '#sponsor-img' ).val()!=''){
+		   			            	    //Do if uploadis not empty!!
+		   			            	    var form_data=new FormData();
+		   			            	    form_data.append('img', $( '#sponsor-img' )[0].files[0]);
+		   			            	    form_data.append('type','sponsors');
+		            	    			form_data.append('fid',data.data._id);
+		   			            	    
+
+		   			                    $.ajax({
+		   					            url : "updp.php",
+		   					            type: "POST",
+		   					            data:  form_data,
+		   					            contentType: false,
+		   					            cache: false,
+		   					            processData:false,
+		   					           
+		   					            
+		   					            });
+		   			                }
+	   					            $('.popup').html('').fadeOut();
+	   			                	$('#menu-sponsors').trigger('click');
+	   			                    console.log(data);
+	   			                 },
+	   			                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	   			             });
+	   	                    
+	   		    });
+
+
+	    /* REMOVE SPONSOR  */
+
+	     $(".res").on("click",".sponsor-rem",function(){
+
+	     if (confirm("You are about to remove a sponsor and this process is irreversible! Are you sure you have taken the right step?")) {
+
+
+	     	var sponsor_edit_id=$(this).prev().val();
+	    	
+
+
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/sponsors/'+sponsor_edit_id,
+		                 type: 'delete',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    
+	            	    dataType: 'json',
+		                success: function (data) {
+
+		                	$('#menu-sponsors').trigger('click');
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	   
+		            	    var type="sponsors";
+		                    $.ajax({
+				            url : "remdp.php",
+				            type: "POST",
+				            data:  {fid:sponsor_edit_id,type:type},
+				            cache: false				            
+				            });
+		                	
+		                    console.log(data);
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+			}
+	    });
 
 
 
@@ -1572,10 +1807,11 @@
 	
 
 	<div class="menu tab" id="menu">
-		<div class='tab-item' id='menu-events'>EVENTS</div>
 		<div class='tab-item' id='menu-blogs'>BLOGS</div>
+		<div class='tab-item' id='menu-events'>EVENTS</div>
 		<div class='tab-item' id='menu-resources'>RESOURCES</div>
 		<div class='tab-item' id='menu-showcase'>SHOWCASE</div>
+		<div class='tab-item' id='menu-sponsors'>SPONSORS</div>
 		<div class='tab-item' id='menu-team'>TEAM</div>
 		
 		<div class='tab-item' id='menu-users'>Users</div>
