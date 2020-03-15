@@ -1665,7 +1665,7 @@
 	                 	    	
                  			
 
-	                 $('.popup').html("<div class='popup-content animate'><div class='box'><div class='h'>Manage User<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><input type='text' id='user-id' placeholder='id' required='true' readonly='true' hidden='true'><br><div class='h'>Update details</div><form  id='user-update'><div><label for='user-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='user-username' placeholder='Username' required='true'></label></div><div><label for='user-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='user-name' placeholder='Name' required='true'></label></div><div><label for='user-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='user-organisation' required='true' placeholder='Organisation'></label></div><div><label for='user-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='user-position' placeholder='Position' required='true'></label></div><div><label for='user-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' value='Update'></div></form><div class='h'>Remove user</div><form id='user-delete'><div><label><input type='checkbox' required='true'>Confirm</label></div><div><input type='submit' value='DELETE' ></div></form><div class='h'>Reset Password</div><form  id='user-reset-password'><div><label for='user-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='user-password' required='true' placeholder='New Password'></label></div><div><input type='submit' value='Reset Password'></div></form></div></div>");
+	                 $('.popup').html("<div class='popup-content animate'><div class='box'><div class='h'>Manage User<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><input type='text' id='user-id' placeholder='id' required='true' readonly='true' hidden='true'><br><div class='h'>Update details</div><form  id='user-update'><div><label for='user-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='user-username' placeholder='Username' required='true'></label></div><div><label for='user-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='user-name' placeholder='Name' required='true'></label></div><div><label for='user-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='user-organisation' required='true' placeholder='Organisation'></label></div><div><label for='user-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='user-position' placeholder='Position' required='true'></label></div><div><label for='user-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' value='Update'></div></form><div class='h'>Remove user</div><form id='user-delete'><div><input type='submit' value='DELETE' ></div></form><div class='h'>Reset Password</div><form  id='user-reset-password'><div><label for='user-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='user-password' required='true' placeholder='New Password'></label></div><div><input type='submit' value='Reset Password'></div></form></div></div>");
 	                 	    	
 
 
@@ -1724,34 +1724,27 @@
 
 	    $(".popup").on("submit","#user-delete",function(e){
 	    	e.preventDefault();
-	    	var username_user= $('#user-username').val(),
-            	    	id_user= $('#user-id').val(),
-            	    	name_user= $('#user-name').val(),
-            	    	position_user= $('#user-position').val() ,
-            	    	organisation_user= $('#user-organisation').val(),
-            	    	access_user= $('#user-access').val() ;
-	    	$.ajax({
-	                 url: 'https://iic.devclub.in/api/admin/users/'+id_user,
-	                 type: 'delete',
-            	    
-            	    headers: {
-            	        Authorization: token
-            	    },
-            	    data: {
-            	    	username: username_user,
-            	    	name: name_user,
-            	    	position: position_user,
-            	    	organisation: organisation_user,
-            	    	access: access_user       	    	
-            	    },
-            	    dataType: 'json',
-	                success: function (data) {
-	                	alert("Updated!");
-	                	$('.popup').html('').fadeOut();
-	                	$('#menu-users').trigger('click');
-	                     //console.log(data);
-	                 }
-	             });
+
+	    	if (confirm("You are about to remove a user and this process is irreversible! Are you sure you have taken the right step?")) {
+
+	            	var id_user= $('#user-id').val();
+
+		    	$.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/users/'+id_user,
+		                 type: 'delete',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    
+	            	    dataType: 'json',
+		                success: function (data) {
+		                	$('.popup').html('').fadeOut();
+		                	$('#menu-users').trigger('click');
+		                     //console.log(data);
+		                 }
+		             });
+		    }
 	    });
 
 	    /*USER PASSWORD RESET SUBMIT*/
@@ -1809,7 +1802,7 @@
 	<div class="menu tab" id="menu">
 		<div class='tab-item' id='menu-blogs'>BLOGS</div>
 		<div class='tab-item' id='menu-events'>EVENTS</div>
-		<div class='tab-item' id='menu-resources'>RESOURCES</div>
+		<!--<div class='tab-item' id='menu-resources'>RESOURCES</div>-->
 		<div class='tab-item' id='menu-showcase'>SHOWCASE</div>
 		<div class='tab-item' id='menu-sponsors'>SPONSORS</div>
 		<div class='tab-item' id='menu-team'>TEAM</div>
