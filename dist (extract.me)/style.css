@@ -4,10 +4,10 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   font-size: 4em;
-  position: absolute;
+  position: relative;
   margin-left: -10vw;
   height: 40px;
-  top: 90%;
+  
   /* margin-top: -20px; */
 }
 @media (max-width: 480px) {
@@ -73,7 +73,7 @@
 }
 
 .pomegranate {
-  color: #c0392b;
+  color: #00ad42;
 }
 
 .green {

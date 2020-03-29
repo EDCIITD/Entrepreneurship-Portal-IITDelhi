@@ -1,11 +1,12 @@
 <?php
-	
-			$dir='../team/dp/';
+			$type=$_POST['type'];
+			$dir='../'+$type+'/img/';
+
 			$name=$_POST['fid']; 
-			if(move_uploaded_file($_FILES['dp']['tmp_name'], $dir.$name.".png"))
+			if(move_uploaded_file($_FILES['img']['tmp_name'], $dir.$name.".png"))
 			 echo $name;
 			else
-			 echo $_FILES['dp']['error'];
+			 echo $_FILES['img']['error'];
 
 ?>
 

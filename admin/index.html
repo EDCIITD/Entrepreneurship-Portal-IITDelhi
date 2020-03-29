@@ -57,7 +57,7 @@
             }
             else
               {
-                //alert("Failed");
+                //alert("errored");
                 $('#login-err').css('color','red');
                 $('#login-err').text(data.message);
               }  
@@ -93,51 +93,8 @@
 	    	$(this).addClass('selected');
 	    });
 
-        $("#menu-events").click(function(){
-	        $('.popup').html('').fadeOut();
-	        $.ajax({
-	                 url: 'https://iic.devclub.in/api/admin/events',
-	                 type: 'get',
-            	    
-            	    headers: {
-            	        Authorization: token  //for object property name, use quoted notation shown
-            	    },
-            	    dataType: 'json',
-	                 success: function (data) {
-	                 	$(".res").html("<table border='1'></table>");
 
-
-	                 	let authors = data.data;
-	                 	 authors.map(function(author) {
-	                 		$(".res>table").append("<tr><td>"+`${author.metaData.title}`+"</td><td>"+`${author.metaData.eventDate}`+"</td><td>"+`${author.metaData.eventTime}`+"</td><td>"+`${author.metaData.venue}`+"</td><td>"+`${author.metaData.organiser}`+"</td><td><a onclick=\"$.Edit('events','"+`${author._id}`+"')\" >edit</td></tr>");});
-
-	                 	    
-	                 	   
-						$('.res').fadeIn();
-
-	                     //console.info(data);
-	                
-	                 }
-	             });
-	    });
-
-	    $("#menu-blogs").click(function(){
-	        $('.popup').html('').fadeOut();
-	        $.ajax({
-	                 url: 'https://iic.devclub.in/api/admin/blog',
-	                 type: 'get',
-            	    
-            	    headers: {
-            	        Authorization: token  //for object property name, use quoted notation shown
-            	    },
-            	    dataType: 'json',
-	                 success: function (data) {
-	                     console.info(data);
-	                 }
-	             });
-	    });
-
-	    $("#menu-resources").click(function(){
+         $("#menu-resources").click(function(){
 	        $('.popup').html('').fadeOut();
 	        $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/resources',
@@ -154,6 +111,568 @@
 	             });
 	    });
 
+
+
+
+
+	     /*EVENTS MENU */
+
+	    $("#menu-events").click(function(){
+	        $('.popup').html('').fadeOut();
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/events',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token  
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                     $(".res").html("<a class='btn add' id='addnewevent-btn'><i class='fa fa-plus'></i>Add Event</a><table border='1'><thead><tr><th class='sticky'>Title</th><th>Date</th><th>Time</th><th>Venue</th><th>Organiser</th><th>onGoing</th><th></th></thead><tbody></tbody></table>");
+
+
+	                 	let authors = data.data;
+	                 	
+	                 	authors.map(function(author) {
+	                 		
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.metaData.title}`+"</td><td>"+`${author.metaData.eventDate}`+"</td><td>"+`${author.metaData.eventTime}`+"</td><td>"+`${author.metaData.venue}`+"</td><td>"+`${author.metaData.organiser}`+"</td><td>"+`${author.onGoing}`+"</td><td><a class='btn' id='event-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn event-rem'>Remove</a></td></tr>");});
+	                 	    
+						 $('.res').fadeIn();
+	                     console.info(data);
+	                 }
+	             });
+	    });
+
+
+	    /* ADD NEW EVENT POPUP*/
+
+	    $('.res').on('click','a#addnewevent-btn',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	                 	    	
+     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='newevent-submit'><div class='box'><div class='h'>Add Event<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newevent-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newevent-title' placeholder='Event Name' required='true'></label></div><div><label for='newevent-date'><div class='icon'><i class='fa fa-calender'></i></div><input type='date' id='newevent-date' placeholder='Date' required='true'></label></div><div><label for='newevent-time'><div class='icon'><i class='fa fa-clock-o'></i></div><input type='time' id='newevent-time' placeholder='Time' required='true'></label></div><div><label for='newevent-venue'><div class='icon'><i class='fa fa-map-marker'></i></div><input type='text' id='newevent-venue' placeholder='Venue' required='true'></label></div><div><label for='newevent-organiser'><div class='icon'><i class='fa fa-map-user-group'></i></div><input type='text' id='newevent-organiser' placeholder='Organiser' required='true'></label></div><div><label for='newevent-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newevent-body' placeholder='Description' required='true' ></textarea></label></div><div><label for='newevent-ongoing'><div class='icon'><i class='fa fa-eye'></i></div><select id='newevent-ongoing' required='true'><option value=''>- onGoing? -</option><option value='true'>true</option><option value='false'>false</option></select></label></div><input type='file' id='newevent-img' accept='image/*'></label><img src='' id='newevent-img-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div></form>");
+
+	    	        $('.popup').fadeIn();
+	    	    });
+
+
+	    /* SUMBIT NEW EVENT from popup */
+
+    	$(".popup").on("submit","#newevent-submit",function(e){
+	     	e.preventDefault();
+
+	    	var title_newevent= $('#newevent-title').val(),
+            	    	date_newevent= $('#newevent-date').val(),
+            	    	time_newevent= $('#newevent-time').val(),
+            	    	venue_newevent= $('#newevent-venue').val(),
+            	    	organiser_newevent= $('#newevent-organiser').val(),
+            	    	ongoing_newevent= $('#newevent-ongoing').val(),
+            	    	body_newevent= $('#newevent-body').val();
+
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/events',
+		                 type: 'post',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    data: {
+	            	    	metaData : {
+	            	    		title: title_newevent,
+	            	    		eventDate: date_newevent,
+	            	    		eventTime: time_newevent,
+	            	    		organiser: organiser_newevent,
+	            	    		venue: venue_newevent
+	            	    	},
+	            	    	body: body_newevent,
+	            	    	onGoing: ongoing_newevent,
+	            	    	hidden: 'false'
+	            	    	
+
+	            	    },
+	            	    dataType: 'json',
+		                success: function (data) {
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	   if ($( '#newevent-img' )!='') {
+		            	    
+			            	    var form_data=new FormData();
+			            	    form_data.append('img', $( '#newevent-img' )[0].files[0]);
+			            	    form_data.append('type','events');
+			            	    form_data.append('fid',data.data._id);
+			            	    
+			                    $.ajax({
+					            url : "updp.php",
+					            type: "POST",
+					            data:  form_data,
+					            contentType: false,
+					            cache: false,
+					            processData:false,
+					           
+					            
+					            });
+			                }
+				            
+				            $('.popup').html('').fadeOut();
+		                	$('#menu-events').trigger('click');
+		                    console.log(data);
+		                    
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+                    
+	    });
+
+
+	     /* Edit EVENT detail */
+
+	    $('.res').on('click','a#event-edit',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	   	var event_edit_id=$(this).next().val();
+
+	    	   	$.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/events/'+event_edit_id,
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token 
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+
+	                 	let authors = data.data;
+
+	                 		$('.popup').html('').fadeOut();
+
+	                 		$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='event-submit'><div class='box'><div class='h'>Update Event<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='event-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='event-title' placeholder='Event Name' required='true'></label></div><div><label for='event-date'><div class='icon'><i class='fa fa-calender'></i></div><input type='date' id='event-date' placeholder='Date' required='true'></label></div><div><label for='event-time'><div class='icon'><i class='fa fa-clock-o'></i></div><input type='time' id='event-time' placeholder='Time' required='true'></label></div><div><label for='event-venue'><div class='icon'><i class='fa fa-map-marker'></i></div><input type='text' id='event-venue' placeholder='Venue' required='true'></label></div><div><label for='event-organiser'><div class='icon'><i class='fa fa-map-user-group'></i></div><input type='text' id='event-organiser' placeholder='Organiser' required='true'></label></div><div><label for='event-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='event-body' placeholder='Description' required='true' ></textarea></label></div><div><label for='event-ongoing'><div class='icon'><i class='fa fa-eye'></i></div><select id='event-ongoing' required='true'><option value=''>- onGoing? -</option><option value='true'>true</option><option value='false'>false</option></select></label></div><input type='file' id='event-img' accept='image/*'></label><img src='' id='event-img-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div><input id='event-id' readonly='true' hidden='true'></form>");
+	                 	    	
+	     						$('#event-id').val(event_edit_id);
+
+
+    							$('#event-title').val(`${authors.metaData.title}`);
+    							$('#event-date').val(`${authors.metaData.eventDate}`);
+    							$('#event-time').val(`${authors.metaData.eventTime}`);
+    							$('#event-venue').val(`${authors.metaData.venue}`);
+    							$('#event-organiser').val(`${authors.metaData.organiser}`);
+    	            	    	$('#event-body').val(`${authors.body}`);
+    	            	    	$('#event-ongoing').val(`${authors.onGoing}`);
+
+
+	                 	    	$('.popup').fadeIn();
+
+
+
+	                            
+	                     console.info(data);
+	           
+	             }
+	    	});
+	    	                 	    
+	   	});
+
+
+
+
+
+    	/* SUMBIT EDIT EVENT from popup */
+
+	   	    	$(".popup").on("submit","#event-submit",function(e){
+	   		     	e.preventDefault();
+
+	   		    	var event_edit_id=$('#event-id').val(),
+	   		    		title_event= $('#event-title').val(),
+            	    	date_event= $('#event-date').val(),
+            	    	time_event= $('#event-time').val(),
+            	    	venue_event= $('#event-venue').val(),
+            	    	organiser_event= $('#event-organiser').val(),
+            	    	ongoing_event= $('#event-ongoing').val(),
+            	    	body_event= $('#event-body').val();
+
+
+	   	            	    	 $.ajax({
+	   			                 url: 'https://iic.devclub.in/api/admin/events/'+event_edit_id,
+	   			                 type: 'post',
+	   		            	    
+	   		            	    headers: {
+	   		            	        Authorization: token
+	   		            	    },
+	   		            	    data: {
+
+	   		            	    	metaData : {
+			            	    		title: title_event,
+			            	    		eventDate: date_event,
+			            	    		eventTime: time_event,
+			            	    		organiser: organiser_event,
+			            	    		venue: venue_event
+			            	    	},
+			            	    	body: body_event,
+			            	    	onGoing: ongoing_event,
+			            	    	hidden: 'false'
+
+	   		            	    },
+	   		            	    dataType: 'json',
+	   			                success: function (data) {
+	   			                	
+	   			            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+
+	   			            	    if ($( '#event-img' ).val()!=''){
+		   			            	    //Do if uploadis not empty!!
+		   			            	    var form_data=new FormData();
+		   			            	    form_data.append('img', $( '#event-img' )[0].files[0]);
+		   			            	    form_data.append('type','events');
+		            	    			form_data.append('fid',data.data._id);
+		   			            	    
+
+		   			                    $.ajax({
+		   					            url : "updp.php",
+		   					            type: "POST",
+		   					            data:  form_data,
+		   					            contentType: false,
+		   					            cache: false,
+		   					            processData:false,
+		   					           
+		   					            
+		   					            });
+		   			                }
+	   					            $('.popup').html('').fadeOut();
+	   			                	$('#menu-events').trigger('click');
+	   			                    console.log(data);
+	   			                 },
+	   			                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	   			             });
+	   	                    
+	   		    });
+
+
+	    /* REMOVE EVENT startup  */
+
+	     $(".res").on("click",".event-rem",function(){
+
+	     if (confirm("You are about to remove a event and this process is irreversible! Are you sure you have taken the right step?")) {
+
+
+	     	var event_edit_id=$(this).prev().val();
+	    	
+
+
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/events/'+event_edit_id,
+		                 type: 'delete',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    
+	            	    dataType: 'json',
+		                success: function (data) {
+
+		                	$('#menu-events').trigger('click');
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	   
+		            	    var type="events";
+		                    $.ajax({
+				            url : "remdp.php",
+				            type: "POST",
+				            data:  {fid:event_edit_id,type:type},
+				            cache: false				            
+				            });
+		                	
+		                    console.log(data);
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+			}
+	    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /*SPONSOR MENU */
+
+	    $("#menu-sponsors").click(function(){
+	        $('.popup').html('').fadeOut();
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/sponsors',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token  
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                     $(".res").html("<a class='btn add' id='addnewsponsor-btn'><i class='fa fa-plus'></i>Add Sponsor</a><table border='1'><thead><tr><th class='sticky'>Name</th><th></th></thead><tbody></tbody></table>");
+
+
+	                 	let authors = data.data;
+	                 	
+	                 	authors.map(function(author) {
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.name}`+"</td><td><a class='btn' id='sponsor-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn sponsor-rem'>Remove</a></td></tr>");});
+	                 	    
+						 $('.res').fadeIn();
+	                     console.info(data);
+	                 }
+	             });
+	    });
+
+
+	    /* ADD NEW SPONSOR POPUP*/
+
+	    $('.res').on('click','a#addnewsponsor-btn',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	                 	    	
+     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='newsponsor-submit'><div class='box'><div class='h'>Add Sponsor<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newsponsor-name'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newsponsor-name' placeholder='Name' required='true'></label></div><div><label><input type='file' id='newsponsor-img' accept='image/*' required='true'></label></div><img src='' id='newsponsor-img-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div></form>");
+
+	    	        $('.popup').fadeIn();
+	    	    });
+
+
+	    /* SUMBIT NEW SPONSOR from popup */
+
+    	$(".popup").on("submit","#newsponsor-submit",function(e){
+	     	e.preventDefault();
+
+	    	var name_newsponsor= $('#newsponsor-name').val();
+
+
+            	    $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/sponsors',
+		                 type: 'post',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    data: {
+	            	    	name: name_newsponsor,
+	            	    	hidden: 'false'
+	            	    },
+	            	    dataType: 'json',
+		                success: function (data) {
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	    
+			            	    var form_data=new FormData();
+			            	    form_data.append('img', $( '#newsponsor-img' )[0].files[0]);
+			            	    form_data.append('type','sponsors');
+			            	    form_data.append('fid',data.data._id);
+			            	    
+			                    $.ajax({
+					            url : "updp.php",
+					            type: "POST",
+					            data:  form_data,
+					            contentType: false,
+					            cache: false,
+					            processData:false,
+					           
+					            
+					            });
+			                
+				            
+				            $('.popup').html('').fadeOut();
+		                	$('#menu-sponsors').trigger('click');
+		                    console.log(data);
+		                    
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+                    
+	    });
+
+
+	     /* Edit SPONSOR detail */
+
+	    $('.res').on('click','a#sponsor-edit',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	   	var sponsor_edit_id=$(this).next().val();
+
+	    	   	$.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/sponsors/'+sponsor_edit_id,
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token 
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+
+	                 	let authors = data.data;
+
+	                 		$('.popup').html('').fadeOut();
+
+     						$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='sponsor-submit'><div class='box'><div class='h'>Update Sponsor<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='sponsor-name'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='sponsor-name' placeholder='Name' required='true'></label></div><div><label><input type='file' id='sponsor-img' accept='image/*'></label></div><img src='' id='sponsor-img-preview' style='width: 100px; height: auto;' /><div><input id='sponsor-id' readonly='true' hidden='true'><input type='submit' ></div></div></form>");
+	                 	    	
+	     						$('#sponsor-id').val(sponsor_edit_id);
+
+
+	                 	    	$('#sponsor-name').val(`${authors.name}`);
+
+	                 	    	$('.popup').fadeIn();
+
+
+
+	                            
+	                     console.info(data);
+	           
+	             }
+	    	});
+	    	                 	    
+	   	});
+
+
+
+
+
+    	/* SUMBIT EDIT SPONSOR  from popup */
+
+	   	    	$(".popup").on("submit","#sponsor-submit",function(e){
+	   		     	e.preventDefault();
+
+	   		    	var sponsor_edit_id=$('#sponsor-id').val(),
+	   		    				name_sponsor= $('#sponsor-name').val();
+
+
+	   	            	    	 $.ajax({
+	   			                 url: 'https://iic.devclub.in/api/admin/sponsors/'+sponsor_edit_id,
+	   			                 type: 'post',
+	   		            	    
+	   		            	    headers: {
+	   		            	        Authorization: token
+	   		            	    },
+	   		            	    data: {
+	   		            	    	name: name_sponsor,
+	   		            	    	hidden: 'false'
+
+	   		            	    },
+	   		            	    dataType: 'json',
+	   			                success: function (data) {
+	   			                	
+	   			            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+
+	   			            	    if ($( '#sponsor-img' ).val()!=''){
+		   			            	    //Do if uploadis not empty!!
+		   			            	    var form_data=new FormData();
+		   			            	    form_data.append('img', $( '#sponsor-img' )[0].files[0]);
+		   			            	    form_data.append('type','sponsors');
+		            	    			form_data.append('fid',data.data._id);
+		   			            	    
+
+		   			                    $.ajax({
+		   					            url : "updp.php",
+		   					            type: "POST",
+		   					            data:  form_data,
+		   					            contentType: false,
+		   					            cache: false,
+		   					            processData:false,
+		   					           
+		   					            
+		   					            });
+		   			                }
+	   					            $('.popup').html('').fadeOut();
+	   			                	$('#menu-sponsors').trigger('click');
+	   			                    console.log(data);
+	   			                 },
+	   			                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	   			             });
+	   	                    
+	   		    });
+
+
+	    /* REMOVE SPONSOR  */
+
+	     $(".res").on("click",".sponsor-rem",function(){
+
+	     if (confirm("You are about to remove a sponsor and this process is irreversible! Are you sure you have taken the right step?")) {
+
+
+	     	var sponsor_edit_id=$(this).prev().val();
+	    	
+
+
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/sponsors/'+sponsor_edit_id,
+		                 type: 'delete',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    
+	            	    dataType: 'json',
+		                success: function (data) {
+
+		                	$('#menu-sponsors').trigger('click');
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	   
+		            	    var type="sponsors";
+		                    $.ajax({
+				            url : "remdp.php",
+				            type: "POST",
+				            data:  {fid:sponsor_edit_id,type:type},
+				            cache: false				            
+				            });
+		                	
+		                    console.log(data);
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+			}
+	    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	    
+
+
+
+
+
+	   
+
+	    /*SHOWCASE MENU */
+
 	    $("#menu-showcase").click(function(){
 	        $('.popup').html('').fadeOut();
 	        $.ajax({
@@ -161,52 +680,515 @@
 	                 type: 'get',
             	    
             	    headers: {
-            	        Authorization: token  //for object property name, use quoted notation shown
+            	        Authorization: token  
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
-	                     $(".res").html("<form id='newshow-form'><input type='text' id='newshow-title' placeholder='title'><input type='text' id='newshow-founder' placeholder='founder'><textarea id='newshow-content'></textarea><input type='url' id='newshow-url' placeholder='url'><input type='date' id='newshow-founded' placeholder='founded'><input type='submit'></form>");
+	                     $(".res").html("<a class='btn add' id='addnewshowcase-btn'><i class='fa fa-plus'></i>Add Startup</a><table border='1'><thead><tr><th class='sticky'>Name</th><th>Founder</th><th>Website</th><th></th></thead><tbody></tbody></table>");
+
+
+	                 	let authors = data.data;
+	                 	
+	                 	authors.map(function(author) {
+	                 		let authorM = author.metaData;
+	                 		var url_bool='NA';
+	                 		if (`${authorM.url}`!='')
+	                 			url_bool='Available';
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${authorM.title}`+"</td><td>"+`${authorM.founder}`+"</td><td>"+url_bool+"</td><td><a class='btn' id='showcase-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn showcase-rem'>Remove</a></td></tr>");});
+	                 	    
+						 $('.res').fadeIn();
 	                     console.info(data);
 	                 }
 	             });
 	    });
 
-	    $(".res").on("submit","#newshow-form",function(e){
+
+	    /* ADD NEW STARTUP POPUP*/
+
+	    $('.res').on('click','a#addnewshowcase-btn',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	                 	    	
+     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='newshowcase-submit'><div class='box'><div class='h'>Add Startup<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newshowcase-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newshowcase-title' placeholder='Startup Name' required='true'></label></div><div><label for='newshowcase-founder'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newshowcase-founder' placeholder='Founder'></label></div><div><label for='newshowcase-url'><div class='icon'><i class='fa fa-at'></i></div><input type='url' id='newshowcase-url' placeholder='Website'></label></div><div><label for='newshowcase-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newshowcase-body' placeholder='Short Story' required='true' row='9'></textarea></label></div><div><label><input type='file' id='newshowcase-img' accept='image/*'></label></div><img src='' id='newshowcase-img-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div></form>");
+
+     				//$('.popup form').submit(false);
+	    	        $('.popup').fadeIn();
+	    	    });
+
+
+	    /* SUMBIT NEW STARTUP from popup */
+
+    	$(".popup").on("submit","#newshowcase-submit",function(e){
 	     	e.preventDefault();
-	     	var show_title= $('#newshow-title').val(),
-	     		show_founder= $('#newshow-founder').val(),
-	     		show_founded= $('#newshow-founded').val(),
-	     		show_url= $('#newshow-url').val(),
-	     		show_content= $('#newshow-content').val();
+
+	    	var title_newshowcase= $('#newshowcase-title').val(),
+            	    	founder_newshowcase= $('#newshowcase-founder').val(),
+            	    	url_newshowcase= $('#newshowcase-url').val(),
+            	    	body_newshowcase= $('#newshowcase-body').val();
 
 
             	    	 $.ajax({
-		                 url: 'https://iic.devclub.in/api/admin/showcase/5e10f8fa9f9a4d0020fb7895',
-		                 type: 'delete',
+		                 url: 'https://iic.devclub.in/api/admin/showcase',
+		                 type: 'post',
 	            	    
 	            	    headers: {
 	            	        Authorization: token
 	            	    },
 	            	    data: {
-	            	    	body: show_content,
-	            	    	hidden: 'false',
-
-	            	    	metaData:
-	            	    	{ founder: show_founder,
-	            	    		title: show_title,
-	            	    		url: show_url,
-	            	    		founded: show_founded }
+	            	    	metaData : {
+	            	    		title: title_newshowcase,
+	            	    		founder: founder_newshowcase,
+	            	    		url: url_newshowcase
+	            	    	},
+	            	    	body: body_newshowcase,
+	            	    	hidden: 'false'
+	            	    	
 
 	            	    },
 	            	    dataType: 'json',
 		                success: function (data) {
 		                	
-		            	   alert("success");
-		            	   console.log(data);
-		                 }
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	   if ($( '#newshowcase-img' )!='') {
+		            	    
+			            	    var form_data=new FormData();
+			            	    form_data.append('img', $( '#newshowcase-img' )[0].files[0]);
+			            	    form_data.append('type','showcase');
+			            	    form_data.append('fid',data.data._id);
+			            	    
+			                    $.ajax({
+					            url : "updp.php",
+					            type: "POST",
+					            data:  form_data,
+					            contentType: false,
+					            cache: false,
+					            processData:false,
+					           
+					            
+					            });
+			                }
+				            
+				            $('.popup').html('').fadeOut();
+		                	$('#menu-showcase').trigger('click');
+		                    console.log(data);
+		                    
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 		             });
                     
 	    });
+
+
+	     /* Edit SHOWCASE startup detail */
+
+	    $('.res').on('click','a#showcase-edit',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	   	var showcase_edit_id=$(this).next().val();
+
+	    	   	$.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/showcase/'+showcase_edit_id,
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token 
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+
+	                 	let authors = data.data;
+
+	                 		$('.popup').html('').fadeOut();
+
+     						$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='showcase-submit'><div class='box'><div class='h'>Update Startup<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='showcase-title'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='showcase-title' placeholder='Startup Name' required='true'></label></div><div><label for='showcase-founder'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='showcase-founder' placeholder='Founder'></label></div><div><label for='showcase-url'><div class='icon'><i class='fa fa-at'></i></div><input type='url' id='showcase-url' placeholder='Website'></label></div><div><label for='showcase-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='showcase-body' placeholder='Short Story' required='true' row='9'></textarea></label></div><div><label><input type='file' id='showcase-img' accept='image/*'></label></div><img src='' id='showcase-img-preview' style='width: 100px; height: auto;' /><div><input id='showcase-id' readonly='true' hidden='true'><input type='submit' ></div></div></form>");
+	                 	    	
+	     						$('#showcase-id').val(showcase_edit_id);
+
+
+	                 	    	$('#showcase-title').val(`${authors.metaData.title}`);
+	                 	    	$('#showcase-founder').val(`${authors.metaData.founder}`);
+	                 	    	$('#showcase-url').val(`${authors.metaData.url}`);
+	                 	    	$('#showcase-body').val(`${authors.body}`);
+
+	                 	    	$('.popup').fadeIn();
+
+
+
+	                            
+	                     console.info(data);
+	           
+	             }
+	    	});
+	    	                 	    
+	   	});
+
+
+
+
+
+    	/* SUMBIT EDIT SHOWCASE startup from popup */
+
+	   	    	$(".popup").on("submit","#showcase-submit",function(e){
+	   		     	e.preventDefault();
+
+	   		    	var showcase_edit_id=$('#showcase-id').val(),
+	   		    				title_showcase= $('#showcase-title').val(),
+	   	            	    	founder_showcase= $('#showcase-founder').val(),
+	   	            	    	url_showcase= $('#showcase-url').val(),
+	   	            	    	body_showcase= $('#showcase-body').val();
+
+
+	   	            	    	 $.ajax({
+	   			                 url: 'https://iic.devclub.in/api/admin/showcase/'+showcase_edit_id,
+	   			                 type: 'post',
+	   		            	    
+	   		            	    headers: {
+	   		            	        Authorization: token
+	   		            	    },
+	   		            	    data: {
+
+	   		            	    	metaData : {
+	   		            	    		title: title_showcase,
+	   		            	    		founder: founder_showcase,
+	   		            	    		url: url_showcase
+	   		            	    	},
+	   		            	    	body: body_showcase,
+	   		            	    	hidden: 'false'
+
+	   		            	    },
+	   		            	    dataType: 'json',
+	   			                success: function (data) {
+	   			                	
+	   			            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+
+	   			            	    if ($( '#showcase-img' ).val()!=''){
+		   			            	    //Do if uploadis not empty!!
+		   			            	    var form_data=new FormData();
+		   			            	    form_data.append('img', $( '#showcase-img' )[0].files[0]);
+		   			            	    form_data.append('type','showcase');
+		            	    			form_data.append('fid',data.data._id);
+		   			            	    
+
+		   			                    $.ajax({
+		   					            url : "updp.php",
+		   					            type: "POST",
+		   					            data:  form_data,
+		   					            contentType: false,
+		   					            cache: false,
+		   					            processData:false,
+		   					           
+		   					            
+		   					            });
+		   			                }
+	   					            $('.popup').html('').fadeOut();
+	   			                	$('#menu-showcase').trigger('click');
+	   			                    console.log(data);
+	   			                 },
+	   			                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	   			             });
+	   	                    
+	   		    });
+
+
+	    /* REMOVE SHOWCASE startup  */
+
+	     $(".res").on("click",".showcase-rem",function(){
+
+	     if (confirm("You are about to remove a startup from showcase and this process is irreversible! Are you sure you have taken the right step?")) {
+
+
+	     	var showcase_edit_id=$(this).prev().val();
+	    	
+
+
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/showcase/'+showcase_edit_id,
+		                 type: 'delete',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    
+	            	    dataType: 'json',
+		                success: function (data) {
+
+		                	$('#menu-showcase').trigger('click');
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	   
+		            	    var type="showcase";
+		                    $.ajax({
+				            url : "remdp.php",
+				            type: "POST",
+				            data:  {fid:showcase_edit_id,type:type},
+				            cache: false				            
+				            });
+		                	
+		                    console.log(data);
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+			}
+	    });
+
+
+
+	    /*BLOG MENU */
+
+	    $("#menu-blogs").click(function(){
+	        $('.popup').html('').fadeOut();
+	        $.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/blog',
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token  
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+	                     $(".res").html("<a class='btn add' id='addnewblog-btn'><i class='fa fa-plus'></i>Add Blog Post</a><table border='1'><thead><tr><th class='sticky'>Title</th><th>Author</th><th>Organisation</th><th></th></thead><tbody></tbody></table>");
+
+
+	                 	let authors = data.data;
+	                 	
+	                 	authors.map(function(author) {
+	                 		let authorM = author.metaData;
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${authorM.title}`+"</td><td>"+`${authorM.author}`+"</td><td>"+`${authorM.organisation}`+"</td><td><a class='btn' id='blog-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn blog-rem'>Remove</a></td></tr>");});
+	                 	    
+						 $('.res').fadeIn();
+	                     console.info(data);
+	                 }
+	             });
+	    });
+
+
+	    /* ADD NEW POST POPUP*/
+
+	    $('.res').on('click','a#addnewblog-btn',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	                 	    	
+     			$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='newblog-submit'><div class='box'><div class='h'>Add Post<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newblog-title'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newblog-title' placeholder='Title' required='true'></label></div><div><label for='newblog-organisation'><div class='icon'><i class='fa fa-building'></i></div><select id='newblog-organisation' required='true'><option value=''>-SELECT Organisation-</option><option value='EDC'>EDC</option><option value='IIC'>IIC</option><option value='SInC'>SInC</option></select></label></div><div><label for='newblog-author'><div class='icon'><i class='fa fa-at'></i></div><input type='text' id='newblog-author' required='true' placeholder='Author'></label></div><div><label for='newblog-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='newblog-body' placeholder='Body' required='true' row='9'></textarea></label></div><div><label><input type='file' id='newblog-img' accept='image/*'></label></div><img src='' id='newteammem-dp-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div></form>");
+
+     				//$('.popup form').submit(false);
+	    	        $('.popup').fadeIn();
+	    	    });
+
+
+	    /* SUMBIT NEW TEAM MEM from popup */
+
+    	$(".popup").on("submit","#newblog-submit",function(e){
+	     	e.preventDefault();
+
+	    	var title_newblog= $('#newblog-title').val(),
+            	    	organisation_newblog= $('#newblog-organisation').val(),
+            	    	author_newblog= $('#newblog-author').val(),
+            	    	body_newblog= $('#newblog-body').val();
+
+
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/blog',
+		                 type: 'post',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    data: {
+	            	    	metaData : {
+	            	    		title: title_newblog,
+	            	    		organisation: organisation_newblog,
+	            	    		author: author_newblog
+	            	    	},
+	            	    	body: body_newblog,
+	            	    	hidden: 'false'
+	            	    	
+
+	            	    },
+	            	    dataType: 'json',
+		                success: function (data) {
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	    if ($( '#newblog-img' ).val()!=''){
+
+		            	    
+			            	    var form_data=new FormData();
+			            	    form_data.append('img', $( '#newblog-img' )[0].files[0]);
+			            	    form_data.append('type','blog');
+			            	    form_data.append('fid',data.data._id);
+			            	    
+			                    $.ajax({
+					            url : "updp.php",
+					            type: "POST",
+					            data:  form_data,
+					            contentType: false,
+					            cache: false,
+					            processData:false,
+					           
+					            
+					            });
+			                }
+				            
+				            $('.popup').html('').fadeOut();
+		                	$('#menu-blogs').trigger('click');
+		                    console.log(data);
+		                    
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+                    
+	    });
+
+
+	     /* Edit BLOG post detail */
+
+	    $('.res').on('click','a#blog-edit',function(){
+	    	   	$('.popup').html('').fadeOut();
+	    	   	var blog_edit_id=$(this).next().val();
+
+	    	   	$.ajax({
+	                 url: 'https://iic.devclub.in/api/admin/blog/'+blog_edit_id,
+	                 type: 'get',
+            	    
+            	    headers: {
+            	        Authorization: token 
+            	    },
+            	    dataType: 'json',
+	                 success: function (data) {
+
+	                 	let authors = data.data;
+
+	                 		$('.popup').html('').fadeOut();
+
+	                 		$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='blog-submit'><div class='box'><div class='h'>Edit Blog Post<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='blog-title'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='blog-title' placeholder='Title' required='true'></label></div><div><label for='blog-organisation'><div class='icon'><i class='fa fa-building'></i></div><select id='blog-organisation' required='true'><option value=''>-SELECT Organisation-</option><option value='EDC'>EDC</option><option value='IIC'>IIC</option><option value='SInC'>SInC</option></select></label></div><div><label for='blog-author'><div class='icon'><i class='fa fa-at'></i></div><input type='text' id='blog-author' required='true' placeholder='Author'></label></div><div><label for='blog-body'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='blog-body' placeholder='Body' required='true'  row='9'></textarea></label></div><div><label><input type='file' id='blog-img' accept='image/*'></label></div><img src='' id='newteammem-dp-preview' style='width: 100px; height: auto;' /><div><input type='submit' ></div></div><input id='blog-id' hidden='true' readonly='true'></form>");
+	                 	    	
+	     						$('#blog-id').val(blog_edit_id);
+
+
+	                 	    	$('#blog-title').val(`${authors.metaData.title}`);
+	                 	    	$('#blog-organisation').val(`${authors.metaData.organisation}`);
+	                 	    	$('#blog-author').val(`${authors.metaData.author}`);
+	                 	    	$('#blog-body').val(`${authors.body}`);
+
+	                 	    	$('.popup').fadeIn();
+
+
+
+	                            
+	                     console.info(data);
+	           
+	             }
+	    	});
+	    	                 	    
+	   	});
+
+
+
+
+
+    	/* SUMBIT EDIT BLOG POST from popup */
+
+	   	    	$(".popup").on("submit","#blog-submit",function(e){
+	   		     	e.preventDefault();
+
+	   		    	var blog_edit_id=$('#blog-id').val(),
+	   		    				title_blog= $('#blog-title').val(),
+	   	            	    	organisation_blog= $('#blog-organisation').val(),
+	   	            	    	author_blog= $('#blog-author').val(),
+	   	            	    	body_blog= $('#blog-body').val();
+
+
+	   	            	    	 $.ajax({
+	   			                 url: 'https://iic.devclub.in/api/admin/blog/'+blog_edit_id,
+	   			                 type: 'post',
+	   		            	    
+	   		            	    headers: {
+	   		            	        Authorization: token
+	   		            	    },
+	   		            	    data: {
+
+	   		            	    	metaData : {
+	   		            	    		title: title_blog,
+	   		            	    		organisation: organisation_blog,
+	   		            	    		author: author_blog
+	   		            	    	},
+	   		            	    	body: body_blog,
+	   		            	    	hidden: 'false'
+
+	   		            	    },
+	   		            	    dataType: 'json',
+	   			                success: function (data) {
+	   			                	
+	   			            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+
+	   			            	    if ($( '#blog-img' ).val()!=''){
+		   			            	    //Do if uploadis not empty!!
+		   			            	    var form_data=new FormData();
+		   			            	    form_data.append('img', $( '#blog-img' )[0].files[0]);
+		   			            	    form_data.append('type','blog');
+		            	    			form_data.append('fid',data.data._id);
+		   			            	    
+
+		   			                    $.ajax({
+		   					            url : "updp.php",
+		   					            type: "POST",
+		   					            data:  form_data,
+		   					            contentType: false,
+		   					            cache: false,
+		   					            processData:false,
+		   					           
+		   					            
+		   					            });
+		   			                }
+	   					            $('.popup').html('').fadeOut();
+	   			                	$('#menu-blogs').trigger('click');
+	   			                    console.log(data);
+	   			                 },
+	   			                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	   			             });
+	   	                    
+	   		    });
+
+
+	    /* REMOVE BLOG POST  */
+
+	     $(".res").on("click",".blog-rem",function(){
+
+	     if (confirm("You are about to remove a blog post and this process is irreversible! Are you sure you have taken the right step?")) {
+
+
+	     	var blog_edit_id=$(this).prev().val();
+	    	
+
+
+            	    	 $.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/blog/'+blog_edit_id,
+		                 type: 'delete',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    
+	            	    dataType: 'json',
+		                success: function (data) {
+
+		                	$('#menu-blogs').trigger('click');
+		                	
+		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+		            	   
+		            	    var type="blog";
+		                    $.ajax({
+				            url : "remdp.php",
+				            type: "POST",
+				            data:  {fid:blog_edit_id,type:type},
+				            cache: false				            
+				            });
+		                	
+		                    console.log(data);
+		                 },
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		             });
+			}
+	    });
+
+
+	    /* TEAM MENU CLICK, load add team mem and table */
 
 	    $("#menu-team").click(function(){
 	    	$('.popup').html('').fadeOut();
@@ -215,7 +1197,7 @@
 	                 type: 'get',
             	    
             	    headers: {
-            	        Authorization: token  //for object property name, use quoted notation shown
+            	        Authorization: token  
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
@@ -224,7 +1206,7 @@
 
 	                 	let authors = data.data;
 	                 	authors.map(function(author) {
-	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.organisation}`+"</td><td><a class='btn' id='teammem-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><input type='password' value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn teammem-rem'>Remove</a></td></tr>");});
+	                 		$(".res>table tbody").append("<tr><td class='sticky'>"+`${author.name}`+"</td><td>"+`${author.position}`+"</td><td>"+`${author.organisation}`+"</td><td><a class='btn' id='teammem-edit'>Update</a><input value='"+`${author._id}`+"' readonly='true' hidden='true'><a class='btn teammem-rem'>Remove</a></td></tr>");});
 	                 	    
 	                 	   
 						 $('.res').fadeIn();
@@ -234,6 +1216,7 @@
 	    });
 
 
+	    /* ADD new TEAM MEM */
 	    $('.res').on('click','a#addnewteammem-btn',function(){
 	    	   	$('.popup').html('').fadeOut();
 	    	                 	    	
@@ -259,6 +1242,8 @@
      	   readURL(this);
     	});
     	*/
+
+    	/* SUMBIT NEW TEAM MEM from popup */
 
     	$(".popup").on("submit","#newteammem-submit",function(e){
 	     	e.preventDefault();
@@ -294,36 +1279,43 @@
 	            	    dataType: 'json',
 		                success: function (data) {
 		                	
-		            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
-		            	    
-		            	    var form_data=new FormData();
-		            	    form_data.append('dp', $( '#newteammem-dp' )[0].files[0]);
-		            	    form_data.append('fid',data.data._id);
-		            	    
-		                    $.ajax({
-				            url : "updp.php",
-				            type: "POST",
-				            data:  form_data,
-				            contentType: false,
-				            cache: false,
-				            processData:false,
-				           
-				            
-				            });
+		                	if ($( '#newteammem-dp' ).val()!=''){
+			            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+			            	    
+			            	    var form_data=new FormData();
+			            	    form_data.append('img', $( '#newteammem-dp' )[0].files[0]);
+			            	    form_data.append('type','team');
+			            	    form_data.append('fid',data.data._id);		            	    
+			                    $.ajax({
+					            url : "updp.php",
+					            type: "POST",
+					            data:  form_data,
+					            contentType: false,
+					            cache: false,
+					            processData:false,
+					           
+					            
+					            });
+			                }
 				            $('.popup').html('').fadeOut();
 		                	$('#menu-team').trigger('click');
 		                    console.log(data);
 		                 },
-		                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 		             });
                     
 	    });
 
-	     $(".res").on("click",".teammem-rem",function(){
-	     	//e.preventDefault();
-	     	var user_edit_id=$(this).prev().val();
-	    	
+	    /* REMOVE TEAM MEM */
 
+	     $(".res").on("click",".teammem-rem",function(){
+
+	     	if (confirm("You are about to remove a team member and this process is irreversible! Are you sure you have taken the right step?")) {
+	     	    	var user_edit_id=$(this).prev().val();
+	    	
+	     				var type="team";
+
+	     				$('#menu-team').trigger('click');
 
             	    	 $.ajax({
 		                 url: 'https://iic.devclub.in/api/admin/team/'+user_edit_id,
@@ -342,19 +1334,20 @@
 		                    $.ajax({
 				            url : "remdp.php",
 				            type: "POST",
-				            data:  {fid:user_edit_id},
+				            data:  {type:type,fid:user_edit_id},
 				            cache: false				            
 				            });
-		                	$('#menu-team').trigger('click');
+		                	
 		                    console.log(data);
 		                 },
-		                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 		             });
+	     	  }
 
-            	    
-
-                    
+	     	
 	    });
+
+	     /* Edit TEAM mem detail */
 
 	    $('.res').on('click','a#teammem-edit',function(){
 	    	   	$('.popup').html('').fadeOut();
@@ -369,41 +1362,107 @@
             	    },
             	    dataType: 'json',
 	                 success: function (data) {
-	                 	alert("Feature coming soooon!!");
 
 	                 	let authors = data.data;
 
 	                 		$('.popup').html('').fadeOut();
 
-	                 		$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='teammem-submit'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='teammem-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='teammem-name' placeholder='Name' required='true'></label></div><div><label for='teammem-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='teammem-position' placeholder='Position' required='true'></label></div><div><label for='teammem-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='teammem-organisation' placeholder='Organisation'></label></div><div><label for='teammem-mobile'><div class='icon'><i class='fa fa-mobile'></i></div><input type='number' id='teammem-mobile' required='true' placeholder='Mobile'></label></div><div><label for='teammem-email'><div class='icon'><i class='fa fa-at'></i></div><input type='email' id='teammem-email' required='true' placeholder='Email ID'></label></div><div><label for='teammem-bio'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='teammem-bio' placeholder='Bio' required='true'></textarea></label></div><div><label for='teammem-fb'><div class='icon'><i class='fa fa-facebook'></i></div><input type='url' id='teammem-fb' placeholder='Facebook'></label></div><div><label><input type='file' id='teammem-dp' accept='image/*' required='true'></label><img src='' id='teammem-dp-preview' style='width: 100px; height: auto;' /></div><div><input type='submit' ></div></div></form>");
+	                 		$('.popup').html("<form enctype='multipart/form-data' class='popup-content animate' id='teammem-submit'><div class='box'><div class='h'>Edit Member Details<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='teammem-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='teammem-name' placeholder='Name' required='true'></label></div><div><label for='teammem-position'><div class='icon'><i class='fa fa-group'></i></div><select id='teammem-position' required='true'><option value=''>-SELECT Position-</option><option value='Professor'>Professor</option><option value='Overall Coordinator'>Overall Coordinator</option><option value='Coordinator'>Coordinator</option><option value='Executive'>Executive</option><option value='Representative'>Representative</option><option value='Volunteer'>Volunteer</option></select></label></div><div><label for='teammem-organisation'><div class='icon'><i class='fa fa-building'></i></div><select id='teammem-organisation' required='true'><option value=''>-SELECT Organisation-</option><option value='EDC'>EDC</option><option value='IIC'>IIC</option><option value='SInC'>SInC</option></select></label></div><div><label for='teammem-email'><div class='icon'><i class='fa fa-at'></i></div><input type='email' id='teammem-email' required='true' placeholder='Email ID'></label></div><div><label for='teammem-mobile'><div class='icon'><i class='fa fa-mobile'></i></div><input type='number' id='teammem-mobile' placeholder='Mobile'></label></div><div><label for='teammem-bio'><div class='icon'><i class='fa fa-letter'></i></div><textarea id='teammem-bio' placeholder='Bio' required='true'></textarea></label></div><div><label for='teammem-fb'><div class='icon'><i class='fa fa-facebook'></i></div><input type='url' id='teammem-fb' placeholder='Facebook'></label></div><div><label for='teammem-linkedin'><div class='icon'><i class='fa fa-linkedin'></i></div><input type='url' id='teammem-linkedin' placeholder='Linkedin'></label></div><div><label><input type='file' id='teammem-dp' accept='image/*'></label><img src='' id='teammem-dp-preview' style='width: 100px; height: auto;' /></div><div><input type='submit' ></div></div><input id='teammem-id' hidden='true' readonly='true'></form>");
 	                 	    	
 	     			
 
 
-	                 	    	$('#user-username').val(`${authors.username}`);
-	                            $('#user-name').val(`${authors.name}`);
-	                            $('#user-organisation').val(`${authors.organisation}`);
-	                            $('#user-position').val(`${authors.position}`);
-	                            $('#user-access').val(`${authors.access}`);
-	                            $('#user-id').val(`${authors._id}`);
+	                 	    	$('#teammem-name').val(`${authors.name}`);
+	                 	    	$('#teammem-position').val(`${authors.position}`);
+	                 	    	$('#teammem-organisation').val(`${authors.organisation}`);
+	                 	    	$('#teammem-mobile').val(`${authors.mobile}`);
+	                 	    	$('#teammem-bio').val(`${authors.bio}`);
+	                 	    	$('#teammem-email').val(`${authors.email}`);
+	                 	    	$('#teammem-fb').val(`${authors.url.facebook}`);
+	                 	    	$('#teammem-linkedin').val(`${authors.url.linkedin}`);
 
-
-
-
-
+	                 	    	$('#teammem-id').val(user_edit_id);
 
 	                 	    	$('.popup').fadeIn();
-	                     console.info(data);
-	               
-	                 
-	                 	
 
-	                 
+	                            
+	                     console.info(data);
 	           
 	             }
 	    	});
 	    	                 	    
 	   	});
+
+
+
+	   	    	/* SUMBIT EDIT TEAM MEM from popup */
+
+	   	    	$(".popup").on("submit","#teammem-submit",function(e){
+	   		     	e.preventDefault();
+
+	   		    	var user_edit_id=$('#teammem-id').val(),
+	   		    				name_newteammem= $('#teammem-name').val(),
+	   	            	    	position_newteammem= $('#teammem-position').val() ,
+	   	            	    	organisation_newteammem= $('#teammem-organisation').val(),
+	   	            	    	email_newteammem= $('#teammem-email').val(),
+	   	            	    	mobile_newteammem= $('#teammem-mobile').val(),
+	   	            	    	bio_newteammem= $('#teammem-bio').val(),
+	   	            	    	fb_newteammem= $('#teammem-fb').val(),
+	   	            	    	linkedin_newteammem= $('#teammem-linkedin').val();
+
+
+	   	            	    	 $.ajax({
+	   			                 url: 'https://iic.devclub.in/api/admin/team/'+user_edit_id,
+	   			                 type: 'post',
+	   		            	    
+	   		            	    headers: {
+	   		            	        Authorization: token
+	   		            	    },
+	   		            	    data: {
+	   		            	    	name: name_newteammem,
+	   		            	    	position: position_newteammem,
+	   		            	    	organisation: organisation_newteammem,
+	   		            	    	email: email_newteammem,
+	   		            	    	contact: mobile_newteammem,
+	   		            	    	url: { facebook: fb_newteammem, linkedin: linkedin_newteammem},
+	   		            	    	bio: bio_newteammem,
+	   		            	    	hidden: 'false'
+
+	   		            	    },
+	   		            	    dataType: 'json',
+	   			                success: function (data) {
+	   			                	
+	   			            	    //Security issue to be seen (exploiting updp.php ny crossscripting)
+
+	   			            	    if ($( '#teammem-dp' ).val()!=''){
+		   			            	    //Do if uploadis not empty!!
+		   			            	    var form_data=new FormData();
+		   			            	    form_data.append('img', $( '#teammem-dp' )[0].files[0]);
+		   			            	    form_data.append('type','team');
+		            	    			form_data.append('fid',data.data._id);
+		   			            	    
+
+		   			                    $.ajax({
+		   					            url : "updp.php",
+		   					            type: "POST",
+		   					            data:  form_data,
+		   					            contentType: false,
+		   					            cache: false,
+		   					            processData:false,
+		   					           
+		   					            
+		   					            });
+		   			                }
+	   					            $('.popup').html('').fadeOut();
+	   			                	$('#menu-team').trigger('click');
+	   			                    console.log(data);
+	   			                 },
+	   			                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	   			             });
+	   	                    
+	   		    });
+
+
 
 	    /*
 	    //Image preview
@@ -476,7 +1535,7 @@
 		                	$('#menu-team').trigger('click');
 		                    console.log(data);
 		                 },
-		                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+		                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 		             });
 
             	    
@@ -487,13 +1546,30 @@
 	    */
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	    
 
 
-	    $("#menu-users").click(function(){
+	    /* LOAD USER ON CLICK ON MENU*/
 
-	    	//$('.tab>div').removeClass('selected');
-	    	//$(this).addClass('selected');
+	    $("#menu-users").click(function(){
 
 	        $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/users',
@@ -514,31 +1590,25 @@
 	                 	    
 	                 	   
 						 $('.res').fadeIn();
-
-
-
-
-						 
-
-						 // $('.popup').fadeIn();
-
-						 //$('.popup div').append("<div>"+token+"</div>");
 	                     console.info(data);
-	               
 	                 }
 	                 
 	             });
-	        //handle failure & empty values(before ajax call) properly
+	        //handle errorure & empty values(before ajax call) properly
 	    });
+
+
+	    /*NEW USER POPUP on BUTTON CLICK*/
 
 	    $('.res').on('click','a#addnewuser-btn',function(){
 	    	   	$('.popup').html('').fadeOut();
 	    	                 	    	
      			$('.popup').html("<form class='popup-content animate' id='newuser-submit'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><div><label for='newuser-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='newuser-username' placeholder='Username' required='true'></label></div><div><label for='newuser-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newuser-name' placeholder='Name' required='true'></label></div><div><label for='newuser-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='newuser-password' placeholder='Password' required='true'></label></div><div><label for='newuser-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newuser-organisation' required='true' placeholder='Organisation'></label></div><div><label for='newuser-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newuser-position' placeholder='Position' required='true'></label></div><div><label for='newuser-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='newuser-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' ></div></div></form>");
 
-     				//$('.popup form').submit(false);
 	    	        $('.popup').fadeIn();
 	    	    });
+
+	    /* NEW USER SUBMIT FROM POPUP */
 
 	   $(".popup").on("submit","#newuser-submit",function(e){
 	   		e.preventDefault();
@@ -569,17 +1639,16 @@
 	                	$('#menu-users').trigger('click');
 	                     //console.log(data);
 	                 },
-	                 fail: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
+	                 error: function(xhr, textStatus, errorThrown) {alert(errorThrown);}
 	             });
 	    });
 
 	    
-
+	   /* MANAGE EXISTING USER POPUP DISPLAy */
 
 	    $(".res").on("click",".user-edit",function(){
 	    	$('.popup').html('').fadeOut();
 	    	var user_edit_id=$(this).next().val();
-	    	//alert(user_edit_id);
 
 	    	 $.ajax({
 	                 url: 'https://iic.devclub.in/api/admin/users/'+user_edit_id,
@@ -591,21 +1660,12 @@
             	    dataType: 'json',
 	                 success: function (data) {
 
-	                 	//alert('Hi');
-
-
 	                 	let authors = data.data;
-
-	                 		$('.popup').html('').fadeOut();
+	                 	$('.popup').html('').fadeOut();
 	                 	    	
-	     			//$('.popup').html("<div class='popup-content animate'><div class='box'><div class='h'>Add User<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><form><div><label for='newuser-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='newuser-username' placeholder='Username' required='true'></label></div><div><label for='newuser-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='newuser-name' placeholder='Name' required='true'></label></div><div><label for='newuser-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='newuser-password' placeholder='Password' required='true'></label></div><div><label for='newuser-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='newuser-organisation' required='true' placeholder='Organisation'></label></div><div><label for='newuser-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='newuser-position' placeholder='Position' required='true'></label></div><div><label for='newuser-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='newuser-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' id='newuser-submit'></div></form></div></div>");
                  			
 
-	                 			$('.popup').html("<div class='popup-content animate'><div class='box'><div class='h'>Manage User<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><input type='text' id='user-id' placeholder='id' required='true' readonly='true' hidden='true'><br><div class='h'>Update details</div><form  id='user-update'><div><label for='user-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='user-username' placeholder='Username' required='true'></label></div><div><label for='user-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='user-name' placeholder='Name' required='true'></label></div><div><label for='user-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='user-organisation' required='true' placeholder='Organisation'></label></div><div><label for='user-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='user-position' placeholder='Position' required='true'></label></div><div><label for='user-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' value='Update'></div></form><div class='h'>Remove user</div><form id='user-delete'><div><label><input type='checkbox' required='true'>Confirm</label></div><div><input type='submit' value='DELETE' ></div></form><div class='h'>Reset Password</div><form  id='user-reset-password'><div><label for='user-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='user-password' required='true' placeholder='New Password'></label></div><div><input type='submit' value='Reset Password'></div></form></div></div>");
-
-	                 	    	//$('.popup div').html("<input type='text' id='user-id' placeholder='id' required='true' readonly='true'><form><input type='text' id='user-username' placeholder='username' required='true'><input type='text' id='user-name' placeholder='name' required='true'><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select><input type='text' id='user-position' placeholder='position' required='true'><input type='text' id='user-organisation' required='true'> <input type='submit' value='Update' id='user-update'></form><br><form><label><input type='checkbox' required='true'>Confirm</label><input type='button' value='DELETE' id='user-delete'></form><br><form><input type='password' id='user-password' required='true' placeholder='New Password'><input type='submit' value='Reset Password' id='user-reset-password'></form>");
-	                 	    	//$('.popup form').submit(false);
-
+	                 $('.popup').html("<div class='popup-content animate'><div class='box'><div class='h'>Manage User<span onclick=\"$('.popup').html('').fadeOut()\" class='close' style=' float: right;'>&times</span></div><input type='text' id='user-id' placeholder='id' required='true' readonly='true' hidden='true'><br><div class='h'>Update details</div><form  id='user-update'><div><label for='user-username'><div class='icon'><i class='fa fa-user'></i></div><input type='text' id='user-username' placeholder='Username' required='true'></label></div><div><label for='user-name'><div class='icon'><i class='fa fa-user-tie'></i></div><input type='text' id='user-name' placeholder='Name' required='true'></label></div><div><label for='user-organisation'><div class='icon'><i class='fa fa-building'></i></div><input type='text' id='user-organisation' required='true' placeholder='Organisation'></label></div><div><label for='user-position'><div class='icon'><i class='fa fa-group'></i></div><input type='text' id='user-position' placeholder='Position' required='true'></label></div><div><label for='user-access'><div class='icon'><i class='fa fa-eye'></i></div><select id='user-access' required='true'><option value=''>-SELECT access-</option><option value='superadmin'>SuperAdmin</option><option value='adminIIC'>IIC admin</option><option value='adminEDC'>EDC admin</option></select></label></div><div><input type='submit' value='Update'></div></form><div class='h'>Remove user</div><form id='user-delete'><div><input type='submit' value='DELETE' ></div></form><div class='h'>Reset Password</div><form  id='user-reset-password'><div><label for='user-password'><div class='icon'><i class='fa fa-key'></i></div><input type='password' id='user-password' required='true' placeholder='New Password'></label></div><div><input type='submit' value='Reset Password'></div></form></div></div>");
 	                 	    	
 
 
@@ -615,20 +1675,8 @@
 	                            $('#user-position').val(`${authors.position}`);
 	                            $('#user-access').val(`${authors.access}`);
 	                            $('#user-id').val(`${authors._id}`);
-
-
-
-
-
-
 	                 	    	$('.popup').fadeIn();
 	                     console.info(data);
-	               
-	                 
-	                 	
-
-	                 
-	           
 	             }
 	    	});
 
@@ -638,6 +1686,8 @@
 	    });
 
 
+
+	    /*USER UPDATE SUBMIT */
 	    $(".popup").on("submit","#user-update",function(e){
 	    	e.preventDefault();
 	    	var username_user= $('#user-username').val(),
@@ -662,45 +1712,42 @@
             	    },
             	    dataType: 'json',
 	                success: function (data) {
-	                	alert("Updated!");
+	                	$('.popup').html('').fadeOut();
 	                	$('#menu-users').trigger('click');
-	                    // console.log(data);
-	                    $('.popup').html('').fadeOut();
+	                    console.log(data);
+	                    
 	                 }
 	             });
 	    });
 
+	    /*USER delete SUBMIT*/
+
 	    $(".popup").on("submit","#user-delete",function(e){
 	    	e.preventDefault();
-	    	var username_user= $('#user-username').val(),
-            	    	id_user= $('#user-id').val(),
-            	    	name_user= $('#user-name').val(),
-            	    	position_user= $('#user-position').val() ,
-            	    	organisation_user= $('#user-organisation').val(),
-            	    	access_user= $('#user-access').val() ;
-	    	$.ajax({
-	                 url: 'https://iic.devclub.in/api/admin/users/'+id_user,
-	                 type: 'delete',
-            	    
-            	    headers: {
-            	        Authorization: token
-            	    },
-            	    data: {
-            	    	username: username_user,
-            	    	name: name_user,
-            	    	position: position_user,
-            	    	organisation: organisation_user,
-            	    	access: access_user       	    	
-            	    },
-            	    dataType: 'json',
-	                success: function (data) {
-	                	alert("Updated!");
-	                	$('.popup').html('').fadeOut();
-	                	$('#menu-users').trigger('click');
-	                     //console.log(data);
-	                 }
-	             });
+
+	    	if (confirm("You are about to remove a user and this process is irreversible! Are you sure you have taken the right step?")) {
+
+	            	var id_user= $('#user-id').val();
+
+		    	$.ajax({
+		                 url: 'https://iic.devclub.in/api/admin/users/'+id_user,
+		                 type: 'delete',
+	            	    
+	            	    headers: {
+	            	        Authorization: token
+	            	    },
+	            	    
+	            	    dataType: 'json',
+		                success: function (data) {
+		                	$('.popup').html('').fadeOut();
+		                	$('#menu-users').trigger('click');
+		                     //console.log(data);
+		                 }
+		             });
+		    }
 	    });
+
+	    /*USER PASSWORD RESET SUBMIT*/
 
 	    $(".popup").on("submit","#user-reset-password",function(e){
 	    	e.preventDefault();
@@ -753,10 +1800,11 @@
 	
 
 	<div class="menu tab" id="menu">
-		<div class='tab-item' id='menu-events'>EVENTS</div>
 		<div class='tab-item' id='menu-blogs'>BLOGS</div>
-		<div class='tab-item' id='menu-resources'>RESOURCES</div>
+		<div class='tab-item' id='menu-events'>EVENTS</div>
+		<!--<div class='tab-item' id='menu-resources'>RESOURCES</div>-->
 		<div class='tab-item' id='menu-showcase'>SHOWCASE</div>
+		<div class='tab-item' id='menu-sponsors'>SPONSORS</div>
 		<div class='tab-item' id='menu-team'>TEAM</div>
 		
 		<div class='tab-item' id='menu-users'>Users</div>
@@ -765,6 +1813,7 @@
 	</div>
 	<div class="res"></div>
 	<div class="popup"></div>
+
 
 
 </body>

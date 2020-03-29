@@ -119,6 +119,7 @@ section:nth-of-type(8) {
   color: white;
   line-height: 1.4;
   margin-top: 50px;
+  width: 101vw;
 }
 @media (max-width: 760px) {
   .total-title {
@@ -245,10 +246,11 @@ ul.nav li a {
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
-  font-size: 1.1em;
+  font-size: 1.7em;
   padding: 3px 10px;
   cursor: pointer;
   color: #fff;
+  font-weight: 800;
 }
 
 ul.nav li a:hover {
@@ -480,8 +482,8 @@ nav ul li:hover {
     padding: 0;
     text-align: center;
   }
-  nav ul li {
-    font-size: 8px;
+  .nav ul li {
+    font-size: 2em;
   }
 }
 /*--------------------------------------------------*/
