@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<title>Login</title>
+	<title>Admin Portal</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- IMPORT FONTS -->
@@ -48,7 +48,7 @@
             	    }
             	});
             	$('.login').fadeOut(function(){
-            		$('title').text("Welcome "+user);
+            		$('title').text(user+" | Admin Portal");
             		$('#menu').slideDown();
             	});
 
@@ -1807,8 +1807,8 @@
 		<div class='tab-item' id='menu-sponsors'>SPONSORS</div>
 		<div class='tab-item' id='menu-team'>TEAM</div>
 		
-		<div class='tab-item' id='menu-users'>Users</div>
-
+		<div class='tab-item' id='menu-users' style="float: right">Users</div>
+		
 		<hr>		
 	</div>
 	<div class="res"></div>
