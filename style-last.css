@@ -85,7 +85,12 @@
 
 }
 
+._row2>.col2_>.col22_{
+  width: 60%;
+  float:  right;
+  padding: 12px;
 
+}
 
 ._row2>.col2_>.col21_>div{
   width: 100%;
@@ -111,11 +116,11 @@ i.fa_{
 
 
 
-._row2>.col2_>.col22_{
+/* ._row2>.col2_>.col22_{
   width: 60%;
   float: left;
   padding: 12px;
-}
+} */
 
 ._row2>.col2_>.col22_>.row221_{
   padding: 0.5em 0;
