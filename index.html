@@ -93,18 +93,36 @@
                 //alert("Hi"+$("ul.nav li.scroll-to a").index(this));
             });
 
+            $(".__xyz_trig").click(function () {
+                var cur=$(".active_").attr('id').slice(0,-4);
+                var next=$(this).attr('id').slice(0,-4);
+
+                $(".active_").removeClass('active_');
+                $("."+cur).fadeOut(function () {
+                    $("."+next).fadeIn();
+                });
+                $("#"+next+"trig").addClass('active_')
+            });
+
+/* Generalised
             $("#__sinc_trig").click(function () {
+                $(".active_").removeClass('active_');
+                $("#__sinc_trig").addClass('active_');
                 $(".__edc_").fadeOut(function () {
                     $(".__sinc_").fadeIn();
-                })
+                });
             });
 
             $("#__edc_trig").click(function () {
+                $(".active_").removeClass('active_');
+                $("#__edc_trig").addClass('active_');
                 $(".__sinc_").fadeOut(function () {
                     $(".__edc_").fadeIn();
                 })
             })
+*/
         });
+
     </script>
 </head>
 
@@ -700,26 +718,12 @@
                 </div>
                 <div class="_row2">
                     <div class="col1_">
-                        <div class="active_" id="__sinc_trig">Sinc</div>
-                        <div id="__edc_trig">EDC</div>
-                        <div>Something</div>
+                        <div class="active_ __xyz_trig" id="__sinc_trig">Sinc</div>
+                        <div class="__xyz_trig" id="__edc_trig">EDC</div>
 
                     </div>
                     <div class="col2_">
-                        <div class="col22_">
-                            <div class="row221_">About</div>
 
-
-                            <div class="row222_ __sinc_">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-
-                            <div class="row222_ __edc_">
-                                EDC fhdtys</div>
-
-
-                        </div>
                         <div class="col21_">
                             <div class="row211_">Contact</div>
 
@@ -746,56 +750,79 @@
                             </div>
 
 
-                            <hr class="hr_">
-
-                            <div class="row211_">Connect</div>
-
-                            <div class="footer-icons __sinc_">
-                                <a href="https://m.facebook.com/edciitdelhi/"><i class="fa fa-facebook fa_"></i></a>
-                                <a href="https://instagram.com/edc_iitd?igshid=2s7a9c1sa5xi"><i
-                                        class="fa fa-instagram fa_"></i></a>
-                                <a
-                                    href="https://www.linkedin.com/company/entrepreneurship-development-cell-edc-iit-delhi"><i
-                                        class="fa fa-linkedin fa_"></i></a>
-                                <a href="https://www.youtube.com/channel/UCpCxOtRhLy5442eZCoIZNYA"><i
-                                        class="fa fa-youtube fa_"></i></a>
-                            </div>
-
-                            <div class="footer-icons __edc_">
-                                <a href="https://m.facebook.com/edciitdelhi/"><i class="fa fa-facebook fa_"></i></a>
-                                <a href="https://instagram.com/edc_iitd?igshid=2s7a9c1sa5xi"><i
-                                        class="fa fa-instagram fa_"></i></a>
-                                <a
-                                    href="https://www.linkedin.com/company/entrepreneurship-development-cell-edc-iit-delhi"><i
-                                        class="fa fa-linkedin fa_"></i></a>
-                                <a href="https://www.youtube.com/channel/UCpCxOtRhLy5442eZCoIZNYA"><i
-                                        class="fa fa-youtube fa_"></i></a>
-                            </div>
-
-
-                            <div class="_footer">
-                                <div class="__dev">Developed by me</div>
-                                <div class="__pow">Powered by Dev Club</div>
-                                <div class="__copy">E-Cell &copy 2020</div>
-                            </div>
                         </div>
-                        <!-- <div class="footer-right">
-                            <p class="footer-company-about">
-                                <span>About US</span>
-                                Entrepreneurship Development Cell IIT Delhi
-                            </p>
-                            <div class="footer-icons">
-                                <a href="https://m.facebook.com/edciitdelhi/"><i class="fa fa-facebook"></i></a>
-                                <a href="https://instagram.com/edc_iitd?igshid=2s7a9c1sa5xi"><i
-                                        class="fa fa-instagram"></i></a>
-                                <a
-                                    href="https://www.linkedin.com/company/entrepreneurship-development-cell-edc-iit-delhi"><i
-                                        class="fa fa-linkedin"></i></a>
-                                <a href="https://www.youtube.com/channel/UCpCxOtRhLy5442eZCoIZNYA"><i
-                                        class="fa fa-youtube"></i></a>
-                            </div>
+
+
+                         <div class="col22_">
+
+                            <div class="row221_">@</div>
+
                             
-                        </div> -->
+
+                                <div class="row222_ footer-icons __sinc_">
+                                    <a href="https://m.facebook.com/edciitdelhi/"><i class="fa fa-facebook fa_"></i></a>
+                                    <a href="https://instagram.com/edc_iitd?igshid=2s7a9c1sa5xi"><i
+                                            class="fa fa-instagram fa_"></i></a>
+                                    <a
+                                        href="https://www.linkedin.com/company/entrepreneurship-development-cell-edc-iit-delhi"><i
+                                            class="fa fa-linkedin fa_"></i></a>
+                                    <a href="https://www.youtube.com/channel/UCpCxOtRhLy5442eZCoIZNYA"><i
+                                            class="fa fa-youtube fa_"></i></a>
+                                </div>
+
+                                <div class="row222_ footer-icons __edc_">
+                                    <a href="https://m.facebook.com/edciitdelhi/"><i class="fa fa-facebook fa_"></i></a>
+                                    <a href="https://instagram.com/edc_iitd?igshid=2s7a9c1sa5xi"><i
+                                            class="fa fa-instagram fa_"></i></a>
+                                    <a
+                                        href="https://www.linkedin.com/company/entrepreneurship-development-cell-edc-iit-delhi"><i
+                                            class="fa fa-linkedin fa_"></i></a>
+                                    <a href="https://www.youtube.com/channel/UCpCxOtRhLy5442eZCoIZNYA"><i
+                                            class="fa fa-youtube fa_"></i></a>
+                                </div>
+                            
+                        </div>
+
+                        <div class="col23_">
+                            <div class="row231_">About</div>
+
+
+                            <div class="row232_ __sinc_">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                sunt in culpa qui officia deserunt Lorem ipsum dolor sit amet, consectetur adipisicing
+                                elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                sunt in culpa qui officia deserLorem ipsum dolor sit amet, consectetur adipisicing
+                                elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                sunt in culpa qui officia deserLorem ipsum dolor sit amet, consectetur adipisicing
+                                elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                sunt in culpa qui officia deserLorem ipsum dolor sit amet, consectetur adipisicing
+                                elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                sunt in culpa qui officia desermollit anim id est laborum.</div>
+
+                            <div class="row232_ __edc_">
+                                EDC fhdtys</div>
+
+
+                        </div>
+
+
+
+
+                           
+                        </div>
+                        
+                    </div>
+                    <div class="_row3">
+                        <div class="_footer">
+                                <div class="__dev">Developed by me</div> * 
+                                <div class="__pow">Powered by Dev Club</div> <br>
+                                <div class="__copy">E-Cell &copy 2020</div>
+                        </div>
                     </div>
 
         </section>

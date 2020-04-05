@@ -30,7 +30,7 @@
 
 ._row2{
   position: relative;
-  height: 50vh;
+  height: 40vh;
   margin: 0 2.5vw 2.5vh;
   background-color: rgba(0, 0,0, 0.2);
 }
@@ -104,12 +104,14 @@
 }
 
 i.fa_{
-  display: inline-block;
   border-radius: 50%;
   background-color: white;
   color: #444;
-  padding: 6px;
+  padding: 0.5em;
   margin-right: 9px;
+ /* width: 2em;
+  height: 2em;
+ */
 }
 
 
@@ -122,6 +124,16 @@ i.fa_{
   padding: 12px;
 } */
 
+._row2>.col2_>.col23_>.row231_{
+  padding: 0.5em 0;
+  font-size: 2em;
+}
+
+._row2>.col2_>.col23_>.row232_{
+  height: calc(100%-3em);
+  overflow-y: scroll;
+}
+
 ._row2>.col2_>.col22_>.row221_{
   padding: 0.5em 0;
   font-size: 2em;
@@ -129,54 +141,52 @@ i.fa_{
 
 ._row2>.col2_>.col22_>.row222_{
   height: calc(100%-3em);
-  overflow-y: hidden;
+  overflow-y: scroll;
+}
+
+._row2>.col2_>.col22_>div{
+  width: 100%;
+  padding: 5px 3px;
+  font-size: 1.25em;
+}
+
+._row2>.col2_>.col22_>div>a>i{
+  margin-bottom: 0.5em;
+
+}
+
+._row2>.col2_>.col21_{
+  width: 40%;
+  float:  left;
 }
 
 
+._row2>.col2_>.col23_{
+  width: 50%;
+  float:  left;
+}
 
+._row2>.col2_>.col22_{
+  width: 10%;
+  float:  left;
+}
+
+._row3{
+  position: relative;
+  height: 10vh;
+  /* margin: 0 2.5vw 2.5vh; */
+  padding: 3vh;
+  text-align: center;
+  background-color: rgba(0, 0,0, 0.8);
+}
 
 
 ._footer{
   position: relative;
-  bottom: 10vh;
+
 }
 
 ._footer>div{
-  width: 100%;
+  display: inline-block;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* Add a black background color to the top navigation */
-.__topnav {
-  overflow: scroll;
-}
-
-/* Style the links inside the navigation bar */
-.__topnav a {
-  float: left;
-  color: #fff;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change the color of links on hover */
-.__topnav a:hover {
-  color: yellow;
-}
-
-/* Add a color to the active/current link */
-.__topnav a.__active {
-  color: yellow;
-}
