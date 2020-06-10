@@ -11,6 +11,14 @@
   float:  left;
   font-size: 4em;
 }
+@media(max-width:786px){
+  ._row1>._col1,._row1>._col2,._row1>._col3{
+    font-size: 3em;
+  }
+  ._row1{
+    height: 35vh;
+  }
+}
 
 ._row1>._col1 ._title,._row1>._col2 ._title,._row1>._col3 ._title{
   bottom: 6px;

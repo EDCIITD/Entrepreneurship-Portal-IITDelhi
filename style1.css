@@ -189,7 +189,7 @@ img {
   width: 100%;
   text-align: left;
   font: bold 16px sans-serif;
-  padding: 30px 18px;
+  padding:15px 18px;
 }
 
 .footer-distributed .footer-left,
@@ -221,7 +221,7 @@ img {
 
 .footer-distributed .footer-links {
   color: #ffffff;
-  margin: 20px 0 12px;
+  margin: 0px 0 12px;
   padding: 0;
 }
 
@@ -635,4 +635,16 @@ body {
   margin-top: 50px;
   width: 101vw;
   text-align: center;
+}
+.foot-down{
+  /* position: absolute; */
+  margin-top:12vh;
+}
+@media (max-width:876px){
+  .foot-down{
+    margin-top: 0px;
+  }
+  ._row1{
+    height: 10vw;
+  }
 }
