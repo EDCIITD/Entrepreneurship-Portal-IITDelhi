@@ -59,7 +59,7 @@ section:nth-of-type(2) {
 }
 
 section:nth-of-type(3) {
-  background-image: url(./img/events.jpg);
+  background-image: url(./img/bg12.jpg);
 }
 
 section:nth-of-type(4) {
@@ -67,7 +67,7 @@ section:nth-of-type(4) {
 }
 
 section:nth-of-type(5) {
-  background-image: url(./img/resources.jpg);
+  background-image: url(./img/team.jpg);
 }
 
 section:nth-of-type(6) {
@@ -115,7 +115,7 @@ section:nth-of-type(8) {
 .content-wrapper {
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
   flex-flow: column nowrap;
   color: #fff;
@@ -127,6 +127,9 @@ section:nth-of-type(8) {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
+}
+.main_head{
+  justify-content: center;
 }
 
 .content-title {
@@ -148,13 +151,6 @@ section:nth-of-type(8) {
   }
 }
 
-/* .main-title{
-  line-height: 0em;
-  
- 
-  line-height: 1.4;
-  margin-top: 0px;
-} */
 
 .content-title a {
   color: white;
@@ -744,7 +740,7 @@ video {
   display: inline-block;
   position: relative;
   width: 20vw;
-  margin: 2em 1em 2em 1em;
+  margin: 0em 1em 2em 1em;
 }
 
 .initiative-title {

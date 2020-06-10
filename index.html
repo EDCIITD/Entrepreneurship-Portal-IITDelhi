@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="./style-slide.css">
     <link rel="stylesheet" type="text/css" href="loader.css">
     <link rel="stylesheet" href="startup_style.css">
-    <!-- <link rel="stylesheet" href="initiative-style.css"> -->
     <link rel="stylesheet" href="style-particle.css">
     <link rel="stylesheet" href="./dist (extract.me)/style.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
@@ -94,33 +93,33 @@
             });
 
             $(".__xyz_trig").click(function () {
-                var cur=$(".active_").attr('id').slice(0,-4);
-                var next=$(this).attr('id').slice(0,-4);
+                var cur = $(".active_").attr('id').slice(0, -4);
+                var next = $(this).attr('id').slice(0, -4);
 
                 $(".active_").removeClass('active_');
-                $("."+cur).fadeOut(function () {
-                    $("."+next).fadeIn();
+                $("." + cur).fadeOut(function () {
+                    $("." + next).fadeIn();
                 });
-                $("#"+next+"trig").addClass('active_')
+                $("#" + next + "trig").addClass('active_')
             });
 
-/* Generalised
-            $("#__sinc_trig").click(function () {
-                $(".active_").removeClass('active_');
-                $("#__sinc_trig").addClass('active_');
-                $(".__edc_").fadeOut(function () {
-                    $(".__sinc_").fadeIn();
-                });
-            });
-
-            $("#__edc_trig").click(function () {
-                $(".active_").removeClass('active_');
-                $("#__edc_trig").addClass('active_');
-                $(".__sinc_").fadeOut(function () {
-                    $(".__edc_").fadeIn();
-                })
-            })
-*/
+            /* Generalised
+                        $("#__sinc_trig").click(function () {
+                            $(".active_").removeClass('active_');
+                            $("#__sinc_trig").addClass('active_');
+                            $(".__edc_").fadeOut(function () {
+                                $(".__sinc_").fadeIn();
+                            });
+                        });
+            
+                        $("#__edc_trig").click(function () {
+                            $(".active_").removeClass('active_');
+                            $("#__edc_trig").addClass('active_');
+                            $(".__sinc_").fadeOut(function () {
+                                $(".__edc_").fadeIn();
+                            })
+                        })
+            */
         });
 
     </script>
@@ -147,12 +146,11 @@
         <ul class="nav">
             <li class="scroll-to"><a href="#home">Home</a></li>
             <li><a href="./about">About</a></li>
-            <li><a href="#">Events</a></li>
+            <li><a href="https://www.facebook.com/edciitdelhi/events/">Events</a></li>
             <li class="scroll-to"><a href="#initiative">Initiatives</a></li>
             <li class="scroll-to"><a href="#resources">Resources</a></li>
             <li class="scroll-to"><a href="#showcase">Startup Showcase</a></li>
             <li class="scroll-to"><a href="#team">Team</a></li>
-            <!--             <li class="scroll-to"><a href="#sponsor">Sponsors</a></li> -->
             <li class="scroll-to"><a href="#contact">Contact Us</a></li>
             <li><a target="_blank" href="./sponsors.html">Sponsors</a></li>
             <li><a href="https://ecelliitd.wordpress.com/">Blog</a></li>
@@ -162,10 +160,9 @@
     <div class="container">
         <section class="background" id="home">
 
-            <div class="content-wrapper">
+            <div class="content-wrapper main_head">
                 <div class="hi">
-
-                    <p class="content-title total-title">Entrepreneurship Portal IIT Delhi</p>
+                    <p class="content-title main_head total-title">Entrepreneurship Portal IIT Delhi</p>
                     <div class="text">
                         <p>WE</p>
                         <p>
@@ -187,74 +184,61 @@
             <div class="content-wrapper">
                 <h1 class="initiative-heading">INITIATIVES</h1>
                 <div class="initiative-wrapper">
-
-                    <!-- <div class="initiative-block"> -->
-
-                    <!-- <img class="initiative-image" src="iloveimg-resized/White-copy-0.png" alt="">
-                        <h2 class="initiative-title-mob">Hatchstart</h2>
-                        <div class="ini-overlay">
-                            <img class="initiative-image-inside" src="iloveimg-resized/Black-copy-0.png" alt="">
-                            <h2 class="initiative-title">Hatchstart</h2>
-                            <p class="initiative-content">TED is a global set of conferences run by the private
-                                non-profit Sapling Foundation, under the slogan "Ideas Worth Spreading". </p>
-                        </div>
-                     -->
-                    <!-- </div> -->
                     <div class="initiative-block">
                         <a class="img" href="#">
                             <div class="img__overlay img__overlay--red">BECon</div><img
-                                src="iloveimg-resized/White-copy-0.png " />
+                                src="resources_initiative/White-copy-0.png " />
                         </a>
                     </div>
                     <div class="initiative-block">
                         <a class="img" href="#">
                             <div class="img__overlay img__overlay--red">incubation</div><img
-                                src="iloveimg-resized/White-copy-1.png " />
+                                src="resources_initiative/White-copy-1.png " />
                         </a>
                     </div>
                     <div class="initiative-block">
                         <a class="img" href="#">
                             <div class="img__overlay img__overlay--red">Mentorship</div><img
-                                src="iloveimg-resized/White-copy-2.png " />
+                                src="resources_initiative/White-copy-2.png " />
                         </a>
                     </div>
 
                     <div class="initiative-block">
                         <a class="img" href="#">
                             <div class="img__overlay img__overlay--red">Meraki</div><img
-                                src="iloveimg-resized/White-copy-3.png " />
+                                src="resources_initiative/White-copy-3.png " />
                         </a>
                     </div>
                     <div class="initiative-block">
                         <a class="img" href="#">
-                            <div class="img__overlay img__overlay--red">Thinking</div><img
-                                src="iloveimg-resized/White-copy-4.png " />
+                            <div class="img__overlay img__overlay--red">Startup 101</div><img
+                                src="resources_initiative/White-copy-4.png " />
                         </a>
                     </div>
                     <div class="initiative-block">
                         <a class="img" href="#">
-                            <div class="img__overlay img__overlay--red">Hey!</div><img
-                                src="iloveimg-resized/White-copy-5.png " />
+                            <div class="img__overlay img__overlay--red">Startup 201</div><img
+                                src="resources_initiative/image.png " />
                         </a>
                     </div>
                     <div class="initiative-block">
                         <a class="img" href="#">
-                            <div class="img__overlay img__overlay--red">Initiative</div><img
-                                src="iloveimg-resized/White-copy-5.png " />
+                            <div class="img__overlay img__overlay--red">Investor meetup</div><img
+                                src="resources_initiative/White-copy-5.png " />
                         </a>
                     </div>
                     <div class="initiative-block">
                         <a class="img" href="#">
                             <div class="img__overlay img__overlay--red">StartupX</div><img
-                                src="iloveimg-resized/White.png " />
+                                src="resources_initiative/White.png " />
                         </a>
                     </div>
 
 
-                    <!-- <div class="initiative-block"><img class="initiative-image" src="iloveimg-resized/White.png" alt="">
+                    <!-- <div class="initiative-block"><img class="initiative-image" src="resources_initiative/White.png" alt="">
                         <h2 class="initiative-title-mob">BeCon</h2>
                         <div class="ini-overlay">
-                            <img class="initiative-image-inside" src="iloveimg-resized/White-copy-0.png" alt="">
+                            <img class="initiative-image-inside" src="resources_initiative/White-copy-0.png" alt="">
                             <h2 class="initiative-title">BeCon</h2>
                             <p class="initiative-content">TED is a global set of conferences run by the private
                                 non-profit Sapling Foundation, under the slogan "Ideas Worth Spreading".</p>
@@ -339,12 +323,12 @@
         <section class="background" id="showcase">
             <div class="content-wrapper">
                 <p class="content-title">Startup Showcase</p>
-                <p class="content-subtitle">Our startups </p>
+                <p class="content-subtitle"></p>
                 <div class="myItems slideshow-container" id="aeiou">
                     <a class="prev" onclick="plusSlides(-1)">❮</a>
                     <a class="next" onclick="plusSlides(1)">❯</a>
 
-                    <a class="myItem mySlides" style="display: block;">
+                    <a href="./showcase/index.html" class="myItem mySlides" style="display: block;">
                         <div class="divn">
                             <div class="thumbnail-showcase"><img class="left-showcase" src="files/showcase/sun.jpeg">
                             </div>
@@ -600,32 +584,22 @@
         <section class="background" id="team">
             <div class="content-wrapper">
                 <p class="content-title"><a href="./team/index.html">Team</a></p>
-                <p class="content-subtitle">Meet the people who make awesome stuffs</p>
-
+                <p class="content-subtitle">Meet the people who make awesome EDC awesome</p>
                 <div class="demo">
                     <div class="container1">
                         <div class="row">
                             <div id="testimonial-slider" class="owl-carousel">
                                 <div class="testimonial">
-                                    <span class="icon fa fa-quote-left"></span>
-                                    <p class="description">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                    </p>
                                     <div class="testimonial-content">
                                         <div class="pic">
-                                            <img src="./team/anmol-u.jpeg" alt="">
+                                            <img src="./team/pm.jpg" alt="">
                                         </div>
                                         <h3 class="name">Prashant Mishra</h3>
-                                        <span class="title">Project Manager</span>
+                                        <span class="title">Faculty Head</span>
                                     </div>
                                 </div>
                                 <div class="testimonial">
-                                    <span class="icon fa fa-quote-left"></span>
-                                    <p class="description">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                    </p>
+
                                     <div class="testimonial-content">
                                         <div>
                                             <img class="pic" src="./team/anmol-u.jpeg" alt="">
@@ -635,25 +609,16 @@
                                     </div>
                                 </div>
                                 <div class="testimonial">
-                                    <span class="icon fa fa-quote-left"></span>
-                                    <p class="description">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                    </p>
+
                                     <div class="testimonial-content">
                                         <div>
                                             <img class="pic" src="./team/divyansh-u.jpeg" alt="">
                                         </div>
                                         <h3 class="name">Divyansh Rana</h3>
-                                        <span class="title">Overall Coordinator SINC</span>
+                                        <span class="title">Overall Coordinator EDC</span>
                                     </div>
                                 </div>
                                 <div class="testimonial">
-                                    <span class="icon fa fa-quote-left"></span>
-                                    <p class="description">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                    </p>
                                     <div class="testimonial-content">
                                         <div>
                                             <img class="pic" src="./team/arunima-u.jpeg" alt="">
@@ -663,11 +628,6 @@
                                     </div>
                                 </div>
                                 <div class="testimonial">
-                                    <span class="icon fa fa-quote-left"></span>
-                                    <p class="description">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                    </p>
                                     <div class="testimonial-content">
                                         <div>
                                             <img class="pic" src="./team/vishal-u.jpeg" alt="">
@@ -676,12 +636,7 @@
                                         <span class="title">Overall Coordinator EDC</span>
                                     </div>
                                 </div>
-                                <div class="testimonial">
-                                    <span class="icon fa fa-quote-left"></span>
-                                    <p class="description">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                    </p>
+                                <!-- <div class="testimonial">
                                     <div class="testimonial-content">
                                         <div>
                                             <img class="pic" src="./team/lauren-cox.jpg" alt="">
@@ -689,7 +644,7 @@
                                         <h3 class="name">Vikas Verma</h3>
                                         <span class="title">Overall Coordinator SINC</span>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -702,18 +657,18 @@
                 <div class="_row1">
                     <div class="_col1">
                         <div class="_title">Events</div>
-                        <div class="imag"><img src="./startupsample.png" alt="img">
+                        <div class="imag"><img src="./img/events.png" alt="img">
                         </div>
                     </div>
                     <div class="_col2">
                         <div class="_title">Team</div>
-                        <div class="imag"><img src="./startupsample.png" alt="img">
+                        <div class="imag"><a href="./team/"><img src="./img/team.jpg" alt="img"></a>
                         </div>
                     </div>
                     <div class="_col3">
                         <div class="_title">Blog</div>
-                        <div class="imag"><img src="./startupsample.png" alt="img">
-                        </div>
+                        <div class="imag"><a href="https://ecelliitd.wordpress.com"><img src="./img/blog.png" alt="img">
+                        </a></div>
                     </div>
                 </div>
                 <div class="_row2">
@@ -753,56 +708,41 @@
                         </div>
 
 
-                         <div class="col22_">
+                        <div class="col22_">
 
                             <div class="row221_">@</div>
 
-                            
 
-                                <div class="row222_ footer-icons __sinc_">
-                                    <a href="https://m.facebook.com/edciitdelhi/"><i class="fa fa-facebook fa_"></i></a>
-                                    <a href="https://instagram.com/edc_iitd?igshid=2s7a9c1sa5xi"><i
-                                            class="fa fa-instagram fa_"></i></a>
-                                    <a
-                                        href="https://www.linkedin.com/company/entrepreneurship-development-cell-edc-iit-delhi"><i
-                                            class="fa fa-linkedin fa_"></i></a>
-                                    <a href="https://www.youtube.com/channel/UCpCxOtRhLy5442eZCoIZNYA"><i
-                                            class="fa fa-youtube fa_"></i></a>
-                                </div>
 
-                                <div class="row222_ footer-icons __edc_">
-                                    <a href="https://m.facebook.com/edciitdelhi/"><i class="fa fa-facebook fa_"></i></a>
-                                    <a href="https://instagram.com/edc_iitd?igshid=2s7a9c1sa5xi"><i
-                                            class="fa fa-instagram fa_"></i></a>
-                                    <a
-                                        href="https://www.linkedin.com/company/entrepreneurship-development-cell-edc-iit-delhi"><i
-                                            class="fa fa-linkedin fa_"></i></a>
-                                    <a href="https://www.youtube.com/channel/UCpCxOtRhLy5442eZCoIZNYA"><i
-                                            class="fa fa-youtube fa_"></i></a>
-                                </div>
-                            
+                            <div class="row222_ footer-icons __sinc_">
+                                <a href="https://m.facebook.com/edciitdelhi/"><i class="fa fa-facebook fa_"></i></a>
+                                <a href="https://instagram.com/edc_iitd?igshid=2s7a9c1sa5xi"><i
+                                        class="fa fa-instagram fa_"></i></a>
+                                <a
+                                    href="https://www.linkedin.com/company/entrepreneurship-development-cell-edc-iit-delhi"><i
+                                        class="fa fa-linkedin fa_"></i></a>
+                                <a href="https://www.youtube.com/channel/UCpCxOtRhLy5442eZCoIZNYA"><i
+                                        class="fa fa-youtube fa_"></i></a>
+                            </div>
+
+                            <div class="row222_ footer-icons __edc_">
+                                <a href="https://m.facebook.com/edciitdelhi/"><i class="fa fa-facebook fa_"></i></a>
+                                <a href="https://instagram.com/edc_iitd?igshid=2s7a9c1sa5xi"><i
+                                        class="fa fa-instagram fa_"></i></a>
+                                <a
+                                    href="https://www.linkedin.com/company/entrepreneurship-development-cell-edc-iit-delhi"><i
+                                        class="fa fa-linkedin fa_"></i></a>
+                                <a href="https://www.youtube.com/channel/UCpCxOtRhLy5442eZCoIZNYA"><i
+                                        class="fa fa-youtube fa_"></i></a>
+                            </div>
+
                         </div>
 
                         <div class="col23_">
                             <div class="row231_">About</div>
 
 
-                            <div class="row232_ __sinc_">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                sunt in culpa qui officia deserunt Lorem ipsum dolor sit amet, consectetur adipisicing
-                                elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                sunt in culpa qui officia deserLorem ipsum dolor sit amet, consectetur adipisicing
-                                elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                sunt in culpa qui officia deserLorem ipsum dolor sit amet, consectetur adipisicing
-                                elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                sunt in culpa qui officia deserLorem ipsum dolor sit amet, consectetur adipisicing
-                                elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                sunt in culpa qui officia desermollit anim id est laborum.</div>
+                            <div class="row232_ __sinc_">ABOUT SINC</div>
 
                             <div class="row232_ __edc_">
                                 EDC fhdtys</div>
@@ -813,17 +753,17 @@
 
 
 
-                           
-                        </div>
-                        
+
                     </div>
-                    <div class="_row3">
-                        <div class="_footer">
-                                <div class="__dev">Developed by me</div> * 
-                                <div class="__pow">Powered by Dev Club</div> <br>
-                                <div class="__copy">E-Cell &copy 2020</div>
-                        </div>
+
+                </div>
+                <div class="_row3">
+                    <div class="_footer">
+                        <div class="__dev">Developed by <a href="dev_team">Tech Team</a></div>
+                        <div class="__pow">Powered by <a href="https://devclub.in/#/">Dev Club</a></div> <br>
+                        <div class="__copy">E-Cell &copy 2020</div>
                     </div>
+                </div>
 
         </section>
     </div>
