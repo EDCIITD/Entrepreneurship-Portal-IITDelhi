@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Events</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Jaldi|Roboto+Condensed"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <h1 align="center">Events</h1>
+    <div class="container">
+      <div class="cards" id="authors">
+        <!--
+        <a class="card" href="#">
+          <span
+            class="card-header"
+            style="background-image: url(http://placeimg.com/400/400/tech);"
+          >
+            <span class="card-title">
+              <h3>Title</h3>
+            </span>
+          </span>
+          <span class="card-summary">
+            <p>Date</p>
+            <p>Organiser</p>
+            <p>Venue</p>
+          </span>
+          
+        </a>-->
+      </div>
+    </div>
+    <!-- partial -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+      function createNode(element) {
+        return document.createElement(element);
+      }
+      function append(parent, el) {
+        return parent.appendChild(el);
+      }
+      const ul = document.getElementById("authors");
+      const url = "https://iic.devclub.in/api/events";
+      fetch(url)
+        .then(resp => resp.json())
+        .then(function(data) {
+          let authors = data.data;
+          return authors.map(function(author) {
+            let card = createNode("a"),
+              card_header = createNode("div"),
+              card_title = createNode("div"),
+              card_title_h = createNode("h3"),
+              card_summary = createNode("div"),
+              e_date = createNode("div"),
+              e_time = createNode("div"),
+              e_venue = createNode("div"),
+              e_org = createNode("div"),
+              e_type = createNode("div"),
+              e_more_info = createNode("div");
+            button = createNode("button");
+            bdiv = createNode("div");
+            card.classList.add("card");
+            bdiv.classList.add("buttondiv");
+            button.classList.add("button");
+            card_header.classList.add("card-header");
+            card_header.style.backgroundImage =
+              "url(" + `${author.metaData.img}` + ")";
+            card_title.classList.add("card-title");
+            card_title_h.innerHTML = `${author.metaData.title}`;
+            append(card_title, card_title_h);
+            append(card_header, card_title);
+            append(card, card_header);
+            card_summary.classList.add("card-summary");
+            e_date.classList.add("e-date");
+            e_date.innerHTML =
+              "<i class='material-icons'>today</i> &nbsp" +
+              `${author.metaData.eventDate}`;
+            append(card_summary, e_date);
+            e_time.classList.add("e-time");
+            e_time.innerHTML =
+              "<i class='material-icons'>access_time</i> &nbsp" +
+              `${author.metaData.eventDate}`;
+            append(card_summary, e_time);
+            e_venue.classList.add("e-venue");
+            e_venue.innerHTML =
+              "<i class='material-icons'>location_on</i> &nbsp" +
+              `${author.metaData.venue}`;
+            append(card_summary, e_venue);
+            e_org.classList.add("e-org");
+            e_org.innerHTML =
+              "<i class='material-icons'>person</i> &nbsp" +
+              `${author.metaData.organiser}`;
+            append(card_summary, e_org);
+            e_type.classList.add("e-type");
+            e_type.innerHTML = `${author.metaData.eventDate}`;
+            //append(card_summary,e_type);
+            bdiv.innerHTML =
+              "<label for='card1' class='button' >Details </label>";
+
+            append(card_summary, bdiv);
+            append(card, card_summary);
+            append(ul, card);
+            /*
+            let a = createNode("a"),
+              h = createNode("h3"),
+              span1 = createNode("span"),
+              span2 = createNode("span"),
+              span3 = createNode("span"),
+              //span4 = createNode("span");
+              p1 = createNode("p");
+            p2 = createNode("p");
+            p3 = createNode("p");
+            a.classList.add("card");
+            span1.classList.add("card-header");
+            span2.classList.add("card-title");
+            span1.style.backgroundImage = "test.png";
+            //"url('http://placeimg.com/400/400/tech')";
+            h.innerHTML = `${author.metaData.title}`;
+            //h.innerHTML = "Freshers orientation";
+            p1.innerHTML = `${author.metaData.eventDate}`;
+            //p1.innerHTML = "29/12/2019";
+            p2.innerHTML = `${author.metaData.organiser}`;
+            //p2.innerHTML = "Student incubation club";
+            p3.innerHTML = `${author.metaData.venue}`;
+            //p3.innerHTML = "Venue: LHC114";
+            span3.classList.add("card-summary");
+            p1.classList.add("date");
+            p2.classList.add("organiser");
+            p3.classList.add("venue");
+            append(span3, p1);
+            append(span3, p2);
+            append(span3, p3);
+            append(span2, h);
+            append(span1, span2);
+            append(a, span1);
+            append(a, span3);
+            //append(a, span4);
+            append(ul, a); */
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>
