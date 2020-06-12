@@ -44,7 +44,7 @@ html, body {
 }
 
 .background:first-child {
-  background-image: url(./img/0.jfif);
+  background-image: url(./../img/0.jfif);
   -webkit-transform: translateY(-15vh);
   transform: translateY(-15vh);
 }
@@ -55,27 +55,27 @@ html, body {
 }
 
 section:nth-of-type(2) {
-  background-image: url(./img/about_us.jpg);
+  background-image: url(./../img/about_us.jpg);
 }
 
 section:nth-of-type(3) {
-  background-image: url(./img/bg12.jpg);
+  background-image: url(./../img/bg12.jpg);
 }
 
 section:nth-of-type(4) {
-  background-image: url(./img/img2.jpg);
+  background-image: url(./../img/img2.jpg);
 }
 
 section:nth-of-type(5) {
-  background-image: url(./img/team.jpg);
+  background-image: url(./../img/team.jpg);
 }
 
 section:nth-of-type(6) {
-  background-image: url(./img/white.jpg);
+  background-image: url(./../img/white.jpg);
 }
 
 section:nth-of-type(7) {
-  background-image: url(./img/team.jpg);
+  background-image: url(./../img/team.jpg);
 }
 
 /* Set stacking context of slides */

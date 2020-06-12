@@ -618,9 +618,7 @@ body {
   display: inline-block;
   list-style-type: none;
 }
-.mar-img {
-  /* padding-top: 5vh; */
-}
+
 
 @media (max-width: 600px) {
   .max-img {
