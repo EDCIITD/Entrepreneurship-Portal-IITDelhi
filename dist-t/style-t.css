@@ -41,7 +41,11 @@
   width: 100%;
   height: auto;
 }
+.testimonial .pic:hover img {
+  transition: transform .5s ease;
+  transform: scale(1.2);
 
+}
 .testimonial .name {
   font-size: 15px;
   font-weight: bold;
