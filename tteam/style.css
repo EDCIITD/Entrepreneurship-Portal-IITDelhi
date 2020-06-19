@@ -153,6 +153,11 @@ a, a:hover {
   box-shadow: 0px 4px 30px rgba(43, 98, 169, 0.5);
 }
 
+.profile-card-social__item.linkedin {
+  background: /*#0e76a8 */ linear-gradient(45deg, #0e76a8, #0f86bd);
+  box-shadow: 0px 4px 30px rgba(14, 118, 168, 0.5);
+}
+
 .profile-card-social__item.instagram {
   background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
   box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6);
@@ -161,6 +166,11 @@ a, a:hover {
 .profile-card-social__item.github {
   background: linear-gradient(45deg, #333333, #626b73);
   box-shadow: 0px 4px 30px rgba(63, 65, 67, 0.6);
+}
+
+.profile-card-social__item.link {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.6);
 }
 
 .profile-card-social .icon-font {
