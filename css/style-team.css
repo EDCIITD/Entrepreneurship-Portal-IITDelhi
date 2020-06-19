@@ -160,11 +160,6 @@
 .grabbing {
   cursor: url(grabbing.png) 8 8, move;
 }
-
-*, ::after, ::before {
-  box-sizing: border-box;
-}
-
 /* fix */
 
 .owl-carousel .owl-wrapper, .owl-carousel .owl-item {

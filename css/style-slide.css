@@ -340,6 +340,7 @@ img.left-showcase {
   font-size: 2.5em;
   color: #272727;
 }
+.right-showcase h1 {margin:0px !important;}
 
 
 
@@ -347,7 +348,7 @@ img.left-showcase {
   text-align: justify;
   padding-top: 10px;
   font-size: 1em;
-  line-height: 150%;
+  line-height: 110%;
   color: #4b4b4b;
 }
 
