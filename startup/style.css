@@ -17,16 +17,22 @@ html, body {
 body {
   display: grid;
   place-items: center;
+  background: #671aff12;
 }
-.heading{
+
+.heading {
   width: 100%;
   text-align: center;
+  background-image: url(./../img/0.jpg);
+  background-position: center;
 }
+
 h1 {
   font: var(--font-sans);
   font-size: 4rem;
   padding: 8px;
   box-shadow: 1px 1px 7px gray;
+  /* background: linear-gradient(180deg, #0095ff45, transparent); */
 }
 
 @media(max-width:786px) {
@@ -112,24 +118,122 @@ h1 {
   transition: transform calc(var(--d) * 2) var(--e), -webkit-transform calc(var(--d) * 2) var(--e);
 }
 
-.card:nth-child(1):before {
-  background-image: url(https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+.card:before {
+  background-image: url(./images/default.png);
 }
 
-.card:nth-child(2):before {
-  background-image: url(https://images.unsplash.com/photo-1533903345306-15d1c30952de?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+.rancho:before {
+  background-image: url(./images/rancho.jpg);
 }
 
-.card:nth-child(3):before {
-  background-image: url(https://images.unsplash.com/photo-1545243424-0ce743321e11?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+.acadmaze:before {
+  background-image: url(./images/acadmaze.jpg);
 }
 
-.card:nth-child(4):before {
-  background-image: url(https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+.matisoft:before {
+  background-image: url(./images/matisoft.png);
 }
 
-.card:nth-last-child(4):before {
-  background-image: url(https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+.cyran:before {
+  background-image: url(./images/cyran.jpg);
+}
+
+.tinker:before {
+  background-image: url(./images/tinker.png);
+}
+
+.geliose:before {
+  background-image: url(./images/geliose.jpg);
+  /* }.bht:before {
+  background-image: url(./images/rancho.png); */
+}
+
+.medicfibres:before {
+  background-image: url(./images/medic.jpg);
+}
+
+.touchvision:before {
+  background-image: url(./images/touchvision.jpg);
+  /* }.sisdy:before {
+  background-image: url(./images/); */
+  /* }.ains:before {
+  background-image: url(./images/ains.png); */
+  /* }.tensor:before {
+  background-image: url(./images/tensor.png); */
+}
+
+.botlab:before {
+  background-image: url(./images/botlab.jpg);
+}
+
+.phase:before {
+  background-image: url(./images/phaselabs.jpg);
+}
+
+.rlf:before {
+  background-image: url(./images/raisedlinefound.png);
+  /* }.trydan:before {
+  background-image: url(./images/trydan.png); */
+}
+
+.fabiosys:before {
+  background-image: url(./images/fabiosys.jpg);
+}
+
+.quanteon:before {
+  background-image: url(./images/quanteon.jpg);
+}
+
+.flexmotiv:before {
+  background-image: url(./images/flexmotiv.jpg);
+}
+
+.agrowave:before {
+  background-image: url(./images/agrowave.jpg);
+}
+
+.kriya:before {
+  background-image: url(./images/kriya.png);
+}
+
+.aerogram:before {
+  background-image: url(./images/aerogram.jpg);
+}
+
+.vecros:before {
+  background-image: url(./images/vecros.jpg);
+}
+
+.hyperx:before {
+  background-image: url(./images/hyperx.jpg);
+}
+
+.ramja:before {
+  background-image: url(./images/ramja.jpg);
+}
+
+.movtrack:before {
+  background-image: url(./images/movtrack.jpg);
+}
+
+.stellargene:before {
+  background-image: url(./images/stellargene.png);
+}
+
+.sicuremi:before {
+  background-image: url(./images/sicuremi.jpg);
+}
+
+.rancho:before {
+  background-image: url(./images/rancho.jpg);
+}
+
+.nanosafe:before {
+  background-image: url(./images/nanosafe.jpg);
+}
+
+.etex:before {
+  background-image: url(./images/etex.jpg);
 }
 
 .content {
@@ -189,7 +293,16 @@ h1 {
   outline-offset: 3px;
 }
 
+.headbar {
+  position: absolute;
+  margin-top: -58px;
+  z-index: 10;
+}
+
 @media (hover: hover) and (min-width: 600px) {
+  .headbar {
+    margin-top: -47px;
+  }
   .card:after {
     -webkit-transform: translateY(0);
     transform: translateY(0);

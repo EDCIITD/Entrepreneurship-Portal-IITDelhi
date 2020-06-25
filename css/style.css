@@ -44,7 +44,7 @@ html, body {
 }
 
 .background:first-child {
-  background-image: url(./../img/0.jfif);
+  background-image: url(./../img/0.jpg);
   -webkit-transform: translateY(-15vh);
   transform: translateY(-15vh);
 }
@@ -71,12 +71,12 @@ section:nth-of-type(5) {
 }
 
 section:nth-of-type(6) {
-  background-image: url(./../img/white.jpg);
+  background-image: url(./../img/contact_us.jpg);
 }
-
+/* 
 section:nth-of-type(7) {
   background-image: url(./../img/team.jpg);
-}
+} */
 
 /* Set stacking context of slides */
 
@@ -153,9 +153,9 @@ section:nth-of-type(8) {
   }
 }
 
-@media(max-width:400px) {
+@media(max-width:600px) {
   .content-title {
-    font-size: 2.5em;
+    font-size: 2.4em;
   }
 }
 
@@ -266,8 +266,13 @@ ul.nav {
 ul.nav>li {
   float: left;
   cursor: pointer;
-}
 
+}
+@media (max-width:600px){
+  ul.nav>li{
+    background: #131313b8;
+  }
+}
 .yellow {
   color: #ffe000 !important;
 }
@@ -883,11 +888,24 @@ video {
   color: #fafafa;
   font-size: 24px;
 }
-@media (max-width:400px){
-  .img__overlay{
-    font-size: 11px;
+#resources .img__overlay {
+  background-color: rgba(46, 204, 113, 0.4);
+  /* background: linear-gradient(65deg, rgba(217, 30, 24, 0.4), rgba(102, 51, 153, 0.4) 60%); */
+
+  background: linear-gradient(222deg, rgba(244, 67, 54, 0.55), rgba(71, 36, 118, 0.61));
+  color: #fafafa;
+  font-size: 18px ;
+}
+
+@media (max-width:600px){
+  #resources .img__overlay{
+    font-size: 9px;
     opacity: 1;
+    font-weight: 900;
+
   }
+  .img__overlay{opacity: 1;
+  font-size: 12px;}
 }
 .img__overlay--red {
   background: linear-gradient(65deg, rgba(217, 30, 24, 0.4), rgba(102, 51, 153, 0.4) 60%);
@@ -910,4 +928,9 @@ video {
   to {
     opacity: 1;
   }
+}
+.footer_merged{
+  position: fixed;
+    width: 100%;
+    bottom: 0px;
 }

@@ -109,6 +109,7 @@
 .about img {
 	width: 50px;
 	border-radius: 100%;
+	max-height: 50px;
 }
 
 .author_name, .post_date_readtime {
