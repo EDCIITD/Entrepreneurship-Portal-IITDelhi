@@ -2,6 +2,7 @@
 
 .text {
   font-family: "Open Sans", sans-serif;
+  /* font-display: swap; */
   font-weight: 600;
   font-size: 4em;
   
