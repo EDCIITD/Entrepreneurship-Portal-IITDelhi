@@ -369,14 +369,15 @@ img.left-showcase {
 .right-showcase p {
   text-align: left;
   padding-top: 10px;
-  font-size: 1em;
+  font-size: 1.2em;
   line-height: 110%;
+  text-transform: none;
   color: #4b4b4b;
 }
 
 @media(max-width:811px) {
   .right-showcase p {
-    font-size: 0.9em;
+    font-size: 1.05em;
   }
   .thumbnail-showcase {
     float: none;

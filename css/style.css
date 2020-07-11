@@ -874,6 +874,12 @@ video {
   }
 }
 
+@media(max-width:600px) {
+  #contact .content-wrapper {
+    height: 95vh;
+  }
+}
+
 .initiative-block .img {
   -webkit-animation: fadeIn 0.5s;
   animation: fadeIn 0.5s;
@@ -972,7 +978,7 @@ video {
 
 .btn {
   position: relative;
-  font-size: 20px;
+  font-size: 24px;
   display: block;
   margin: 30px auto;
   padding: 10px;

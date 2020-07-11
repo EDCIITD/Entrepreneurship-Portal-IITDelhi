@@ -277,23 +277,32 @@ img {
 }
 
 .btn {
-  background-color: #5724ce;
-  border: 1px solid #cccccc;
-  color: white;
+  background-color: #ffef40c2;
+  /* border: 1px solid #cccccc; */
+  color: #360193;
   padding: 0.5rem;
-  text-transform: lowercase;
   border-radius: 4px;
+  font-family: Montserrat ;
   padding: 0 16px;
-  min-width: 64px;
-  height: 36px;
+  min-width: 174px;
+  height: 48px;
+  font-weight: 700;
   vertical-align: middle;
   text-align: center;
   text-overflow: ellipsis;
   text-transform: uppercase;
   transition: box-shadow 0.2s;
 }
+/* @media (max-width:600px){
+.btn{width:}
+} */
+.btn:hover{
+  background-color: #fff400;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
 
-.btn:hover {}
 
 .btn--block {
   display: block;
